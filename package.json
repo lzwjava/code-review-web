@@ -1,0 +1,38 @@
+{
+	"name": "code-review",	
+	"private": true,
+	"description": "Code Review project",
+	"main": "index.js",
+	"scripts": {
+	  "dev": "webpack-dev-server --inline --hot --quiet",
+	  "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+	},
+	"repository": {
+	  "type": "git",
+	  "url": "git@github.com:NextCodeReview/code-review-web.git"
+	},
+	"homepage": "https://github.com/NextCodeReview/code-review-web",
+	"devDependencies": {
+	  "babel-core": "^6.1.21",
+	  "babel-loader": "^6.1.0",
+	  "babel-plugin-transform-runtime": "^6.1.18",
+	  "babel-preset-es2015": "^6.1.18",
+	  "babel-runtime": "^6.1.18",
+	  "cross-env": "^1.0.5",
+	  "css-loader": "^0.21.0",
+	  "style-loader": "^0.13.0",
+	  "stylus-loader": "^1.4.0",
+	  "vue-hot-reload-api": "^1.2.0",
+	  "vue-html-loader": "^1.0.0",
+	  "vue-loader": "^7.0.3",
+	  "webpack": "^1.12.2",
+	  "webpack-dev-server": "^1.12.0"
+	},
+
+	"dependencies": {
+    	"vue": "^1.0.10",
+	    "es6-promise": "^3.0.2",
+	    "firebase": "^2.3.1",
+	    "vue-router": "^0.7.5"
+	 }
+}
