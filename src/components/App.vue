@@ -33,26 +33,33 @@
 <style lang="stylus">
 @import "../variables.styl"
 
+html, body
+  font-family "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei","WenQuanYi Micro Hei",Arial,Verdana,sans-serif
+  font-size 14px
+  height 100%
+
 a
-  color #000
   cursor pointer
   text-decoration none
   border 1px solid transparent
   border-radius 2px
 
-a.selected
+li a
+  color #000
+
+li a.selected
   border-color rgba(113, 199, 46, 0.1)
 
-a:hover
+li a:hover
   border-color rgba(113, 199, 46, 1)
   color rgba(113, 199, 46, 1)
 
 .main-nav-wrapper
-  height 40px
+  height 60px
   background #fff
 
   .nav-inside
-    padding-top 10px
+    padding-top 20px
 
     .main-logo-wrapper
       float left
@@ -63,6 +70,7 @@ a:hover
         width 25px
 
       div
+        font-size 18px
         display inline
 
     ul.nav-list
@@ -76,7 +84,7 @@ a:hover
         a
           margin 3px
           padding 3px 15px
-          font-size 14px
+          font-size 16px
           font-weight 100
 
 </style>
