@@ -2,12 +2,11 @@
   <div id="wrapper">
     <!-- header -->
     <div class="main-nav-wrapper">
-      <div class="inside">
+      <div class="nav-inside">
 
-        <nav>
           <div class="main-logo-wrapper">
             <img src="../img/header_logo.png">
-            Code Review
+            <div>Code Review</div>
           </div>
 
           <ul class="nav-list">
@@ -16,8 +15,6 @@
             <li><a href="" class="more">登录</a></li>
             <li class="signup"><a href="" class="">注册</a></li>
           </ul>
-
-        </nav>
 
       </div>
     </div>
@@ -34,21 +31,52 @@
 
 
 <style lang="stylus">
+@import "../variables.styl"
+
+a
+  color #000
+  cursor pointer
+  text-decoration none
+  border 1px solid transparent
+  border-radius 2px
+
+a.selected
+  border-color rgba(113, 199, 46, 0.1)
+
+a:hover
+  border-color rgba(113, 199, 46, 1)
+  color rgba(113, 199, 46, 1)
 
 .main-nav-wrapper
   height 40px
   background #fff
 
-.main-logo-wrapper
-  float left
-  position absolute
-  left 20%
+  .nav-inside
+    padding-top 10px
 
-ul.nav-list
-  margin 0
-  position absolute
-  right 10%
-  li
-    display inline
+    .main-logo-wrapper
+      float left
+      position absolute
+      left 10%
+
+      img 
+        width 25px
+
+      div
+        display inline
+
+    ul.nav-list
+      margin 0
+      position absolute
+      right 10%
+
+      li
+        display inline
+
+        a
+          margin 3px
+          padding 3px 15px
+          font-size 14px
+          font-weight 100
 
 </style>
