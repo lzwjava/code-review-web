@@ -15,7 +15,7 @@ Vue.filter('domain', domain);
 var router = new Router();
 
 router.map({
-  '/home': {
+  '/': {
     component: HomeView
   },
 });
