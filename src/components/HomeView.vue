@@ -73,7 +73,7 @@
 
         <div class="row">
           <h2>发现行业内精英开发者</h2>
-          <h3>一览各个语言领域顶尖的编程人物</h3>
+          <h3>一览领域顶尖的编程人物</h3>
         </div>
 
         <div class="reviewers">
@@ -93,6 +93,14 @@
             </li>
           </ul>
         </div>
+
+      </div>
+
+    </section>
+
+    <section class="section4">
+
+      <div>
 
       </div>
 
@@ -192,5 +200,8 @@ section
             font-size 24px
             font-weight 500
             padding-top 15px
+
+.section4
+  height 600px
 
 </style>
