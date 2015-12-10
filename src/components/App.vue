@@ -1,23 +1,29 @@
 <template>
   <div id="wrapper">
     <!-- header -->
-    <div class="main-nav-wrapper">
-      <div class="nav-inside">
+    <nav class="navbar navbar-inverse navbar-fixed-top main-nav-wrapper">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <img class="navbar-brand header-logo" src="../img/header_logo.png">
+          <a class="navbar-brand header-title" href="#">Code Review</a>
+        </div>
 
-          <div class="main-logo-wrapper">
-            <img src="../img/header_logo.png">
-            <div>Code Review</div>
-          </div>
-
-          <ul class="nav-list">
-            <li><a href="/reviewers" class="">发现大神</a></li>
-            <li><a href="/new-features" class="">精彩案例</a></li>
-            <li><a href="" class="more">登录</a></li>
-            <li class="signup"><a href="" class="">注册</a></li>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav-list navbar-right">
+            <li><a href="/reviewers" class="btn btn-header">发现大神</a></li>
+            <li><a href="/new-features" class="btn btn-header">精彩案例</a></li>
+            <li><a href="" class="btn btn-header">登录</a></li>
+            <li class="signup"><a href="" class="btn btn-header">注册</a></li>
           </ul>
-
+        </div>
       </div>
-    </div>
+    </nav>
 
     <!-- main view -->
     <router-view
@@ -26,60 +32,53 @@
       transition
       transition-mode="out-in">
     </router-view>
-  </div>
-</template>
 
+    <hr class="footer-divider">
+
+    <!-- FOOTER -->
+    <footer class="container">
+      <p class="pull-right"><a href="#">Back to top</a></p>
+      <p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
+  </div>
+
+</template>
 
 <style lang="stylus">
 @import "../stylus/base.styl"
 
-a
-  cursor pointer
-  text-decoration none
-  border 1px solid transparent
-  border-radius 2px
-
-li a
+.btn-header
   color #000
 
-li a.selected
-  border-color rgba(113, 199, 46, 0.1)
-
-li a:hover
+.btn-header:hover
   border-color rgba(113, 199, 46, 1)
   color rgba(113, 199, 46, 1)
 
+ul.nav-list
+  position relative
+  top 10px  
+
+ul.nav-list li 
+  display inline
+
+.navbar-brand
+  height 55px
+
+.navbar-inverse .navbar-brand:focus,
+.navbar-inverse .navbar-brand
+  color #000
+
+.navbar-inverse .navbar-brand:hover
+  color rgb(113, 199, 46)
+
 .main-nav-wrapper
-  height 60px
   background #fff
 
-  .nav-inside
-    padding-top 20px
+.footer-divider
+  margin 60px 0
 
-    .main-logo-wrapper
-      float left
-      position absolute
-      left 10%
-
-      img 
-        width 25px
-
-      div
-        font-size 18px
-        display inline
-
-    ul.nav-list
-      margin 0
-      position absolute
-      right 10%
-
-      li
-        display inline
-
-        a
-          margin 3px
-          padding 3px 15px
-          font-size 16px
-          font-weight 100
+footer.container
+  height 80px
 
 </style>

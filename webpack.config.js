@@ -17,7 +17,7 @@ module.exports = {
       },
       root: srcPath,
       extensions: ['', '.js', '.css'],
-      modulesDirectories: ['node_modules', srcPath, bootstrapPath]
+      modulesDirectories: ['node_modules', bootstrapPath, srcPath]
   },
   module: {
     loaders: [
