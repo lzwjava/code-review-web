@@ -1,5 +1,8 @@
-var vue = require('vue-loader')
-var webpack = require('webpack')
+var vue = require('vue-loader');
+var webpack = require('webpack');
+var  path = require('path');
+var srcPath = path.join(__dirname, 'src');
+var bootstrapPath = './node_modules/bootstrap/dist/css'
 
 module.exports = {
   entry: './src/main.js',
@@ -7,6 +10,14 @@ module.exports = {
     path: './static',
     publicPath: '/static/',
     filename: 'build.js'
+  },
+  resolve: {
+      alias: {
+          jquery: path.join(__dirname, './node_modules/jquery')
+      },
+      root: srcPath,
+      extensions: ['', '.js', '.css'],
+      modulesDirectories: ['node_modules', srcPath, bootstrapPath]
   },
   module: {
     loaders: [
@@ -24,13 +35,29 @@ module.exports = {
       {
         test: /\.(png|jpg)$/,
         loader: 'file'
+      },
+      { test: /\.css$/, 
+        loader: "style-loader!css-loader" 
+      },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+        loader: "url-loader?limit=10000&minetype=application/font-woff" 
+      },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+        loader: "file-loader" 
       }
     ]
   },
   babel: {
     presets: ['es2015'],
     plugins: ['transform-runtime']
-  }
+  },
+  plugins: [
+     new webpack.ProvidePlugin({
+           $: "jquery",
+           jQuery: "jquery"
+     }),
+     new webpack.NoErrorsPlugin()
+  ]
 }
 
 if (process.env.NODE_ENV === 'production') {

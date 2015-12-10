@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import { domain, fromNow } from './filters'
 import App from './components/App.vue'
 import HomeView from './components/HomeView.vue'
+import 'bootstrap'
+require('bootstrap.min.css')
 
 // install router
 Vue.use(Router);

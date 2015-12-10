@@ -96,6 +96,8 @@
 
       </div>
 
+      <button type="button" class="btn btn-default">查看更多大神</button>
+
     </section>
 
     <section class="section4">
