@@ -1,27 +1,20 @@
 <template>
-  <div id="home-view">
-    <section class="section1">
-     <div class="container">
-        <div class="row">
-          <h1>最高效的代码审核服务</h1>
-          <h2>Code Review，迅速帮你提升核心竞争力</h2>
+  <div id="home-view container">
+    <section class="row section1">
 
-          <div class="button">
-              <a>开始使用</a>
-          </div>
-        </div>
-      </div>      
+      <h1 class="h1-big">最高效的代码审核服务</h1>
+      <h2 class="h2-big">Code Review，迅速帮你提升核心竞争力</h2>
+
+      <a class="btn btn-success btn-start">开始使用</a>
+
     </section>
 
     <section class="section2">
 
-      <div class="intro">
 
-        <div class="row">
-          <h2>帮助开发者重构逻辑、精简代码</h2>
-          <h3>让您在最短的时间内理解优秀开发者的代码习惯</h3>
-        </div>
-
+      <div class="row intro">
+        <h2 class="h3-big">帮助开发者重构逻辑、精简代码</h2>
+        <p class="lead">让您在最短的时间内理解优秀开发者的代码习惯</p>
       </div>
 
       <div class="features">
@@ -69,34 +62,32 @@
 
     <section class="section3">
 
-      <div class="intro">
 
-        <div class="row">
-          <h2>发现行业内精英开发者</h2>
-          <h3>一览领域顶尖的编程人物</h3>
-        </div>
-
-        <div class="reviewers">
-          <ul>
-            <li>
-              <div class="card-header">
-                  <img class="avatar" src="../img/avatar1.png" >
-                  <div class="info">
-                    <p class="name">叶孤城</p>
-                    <p>经验丰富的 iOS 开发者，曾就职于 360Camera、英语流利说</p>
-                  </div>
-              </div>
-              <div class="card-footer">
-                <p class="review-num">7</p>
-                <p>Review 案例</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-
+      <div class="row intro">
+        <h2>发现行业内精英开发者</h2>
+        <h3>一览领域顶尖的编程人物</h3>
       </div>
 
-      <button type="button" class="btn btn-default">查看更多大神</button>
+      <ul class="col-lg-12 reviewers">
+        <li class="col-lg-4 card">
+          <div class="card-header">
+              <img class="avatar" src="../img/avatar1.png" >
+              <div class="info">
+                <p class="name">叶孤城</p>
+                <p>经验丰富的 iOS 开发者，曾就职于 360Camera、英语流利说</p>
+              </div>
+          </div>
+          <div class="card-footer">
+            <p class="review-num">7</p>
+            <p>Review 案例</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="see-more col-lg-12">
+          <button type="button" class="btn btn-info">查看更多大神</button>
+      </div>
+
 
     </section>
 
@@ -118,30 +109,32 @@
 <style lang="stylus">
 @import "../variables.styl"
 
-section
+#homeview
   width 100%
 
 .section1
   height 700px
   background url("../img/home_hero.png")
-  .container
-    .row 
-      color #fff
-      text-align center
-      padding-top 200px
-      h1
-        font-size 4em
-      h2
-        font-size 1.5em
-        font-weight 200
-      div.button
-        margin-top 100px
-        a
-          background $main
-          padding 10px 20px
-          font-size 20px
-          border-radius 4px
+  padding-top 200px
+  text-align center
+  color #fff
 
+.btn-start
+  margin-top 100px
+  background $main
+  padding 10px 20px
+  font-size 20px
+  border-radius 4px
+
+.h1-big
+  font-size 4em
+
+.h2-big
+  font-size 1.5em
+  font-weight normal
+
+.h3-big
+  font-size 2.4em
 
 .intro .row
     text-align center
@@ -158,7 +151,7 @@ section
     background #fff
     .wrapper
       padding 50px 200px
-      .feature 
+      .feature
         display inline-block
         width 33%
         text-align center
@@ -169,39 +162,48 @@ section
           padding 0 10px
           font-size 14px
 
+.card
+  text-align center
+  line-height 20px
+  height 300px
+  .card-header
+    background #fff
+    height 70%
+    padding 5px 10px
+    img
+      position relative
+      top -80px
+    .info
+      position relative
+      top -50px
+      padding 5px 15px
+      p.name
+        font-size 20px
+        padding-bottom 10px
+  .card-footer
+    position relative
+    height 30%
+    background rgb(250, 250, 250)
+    padding 5px 10px
+    p.review-num
+      font-size 24px
+      font-weight 500
+      padding-top 15px
+
+div.intro
+  padding-top: 60px
+  text-align center
+
+ul.reviewers
+  padding 120px 200px 50px
+  list-style none 
+
 .section3
-  height 850px
+  height 750px
   background rgb(244, 245, 247)
-  .reviewers
-    padding 100px 200px
-    ul
-      list-style none
-      li
-        background #fff
-        width 33%
-        text-align center
-        line-height 20px
-        .card-header
-          position relative
-          background #fff
-          height 150px
-          padding 5px 10px
-          img
-            position relative
-            top -80px
-          .info
-            position relative
-            top -85px
-            p.name
-              font-size 18px
-        .card-footer
-          position relative
-          background rgb(250, 250, 250)
-          padding-bottom 2px
-          p.review-num
-            font-size 24px
-            font-weight 500
-            padding-top 15px
+
+.see-more
+  text-align center
 
 .section4
   height 600px

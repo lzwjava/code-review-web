@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import { domain, fromNow } from './filters'
+
+import "bootstrap.min.css"
+import 'bootstrap'
+
 import App from './components/App.vue'
 import HomeView from './components/HomeView.vue'
-import 'bootstrap'
-require('bootstrap.min.css')
 
 // install router
 Vue.use(Router);
@@ -31,3 +33,4 @@ router.redirect({
 });
 
 router.start(App, '#app');
+
