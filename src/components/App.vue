@@ -32,7 +32,17 @@
       transition
       transition-mode="out-in">
     </router-view>
+
+    <hr class="footer-divider">
+
+    <!-- FOOTER -->
+    <footer class="container">
+      <p class="pull-right"><a href="#">Back to top</a></p>
+      <p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
   </div>
+
 </template>
 
 <style lang="stylus">
@@ -69,5 +79,11 @@ ul.nav-list li
 
 .main-nav-wrapper
   background #fff
+
+.footer-divider
+  margin 60px 0
+
+footer.container
+  height 80px
 
 </style>

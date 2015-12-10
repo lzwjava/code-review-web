@@ -91,14 +91,6 @@
 
     </section>
 
-    <section class="section4">
-
-      <div>
-
-      </div>
-
-    </section>
-
   </div>
 </template>
 
@@ -115,7 +107,7 @@
 .section1
   height 700px
   background url("../img/home_hero.png")
-  padding-top 200px
+  padding-top 250px
   text-align center
   color #fff
 
