@@ -116,14 +116,14 @@
 </script>
 
 <style lang="stylus">
-@import "../variables.styl"
 
 section
   width 100%
 
 .section1
-  height 700px
+  height 650px
   background url("../img/home_hero.png")
+  background-size contain
   .container
     .row 
       color #fff

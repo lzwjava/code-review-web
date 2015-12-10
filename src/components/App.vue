@@ -31,12 +31,7 @@
 
 
 <style lang="stylus">
-@import "../variables.styl"
-
-html, body
-  font-family "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei","WenQuanYi Micro Hei",Arial,Verdana,sans-serif
-  font-size 14px
-  height 100%
+@import "../stylus/base.styl"
 
 a
   cursor pointer
