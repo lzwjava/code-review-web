@@ -1,3 +1,4 @@
 node_modules
 .idea
-static/build.js
+static/*
+!static/logo.png

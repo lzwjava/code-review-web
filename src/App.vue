@@ -10,7 +10,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <img class="navbar-brand header-logo" src="../img/header_logo.png">
+          <img class="navbar-brand header-logo" src="./img/header_logo.png">
           <a class="navbar-brand header-title" href="#">Code Review</a>
         </div>
 
@@ -18,7 +18,7 @@
           <ul class="nav-list navbar-right">
             <li><a href="/reviewers" class="btn btn-header">发现大神</a></li>
             <li><a href="/new-features" class="btn btn-header">精彩案例</a></li>
-            <li><a href="" class="btn btn-header">登录</a></li>
+            <li><button class="btn btn-header" @click="showLogin=true">登录</button></li>
             <li class="signup"><a href="" class="btn btn-header">注册</a></li>
           </ul>
         </div>
@@ -43,10 +43,28 @@
 
   </div>
 
+  <overlay v-if="showLogin" transition="fade" :show.sync="showLogin">
+    <login-form></login-form>
+  </overlay>
+
 </template>
 
+<script type="text/javascript">
+module.exports = {
+  data: function () {
+    return {
+      showLogin: false
+    }
+  },
+  components: {
+    'overlay': require('./components/overlay.vue'),
+    'login-form': require('./components/login-form.vue')
+  }
+};
+</script>
+
 <style lang="stylus">
-@import "../stylus/base.styl"
+@import "./stylus/base.styl"
 
 .btn-header
   color #000

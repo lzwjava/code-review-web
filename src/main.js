@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import { domain, fromNow } from './filters'
+require('./css/ui.css');
 
 import "bootstrap.min.css"
 import 'bootstrap'
 
-import App from './components/App.vue'
 import HomeView from './components/HomeView.vue'
+
+var App = Vue.extend(require('./App.vue'));
 
 // install router
 Vue.use(Router);
