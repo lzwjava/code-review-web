@@ -1,13 +1,15 @@
 var vue = require('vue-loader');
 var webpack = require('webpack');
-var  path = require('path');
+var path = require('path');
 var srcPath = path.join(__dirname, 'src');
 var bootstrapPath = './node_modules/bootstrap/dist/css'
 
 module.exports = {
-  entry: './src/main.js',
+  entry: {
+    app : ['./src/main.js', './css/index.css']
+  },
   output: {
-    path: './static',
+    path: '/static',
     publicPath: '/static/',
     filename: 'build.js'
   },

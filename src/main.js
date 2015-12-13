@@ -8,6 +8,8 @@ import 'bootstrap'
 
 import HomeView from './components/HomeView.vue'
 
+Vue.config.debug = true;
+
 var App = Vue.extend(require('./App.vue'));
 
 // install router
