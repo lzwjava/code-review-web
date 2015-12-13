@@ -10,6 +10,8 @@ import HomeView from './components/HomeView.vue'
 
 Vue.config.debug = true;
 
+localStorage.debug = 'api';
+
 var App = Vue.extend(require('./App.vue'));
 
 // install router

@@ -20,6 +20,7 @@
     "babel-runtime": "^5.8.0",
     "cross-env": "^1.0.5",
     "css-loader": "^0.21.0",
+    "debug": "^2.2.0",
     "file-loader": "^0.8.5",
     "style-loader": "^0.13.0",
     "stylus-loader": "^1.4.0",

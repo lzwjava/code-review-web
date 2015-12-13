@@ -9,7 +9,7 @@ module.exports = {
     app : ['./src/main.js', './css/index.css']
   },
   output: {
-    path: '/static',
+    path: __dirname + '/static',
     publicPath: '/static/',
     filename: 'build.js'
   },

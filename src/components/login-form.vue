@@ -2,8 +2,8 @@
 
   <div class="login-form" :class="{shake: error}">
     <div class="login-tab clearfix">
-      <a href="javascript:;" :class="{active: loginTab}" @click="loginTab=true">Log In</a>
-      <a href="javascript:;" :class="{active: !loginTab}" @click="loginTab=false">Sign Up</a>
+      <a href="javascript:;" :class="{active: loginTab}" @click="loginTab=true">注册</a>
+      <a href="javascript:;" :class="{active: !loginTab}" @click="loginTab=false">登录</a>
     </div>
 
     <div v-show="showErrorMsg" class="error">{{ errorMsg }}</div>
@@ -15,21 +15,32 @@
       <div class="form-field">
         <input type="password" placeholder="Password" aria-label="Password" name="password" v-model="password" required>
       </div>
-      <label class="form-check">
-        <input type="checkbox" name="permanent" v-model="permanent">Remember Me
-      </label>
       <div class="form-submit">
-        <button class="button buttong--green">Log In</button>
-        <a href="/account/find-password">Find Password</a>
+        <button class="button buttong--green">登录</button>
+<!--         <a href="/account/find-password">Find Password</a> -->
       </div>
+    </form>
+
+    <form action="/session/sendSmsCode" method="post" @submit="sendSmsCode" v-show="!loginTab">
+
+      <div class="form-field">
+        <input type="mobilePhoneNumber" placeholder="手机号" name="mobilePhoneNumber" v-model="mobilePhoneNumber" required>
+      </div>
+      <div class="form-submit">
+        <button class="button button--green">发送验证码</button>
+      </div>
+
     </form>
 
     <form action="/session/new" method="post" @submit="signup" v-show="!loginTab">
       <div class="form-field">
-        <input type="email" placeholder="Email" aria-label="Email" name="email" v-model="email" required>
+        <input type="number" placeholder="验证码" name="smsCode" v-model="smsCode" required>
+      </div>
+      <div class="form-field">
+        <input type="password" placeholder="密码" name="password" v-model="password" required>
       </div>
       <div class="form-submit">
-        <button class="button buttong--green">Sign Up</button>
+        <button class="button buttong--green">注册</button>
       </div>
     </form>
 <!--     <div class="login-social" v-if="$site.logins && loginTab">
@@ -57,10 +68,11 @@
         password: '',
         email: '',
         loginTab: true,
-        permanent: true,
         showErrorMsg: false,
         errorMsg: '',
-        error: false
+        error: false,
+        smsCode: undefined,
+        password: '',
       };
     },
     methods: {
@@ -84,11 +96,7 @@
       },
       login: function(e) {
         e.preventDefault();
-        var data = {
-          mobilePhoneNumber: this.mobilePhoneNumber,
-          password: this.password
-        };
-        api.user.login(data, function(resp) {
+        api.user.login(this.mobilePhoneNumber, this.password, function(resp) {
           this.$root.showLogin = false;
         }.bind(this)).error(this.promtError.bind(this));
       },
@@ -100,6 +108,12 @@
         //   this.$root.show('error', getMessage(resp.error_form));
         //   this.shakeError();
         // }.bind(this));
+      },
+      sendSmsCode: function (e) {
+        e.preventDefault();
+        api.user.sendSmsCode(this.mobilePhoneNumber, function () {
+          alert("send succeed");
+        }).error(this.promtError.bind(this));
       }
     },
     ready: function() {
