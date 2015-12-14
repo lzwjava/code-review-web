@@ -22,7 +22,7 @@ client.handleResult = function (result, req, success) {
 };
 
 client.get = function(url, data, success, options) {
-  var req = http.post(url, data, function (result) {
+  var req = http.get(url, data, function (result) {
     client.handleResult(result, req, success);
   }, options);
   return req;
@@ -57,9 +57,9 @@ user.logout = function () {
 }
 
 user.profile = function(uid, cb) {
-  var url = '/users/self';
-  debug('profile');
-  return client.get(url, function(user) {
+  var url = '/user/self';
+  return client.get(url, null, function(user) {
+    trackUser(user);
     cb && cb(user);
   });
 };
@@ -91,13 +91,16 @@ exports.register = function(app) {
   if (sessionStorage[TRY_CURRENT_USER_KEY]) return;
 
   exports.user.profile('me').error(function() {
+    debug('profile me error');
     sessionStorage[TRY_CURRENT_USER_KEY] = '1';
   });
 };
 
 function trackUser(user) {
+  delete sessionStorage[TRY_CURRENT_USER_KEY];    
   trackUser.app.user = user;
 }
+
 trackUser.app = {};
 
 function cleanUser() {
