@@ -28,6 +28,10 @@ router.map({
   '/': {
     component: HomeView
   },
+  '/u/:username': {
+    name: 'user',
+    component: require('./views/user.vue'),
+  },
 });
 
 router.beforeEach(function () {

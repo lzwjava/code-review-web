@@ -20,6 +20,15 @@
             <li><a href="/new-features" class="btn btn-header">精彩案例</a></li>
             <li><button class="btn btn-header" @click="showLogin=true">登录</button></li>
             <li class="signup"><a href="" class="btn btn-header">注册</a></li>
+            <li v-if="user.username">
+              <user-avatar :user="user" @click="viewUserDropdown"></user-avatar>
+              <dropdown v-show="showUserDropdown" :show.sync="showUserDropdown">
+                <a class="dropdown-item" href="/u/{{ user.username }}">View Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/account/settings">Settings</a>
+                <a class="dropdown-item" @click="logout" href="/session">Logout</a>
+              </dropdown>
+            </li>
           </ul>
         </div>
       </div>
@@ -55,16 +64,28 @@
 
 <script type="text/javascript">
 
+var api = require('./api');
+
 var clock = new Date().getFullYear();
 
 module.exports = {
   data: function () {
     return {
+      user: {},
       showLogin: false,
-      messages: []
+      messages: [],
+      showUserDropdown: false,
     }
   },
   methods: {
+    logout: function(e) {
+      e && e.preventDefault();
+      api.user.logout();
+    },
+    viewUserDropdown: function(e) {
+      e && e.preventDefault();
+      this.showUserDropdown = true;
+    },
     flush: function() {
       this.messages = [];
     },
@@ -86,7 +107,9 @@ module.exports = {
   },
   components: {
     'overlay': require('./components/overlay.vue'),
-    'login-form': require('./components/login-form.vue')
+    'login-form': require('./components/login-form.vue'),
+    'dropdown': require('./components/dropdown.vue'),
+    'user-avatar': require('./components/user-avatar.vue')
   }
 };
 

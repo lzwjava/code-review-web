@@ -43,4 +43,8 @@ user.signUp = function(data, cb) {
   });
 };
 
+user.logout = function () {
+  
+}
+
 exports.user = user;
