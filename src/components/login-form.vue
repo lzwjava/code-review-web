@@ -2,8 +2,8 @@
 
   <div class="login-form" :class="{shake: error}">
     <div class="login-tab clearfix">
-      <a href="javascript:;" :class="{active: loginTab}" @click="loginTab=true">注册</a>
-      <a href="javascript:;" :class="{active: !loginTab}" @click="loginTab=false">登录</a>
+      <a href="javascript:;" :class="{active: loginTab}" @click="loginTab=true">登录</a>
+      <a href="javascript:;" :class="{active: !loginTab}" @click="loginTab=false">注册</a>
     </div>
 
     <div v-show="showErrorMsg" class="error">{{ errorMsg }}</div>
@@ -32,9 +32,12 @@
 
     </form>
 
-    <form action="/session/new" method="post" @submit="signup" v-show="!loginTab">
+    <form action="/session/new" method="post" @submit="signUp" v-show="!loginTab">
       <div class="form-field">
         <input type="number" placeholder="验证码" name="smsCode" v-model="smsCode" required>
+      </div>
+      <div class="form-field">
+        <input type="username" placeholder="用户名" name="username" v-model="username" required>
       </div>
       <div class="form-field">
         <input type="password" placeholder="密码" name="password" v-model="password" required>
@@ -66,10 +69,8 @@
       return {
         mobilePhoneNumber: '',
         password: '',
-        email: '',
+        username: '',
         loginTab: true,
-        showErrorMsg: false,
-        errorMsg: '',
         error: false,
         smsCode: undefined,
         password: '',
@@ -78,15 +79,7 @@
     methods: {
       promtError: function (errorMsg) {
         this.shakeError();
-        this.showError(errorMsg);
-      },
-      showError: function (errorMsg) {
-        this.showErrorMsg = true;
-        this.errorMsg = errorMsg;
-        setTimeout(function () {
-          this.showErrorMsg = false;
-          this.errorMsg = '';
-        }.bind(this), 8000);
+        this.$root.show('error', errorMsg);
       },
       shakeError: function() {
         this.error = true;
@@ -100,14 +93,21 @@
           this.$root.showLogin = false;
         }.bind(this)).error(this.promtError.bind(this));
       },
-      signup: function(e) {
+      signUp: function(e) {
         e.preventDefault();
-        // api.user.signup(this.email, function(resp) {
-        //   this.$root.show('info', resp.message);
-        // }.bind(this)).error(function(resp) {
-        //   this.$root.show('error', getMessage(resp.error_form));
-        //   this.shakeError();
-        // }.bind(this));
+        var data = {
+          mobilePhoneNumber: this.mobilePhoneNumber,
+          smsCode: this.smsCode,
+          username: this.username,
+          password: this.password,
+          type: 0
+        };
+        api.user.signUp(data, function(resp) {
+          this.$root.show('info', '注册成功');
+        }.bind(this)).error(function(resp) {
+          this.$root.show('error', resp);
+          this.shakeError();
+        }.bind(this));
       },
       sendSmsCode: function (e) {
         e.preventDefault();

@@ -43,6 +43,10 @@
 
   </div>
 
+  <div id="message" aria-live="assertive">
+    <div class="message message-{{msg.type}}" v-for="msg in messages" v-text="msg.text" transition="fade"></div>
+  </div>
+
   <overlay v-if="showLogin" transition="fade" :show.sync="showLogin">
     <login-form></login-form>
   </overlay>
@@ -50,10 +54,34 @@
 </template>
 
 <script type="text/javascript">
+
+var clock = new Date().getFullYear();
+
 module.exports = {
   data: function () {
     return {
-      showLogin: false
+      showLogin: false,
+      messages: []
+    }
+  },
+  methods: {
+    flush: function() {
+      this.messages = [];
+    },
+    clear: function(index) {
+      clearTimeout(clock);
+      this.messages.splice(index, 1);
+      clock = setTimeout(this.flush.bind(this), 4000);
+    },
+    show: function(type, text) {
+      var msg = {type: type, text: text};
+      if (!unique(msg, this.messages)) return;
+
+      this.messages.push(msg);
+      var index = this.messages.length - 1;
+      setTimeout(function() {
+        this.clear(index);
+      }.bind(this), 3000);
     }
   },
   components: {
@@ -61,6 +89,13 @@ module.exports = {
     'login-form': require('./components/login-form.vue')
   }
 };
+
+function unique(item, list) {
+  return !list.some(function(data) {
+    return JSON.stringify(data) === JSON.stringify(item);
+  });
+}
+
 </script>
 
 <style lang="stylus">

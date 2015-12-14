@@ -37,4 +37,10 @@ user.sendSmsCode = function (mobilePhoneNumber, cb) {
   });
 };
 
+user.signUp = function(data, cb) {
+  return client.post('/user/register', data, function (resultData) {
+    cb && cb(resultData);
+  });
+};
+
 exports.user = user;
