@@ -26,6 +26,7 @@
 
 <script>
   var api = require('../api');
+  console.log('into user.vue');
   module.exports = {
     data: function() {
       return {

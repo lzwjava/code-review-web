@@ -53,7 +53,10 @@ user.signUp = function(data, cb) {
 };
 
 user.logout = function () {
-
+  return client.get('/user/logout', null, function (resultData) {
+    debug('logout succeed');
+    cleanUser();
+  });
 }
 
 user.profile = function(uid, cb) {
@@ -66,10 +69,12 @@ user.profile = function(uid, cb) {
 
 exports.user = user;
 
+var localApp;
+
 var TRY_CURRENT_USER_KEY = 'cr:try:me';
 exports.register = function(app) {
-  debug('register');
-  trackUser.app = app;
+  localApp = app;
+  debug('register localApp ' + localApp);
 
   http.defaults.error = function(resp, status) {
     if (status === 401) {
@@ -97,12 +102,13 @@ exports.register = function(app) {
 };
 
 function trackUser(user) {
-  delete sessionStorage[TRY_CURRENT_USER_KEY];    
-  trackUser.app.user = user;
+  delete sessionStorage[TRY_CURRENT_USER_KEY];
+  debug('trackUser localApp ' + localApp);
+  if (localApp != null) {
+    localApp.user = user;
+  }
 }
 
-trackUser.app = {};
-
 function cleanUser() {
-  trackUser.app.user = {};
+  localApp.user = {};
 }

@@ -7,6 +7,7 @@ import "bootstrap.min.css"
 import 'bootstrap'
 
 import HomeView from './components/HomeView.vue'
+import UserView from './views/user.vue'
 
 Vue.config.debug = true;
 
@@ -30,7 +31,7 @@ router.map({
   },
   '/u/:username': {
     name: 'user',
-    component: require('./views/user.vue'),
+    component: UserView
   },
 });
 
