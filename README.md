@@ -6,7 +6,7 @@
 ``` bash
 npm install
 # watch:
-npm run dev
+node server.js
 # build:
 npm run build
 ```

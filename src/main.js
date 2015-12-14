@@ -43,4 +43,4 @@ router.redirect({
 });
 
 router.start(App, '#app');
-
+require('./api').register(router.app);

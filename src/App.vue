@@ -18,8 +18,7 @@
           <ul class="nav-list navbar-right">
             <li><a href="/reviewers" class="btn btn-header">发现大神</a></li>
             <li><a href="/new-features" class="btn btn-header">精彩案例</a></li>
-            <li><button class="btn btn-header" @click="showLogin=true">登录</button></li>
-            <li class="signup"><a href="" class="btn btn-header">注册</a></li>
+            <li v-if="!user.username"><button class="btn btn-header" @click="showLogin=true">登录</button></li>
             <li v-if="user.username">
               <user-avatar :user="user" @click="viewUserDropdown"></user-avatar>
               <dropdown v-show="showUserDropdown" :show.sync="showUserDropdown">
