@@ -25,8 +25,9 @@
 </template>
 
 <script>
+  var debug = require('debug')('user');
   var api = require('../api');
-  console.log('into user.vue');
+  debug('into user.vue');
   module.exports = {
     data: function() {
       return {
@@ -36,6 +37,7 @@
     },
     computed: {
       name: function() {
+        debug('user %j', this.user);
         return this.user.name || this.user.username;
       },
       username: function() {
@@ -48,7 +50,7 @@
     route: {
       data: function(transition) {
         var username = transition.to.params.username;
-        document.title = this.$site.name + ' — ' + username;
+        document.title = 'Code Review' + ' — ' + username;
         api.user.profile(username, function(resp) {
           transition.next({user: resp});
         });

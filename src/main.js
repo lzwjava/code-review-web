@@ -11,7 +11,7 @@ import UserView from './views/user.vue'
 
 Vue.config.debug = true;
 
-localStorage.debug = 'api';
+localStorage.debug = 'api,user';
 
 var App = Vue.extend(require('./App.vue'));
 
@@ -23,7 +23,11 @@ Vue.filter('fromNow', fromNow);
 Vue.filter('domain', domain);
 
 // routing
-var router = new Router();
+var router = new Router({
+  hashbang: false,
+  history: true,
+  saveScrollPosition: true
+});
 
 router.map({
   '/': {
