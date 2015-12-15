@@ -1,5 +1,5 @@
 <template>
-  <div id="home-view container">
+  <div id="home-view container" v-if="loadingStatus">
     <section class="row section1">
 
       <h1 class="h1-big">最高效的代码审核服务</h1>
@@ -82,6 +82,7 @@
     </section>
 
   </div>
+  <loading></loading>
 </template>
 
 <script type="text/javascript">
@@ -89,7 +90,8 @@ var api = require('../api');
 module.exports = {
   data: function () {
     return {
-      reviewers: []
+      reviewers: [],
+      loadingStatus: false
     }
   },
   route: {
@@ -102,7 +104,8 @@ module.exports = {
     }
   },
   components: {
-    'reviewer-card': require('../components/reviewer-card.vue')
+    'reviewer-card': require('../components/reviewer-card.vue'),
+    'loading': require('./loading.vue')
   }
 };
 
