@@ -75,7 +75,7 @@
       </ul>
 
       <div class="see-more col-lg-12">
-          <button type="button" class="btn btn-info">查看更多大神</button>
+          <button v-link="{path: '/reviewers'}" type="button" class="btn btn-info">查看更多大神</button>
       </div>
 
 

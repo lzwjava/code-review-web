@@ -16,7 +16,7 @@
 
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav-list navbar-right">
-            <li><a href="/reviewers" class="btn btn-header">发现大神</a></li>
+            <li><a v-link="{path: '/reviewers/'}" class="btn btn-header">发现大神</a></li>
             <li><a href="/new-features" class="btn btn-header">精彩案例</a></li>
             <li v-if="!user.username"><button class="btn btn-header" @click="showLogin=true">登录</button></li>
             <li v-if="user.username">
