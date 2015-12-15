@@ -11,7 +11,7 @@ import UserView from './views/user.vue'
 
 Vue.config.debug = true;
 
-localStorage.debug = 'api,user';
+localStorage.debug = 'api,user,components';
 
 var App = Vue.extend(require('./App.vue'));
 

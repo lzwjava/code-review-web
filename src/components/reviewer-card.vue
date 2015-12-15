@@ -1,22 +1,24 @@
 <template>
 	<div class="card">
 		<div class="card-header">
-		    <img class="avatar" src="../img/avatar1.png" >
+		    <img class="avatar" :src="reviewer.avatarUrl" >
 		    <div class="info">
-		      <p class="name">叶孤城</p>
-		      <p>经验丰富的 iOS 开发者，曾就职于 360Camera、英语流利说</p>
+		      <p class="name">{{reviewer.username}}</p>
+		      <p>{{reviewer.introduction}}</p>
 		    </div>
 		</div>
 		<div class="card-footer">
-		  <p class="review-num">7</p>
+		  <p class="review-num">{{reviewer.orderCount}}</p>
 		  <p>Review 案例</p>
 		</div>
 	</div>
 </template>
 
 <script type="text/javascript">
+var debug = require('debug')('components');
 module.exports = {
   replace: true,
+  props: ['reviewer'],
   computed: {
     link: function() {
       var url = '/c/' + this.cafe.slug;
@@ -29,6 +31,9 @@ module.exports = {
   },
   components: {
     'user-avatar': require('./user-avatar.vue')
+  },
+  created: function () {
+  	debug('created %j', typeof this.reviewer);
   },
   route: {
     data: function(transition) {

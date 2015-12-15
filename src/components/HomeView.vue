@@ -96,7 +96,7 @@ module.exports = {
     data: function(transition) {
       api.reviewers.list(0, 3, function(resp) {
         transition.next({
-          reviewers: resp,
+          reviewers: resp
         });
       });
     }
