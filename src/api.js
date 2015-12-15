@@ -28,46 +28,67 @@ client.get = function(url, data, success, options) {
   return req;
 };
 
-var user = {};
 
-user.login =  function (mobilePhoneNumber, password,  cb) {
-  var data = {mobilePhoneNumber: mobilePhoneNumber, password: password};
-  return client.post('/user/login', data, function(resultData) {
-    trackUser(resultData);
-    cb && cb(resultData);
-  });
+exports.user = {
+  login: function (mobilePhoneNumber, password,  cb) {
+    var data = {mobilePhoneNumber: mobilePhoneNumber, password: password};
+    return client.post('/api/user/login', data, function(resultData) {
+      trackUser(resultData);
+      cb && cb(resultData);
+    });
+  },
+
+  sendSmsCode: function (mobilePhoneNumber, cb) {
+    var data = {mobilePhoneNumber: mobilePhoneNumber};
+    return client.post('/api/user/requestSmsCode', data , function (resultData) {
+      cb && cb(resultData);
+    });
+  },
+
+  signUp: function(data, cb) {
+    return client.post('/api/user/register', data, function (resultData) {
+      trackUser(resultData);
+      cb && cb(resultData);
+    });
+  },
+
+  logout : function () {
+    return client.get('/api/user/logout', null, function (resultData) {
+      debug('logout succeed');
+      cleanUser();
+    });
+  },
+
+  profile: function(uid, cb) {
+    var url = '/api/user/self';
+    return client.get(url, null, function(user) {
+      trackUser(user);
+      cb && cb(user);
+    });
+  }
 };
 
-user.sendSmsCode = function (mobilePhoneNumber, cb) {
-  var data = {mobilePhoneNumber: mobilePhoneNumber};
-  return client.post('/user/requestSmsCode', data , function (resultData) {
-    cb && cb(resultData);
-  });
+exports.reviewers = {
+  list: function (skip, limit, cb) {
+    var data = {};
+    if (skip) {
+      data.skip = skip;
+    }
+    if (limit) {
+      data.limit = limit;
+    }
+    return client.get('/api/reviewers', data, function (results) {
+      cb && cb(results);
+    });
+  },
+
+  view: function (id, cb) {
+    return client.get('/api/reviewers/view', {id: id}, function (result) {
+      cb && cb(result);
+    });
+  }
+
 };
-
-user.signUp = function(data, cb) {
-  return client.post('/user/register', data, function (resultData) {
-    trackUser(resultData);
-    cb && cb(resultData);
-  });
-};
-
-user.logout = function () {
-  return client.get('/user/logout', null, function (resultData) {
-    debug('logout succeed');
-    cleanUser();
-  });
-}
-
-user.profile = function(uid, cb) {
-  var url = '/user/self';
-  return client.get(url, null, function(user) {
-    trackUser(user);
-    cb && cb(user);
-  });
-};
-
-exports.user = user;
 
 var localApp;
 

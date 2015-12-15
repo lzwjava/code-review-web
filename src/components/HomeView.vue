@@ -69,18 +69,8 @@
       </div>
 
       <ul class="col-lg-12 reviewers">
-        <li class="col-lg-4 card">
-          <div class="card-header">
-              <img class="avatar" src="../img/avatar1.png" >
-              <div class="info">
-                <p class="name">叶孤城</p>
-                <p>经验丰富的 iOS 开发者，曾就职于 360Camera、英语流利说</p>
-              </div>
-          </div>
-          <div class="card-footer">
-            <p class="review-num">7</p>
-            <p>Review 案例</p>
-          </div>
+        <li class="col-lg-4" v-for="reviewer in reviewers" track-by="id">
+          <reviewer-card :reviewer="reviewer"></reviewer-card>
         </li>
       </ul>
 
@@ -95,6 +85,26 @@
 </template>
 
 <script type="text/javascript">
+var api = require('../api');
+module.exports = {
+  data: function () {
+    return {
+      reviewers: []
+    }
+  },
+  route: {
+    data: function(transition) {
+      api.reviewers.list(0, 3, function(resp) {
+        transition.next({
+          reviewers: resp,
+        });
+      });
+    }
+  },
+  components: {
+    'reviewer-card': require('../components/reviewer-card.vue')
+  }
+};
 
 </script>
 
@@ -167,34 +177,6 @@
         .detail
           padding 0 10px
           font-size 14px
-
-.card
-  text-align center
-  line-height 20px
-  height 300px
-  .card-header
-    background #fff
-    height 70%
-    padding 5px 10px
-    img
-      position relative
-      top -80px
-    .info
-      position relative
-      top -50px
-      padding 5px 15px
-      p.name
-        font-size 20px
-        padding-bottom 10px
-  .card-footer
-    position relative
-    height 30%
-    background rgb(250, 250, 250)
-    padding 5px 10px
-    p.review-num
-      font-size 24px
-      font-weight 500
-      padding-top 15px
 
 div.intro
   padding-top: 60px

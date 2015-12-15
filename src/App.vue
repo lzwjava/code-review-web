@@ -11,7 +11,7 @@
             <span class="icon-bar"></span>
           </button>
           <img class="navbar-brand header-logo" src="./img/header_logo.png">
-          <a class="navbar-brand header-title" href="#">Code Review</a>
+          <a class="navbar-brand header-title" href="/">Code Review</a>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">

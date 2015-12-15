@@ -15,9 +15,20 @@ config.devtool = 'eval';
 // if (process.env.NODE_ENV === 'local') {
 // }
 
-proxy = {
-  "/user/*": "http://localhost:3005"
+var rewriteUrl = function(replacePath) {
+    return function(req, opt) {  // gets called with request and proxy object
+        var queryIndex = req.url.indexOf('?');
+        var query = queryIndex >= 0 ? req.url.substr(queryIndex) : "";
+        req.url = req.path.replace(opt.path, replacePath) + query;
+        console.log("rewriting ", req.originalUrl, req.url);
+    };
 };
+
+proxy = [{
+	path: new RegExp("/api/(.*)"),
+	target: "http://localhost:3005",
+	rewrite: rewriteUrl("/$1")
+}];
 
 var app = new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
