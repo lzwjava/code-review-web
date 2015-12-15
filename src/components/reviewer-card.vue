@@ -6,7 +6,7 @@
       </div>
       <div class="btns">
         <button class="btn-common btn-blue">雇佣</button>
-        <button class="btn-common btn-detail">了解详情</button>
+        <button class="btn-common btn-detail" v-link="{path: '/u/' + reviewer.username}">了解详情</button>
       </div>
 		</div>
     <div class="card-header">
