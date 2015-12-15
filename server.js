@@ -9,12 +9,6 @@ config.plugins.push(new webpack.HotModuleReplacementPlugin());
 
 config.devtool = 'eval';
 
-// var proxy = {
-//   "/api/*": {target: "http://codereview.pickme.cn", host: "codereview.pickme.cn"},
-// };
-// if (process.env.NODE_ENV === 'local') {
-// }
-
 var rewriteUrl = function(replacePath) {
     return function(req, opt) {  // gets called with request and proxy object
         var queryIndex = req.url.indexOf('?');
@@ -24,11 +18,23 @@ var rewriteUrl = function(replacePath) {
     };
 };
 
-proxy = [{
+var prod = false;
+var target;
+if (prod) {
+  target = "http://codereview.pickme.cn"; 
+} else {
+  target = "http://localhost:3005";
+}
+
+var proxy = [{
 	path: new RegExp("/api/(.*)"),
-	target: "http://localhost:3005",
+	target: target,
 	rewrite: rewriteUrl("/$1")
 }];
+
+// if (process.env.NODE_ENV === 'local') {
+// }
+
 
 var app = new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
