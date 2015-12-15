@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import { domain, fromNow } from './filters'
-require('./css/ui.css');
 
+// 必须把 bootstrap 的样式先引入
 import "bootstrap.min.css"
 import 'bootstrap'
 
-import HomeView from './components/HomeView.vue'
-import UserView from './views/user.vue'
+require('./css/base.css');
+require('./css/ui.css');
 
 Vue.config.debug = true;
 
@@ -31,12 +31,15 @@ var router = new Router({
 
 router.map({
   '/': {
-    component: HomeView
+    component: require('./views/home.vue')
   },
   '/u/:username': {
     name: 'user',
-    component: UserView
+    component: require('./views/user.vue')
   },
+  '/reviewers/': {
+      component: require('./views/reviewer-list.vue'),
+   }
 });
 
 router.beforeEach(function () {

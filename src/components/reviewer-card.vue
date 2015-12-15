@@ -1,12 +1,14 @@
 <template>
 	<div class="card">
-		<div class="card-header">
-		    <img class="avatar" :src="reviewer.avatarUrl" >
-		    <div class="info">
-		      <p class="name">{{reviewer.username}}</p>
-		      <p>{{reviewer.introduction}}</p>
-		    </div>
-		</div>
+		<a v-link="link">
+			<div class="card-header">
+			    <img class="avatar" :src="reviewer.avatarUrl" >
+			    <div class="info">
+			      <p class="name">{{reviewer.username}}</p>
+			      <p>{{reviewer.introduction}}</p>
+			    </div>
+			</div>
+		</a>
 		<div class="card-footer">
 		  <p class="review-num">{{reviewer.orderCount}}</p>
 		  <p>Review 案例</p>
@@ -21,8 +23,7 @@ module.exports = {
   props: ['reviewer'],
   computed: {
     link: function() {
-      var url = '/c/' + this.cafe.slug;
-      if (this.subpath) url += this.subpath;
+      var url = '/u/' + this.reviewer.username;
       return url;
     },
     description: function() {
@@ -60,10 +61,8 @@ module.exports = {
     padding 5px 10px
     img
       position relative
-      top -80px
     .info
       position relative
-      top -50px
       padding 5px 15px
       p.name
         font-size 20px
