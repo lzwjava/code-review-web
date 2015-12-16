@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import { domain, fromNow } from './filters'
+import filters from './filters'
 
 // 必须把 bootstrap 的样式先引入
 import "bootstrap.min.css"
@@ -19,8 +19,10 @@ var App = Vue.extend(require('./App.vue'));
 Vue.use(Router);
 
 // register filters globally
-Vue.filter('fromNow', fromNow);
-Vue.filter('domain', domain);
+for(let  k in filters){
+  Vue.filter(k, filters[k])
+}
+
 
 // routing
 var router = new Router({
