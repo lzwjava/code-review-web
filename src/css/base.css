@@ -3,9 +3,6 @@ nav a {
   text-decoration: none;
   transition: box-shadow .2s ease-out;
 }
-nav a:hover {
-  box-shadow: 0 -3px 0 #4bd094 inset;
-}
 
 [contenteditable] {
   outline: none;

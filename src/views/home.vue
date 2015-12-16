@@ -91,6 +91,7 @@
 <script type="text/javascript">
 
 var api = require('../api');
+var debug = require('debug')('components');
 module.exports = {
   data: function () {
     return {

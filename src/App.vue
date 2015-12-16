@@ -35,7 +35,7 @@
 
     <!-- main view -->
     <router-view
-      class="view"
+      class="main-view"
       keep-alive
       transition
       transition-mode="out-in">
@@ -155,5 +155,8 @@ ul.nav-list li
 
 footer.container
   height 80px
+
+.main-view
+  margin-top 55px
 
 </style>
