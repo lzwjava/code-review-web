@@ -22,10 +22,10 @@
             <li v-if="user.username">
               <user-avatar :user="user" @click="viewUserDropdown"></user-avatar>
               <dropdown v-show="showUserDropdown" :show.sync="showUserDropdown">
-                <a class="dropdown-item" href="/u/{{ user.username }}">View Profile</a>
+                <a class="dropdown-item" href="/u/{{ user.username }}">个人设置</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/account/settings">Settings</a>
-                <a class="dropdown-item" @click="logout" href="/session">Logout</a>
+                <a class="dropdown-item" @click="logout" href="/session">注销</a>
               </dropdown>
             </li>
           </ul>
@@ -158,5 +158,11 @@ footer.container
 
 .main-view
   margin-top 55px
+
+.navbar .avatar
+  width 28px
+  height 28px
+  line-height 28px
+  margin-left 20px
 
 </style>

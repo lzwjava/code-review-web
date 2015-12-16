@@ -72,11 +72,11 @@
     color: #565656;
     display: block;
     font-size: 14px;
-    padding: 2px 10px 2px 18px;
+    padding: 7px 10px 7px 18px;
     margin-bottom: 3px;
   }
   .dropdown-inner .dropdown-item:hover {
-    background-color: #42B983;
+    background-color: #71c72e;
     color: white;
   }
   .dropdown-inner .dropdown-divider {
