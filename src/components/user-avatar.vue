@@ -14,32 +14,34 @@
       compile: function() {
         var user = this.user;
         if (!user.username) return;
-        var span = '<span style="background-color:#1;color:#2">#3<\/span>';
-        var bg = wordColor.rgb(user.username);
-        var fg = 'white';
-        if ((bg[0] * 299 + bg[1] * 587 + bg[2] * 114) > 200000) {
-          fg = 'black';
-        }
-
-        span = span
-          .replace('#1', 'rgb(' + bg.join(',') + ')')
-          .replace('#2', fg)
-          .replace('#3', escape(user.username.charAt(0).toUpperCase()));
+        
         var el = this.$els.avatar;
-        el.innerHTML = span;
-        debug('avatarUrl: ' + user.avatarUrl);
-        if (!user.avatarUrl) return;
-        // it is marked as 404
-        var img = new Image();
-        img.src = user.avatarUrl;
-        img.alt = user.username;
-        img.onload = function() {
-          el.innerHTML = '';
-          el.appendChild(img);
-        };
-        img.onerror = function() {
-          debug('img onerror');
-        };
+        if (!user.avatarUrl) {
+          var span = '<span style="background-color:#1;color:#2">#3<\/span>';
+          var bg = wordColor.rgb(user.username);
+          var fg = 'white';
+          if ((bg[0] * 299 + bg[1] * 587 + bg[2] * 114) > 200000) {
+            fg = 'black';
+          }
+
+          span = span
+            .replace('#1', 'rgb(' + bg.join(',') + ')')
+            .replace('#2', fg)
+            .replace('#3', escape(user.username.charAt(0).toUpperCase()));
+          el.innerHTML = span;
+          debug('avatarUrl: ' + user.avatarUrl);
+        } else {
+          var img = new Image();
+          img.src = user.avatarUrl;
+          img.alt = user.username;
+          img.onload = function() {
+            el.innerHTML = '';
+            el.appendChild(img);
+          };
+          img.onerror = function() {
+            debug('img onerror');
+          };
+        }
       }
     },
     compiled: function() {

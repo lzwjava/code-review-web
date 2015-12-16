@@ -2,17 +2,18 @@
   <div class="body cafe-list">
     <logo class="loading center" v-if="$loadingRouteData"></logo>
 
-    <div class="section container" v-if="following.length">
-      <h2 class="section-title">Following</h2>
-      <div class="cafe-cards clearfix">
-        <template v-for="cafe in following" track-by="id">
-          <cafe-card :subpath="subpath" :cafe="cafe"></cafe-card>
-        </template>
+    <div class="list-title">
+      <div class="list-tip">
+        发现各个语言领域的大神，向他们申请帮助<br>
+        或者，你也可以先看看他们的 Code Review 案例
+      </div>
+
+      <div class="list-num">
+        入驻大神：<span class="reviewer-num">{{reviewers.length}}</span>
       </div>
     </div>
 
-    <div class="section container">
-      <h2 class="section-title">Cafes</h2>
+    <div class="section container reviewer-cards">
       <div class="cafe-cards clearfix">
         <template v-for="reviewer in reviewers" track-by="id">
           <reviewer-card :reviewer="reviewer"></reviewer-card>
@@ -57,8 +58,27 @@ module.exports ={
 };
 </script>
 
-<style>
-.cafe-list {
-  padding: 40px 0;
-}
+<style lang="stylus">
+
+.cafe-list
+  background-color #F1F5F6
+  padding 40px 0
+
+.reviewer-cards
+  margin-top 60px  
+
+.list-title
+  text-align center
+  .list-tip
+    font-size 26px
+    margin-top 10px
+  .list-num
+    margin-top 40px
+    font-size 18px
+
+span.reviewer-num
+  font-size 24px
+  line-height 28px
+  color #33C96F
+
 </style>
