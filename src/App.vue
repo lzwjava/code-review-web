@@ -23,8 +23,8 @@
               <user-avatar :user="user" @click="viewUserDropdown"></user-avatar>
               <dropdown v-show="showUserDropdown" :show.sync="showUserDropdown">
                 <a class="dropdown-item" href="/u/{{ user.username }}">个人设置</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/account/settings">Settings</a>
+                <a class="dropdown-item" href="/account/settings">Code Review 订单列表</a>
+                <div class="dropdown-divider"></div>                
                 <a class="dropdown-item" @click="logout" href="/session">注销</a>
               </dropdown>
             </li>

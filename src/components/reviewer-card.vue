@@ -1,5 +1,6 @@
 <template>
 	<div @mouseenter="mouseenter" @mouseleave="mouseleave" class="card">
+
 		<div v-show="active" class="card-overlay">
       <div class="tip">
         你决定想要申请<br> {{reviewer.username}}<br> 帮你 Code Review 吗？
@@ -9,17 +10,19 @@
         <button class="btn-common btn-detail" v-link="{path: '/u/' + reviewer.username}">了解详情</button>
       </div>
 		</div>
+
     <div class="card-header">
-        <img class="avatar" :src="reviewer.avatarUrl" >
+        <user-avatar :user="reviewer"></user-avatar>
         <div class="info">
           <p class="name">{{reviewer.username}}</p>
-          <p>{{reviewer.introduction}}</p>
+          <p class="intro">{{reviewer.introduction}}</p>
         </div>
     </div>
 		<div class="card-footer">
 		  <p class="review-num">{{reviewer.orderCount}}</p>
 		  <p>Review 案例</p>
 		</div>
+
 	</div>
 </template>
 
@@ -82,13 +85,14 @@ module.exports = {
   z-index 100
   color #fff
   div.tip
-    padding-top 80px
+    margin-top 35% 
   div.btns
-    padding-top 20px
+    padding-top 10%
 
 .btn-common
   width 80px
   height 35px
+  margin 5px
   border-radius 3px  
 
 .btn-blue
@@ -102,20 +106,29 @@ module.exports = {
 .card
   text-align center
   line-height 20px
-  height 300px
+  height 350px
+
+.card-header .avatar
+  margin-top 30px
+  width 100px
+  height 100px
+  img
+    background: #D8D8D8;
+    border: 4px solid #FFFFFF;
+    box-shadow: 0px 4px 4px 0px rgba(135,135,135,0.50);
 
 .card-header
   background #fff
   height 70%
   padding 5px 10px
-  img
-    position relative
   .info
     position relative
     padding 5px 15px
     p.name
       font-size 20px
-      padding-bottom 10px
+      margin-top 20px
+    p.intro
+      margin-top 20px
 
 .card-footer
   position relative
