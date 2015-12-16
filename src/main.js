@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import filters from './filters'
+import Ajax from 'vue-resource'
 
 // 必须把 bootstrap 的样式先引入
 import "bootstrap.min.css"
@@ -17,6 +18,8 @@ var App = Vue.extend(require('./App.vue'));
 
 // install router
 Vue.use(Router);
+
+Vue.use(Ajax);
 
 // register filters globally
 for(let  k in filters){
