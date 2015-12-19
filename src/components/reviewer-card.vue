@@ -6,8 +6,8 @@
         你决定想要申请<br> {{reviewer.username}}<br> 帮你 Code Review 吗？
       </div>
       <div class="btns">
-        <button class="btn-common btn-blue">雇佣</button>
-        <button class="btn-common btn-detail" v-link="{path: '/u/' + reviewer.username}">了解详情</button>
+        <button class="btn-common btn-blue btn-reviewer">雇佣</button>
+        <button class="btn-common btn-detail btn-reviewer" v-link="{path: '/reviewers/' + reviewer.id}">了解详情</button>
       </div>
 		</div>
 
@@ -75,6 +75,10 @@ module.exports = {
 
 <style lang="stylus">
 
+.btn-reviewer
+  width 80px
+  height 35px
+
 .card-overlay
   position absolute
   top 0
@@ -88,20 +92,6 @@ module.exports = {
     margin-top 35% 
   div.btns
     padding-top 10%
-
-.btn-common
-  width 80px
-  height 35px
-  margin 5px
-  border-radius 3px  
-
-.btn-blue
-  background #00BDEF
-  box-shadow 0px 1px 4px 0px rgba(0,0,0,0.50)
-
-.btn-detail
-  background rgba(255,255,255,0.10)
-  border 1px solid #FFFFFF
 
 .card
   text-align center

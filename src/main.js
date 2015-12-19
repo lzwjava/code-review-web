@@ -43,8 +43,11 @@ router.map({
     component: require('./views/user.vue')
   },
   '/reviewers/': {
-      component: require('./views/reviewer-list.vue'),
-   }
+    component: require('./views/reviewer-list.vue')
+  },
+  '/reviewers/:id': {
+    component: require('./views/reviewer.vue')
+  }
 });
 
 router.beforeEach(function () {
