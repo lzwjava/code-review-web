@@ -1,28 +1,18 @@
 <template>
-  <div class="modal-mask" v-show="show" transition="modal">
+  <div class="modal-mask" v-show="show">
     <div class="modal-wrapper">
       <div class="modal-container">
 
-        <div class="modal-header">
-          <slot name="header">
-            default header
-          </slot>
-        </div>
-        
-        <div class="modal-body">
-          <slot name="body">
-            default body
-          </slot>
+        <div class="left-modal">
+
+          <button class="modal-default-button"
+            @click="show = false">
+            取消申请
+          </button>
         </div>
 
-        <div class="modal-footer">
-          <slot name="footer">
-            default footer
-            <button class="modal-default-button"
-              @click="show = false">
-              OK
-            </button>
-          </slot>
+        <div class="right-modal">
+
         </div>
       </div>
     </div>
@@ -31,12 +21,16 @@
 
 <script type="text/javascript">
 
+var debug = require('debug')('components');
 module.exports = {
+  data: function () {
+    return {
+
+    };
+  },
   props: {
     show: {
-      type: Boolean,
-      required: true,
-      twoWay: true    
+      towWay: true
     }
   }
 };
@@ -53,17 +47,17 @@ module.exports = {
   width 100%
   height 100%
   background-color rgba(0, 0, 0, .5)
-  display table
   transition opacity .3s ease
+  display table
 
 .modal-wrapper
   display table-cell
   vertical-align middle
 
 .modal-container
-  width 300px
+  width 800px
+  height 600px  
   margin 0px auto
-  padding 20px 30px
   background-color #fff
   border-radius 2px
   box-shadow 0 2px 8px rgba(0, 0, 0, .33)
@@ -75,10 +69,16 @@ module.exports = {
     margin-top 0
     color #42b983
 
-.modal-body
-  margin 20px 0
-
 .modal-default-button
   float right
+
+.left-modal
+  width 60%
+  height 100%
+  background url('../img/love-program.png')
+  background-size 100% 100%
+
+.right-modal
+  width 40%
 
 </style>

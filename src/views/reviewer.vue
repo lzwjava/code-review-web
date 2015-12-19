@@ -32,7 +32,7 @@
       </div>
 
       <div class="order">
-        <button class="btn-common btn-blue" @click="showModal=true">申请 Code Review</button>
+        <button class="btn-common btn-blue" @click="showOrder = true">申请 Code Review</button>
       </div>
 
     </div>
@@ -41,9 +41,7 @@
 
     </div>
 
-    <order-form :show.sync="showModal">
-      <h3 slot="header">custom header</h3>
-    </order-form>
+    <order-form transition="fade" :show.sync="showOrder"></order-form>
 
   </div>
 </template>
@@ -56,7 +54,7 @@ module.exports = {
   data: function () {
     return {
       reviewer: {},
-      showModal: false
+      showOrder: false
     }
   },
   route: {
