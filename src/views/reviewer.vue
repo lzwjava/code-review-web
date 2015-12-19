@@ -32,7 +32,7 @@
       </div>
 
       <div class="order">
-        <button class="btn-common btn-blue">申请 Code Review</button>
+        <button class="btn-common btn-blue" @click="showModal=true">申请 Code Review</button>
       </div>
 
     </div>
@@ -41,16 +41,22 @@
 
     </div>
 
+    <order-form :show.sync="showModal">
+      <h3 slot="header">custom header</h3>
+    </order-form>
+
   </div>
 </template>
 
 <script type="text/javascript">
+
 var debug = require('debug')('components');
 var api = require('../api');
 module.exports = {
   data: function () {
     return {
-      reviewer: {}
+      reviewer: {},
+      showModal: false
     }
   },
   route: {
@@ -63,7 +69,8 @@ module.exports = {
     }
   },
   components: {
-    'user-avatar': require('../components/user-avatar.vue')
+    'user-avatar': require('../components/user-avatar.vue'),
+    'order-form': require('../components/order-form.vue')
   }
 };
 </script>
