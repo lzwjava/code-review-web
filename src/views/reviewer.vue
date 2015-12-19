@@ -15,12 +15,14 @@
 
         <div class="review-stat">
           <p class="review-num">{{reviewer.orderCount}}</p>
-          <p>Review 案例</p>
+          <p class="num-title">Review 案例</p>
         </div>
+
+        <div class="y-divider"></div>
 
         <div class="review-stat">
           <p class="review-num">{{reviewer.rewardCount}}</p>
-          <p>打赏次数</p>
+          <p class="num-title">打赏次数</p>
         </div>
 
       </div>
@@ -70,6 +72,7 @@ module.exports = {
 
 .whole-container
   width 100%
+  height 800px
 
 .left-side
   width 35%
@@ -88,27 +91,45 @@ module.exports = {
     width 100px
     height 100px
   .name 
-    font-size 20px
     margin-top 30px
+    font-family STHeitiSC-Light
+    font-size 36px
+    color #000
+    line-height 37px
   .intro
-    font-size 16px
     margin-top 20px
+    font-size 20px
+    color #3B3E3F
+    line-height 27px
 
 .stat 
   width 100%
-  margin-top 50px
+  margin-top 80px
+  height 100px  
   .review-stat
-    height 100px
-    width 50%
+    width 49%
     float left
     text-align center
     p.review-num
-      font-size 24px
-      font-weight 500
       margin-bottom 20px
+      font-size 36px
+      color #282F31
+      line-height 43px
+    p.num-title
+      opacity 0.6
+      font-size 24px
+      color #3B3E3F
+      line-height 28px
+
+.y-divider
+  width 1px
+  height 100px
+  float left
+  background rgba(0,0,0, 0.15)
+  display inline-block
 
 .order
   text-align center
-  margin-top 200px
+  margin-top 80px
 
 </style>
