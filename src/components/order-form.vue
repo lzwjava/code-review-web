@@ -5,13 +5,39 @@
 
         <div class="left-modal">
 
-          <button class="modal-default-button"
-            @click="show = false">
-            取消申请
-          </button>
+          <div class="belt">
+            <button class="btn-cancel"
+              @click="show = false">
+              取消申请
+            </button>
+          </div>
+
         </div>
 
         <div class="right-modal">
+          <form action="/">
+            <div class="form-line">
+              <label>打赏费用</label>
+              <input></input>
+              元
+            </div>
+            <div class="form-line">
+              <input type="radio" name="pay" value="wechat" checked="checked" />微信支付
+              <input type="radio" name="pay" value="alipay" />支付宝支付
+            </div>
+            <div class="form-line">
+              <label>项目 GitHub 地址</label>
+              <input></input>
+            </div>
+            <div class="form-line">
+              <label>Review 大致代码行数</label>
+              <input type="number"></input>
+            </div>
+            <div class="form-line">
+              <label>备注</label>
+              <input></input>
+            </div>
+          </form>
 
         </div>
       </div>
@@ -64,21 +90,28 @@ module.exports = {
   transition all .3s ease
   font-family Helvetica, Arial, sans-serif
 
-.modal-header
-  h3
-    margin-top 0
-    color #42b983
-
-.modal-default-button
-  float right
-
 .left-modal
-  width 60%
+  width 55%
   height 100%
+  float left
   background url('../img/love-program.png')
   background-size 100% 100%
 
 .right-modal
-  width 40%
+  width 45%
+  height 100%
+  float left
+
+.btn-cancel
+  float left
+  color #fff
+  margin-top 50px
+  margin-left 50px
+  font-size 20px
+  line-height 32px
+
+.btn-cancel:before 
+  content '×'
+  font-size 30px
 
 </style>
