@@ -2,16 +2,20 @@ var vue = require('vue-loader');
 var webpack = require('webpack');
 var path = require('path');
 var srcPath = path.join(__dirname, 'src');
-var bootstrapPath = './node_modules/bootstrap/dist/css'
+var bootstrapPath = './node_modules/bootstrap/dist/css';
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 
 module.exports = {
   entry: {
-    app : ['./src/main.js', './css/index.css']
+    index : './src/index.js',
+    reviewer: './src/reviewer.js',
+    list: './src/list.js'
   },
   output: {
     path: __dirname + '/static',
     publicPath: '/static/',
-    filename: 'build.js'
+    filename: '[name].js'
   },
   resolve: {
       alias: {
@@ -33,8 +37,8 @@ module.exports = {
         loader: 'babel'
       },
       {
-        test: /\.(png|jpg)$/,
-        loader: 'file'
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url-loader?limit=8190'
       },
       { test: /\.css$/, 
         loader: "style-loader!css-loader" 
@@ -52,11 +56,6 @@ module.exports = {
     plugins: ['transform-runtime']
   },
   plugins: [
-     new webpack.ProvidePlugin({
-           $: "jquery",
-           jQuery: "jquery"
-     }),
-     new webpack.NoErrorsPlugin()
   ]
 }
 

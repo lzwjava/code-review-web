@@ -4,7 +4,7 @@
   "description": "Code Review project",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot --quiet",
+    "dev": "webpack-dev-server --inline --hot --quiet --port 9090",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "repository": {

@@ -18,7 +18,7 @@ var rewriteUrl = function(replacePath) {
     };
 };
 
-var prod = false;
+var prod = true;
 var target;
 if (prod) {
   target = "http://codereview.pickme.cn"; 
