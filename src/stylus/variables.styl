@@ -1,2 +1,25 @@
-$main = #71C72E
+clearfix()
+	&:before, &:after
+		content " "
+		display table
+	&:after
+		clear: both
+	
+pull-left()
+	float left
 
+pull-right()
+	float right
+    
+ellipsis()
+	text-overflow ellipsis
+	overflow hidden
+	white-space nowrap
+	
+boxShadow(color = #ddd)
+	box-shadow: 0px 0px 5px 1px color
+
+.clearfix
+	clearfix()
+	
+textColor = #282F31

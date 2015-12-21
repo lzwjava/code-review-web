@@ -1,23 +1,18 @@
 <template>
 	<nav class="navbar">
       <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <img class="navbar-brand header-logo" src="../img/header_logo.png">
-          <a class="navbar-brand header-title" href="/">Code Review</a>
-        </div>
+        <a href="/"><div class="left">
+          <img class="navbar-brand" src="../img/header_logo.png">
+          <span class="title">Code Review</span>
+        </div></a>
 
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav-list navbar-right">
-            <li><a  class="btn btn-header">发现大神</a></li>
-            <li><a  class="btn btn-header">精彩案例</a></li>
-            <li><button class="btn btn-header">登录</button></li>
-            <li>
+        <div class="right">
+          <ul class="list">
+            <li>发现大神</li>
+            <li>精彩案例</li>
+            <li class="signup">注册</li>
+            <li>登录</li>
+            <li v-if="userStatus">
               <div>
                 <a class="dropdown-item">个人设置</a>
                 <a class="dropdown-item">Code Review 订单列表</a>
@@ -32,6 +27,11 @@
 </template>
 <script>
 	export default {
+    data (){
+      return {
+        userStatus: false
+      }
+    },
 		methods: {
 			logout (){
 
@@ -41,45 +41,27 @@
 </script>
 <style lang="stylus">
 @import '../stylus/base.styl';	
-.btn-header
-  color #000
-
-.btn-header:hover
-  border-color rgba(113, 199, 46, 1)
-  color rgba(113, 199, 46, 1)
-
-ul.nav-list
-  position relative
-  top 10px  
-
-ul.nav-list li 
-  display inline
-
-.navbar-brand
-  height 55px
-
-.navbar-inverse .navbar-brand:focus,
-.navbar-inverse .navbar-brand
-  color #000
-
-.navbar-inverse .navbar-brand:hover
-  color rgb(113, 199, 46)
-
-.main-nav-wrapper
-  background #fff
-
-.footer-divider
-  margin 60px 0
-
-footer.container
-  height 80px
-
-.main-view
-  margin-top 55px
-
-.navbar .avatar
-  width 28px
-  height 28px
-  line-height 28px
-  margin-left 20px
+.navbar
+  height 100px
+  padding 30px 100px
+  background white
+  .container
+    height 40px
+    line-height 38px
+  .left
+    pull-left()
+    .title
+      font-size 26px
+      margin-left 10px
+  .right
+    pull-right()
+  .list
+    li
+      width 120px
+      height 40px
+      text-align center
+      &.signup
+        background rgba(51,201,111,.1)
+        border 1px solid #33C96F
+        color #33C96F
 </style>

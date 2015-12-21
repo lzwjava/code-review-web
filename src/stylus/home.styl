@@ -1,0 +1,231 @@
+@import 'variables.styl';
+.home-main
+  text-align center
+  font-size 20px
+  h1
+    font-size 64px
+  h2
+    font-size 36px
+  h3,h4
+    font-size 24px
+  h5
+    font-size 20px
+.slide
+  height 1000px
+  position relative
+  color #fff
+  width 100%
+  overflow hidden
+  .bg
+    background url("../img/home/hero.png") no-repeat
+    width 1920px
+    height 1000px
+    position absolute
+    top 0
+    left 50%
+    margin-left -960px
+    padding-top 315px
+    h3
+      margin-top 50px
+    .begin
+      background url("../img/icon/play.png") no-repeat
+      width 80px
+      height 80px
+      margin-top 60px
+    .help
+      height 66px
+      width 288px
+      background #33C96F
+      font-size 20px
+      margin-top 50px
+      color white
+.feature
+  height 600px
+  padding 100px 0
+  .list
+    li
+      width 440px
+      height 400px
+      margin-left 50px
+      font-size 20px
+      &:first-child
+        margin-left 0
+      .short
+        width 312px
+        height 250px
+        margin 0 auto
+        border-bottom 1px solid #EDEDEF
+      .number
+        font-size 48px
+        margin 20px 0 10px
+      .icon_crown, .icon_article, .icon_doc
+        width 100px
+        height 100px
+        margin 0 auto
+      .icon_crown
+        background url("../img/icon/crown.png") no-repeat
+      .icon_doc
+        background url("../img/icon/doc.png") no-repeat
+      .icon_article
+        background url("../img/icon/article.png") no-repeat
+      .detail
+        margin-top 20px
+        line-height 150%
+.reviewer
+  height 1000px;
+  position relative
+  .bg
+    background url("../img/home/reviewer.png") no-repeat
+    width 1920px
+    height 1000px
+    position absolute
+    top 0
+    left 50%
+    margin-left -960px
+    padding-top 100px
+    h3
+      margin 50px 0
+    .more
+      width 210px
+      height 66px
+      color white
+      text-align center
+      margin-top 50px
+      background #42D0F6
+      font-size 20px
+    .reviewers
+      .item
+        width 426px
+        height 560px
+        margin-left 50px
+        background white
+        box-shadow: 0px 0px 4px 2px rgba(0,0,0,.2)
+        border-radius 3px
+        position relative
+        &:first-child
+          margin-left 0
+        .avatar
+          width 160px
+          height 160px
+          border-radius 50%
+          padding 5px
+          background white
+          box-shadow: 0px 1px 3px 1px rgba(0,0,0,.5)
+          margin 70px auto 50px
+          img
+            height 100%
+            width 100%
+            border-radius 50%
+        h4
+          margin-bottom 30px
+        h5
+          line-height 150%
+        .data
+          height 134px
+          position absolute
+          bottom 0
+          left 0 
+          right 0
+          background #FDFFFF
+          border-top 1px solid rgba(0,0,0,.15)
+          padding 19px
+          text-align center
+          li
+            width 120px
+            height 96px
+            .num
+              font-size 36px
+            .text
+              font-size 16px
+              color #3B3E3F
+              opacity .6
+              margin-top 40px
+.example
+  width 90%
+  margin 0 auto
+  background #FDFFFF
+  .container
+    width 1375px
+    margin 0 auto
+    position relative
+    .pen,.book,.cup
+      position absolute
+    .pen
+      background url("../img/icon/pen.png")
+      width 98px
+      height 180px
+      top -85px
+      left -20px
+    .book
+      background url("../img/icon/book.png")
+      width 336px
+      height 173px
+      top -85px
+    .cup
+      background url("../img/icon/cup.png")
+      width 207px
+      height 221px
+      right 95px
+      top -45px
+  .more
+    border-top 1px solid rgba(40,47,49,.3)
+    border-bottom 1px solid rgba(40,47,49,.3)
+    height 135px
+    line-height 135px
+  h2
+    margin-top 85px
+  h3
+    margin-top 20px
+  .list
+    clearfix();
+    padding 90px 0
+    .row
+      li:first-child
+        margin-left 0
+    li
+      height 495px
+      margin-left 50px
+      pull-left();
+      margin-bottom 40px
+      .info
+        position relative
+        height 420px
+        width 100%
+        color white
+        box-shadow 0 4px 4px 1px rgba(135,135,135,.1)
+        img
+          position absolute
+          left 0
+          top 0
+          height 100%
+          width 100%
+        h6
+          position relative
+          z-index 2
+          font-size 28px
+          top 215px
+          left 30px
+          text-align left
+        .tips
+          font-size 20px
+          margin-top 30px
+      .detail
+        margin-top 15px
+        height 60px
+        border-top 1px solid rgba(40,47,49,.3)
+        padding 15px 0
+        p
+          text-align left
+          font-size 28px
+          .date
+            font-size 16px
+            opacity 0.6
+            vertical-align super
+        .icon_wx,.icon_wb
+          pull-right()
+      &.clo-1
+        width 425px
+      &.clo-2
+        width 900px
+      &.clo-3
+        width 100%

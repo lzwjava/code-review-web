@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import filters from './filters'
 import Ajax from 'vue-resource'
-import Nav from "views/nav.vue"
-import Footer from "views/footer.vue"
+import Nav from 'views/nav.vue'
+import Footer from 'views/footer.vue'
+import Home from 'views/home.vue'
 
 Vue.config.debug = true;
 Vue.use(Ajax);
@@ -16,6 +17,7 @@ let index = new Vue({
   el: 'body',
   components:{
     'my-nav': Nav,
-    'my-footer': Footer
+    'my-footer': Footer,
+    'my-home': Home
   }
 })
