@@ -3,7 +3,6 @@ var webpack = require('webpack');
 var path = require('path');
 var srcPath = path.join(__dirname, 'src');
 var bootstrapPath = './node_modules/bootstrap/dist/css';
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
 module.exports = {
