@@ -9,4 +9,6 @@ npm install
 node server.js
 # build:
 npm run build
+# deploy
+npm run deploy
 ```
