@@ -45,21 +45,7 @@
       <div class="bg">
           <h2>发现行业内精英开发者</h2>
           <h3>一览领域顶尖的编程人物</h3>
-          <ul class="list reviewers">
-            <li class="item" v-for="reviewer in reviewers">
-              <div class="avatar">
-                <img :src="reviewer.avatar">
-              </div>
-              <h4>{{reviewer.name}}</h4>
-              <h5>{{reviewer.info}}</h5>
-              <ul class="list data">
-                <li v-for="item in reviewer.data">
-                  <p class="num">{{item.num}}</p>
-                  <p class="text">{{item.text}}</p>
-                </li>
-              </ul>
-            </li>
-          </ul>
+          <reviewer :reviewers="reviewers"></reviewer>
         <button class="more" type="button">寻找更多高手</button>
 
       </div>
@@ -117,7 +103,11 @@
 </template>
 
 <script type="text/javascript">
+  import reviewerCard from '../components/reviewer-card.vue'
   export default {
+    components: {
+      reviewer: reviewerCard
+    },
     data () {
       return {
         reviewers: [{

@@ -1,84 +1,187 @@
 <template>
-  <div class="body cafe-list">
-    <logo class="loading center" v-if="$loadingRouteData"></logo>
-
-    <div class="list-title">
-      <div class="list-tip">
-        发现各个语言领域的大神，向他们申请帮助<br>
-        或者，你也可以先看看他们的 Code Review 案例
-      </div>
-
-      <div class="list-num">
-        入驻大神：<span class="reviewer-num">{{reviewers.length}}</span>
-      </div>
-    </div>
-
-    <div class="section container reviewer-cards">
-      <div class="cafe-cards clearfix">
-        <template v-for="reviewer in reviewers" track-by="id">
-          <reviewer-card :reviewer="reviewer"></reviewer-card>
-        </template>
-      </div>
-    </div>
+  <div class="info">
+    <h1>发现各个语言领域的大神，向他们申请帮助</h1>
+    <h1>或者，你也可以先看看他们的 <strong>Code Review 案例</strong></h1>
+    <h2>入住大神：<strong class="num">48</strong></h2>
+  </div>
+  <div class="list-content">
+    <reviewer :reviewers="reviewers"></reviewer>
+  </div>
+  <div class="join-reviewer">
+    <h5>噢，没有更多大神了</h5>
+    <h5>或者，你就是<strong>下一个</strong></h5>
   </div>
 </template>
 
 <script>
-var api = require('../api');
-
-module.exports ={
-  data: function() {
-    return {
-      cursor: 0,
-      following: [],
-      reviewers: [],
-    }
-  },
-  computed: {
-    subpath: function() {
-      if (this.$route.query.show === 'create') {
-        return '/create';
-      }
-      return '';
-    }
-  },
-  route: {
-    data: function(transition) {
-      api.reviewers.list(0, 100, function(resp) {
-        transition.next({
-          reviewers: resp
-        });
-      });
-    }
-  },
+import reviewerCard from '../components/reviewer-card.vue'
+export default{
   components: {
-    'logo': require('../components/logo.vue'),
-    'reviewer-card': require('../components/reviewer-card.vue')
+      reviewer: reviewerCard
+    },
+  data (){
+    return {
+      reviewers: [{
+          name: '乖小鬼',
+          avatar: 'http://tp4.sinaimg.cn/2184723135/180/5603336618/1',
+          info: '经验丰富的 iOS 开发者，曾就职于360Camera、英语流利说',
+          data: [{
+            text: '擅长领域',
+            num: 12
+          },{
+            text: '做过应用',
+            num: 33
+          },{
+            text: '审核案例',
+            num: 44
+          }]
+        },{
+          name: '乖小鬼',
+          avatar: 'http://tp4.sinaimg.cn/2184723135/180/5603336618/1',
+          info: '经验丰富的 iOS 开发者，曾就职于360Camera、英语流利说',
+          data: [{
+            text: '擅长领域',
+            num: 12
+          },{
+            text: '做过应用',
+            num: 33
+          },{
+            text: '审核案例',
+            num: 44
+          }]
+        },{
+          name: '乖小鬼',
+          avatar: 'http://tp4.sinaimg.cn/2184723135/180/5603336618/1',
+          info: '经验丰富的 iOS 开发者，曾就职于360Camera、英语流利说',
+          data: [{
+            text: '擅长领域',
+            num: 12
+          },{
+            text: '做过应用',
+            num: 33
+          },{
+            text: '审核案例',
+            num: 44
+          }]
+        },{
+          name: '乖小鬼',
+          avatar: 'http://tp4.sinaimg.cn/2184723135/180/5603336618/1',
+          info: '经验丰富的 iOS 开发者，曾就职于360Camera、英语流利说',
+          data: [{
+            text: '擅长领域',
+            num: 12
+          },{
+            text: '做过应用',
+            num: 33
+          },{
+            text: '审核案例',
+            num: 44
+          }]
+        },{
+          name: '乖小鬼',
+          avatar: 'http://tp4.sinaimg.cn/2184723135/180/5603336618/1',
+          info: '经验丰富的 iOS 开发者，曾就职于360Camera、英语流利说',
+          data: [{
+            text: '擅长领域',
+            num: 12
+          },{
+            text: '做过应用',
+            num: 33
+          },{
+            text: '审核案例',
+            num: 44
+          }]
+        },{
+          name: '乖小鬼',
+          avatar: 'http://tp4.sinaimg.cn/2184723135/180/5603336618/1',
+          info: '经验丰富的 iOS 开发者，曾就职于360Camera、英语流利说',
+          data: [{
+            text: '擅长领域',
+            num: 12
+          },{
+            text: '做过应用',
+            num: 33
+          },{
+            text: '审核案例',
+            num: 44
+          }]
+        },{
+          name: '乖小鬼',
+          avatar: 'http://tp4.sinaimg.cn/2184723135/180/5603336618/1',
+          info: '经验丰富的 iOS 开发者，曾就职于360Camera、英语流利说',
+          data: [{
+            text: '擅长领域',
+            num: 12
+          },{
+            text: '做过应用',
+            num: 33
+          },{
+            text: '审核案例',
+            num: 44
+          }]
+        },{
+          name: '乖小鬼',
+          avatar: 'http://tp4.sinaimg.cn/2184723135/180/5603336618/1',
+          info: '经验丰富的 iOS 开发者，曾就职于360Camera、英语流利说',
+          data: [{
+            text: '擅长领域',
+            num: 12
+          },{
+            text: '做过应用',
+            num: 33
+          },{
+            text: '审核案例',
+            num: 44
+          }]
+        },{
+          name: '乖小鬼',
+          avatar: 'http://tp4.sinaimg.cn/2184723135/180/5603336618/1',
+          info: '经验丰富的 iOS 开发者，曾就职于360Camera、英语流利说',
+          data: [{
+            text: '擅长领域',
+            num: 12
+          },{
+            text: '做过应用',
+            num: 33
+          },{
+            text: '审核案例',
+            num: 44
+          }]
+        }]
+    }
   }
-};
+}
 </script>
 
 <style lang="stylus">
-
-.cafe-list
-  background-color #F1F5F6
-  padding 40px 0
-
-.reviewer-cards
-  margin-top 60px  
-
-.list-title
+@import '../stylus/variables.styl';
+body
+  background #F1F5F6
+.info
+  font-size 36px
   text-align center
-  .list-tip
-    font-size 26px
-    margin-top 10px
-  .list-num
-    margin-top 40px
-    font-size 18px
+  line-height 120%
+  padding-top 80px
+  strong
+    color blue
+  h2
+    font-size 24px
+    line-height 65px
+    margin-top 100px
+    .num
+      font-size 48px
+      color green
+      vertical-align sub
+.list-content
+  width 1422px
+  margin 80px auto
 
-span.reviewer-num
-  font-size 24px
-  line-height 28px
-  color #33C96F
+.join-reviewer
+  font-size 36px
+  text-align center
+  line-height 120%
+  padding 80px
+  strong
+    color blue
 
 </style>
