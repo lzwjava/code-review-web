@@ -10,7 +10,9 @@ module.exports = {
   entry: {
     index : './src/index.js',
     reviewer: './src/reviewer.js',
-    list: './src/list.js'
+    list: './src/list.js',
+    setting: './src/setting.js',
+    order: './src/order.js'
   },
   output: {
     path: __dirname + '/static',
