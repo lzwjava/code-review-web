@@ -1,4 +1,7 @@
 <template>
+  <overlay :overlay.sync="overlayStatus">
+    <component :is="currentView"></component>
+  </overlay>
 	<nav class="navbar">
       <div class="container">
         <a href="/"><div class="left">
@@ -10,8 +13,8 @@
           <ul class="list">
             <li>发现大神</li>
             <li>精彩案例</li>
-            <li class="signup">注册</li>
-            <li>登录</li>
+            <li class="signup" @click="signup">注册</li>
+            <li @click="signin">登录</li>
             <li v-if="userStatus">
               <div>
                 <a class="dropdown-item">个人设置</a>
@@ -26,16 +29,34 @@
     </nav>
 </template>
 <script>
+  import Overlay from '../components/overlay.vue';
+  import Login from '../components/login.vue';
+  import Signup from '../components/signup.vue';
 	export default {
+    components: {
+      overlay: Overlay,
+      login:  Login,
+      signup: Signup
+    },
     data (){
       return {
-        userStatus: false
+        userStatus: false,
+        overlayStatus: false,
+        currentView: 'login'
       }
     },
 		methods: {
 			logout (){
 
-			}
+			},
+      signin (){
+        this.overlayStatus = true;
+        this.currentView = 'login';
+      },
+      signup (){
+        this.overlayStatus = true;
+        this.currentView = 'signup';
+      }
 		}
 	}
 </script>
@@ -60,6 +81,7 @@
       width 120px
       height 40px
       text-align center
+      cursor pointer
       &.signup
         background rgba(51,201,111,.1)
         border 1px solid #33C96F
