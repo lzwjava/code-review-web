@@ -41,7 +41,7 @@
 					emulateJSON: true
 				}).then((res) => {
 					if (res.data.resultCode == 0) {
-						this.$parent.overlay = false;						
+						this.$parent.overlay = false;
 						console.log('login succeed');
 					} else {
 						console.log(res.data.resultInfo);

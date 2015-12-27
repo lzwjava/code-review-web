@@ -15,10 +15,11 @@
 
 <script>
 import reviewerCard from '../components/reviewer-card.vue'
+var debug = require('debug')('components');
 export default{
   components: {
       reviewer: reviewerCard
-    },
+  },
   data (){
     return {
       reviewers: [{
@@ -149,6 +150,20 @@ export default{
           }]
         }]
     }
+  },
+  methods: {
+
+  },
+  created () {
+    this.$http.get('/api/reviewers', {
+      limit: 3
+    }, (resp) => {
+      if (resp.resultCode == 0) {
+        debug(resp)
+      }
+    }, (resp) => {
+      
+    })
   }
 }
 </script>

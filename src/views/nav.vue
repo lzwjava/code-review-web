@@ -11,7 +11,7 @@
 
         <div class="right">
           <ul class="list">
-            <li>发现大神</li>
+            <li><a href="./reviewer.html">发现大神</a></li>
             <li>精彩案例</li>
             <li class="signup" @click="signup">注册</li>
             <li @click="signin">登录</li>
