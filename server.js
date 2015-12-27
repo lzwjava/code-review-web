@@ -16,7 +16,7 @@ var rewriteUrl = function(replacePath) {
     };
 };
 
-var prod = true;
+var prod = false;
 var target;
 if (prod) {
   target = "http://api.reviewcode.cn"; 

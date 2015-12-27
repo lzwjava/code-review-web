@@ -47,7 +47,11 @@
     },
 		methods: {
 			logout (){
-
+        this.$http.get('/logout').then((resp) => {
+          console.log('logout');
+        }, (resp) => {
+          console.log('logout failed');
+        });
 			},
       signin (){
         this.overlayStatus = true;
