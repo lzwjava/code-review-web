@@ -11,4 +11,7 @@ node server.js
 npm run build
 # deploy
 npm run deploy
+# submodule
+git submodule init
+git submodule update
 ```
