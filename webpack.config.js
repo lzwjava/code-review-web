@@ -20,8 +20,8 @@ module.exports = {
   resolve: {
       alias: {
           jquery: path.join(__dirname, './node_modules/jquery'),
-          moxie: path.join(__dirname, 'vendor/plupload/moxie.js'),
-          'moxie-plupload': path.join(__dirname, 'vendor/plupload/plupload.dev.js')
+          moxie: path.join(__dirname, 'plupload/js/moxie.js'),
+          'moxie-plupload': path.join(__dirname, 'plupload/js/plupload.dev.js')
       },
       root: srcPath,
       extensions: ['', '.js', '.css'],
@@ -56,7 +56,7 @@ module.exports = {
       //   loader: 'imports?mOxie=moxie!exports?window.plupload'
       // },
       {
-        test: /vendor\/plupload\/moxie\.js/,
+        test: /plupload\/js\/moxie\.js/,
         loader: 'exports?this.mOxie'
       }
     ]
