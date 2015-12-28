@@ -15,6 +15,9 @@
 				<div class="row">
 					<input type="password"  v-model="password" placeholder="密码">
 				</div>
+				<div class="row">
+					<input type="text"  v-model="username" placeholder="用户名">
+				</div>
 			<button type="button" @click="register">注册</button>
 			<p>注册前请仔细阅读 <strong>服务条款</strong> 和 <strong>许可协议</strong></p>
 		</div>
@@ -53,7 +56,9 @@
 				}).then((res) => {
 					if (util.filterError(this, res)) {
 						this.$parent.overlay = false;
-						debug('register succeed');
+						var nav = this.$root.$children[0];
+						nav.user = res.data.resultData;
+						nav.userStatus = true;
 					}
 				}, util.httpErrorFn(this))
 			},

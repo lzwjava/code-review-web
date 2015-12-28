@@ -18,8 +18,8 @@
             <li v-if="userStatus">
               <user-avatar :user="user" @click="viewUserDropdown"></user-avatar>
               <dropdown v-show="showUserDropdown" :show.sync="showUserDropdown">
-                <a class="dropdown-item">个人设置</a>
-                <a class="dropdown-item">Code Review 订单列表</a>
+                <a class="dropdown-item" href="setting.html">个人设置</a>
+                <a class="dropdown-item" href="order.html">Code Review 订单列表</a>
                 <div class="dropdown-divider"></div>                
                 <a class="dropdown-item" @click="logout" href="/session">注销</a>
               </dropdown>
@@ -65,7 +65,6 @@
         this.$http.get('/api/user/logout').then((resp) => {
           this.user = {};
           this.userStatus = false;
-          this.$root.$children[0].show('success', '注销成功');
         }, util.httpErrorFn(this));
 			},
       signin (){
