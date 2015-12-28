@@ -24,3 +24,13 @@ exports.escape = (html) => {
   .replace(/"/g, '&quot;')
   .replace(/'/g, '&#39;');
 };
+
+exports.show = (component, type, text) => {
+  component.$root.$children[0].show(type, text);
+};
+
+exports.updateNavUser = (component, user) => {
+  var nav = component.$root.$children[0];
+  nav.user = res.data.resultData;
+  nav.userStatus = true;
+}

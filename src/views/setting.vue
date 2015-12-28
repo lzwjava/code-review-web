@@ -10,7 +10,7 @@
 			</div>
 			<div class="row">
 				<p>昵称</p>
-				<input type="text" v-model="nickname"/>
+				<input type="text" v-model="username"/>
 			</div>
 			<div class="row">
 				<p>Github 地址</p>
@@ -29,15 +29,11 @@
 				<input type="text"  v-model="jobTitle"/>
 			</div>
 			<div class="row">
-				<p>做过的应用</p>
-				<input type="text" v-model="app" />
-			</div>
-			<div class="row">
 				<p>个人简介</p>
 				<textarea v-model="introduction"></textarea>
 			</div>
 			<div class="row">
-				<button type="button">确认修改</button>
+				<button type="button" @click="updateUser">确认修改</button>
 			</div>
 		</section>
 		<section class="tags">
@@ -62,6 +58,60 @@
 	
 
 </template>
+
+<script type="text/javascript">
+	import util from '../util';
+	var debug = require('debug')('components');
+	export default {
+		data () {
+			return {
+				username: '',
+				github: '',
+				phone: '',
+				company: '',
+				jobTitle: '',
+				introduction: '',
+			}
+		},
+		methods: {
+			updateUser () {
+				this.$http.post('/api/user/update', {
+					username: this.username,
+					gitHubUsername: this.github,
+					company: this.company,
+					jobTitle: this.jobTitle,
+					introduction: this.introduction
+				}, {
+					emulateJSON: true
+				}).then((res) => {
+					debug(res)
+					if (util.filterError(this, res)) {
+						 util.show(this, 'success', '更新成功');
+					   this.setUserInfo(res.data.resultData);
+					   util.updateNavUser(this, res.data.resultData);
+					}
+				}, (res) => {
+					debug('error %j', res);
+				});
+			},
+			setUserInfo (user) {
+				this.username = user.username;
+				this.github = user.gitHubUsername;
+				this.phone = user.mobilePhoneNumber;
+				this.company = user.company;
+				this.jobTitle = user.jobTitle;
+				this.introduction = user.introduction;
+			}
+		},
+		created() {
+			this.$http.get('/api/user/self').then((res) => {
+				if (util.filterError(this, res)) {
+			    this.setUserInfo(res.data.resultData);
+				}
+			}, util.httpErrorFn(this))
+		}
+	}
+</script>
 
 <style lang="stylus">
 @import "../stylus/variables.styl";

@@ -56,9 +56,7 @@
 				}).then((res) => {
 					if (util.filterError(this, res)) {
 						this.$parent.overlay = false;
-						var nav = this.$root.$children[0];
-						nav.user = res.data.resultData;
-						nav.userStatus = true;
+						util.updateNavUser(this, res.data.resultData);
 					}
 				}, util.httpErrorFn(this))
 			},
