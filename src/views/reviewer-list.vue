@@ -158,7 +158,7 @@ export default{
   created () {
     this.$http.get(serviceUrl.reviewers, {
       limit: 3
-    }, (resp) => {
+    }).then((resp) => {
       if (resp.resultCode == 0) {
         debug(resp)
       }

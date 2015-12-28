@@ -1,5 +1,5 @@
 <template>
-  <a v-link="{name: 'user', params: {username: user.username}}" v-el:avatar class="avatar" aria-label="View @{{user.username}} profile"></a>
+  <a v-el:avatar class="avatar" aria-label="View @{{user.username}} profile"></a>
 </template>
 <script>
   var debug = require('debug')('components');
