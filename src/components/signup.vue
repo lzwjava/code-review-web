@@ -8,27 +8,68 @@
 				</div>
 				<div class="code">
 					<div class="row" style="width: 250px;">
-						<input type="text" v-model="code" placeholder="验证码">
+						<input type="text" v-model="smsCode" placeholder="验证码">
 					</div>
-					<button class="send" type="button">验证</button>
+					<button class="send" type="button" @click="requestSmsCode">发送验证码</button>
 				</div>
 				<div class="row">
 					<input type="password"  v-model="password" placeholder="密码">
 				</div>
-			<button type="button">注册</button>
+				<div class="row">
+					<input type="text"  v-model="username" placeholder="用户名">
+				</div>
+			<button type="button" @click="register">注册</button>
 			<p>注册前请仔细阅读 <strong>服务条款</strong> 和 <strong>许可协议</strong></p>
 		</div>
 		<p style="padding-top: 30px;">已经注册? <strong> 登录 </strong></p>
 	</section>
 </template>
 <script>
+  import md5 from 'blueimp-md5'
+  import util from '../util'
+  var debug = require('debug')('components')
 	export default{
+		data () {
+			return {
+				phone:'13261630925',
+				smsCode: '5555',
+				password: '123456',
+				username: 'lzwjava1'
+			}
+		},
 		methods:{
 			test (e){
 				e.stopPropagation();
 			},
 			close (){
 				this.$parent.overlay = false;
+			},
+			register () {
+				this.$http.post('/api/user/register', {
+					mobilePhoneNumber: this.phone,
+					password: md5(this.password),
+					username: this.username,
+					smsCode: this.smsCode,
+					type: 0
+				},{
+					emulateJSON: true
+				}).then((res) => {
+					if (util.filterError(this, res)) {
+						this.$parent.overlay = false;
+						util.updateNavUser(this, res.data.resultData);
+					}
+				}, util.httpErrorFn(this))
+			},
+			requestSmsCode () {
+				this.$http.post('/api/user/requestSmsCode', {
+					mobilePhoneNumber:this.phone
+				}, {
+					emulateJSON: true
+				}).then((res) => {
+					if (util.filterError(this, res)) {
+						debug('send succeed');
+					}
+				}, util.httpErrorFn(this))
 			}
 		}
 	}

@@ -14,6 +14,7 @@ import Setting from 'views/setting.vue'
 
 Vue.config.debug = true;
 Vue.use(Ajax);
+Vue.http.options.timeout = 1000 * 10;
 
 // register filters globally
 for(let  k in filters){

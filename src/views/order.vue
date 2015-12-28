@@ -61,6 +61,9 @@
 					total: 1
 				}
 			}
+		},
+		created() {
+			
 		}
 	}
 </script>

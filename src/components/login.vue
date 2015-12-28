@@ -12,12 +12,17 @@
 				</li>
 			</ul>
 			<button type="button" @click="login">登录</button>
-			<p>忘记密码？</p>
+<!-- 			<p>忘记密码？</p> -->
 		</div>
 		<p style="padding-top: 30px;">您还没有<strong>注册？</strong></p>
 	</section>
 </template>
 <script>
+  'use strict'
+  import md5 from 'blueimp-md5'
+  import util from '../util'
+  var debug = require('debug')('components');
+  debug(util);
 	export default{
 		data (){
 			return {
@@ -35,12 +40,15 @@
 			login (){
 				this.$http.post('/api/user/login', {
 					mobilePhoneNumber: this.phone,
-					password: this.password
+					password: md5(this.password)
 				},{
 					emulateJSON: true
-				}).then(function(res){
-					console.log(res);
-				})
+				}).then((res) => {
+					if (util.filterError(this, res)) {
+						this.$parent.overlay = false;
+						util.updateNavUser(this, res.data.resultData);
+					}
+				}, util.httpErrorFn(this))
 			}
 		}
 	}

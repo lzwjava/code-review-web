@@ -13,7 +13,7 @@
         </li>
       </ul>
       <div class="cover">
-        <p>你觉得申请让</p>
+        <p>你想申请</p>
         <p>{{reviewer.name}}</p>
         <p>帮你 Code Review 吗？</p>
         <button type="button" class="submit">雇佣</button>
