@@ -2,7 +2,7 @@
 	<section class="setting">
 		<h2>个人设置</h2>
 		<section class="form">
-			<div class="avatar" id="upload-container">
+			<div class="avatar-container" id="upload-container">
 				<user-avatar :user="user"></user-avatar>
 				<button type="button" id="pickfiles">修改头像</button>
 			</div>
@@ -184,23 +184,17 @@
 
 <style lang="stylus">
 @import "../stylus/variables.styl";
+
+	.avatar-container
+		text-align center
+		button
+			display block
+			margin 10px auto
 	
 	.avatar
-		padding 30px
-		background white
-		text-align center
-		border-bottom 1px solid rgba(0,0,0,0.15)
-		width 128px
-		height 128px
-		.avatar-img
-			width 100%
-			height 100%
-			margin 0 auto
-			img
-				width 120px
-				height 120px
-		button
-			margin-top 30px
+		width 150px
+		height 150px
+		margin 10px
 
 	.setting
 		width 1422px
