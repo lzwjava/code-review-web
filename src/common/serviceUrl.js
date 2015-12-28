@@ -12,5 +12,6 @@ export default {
 	userStatus: 'user/self',
 	reviewers: 'reviewers',
 	updateUser: 'user/update',
-	qiniu: 'qiniu/token'
+	qiniu: 'qiniu/token',
+    tags: 'tags',
 }

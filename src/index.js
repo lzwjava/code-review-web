@@ -8,6 +8,9 @@ import Home from 'views/home.vue'
 Vue.config.debug = true;
 Vue.use(Ajax);
 
+// 这里是 debug 模块调试，有用的，不用移除
+localStorage.debug = 'api,user,components,setting';
+
 Vue.http.options.root = '/api'
 // register filters globally
 for(let  k in filters){

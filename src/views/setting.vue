@@ -38,17 +38,14 @@
 			<h2>想学领域</h2>
 			<div class="tags-content">
 				<ul class="list">
-					<li><span>dasdasdas</span><i class="delete">X</i></li>
-					<li><span>dasdasdas</span><i class="delete">X</i></li>
-					<li><span>dasdasdas</span><i class="delete">X</i></li>
+					<li v-for="tag in tags"><span>{{tag.tagName}}</span><i class="delete">X</i></li>
 				</ul>
 				<div class="select-content">
 					<p>输入 「想学领域」</p>
-					<select>
-						<option>111</option>
-						<option>111</option><option>111</option><option>111</option>
+					<select v-model="selected">
+						<option v-for="tag in remains" :value="{tagId: tag.tagId}">{{tag.tagName}}</option>
 					</select>
-					<button type="button">添加</button>
+					<button type="button" @click="addTag">添加</button>
 				</div>
 			</div>
 		</section>
@@ -60,7 +57,7 @@
 <script type="text/javascript">
 	import util from '../util';
 	import UserAvatar from '../components/user-avatar.vue';
-	var debug = require('debug')('components');	
+	var debug = require('debug')('setting');
 	var plupload = require('moxie-plupload');	
 	import Qiniu from 'qiniu-js-sdk'
 	import serviceUrl from "../common/serviceUrl.js"
@@ -78,6 +75,30 @@
 				jobTitle: '',
 				introduction: '',
 				avatarUrl: '',
+				tags: [],
+				allTags: [],
+				selected: ''
+			}
+		},
+		computed: {
+			'remains': function () {
+				if (!this.allTags || !this.tags) {
+					return [];
+				}
+				var remain = [];
+				for (var i = 0; i < this.allTags.length; i ++) {
+					var tag = this.allTags[i];
+					var found = false;
+					for (var j = 0; j < this.tags.length; j++) {
+						if (tag.tagId === this.tags[j].tagId) {
+							found = true;
+						}
+					}
+					if (!found) {
+						remain.push(tag);
+					}
+				}
+				return remain;
 			}
 		},
 		methods: {
@@ -109,12 +130,25 @@
 				this.jobTitle = user.jobTitle;
 				this.introduction = user.introduction;
 				this.avatarUrl = user.avatarUrl;
+				this.tags = user.tags;
+			},
+			addTag () {
+				if (!this.selected.tagId) {
+					util.show(this, 'warn', '请选择领域');
+				}
+				debug(this.selected.tagId);
 			}
 		},
 		created() {
 			this.$http.get(serviceUrl.userStatus).then((res) => {
 				if (util.filterError(this, res)) {
+					debug(res.data.resultData);
 			    this.setUserInfo(res.data.resultData);
+				}
+			}, util.httpErrorFn(this))
+			this.$http.get(serviceUrl.tags).then((res) => {
+				if (util.filterError(this, res)) {
+					this.allTags = res.data.resultData;
 				}
 			}, util.httpErrorFn(this))
 		},
