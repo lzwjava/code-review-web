@@ -191,11 +191,10 @@
 		button
 			display block
 			margin 10px auto
-	
-	.avatar
-		width 150px
-		height 150px
-		margin 10px
+		.avatar
+			width 150px
+			height 150px
+			margin 10px
 
 	.setting
 		width 1422px
