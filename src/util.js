@@ -31,6 +31,6 @@ exports.show = (component, type, text) => {
 
 exports.updateNavUser = (component, user) => {
   var nav = component.$root.$children[0];
-  nav.user = res.data.resultData;
+  nav.user = user;
   nav.userStatus = true;
 }
