@@ -18,7 +18,9 @@
 	</section>
 </template>
 <script>
+  'use strict'
   import md5 from 'blueimp-md5'
+  var debug = require('debug')('components');
 	export default{
 		data (){
 			return {
@@ -44,10 +46,12 @@
 						this.$parent.overlay = false;
 						console.log('login succeed');
 					} else {
-						console.log(res.data.resultInfo);
+						var nav = this.$root.$children[0];
+						nav.show('error', res.data.resultInfo);
 					}
 				}, (res) => {
-					console.log(res);
+					// Not found
+					this.$root.$children[0].show('error', res.statusText);
 				})
 			}
 		}
