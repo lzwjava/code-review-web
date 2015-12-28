@@ -23,8 +23,8 @@
 </template>
 <script>
   import md5 from 'blueimp-md5'
+  import util from '../util'
   var debug = require('debug')('components')
-
 	export default{
 		data () {
 			return {
@@ -51,15 +51,11 @@
 				},{
 					emulateJSON: true
 				}).then((res) => {
-					if (res.data.resultCode == 0) {
-						this.$parent.overlay = false;						
+					if (util.filterError(this, res)) {
+						this.$parent.overlay = false;
 						debug('register succeed');
-					} else {
-						debug(res.data.resultInfo);
 					}
-				}, (res) => {
-					debug(res)					
-				})
+				}, util.httpErrorFn(this))
 			},
 			requestSmsCode () {
 				this.$http.post('/api/user/requestSmsCode', {
@@ -67,14 +63,10 @@
 				}, {
 					emulateJSON: true
 				}).then((res) => {
-					if (res.data.resultCode == 0) {
+					if (util.filterError(this, res)) {
 						debug('send succeed');
-					} else {
-						debug(res.data.resultInfo)
 					}
-				}, (res) => {
-					debug(res)
-				})
+				}, util.httpErrorFn(this))
 			}
 		}
 	}

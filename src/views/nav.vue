@@ -13,15 +13,16 @@
           <ul class="list">
             <li><a href="./reviewer.html">发现大神</a></li>
             <li>精彩案例</li>
-            <li class="signup" @click="signup">注册</li>
-            <li @click="signin">登录</li>
+            <li v-if="!userStatus" class="signup" @click="signup">注册</li>
+            <li v-if="!userStatus" @click="signin">登录</li>
             <li v-if="userStatus">
-              <div>
+              <user-avatar :user="user" @click="viewUserDropdown"></user-avatar>
+              <dropdown v-show="showUserDropdown" :show.sync="showUserDropdown">
                 <a class="dropdown-item">个人设置</a>
                 <a class="dropdown-item">Code Review 订单列表</a>
                 <div class="dropdown-divider"></div>                
                 <a class="dropdown-item" @click="logout" href="/session">注销</a>
-              </div>
+              </dropdown>
             </li>
           </ul>
         </div>
@@ -35,28 +36,37 @@
   import Overlay from '../components/overlay.vue';
   import Login from '../components/login.vue';
   import Signup from '../components/signup.vue';
+  import DropDown from '../components/dropdown.vue';
+  import UserAvatar from '../components/user-avatar.vue';
+  import util from '../util'
+  var debug = require('debug')('components');  
   var clock = new Date().getFullYear();
 	export default {
     components: {
       overlay: Overlay,
       login:  Login,
-      signup: Signup
+      signup: Signup,
+      dropdown: DropDown,
+      'user-avatar':UserAvatar
     },
     data (){
       return {
         userStatus: false,
         overlayStatus: false,
+        showUserDropdown: false,
         currentView: 'login',
-        messages: []
+        messages: [],
+        user: {}
       }
     },
 		methods: {
-			logout (){
-        this.$http.get('/logout').then((resp) => {
-          console.log('logout');
-        }, (resp) => {
-          console.log('logout failed');
-        });
+			logout (e){
+        e && e.preventDefault();
+        this.$http.get('/api/user/logout').then((resp) => {
+          this.user = {};
+          this.userStatus = false;
+          this.$root.$children[0].show('success', '注销成功');
+        }, util.httpErrorFn(this));
 			},
       signin (){
         this.overlayStatus = true;
@@ -65,6 +75,10 @@
       signup (){
         this.overlayStatus = true;
         this.currentView = 'signup';
+      },
+      viewUserDropdown (e) {
+        e && e.preventDefault();
+        this.showUserDropdown = true;
       },
       flush () {
         this.messages = [];
@@ -88,6 +102,18 @@
 		},
     created () {
       // console.log('created nav');
+      this.$http.get('/api/user/self').then((res) => {
+        if (res.data.resultCode != 0) {
+          this.userStatus = false;
+          this.user = {}
+        } else {
+          this.userStatus = true;
+          this.user = res.data.resultData;
+          debug('user %j', this.user)
+        }
+      }, (res) => {
+
+      })
     }
 	}
 

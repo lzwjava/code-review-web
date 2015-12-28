@@ -20,7 +20,9 @@
 <script>
   'use strict'
   import md5 from 'blueimp-md5'
+  import util from '../util'
   var debug = require('debug')('components');
+  debug(util);
 	export default{
 		data (){
 			return {
@@ -42,17 +44,11 @@
 				},{
 					emulateJSON: true
 				}).then((res) => {
-					if (res.data.resultCode == 0) {
+					if (util.filterError(this, res)) {
 						this.$parent.overlay = false;
 						console.log('login succeed');
-					} else {
-						var nav = this.$root.$children[0];
-						nav.show('error', res.data.resultInfo);
 					}
-				}, (res) => {
-					// Not found
-					this.$root.$children[0].show('error', res.statusText);
-				})
+				}, util.httpErrorFn(this))
 			}
 		}
 	}
