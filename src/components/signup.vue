@@ -27,6 +27,7 @@
 <script>
   import md5 from 'blueimp-md5'
   import util from '../util'
+  import serviceUrl from "../common/serviceUrl.js";
   var debug = require('debug')('components')
 	export default{
 		data () {
@@ -45,7 +46,7 @@
 				this.$parent.overlay = false;
 			},
 			register () {
-				this.$http.post('/api/user/register', {
+				this.$http.post(serviceUrl.register, {
 					mobilePhoneNumber: this.phone,
 					password: md5(this.password),
 					username: this.username,

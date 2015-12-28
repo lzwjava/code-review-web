@@ -6,7 +6,7 @@
  */
 
 import Vue from 'vue'
-import filters from './filters'
+import filters from './common/filters'
 import Ajax from 'vue-resource'
 import Nav from 'views/nav.vue'
 import Footer from 'views/footer.vue'
@@ -14,6 +14,7 @@ import Setting from 'views/setting.vue'
 
 Vue.config.debug = true;
 Vue.use(Ajax);
+Vue.http.options.root = '/api'
 Vue.http.options.timeout = 1000 * 10;
 
 // register filters globally

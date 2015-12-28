@@ -21,6 +21,7 @@
   'use strict'
   import md5 from 'blueimp-md5'
   import util from '../util'
+  import serviceUrl from "../common/serviceUrl.js"
   var debug = require('debug')('components');
   debug(util);
 	export default{
@@ -38,7 +39,7 @@
 				this.$parent.overlay = false;
 			},
 			login (){
-				this.$http.post('/api/user/login', {
+				this.$http.post(serviceUrl.login, {
 					mobilePhoneNumber: this.phone,
 					password: md5(this.password)
 				},{
