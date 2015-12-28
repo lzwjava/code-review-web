@@ -38,6 +38,7 @@
   import Signup from '../components/signup.vue';
   import DropDown from '../components/dropdown.vue';
   import UserAvatar from '../components/user-avatar.vue';
+  import serviceUrl from "../common/serviceUrl.js";
   import util from '../util'
   var debug = require('debug')('components');  
   var clock = new Date().getFullYear();
@@ -62,7 +63,7 @@
 		methods: {
 			logout (e){
         e && e.preventDefault();
-        this.$http.get('/api/user/logout').then((resp) => {
+        this.$http.get(serviceUrl.logout).then((resp) => {
           this.user = {};
           this.userStatus = false;
         }, util.httpErrorFn(this));
@@ -101,7 +102,7 @@
 		},
     created () {
       // console.log('created nav');
-      this.$http.get('/api/user/self').then((res) => {
+      this.$http.get(serviceUrl.userStatus).then((res) => {
         if (res.data.resultCode != 0) {
           this.userStatus = false;
           this.user = {}

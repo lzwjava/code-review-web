@@ -63,6 +63,7 @@
 	var debug = require('debug')('components');	
 	var plupload = require('moxie-plupload');	
 	import Qiniu from 'qiniu-js-sdk'
+	import serviceUrl from "../common/serviceUrl.js"
 	export default {
 		components: {
 			'user-avatar': UserAvatar
@@ -81,7 +82,7 @@
 		},
 		methods: {
 			updateUser () {
-				this.$http.post('/api/user/update', {
+				this.$http.post(serviceUrl.updateUser, {
 					username: this.username,
 					gitHubUsername: this.github,
 					company: this.company,
@@ -93,9 +94,9 @@
 				}).then((res) => {
 					debug(res)
 					if (util.filterError(this, res)) {
-						 util.show(this, 'success', '更新成功');
-					   this.setUserInfo(res.data.resultData);
-					   util.updateNavUser(this, res.data.resultData);
+						util.show(this, 'success', '更新成功');
+					   	this.setUserInfo(res.data.resultData);
+					   	util.updateNavUser(this, res.data.resultData);
 					}
 				}, util.httpErrorFn(this));
 			},
@@ -111,7 +112,7 @@
 			}
 		},
 		created() {
-			this.$http.get('/api/user/self').then((res) => {
+			this.$http.get(serviceUrl.userStatus).then((res) => {
 				if (util.filterError(this, res)) {
 			    this.setUserInfo(res.data.resultData);
 				}
@@ -119,7 +120,7 @@
 		},
 		ready () {
 			var component = this;
-			this.$http.get('/api/qiniu/token').then((res) => {
+			this.$http.get(serviceUrl.qiniu).then((res) => {
 				if (util.filterError(this, res)) {
 					var uptoken = res.data.resultData.uptoken;
 					var bucketUrl = res.data.resultData.bucketUrl;

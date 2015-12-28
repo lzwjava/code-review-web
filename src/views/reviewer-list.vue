@@ -15,6 +15,7 @@
 
 <script>
 import reviewerCard from '../components/reviewer-card.vue'
+import serviceUrl from "../common/serviceUrl.js"
 var debug = require('debug')('components');
 export default{
   components: {
@@ -155,7 +156,7 @@ export default{
 
   },
   created () {
-    this.$http.get('/api/reviewers', {
+    this.$http.get(serviceUrl.reviewers, {
       limit: 3
     }, (resp) => {
       if (resp.resultCode == 0) {
