@@ -104,56 +104,26 @@
 
 <script type="text/javascript">
   import reviewerCard from '../components/reviewer-card.vue'
+  import serviceUrl from "../common/serviceUrl.js"
+  var debug = require('debug')('home');
+  var util = require('../common/util');
   export default {
     components: {
       reviewer: reviewerCard
     },
     data () {
       return {
-        reviewers: [{
-          name: '乖小鬼',
-          avatar: 'http://tp4.sinaimg.cn/2184723135/180/5603336618/1',
-          info: '经验丰富的 iOS 开发者，曾就职于360Camera、英语流利说',
-          data: [{
-            text: '擅长领域',
-            num: 12
-          },{
-            text: '做过应用',
-            num: 33
-          },{
-            text: '审核案例',
-            num: 44
-          }]
-        },{
-          name: '乖小鬼',
-          avatar: 'http://tp4.sinaimg.cn/2184723135/180/5603336618/1',
-          info: '经验丰富的 iOS 开发者，曾就职于360Camera、英语流利说',
-          data: [{
-            text: '擅长领域',
-            num: 12
-          },{
-            text: '做过应用',
-            num: 33
-          },{
-            text: '审核案例',
-            num: 44
-          }]
-        },{
-          name: '乖小鬼',
-          avatar: 'http://tp4.sinaimg.cn/2184723135/180/5603336618/1',
-          info: '经验丰富的 iOS 开发者，曾就职于360Camera、英语流利说',
-          data: [{
-            text: '擅长领域',
-            num: 12
-          },{
-            text: '做过应用',
-            num: 33
-          },{
-            text: '审核案例',
-            num: 44
-          }]
-        }]
+        reviewers: []
       }
+    },
+    created () {
+      this.$http.get(serviceUrl.reviewers, {
+        limit: 3
+      }).then((resp) => {
+        if (util.filterError(this, resp)) {
+          this.reviewers = resp.data.result;
+        }
+      }, util.httpErrorFn(this));
     }
   }
 </script>

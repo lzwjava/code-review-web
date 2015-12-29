@@ -39,6 +39,7 @@ var app = new WebpackDevServer(webpack(config), {
   historyApiFallback: true,
   proxy: proxy,
   hot: true,
+  debug: true
 });
 
 app.listen(9090, '0.0.0.0', function (err, result) {

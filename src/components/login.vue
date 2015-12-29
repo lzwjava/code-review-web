@@ -12,12 +12,18 @@
 				</li>
 			</ul>
 			<button type="button" @click="login">登录</button>
-			<p>忘记密码？</p>
+<!-- 			<p>忘记密码？</p> -->
 		</div>
 		<p style="padding-top: 30px;">您还没有<strong>注册？</strong></p>
 	</section>
 </template>
 <script>
+  'use strict'
+  import md5 from 'blueimp-md5'
+  import util from '../common/util'
+  import serviceUrl from "../common/serviceUrl.js"
+  var debug = require('debug')('components');
+  debug(util);
 	export default{
 		data (){
 			return {
@@ -33,14 +39,21 @@
 				this.$parent.overlay = false;
 			},
 			login (){
+<<<<<<< HEAD
 				this.$http.post('user/login', {
+=======
+				this.$http.post(serviceUrl.login, {
+>>>>>>> 1919739bed711e1812ee62a610134f3e0fbba34c
 					mobilePhoneNumber: this.phone,
-					password: this.password
+					password: md5(this.password)
 				},{
 					emulateJSON: true
-				}).then(function(res){
-					console.log(res);
-				})
+				}).then((res) => {
+					if (util.filterError(this, res)) {
+						this.$parent.overlay = false;
+						util.updateNavUser(this, res.data.result);
+					}
+				}, util.httpErrorFn(this))
 			}
 		}
 	}

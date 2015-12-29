@@ -2,19 +2,27 @@
   <ul class="list reviewers">
     <li class="item" v-for="reviewer in reviewers">
       <div class="avatar">
-        <img :src="reviewer.avatar">
+        <img :src="reviewer.avatarUrl">
       </div>
-      <h4>{{reviewer.name}}</h4>
-      <h5>{{reviewer.info}}</h5>
+      <h4>{{reviewer.username}}</h4>
+      <h5>{{reviewer.introduction}}</h5>
       <ul class="list data">
-        <li v-for="item in reviewer.data">
-          <p class="num">{{item.num}}</p>
-          <p class="text">{{item.text}}</p>
+        <li>
+          <p class="num">{{reviewer.tags.length}}</p>
+          <p class="text">擅长领域</p>
+        </li>
+        <li>
+          <p class="num">{{reviewer.orderCount}}</p>
+          <p class="text">审核案例</p>
+        </li>
+        <li>
+          <p class="num">{{reviewer.orderCount}}</p>
+          <p class="text">打赏次数</p>
         </li>
       </ul>
       <div class="cover">
-        <p>你觉得申请让</p>
-        <p>{{reviewer.name}}</p>
+        <p>你想申请</p>
+        <p>{{reviewer.username}}</p>
         <p>帮你 Code Review 吗？</p>
         <button type="button" class="submit">雇佣</button>
         <button type="button">了解详情</button>

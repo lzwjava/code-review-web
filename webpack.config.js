@@ -4,14 +4,15 @@ var path = require('path');
 var srcPath = path.join(__dirname, 'src');
 var bootstrapPath = './node_modules/bootstrap/dist/css';
 
-
 module.exports = {
   entry: {
     index : './src/index.js',
-    reviewer: './src/reviewer.js',
+    reviewers: './src/reviewers.js',
     list: './src/list.js',
     setting: './src/setting.js',
-    order: './src/order.js'
+    order: './src/order.js',
+    reviewer: './src/reviewer.js',
+    'order-detail': './src/order-detail.js'
   },
   output: {
     path: __dirname + '/static',
@@ -20,11 +21,13 @@ module.exports = {
   },
   resolve: {
       alias: {
-          jquery: path.join(__dirname, './node_modules/jquery')
+          jquery: path.join(__dirname, './node_modules/jquery'),
+          moxie: path.join(__dirname, 'plupload/js/moxie.js'),
+          'moxie-plupload': path.join(__dirname, 'plupload/js/plupload.dev.js')
       },
       root: srcPath,
       extensions: ['', '.js', '.css'],
-      modulesDirectories: ['node_modules', bootstrapPath, srcPath]
+      modulesDirectories: ['node_modules', bootstrapPath, srcPath, 'vendor']
   },
   module: {
     loaders: [
@@ -34,7 +37,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: /node_modules|vue\/dist|vue-router\/|vue-loader\/|vue-hot-reload-api\//,
+        exclude: /node_modules|vue\/dist|vue-router\/|vue-loader\/|vue-hot-reload-api\/|plupload/,
         loader: 'babel'
       },
       {
@@ -49,6 +52,14 @@ module.exports = {
       },
       { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
         loader: "file-loader" 
+      },
+      // {
+      //   test: /vendor\/plupload\/plupload\.dev\.js/,
+      //   loader: 'imports?mOxie=moxie!exports?window.plupload'
+      // },
+      {
+        test: /plupload\/js\/moxie\.js/,
+        loader: 'exports?this.mOxie'
       }
     ]
   },
@@ -57,7 +68,14 @@ module.exports = {
     plugins: ['transform-runtime']
   },
   plugins: [
-  ]
+    new webpack.ProvidePlugin({
+      mOxie: 'moxie'
+    }),
+  ],
+  debug: true,
+  displayErrorDetails: true,
+  outputPathinfo: true,
+  recordsPath: '/Users/lzw/code-review/code-review-web/webpack.json'
 }
 
 if (process.env.NODE_ENV === 'production') {
