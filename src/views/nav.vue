@@ -131,12 +131,14 @@
   padding 30px 100px
   background white
   .container
+    width 1200px
+    margin 0 auto
     height 40px
     line-height 38px
   .left
     pull-left()
     .title
-      font-size 26px
+      font-size 1.5rem
       margin-left 10px
   .right
     pull-right()
@@ -160,7 +162,7 @@
   z-index 99999
 
 .message
-  font-size 16px
+  font-size 1rem
   line-height 1.8
   padding 10px 20px
   box-sizing border-box

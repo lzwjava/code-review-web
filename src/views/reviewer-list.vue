@@ -62,7 +62,7 @@ body
       color green
       vertical-align sub
 .list-content
-  width 1422px
+  width 1200px
   margin 80px auto
 
 .join-reviewer

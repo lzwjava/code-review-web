@@ -49,9 +49,9 @@ export default {
   .item:nth-child(3n+1)
       margin-left 0
   .item
-    width 426px
-    height 560px
-    margin-left 50px
+    width 300px
+    height 406px
+    margin-left 150px
     background white
     box-shadow: 0px 0px 4px 2px rgba(0,0,0,.2)
     border-radius 3px
@@ -63,25 +63,26 @@ export default {
     &:first-child
       margin-left 0
     .avatar
-      width 160px
-      height 160px
+      width 100px
+      height 100px
       border-radius 50%
       padding 5px
       background white
       box-shadow: 0px 1px 3px 1px rgba(0,0,0,.5)
-      margin 70px auto 50px
+      margin 70px auto 30px
       img
         height 100%
         width 100%
         border-radius 50%
     h4
-      margin-bottom 30px
-      font-size 24px
+      margin-bottom 20px
+      font-size 1rem
     h5
       line-height 150%
-      font-size 20px
+      padding 0 20px
+      font-size 0.8rem
     .data
-      height 134px
+      height 103px
       position absolute
       bottom 0
       left 0 
@@ -91,15 +92,15 @@ export default {
       padding 19px
       text-align center
       li
-        width 120px
+        width 33%
         height 96px
         .num
-          font-size 36px
+          font-size 1.5rem
         .text
-          font-size 16px
+          font-size 12px
           color #3B3E3F
           opacity .6
-          margin-top 40px
+          margin-top 20px
     .cover
       display none
       position absolute
@@ -109,25 +110,25 @@ export default {
       right 0
       background rgba(40,47,49,.9)
       color white
-      font-size 20px
       text-align center
-      padding-top 130px
+      padding-top 120px
       p
         line-height 180%
-      .action-button
-        width 136px
-        line-height 58px
-        height 60px
+        font-weight 200
+      button
+        width 96px
+        line-height 48px
+        height 50px
         border-radius 3px
         border 1px solid white
         color white
-        font-size 20px
-        margin-top 80px
+        font-size 1rem
+        margin-top 30px
         background rgba(255,255,255,.1)
         box-shadow 0 1px 4px rgba(0,0,0,.06)
       .submit
         background blue
         border-color blue
-        margin-right 20px
+        margin-right 15px
         box-shadow 0 2px 4px rgba(0,0,0,.5)
 </style>

@@ -1,13 +1,13 @@
 @import 'variables.styl';
 .home-main
   text-align center
-  font-size 20px
+  font-size 1rem
   h1
-    font-size 64px
+    font-size 3.75rem
   h2
-    font-size 36px
+    font-size 1.5rem
   h3,h4
-    font-size 24px
+    font-size 1rem
   h5
     font-size 20px
 .slide
@@ -40,27 +40,29 @@
       margin-top 50px
       color white
 .feature
-  height 600px
-  padding 100px 0
+  height 450px
+  padding 125px 0
+  background white
   .list
+    width 1200px
+    margin 0 auto
+    display flex
+    flex-direction row
     li
-      width 440px
-      height 400px
-      margin-left 50px
-      font-size 20px
+      height 200px
+      padding-left 50px
+      flex-grow 1
       &:first-child
-        margin-left 0
+        padding-left 0
       .short
-        width 312px
-        height 250px
+        width 235px
+        height 200px
         margin 0 auto
-        border-bottom 1px solid #EDEDEF
       .number
-        font-size 48px
         margin 20px 0 10px
       .icon_crown, .icon_article, .icon_doc
-        width 100px
-        height 100px
+        width 45px
+        height 52px
         margin 0 auto
       .icon_crown
         background url("../img/icon/crown.png") no-repeat
@@ -71,13 +73,18 @@
       .detail
         margin-top 20px
         line-height 150%
+        font-size 0.8rem
 .reviewer
-  height 1000px;
+  height 900px;
   position relative
+  overflow hidden
+  .reviewers
+    width 1200px
+    margin 0 auto
   .bg
     background url("../img/home/reviewer.png") no-repeat
     width 1920px
-    height 1000px
+    height 900px
     position absolute
     top 0
     left 50%
