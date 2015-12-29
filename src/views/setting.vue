@@ -16,7 +16,7 @@
 			</div>
 			<div class="row">
 				<p>手机号码</p>
-				<input type="text" v-model="phone"/>
+				<p>{{phone}}</p>
 			</div>
 			<div class="row">
 				<p>公司名称</p>
@@ -102,15 +102,20 @@
 			}
 		},
 		methods: {
-			updateUser () {
-				this.$http.post(serviceUrl.updateUser, {
-					username: this.username,
+			updateUser (e, cb) {
+				var data = {
 					gitHubUsername: this.github,
 					company: this.company,
 					jobTitle: this.jobTitle,
 					introduction: this.introduction,
-					avatarUrl: this.avatarUrl,
-				}, {
+				};
+				if (this.username && this.username.length > 0) {
+					data.username = this.username;
+				}
+				if (this.avatarUrl && this.avatarUrl.length > 0) {
+					data.avatarUrl = this.avatarUrl;
+				}
+				this.$http.post(serviceUrl.updateUser, data, {
 					emulateJSON: true
 				}).then((res) => {
 					debug(res)
@@ -118,6 +123,8 @@
 						util.show(this, 'success', '更新成功');
 					   	this.setUserInfo(res.data.result);
 					   	util.updateNavUser(this, res.data.result);
+					   	debug('cb: %j', cb);
+					   	cb && cb();
 					}
 				}, util.httpErrorFn(this));
 			},
@@ -169,6 +176,7 @@
 			var component = this;
 			this.$http.get(serviceUrl.qiniu).then((res) => {
 				if (util.filterError(this, res)) {
+					debug('qiniu token %j', res.data);
 					var uptoken = res.data.result.uptoken;
 					var bucketUrl = res.data.result.bucketUrl;
 					var uploader = Qiniu.uploader({
@@ -201,6 +209,7 @@
 					               //    "key": "gogopher.jpg"
 					               //  }
 					               var res = JSON.parse(info);
+					               var domain = up.getOption('domain');
 					               // 从第10个找，跳过之前的 http:// ，看看是不是 / 结尾
 					               if (domain.indexOf('/', 10) == -1) {
 					               	  domain += '/';
@@ -208,7 +217,10 @@
 					               var sourceLink = domain + res.key;
 					               debug('sourceLink: %j', sourceLink);
 					               component.avatarUrl = sourceLink;
-					               component.updateUser();
+					               component.updateUser(null, () => {
+					               	  // todo，component 没有进行更新的问题
+					               	  window.location = '/setting.html';
+					               });
 					        },
 					        'Error': function(up, err, errTip) {
 					               debug('qiniu error %j errTip %j', err, errTip);
