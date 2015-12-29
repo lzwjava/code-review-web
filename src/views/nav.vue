@@ -21,7 +21,7 @@
                 <a class="dropdown-item" href="setting.html">个人设置</a>
                 <a class="dropdown-item" href="order.html">Code Review 订单列表</a>
                 <div class="dropdown-divider"></div>                
-                <a class="dropdown-item" @click="logout" href="/session">注销</a>
+                <a class="dropdown-item" @click="logout" href="/">注销</a>
               </dropdown>
             </li>
           </ul>
@@ -66,6 +66,7 @@
         this.$http.get(serviceUrl.logout).then((resp) => {
           this.user = {};
           this.userStatus = false;
+          window.location = '/';
         }, util.httpErrorFn(this));
 			},
       signin (){
@@ -103,12 +104,12 @@
     created () {
       // console.log('created nav');
       this.$http.get(serviceUrl.userStatus).then((res) => {
-        if (res.data.resultCode != 0) {
+        if (res.data.code != 0) {
           this.userStatus = false;
           this.user = {}
         } else {
           this.userStatus = true;
-          this.user = res.data.resultData;
+          this.user = res.data.result;
           debug('user %j', this.user)
         }
       }, (res) => {

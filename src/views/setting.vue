@@ -2,7 +2,7 @@
 	<section class="setting">
 		<h2>个人设置</h2>
 		<section class="form">
-			<div class="avatar" id="upload-container">
+			<div class="avatar-container" id="upload-container">
 				<user-avatar :user="user"></user-avatar>
 				<button type="button" id="pickfiles">修改头像</button>
 			</div>
@@ -16,7 +16,7 @@
 			</div>
 			<div class="row">
 				<p>手机号码</p>
-				<input type="text" v-model="phone"/>
+				<p>{{phone}}</p>
 			</div>
 			<div class="row">
 				<p>公司名称</p>
@@ -38,17 +38,14 @@
 			<h2>想学领域</h2>
 			<div class="tags-content">
 				<ul class="list">
-					<li><span>dasdasdas</span><i class="delete">X</i></li>
-					<li><span>dasdasdas</span><i class="delete">X</i></li>
-					<li><span>dasdasdas</span><i class="delete">X</i></li>
+					<li v-for="tag in tags"><span>{{tag.tagName}}</span><i class="delete" @click="removeTag(tag.tagId)">X</i></li>
 				</ul>
 				<div class="select-content">
 					<p>输入 「想学领域」</p>
-					<select>
-						<option>111</option>
-						<option>111</option><option>111</option><option>111</option>
+					<select v-model="selected">
+						<option v-for="tag in remains" :value="{tagId: tag.tagId}">{{tag.tagName}}</option>
 					</select>
-					<button type="button">添加</button>
+					<button type="button" @click="addTag">添加</button>
 				</div>
 			</div>
 		</section>
@@ -60,7 +57,7 @@
 <script type="text/javascript">
 	import util from '../util';
 	import UserAvatar from '../components/user-avatar.vue';
-	var debug = require('debug')('components');	
+	var debug = require('debug')('setting');
 	var plupload = require('moxie-plupload');	
 	import Qiniu from 'qiniu-js-sdk'
 	import serviceUrl from "../common/serviceUrl.js"
@@ -78,25 +75,56 @@
 				jobTitle: '',
 				introduction: '',
 				avatarUrl: '',
+				tags: [],
+				allTags: [],
+				selected: ''
+			}
+		},
+		computed: {
+			'remains': function () {
+				if (!this.allTags || !this.tags) {
+					return [];
+				}
+				var remain = [];
+				for (var i = 0; i < this.allTags.length; i ++) {
+					var tag = this.allTags[i];
+					var found = false;
+					for (var j = 0; j < this.tags.length; j++) {
+						if (tag.tagId === this.tags[j].tagId) {
+							found = true;
+						}
+					}
+					if (!found) {
+						remain.push(tag);
+					}
+				}
+				return remain;
 			}
 		},
 		methods: {
-			updateUser () {
-				this.$http.post(serviceUrl.updateUser, {
-					username: this.username,
+			updateUser (e, cb) {
+				var data = {
 					gitHubUsername: this.github,
 					company: this.company,
 					jobTitle: this.jobTitle,
 					introduction: this.introduction,
-					avatarUrl: this.avatarUrl,
-				}, {
+				};
+				if (this.username && this.username.length > 0) {
+					data.username = this.username;
+				}
+				if (this.avatarUrl && this.avatarUrl.length > 0) {
+					data.avatarUrl = this.avatarUrl;
+				}
+				this.$http.post(serviceUrl.updateUser, data, {
 					emulateJSON: true
 				}).then((res) => {
 					debug(res)
 					if (util.filterError(this, res)) {
 						util.show(this, 'success', '更新成功');
-					   	this.setUserInfo(res.data.resultData);
-					   	util.updateNavUser(this, res.data.resultData);
+					   	this.setUserInfo(res.data.result);
+					   	util.updateNavUser(this, res.data.result);
+					   	debug('cb: %j', cb);
+					   	cb && cb();
 					}
 				}, util.httpErrorFn(this));
 			},
@@ -109,12 +137,38 @@
 				this.jobTitle = user.jobTitle;
 				this.introduction = user.introduction;
 				this.avatarUrl = user.avatarUrl;
+				this.tags = user.tags;
+			},
+			addOrRemoveTag (op, tagId) {
+				this.$http.post(serviceUrl.userTag, {
+					tagId: tagId,
+					op: op
+				}, {
+					emulateJSON: true
+				}).then((res) => {
+					this.tags = res.data.result;
+				}, util.httpErrorFn(this));
+			},
+			addTag () {
+				if (!this.selected.tagId) {
+					util.show(this, 'warn', '请选择领域');
+				}
+				this.addOrRemoveTag('add', this.selected.tagId);
+			},
+			removeTag(tagId) {
+				this.addOrRemoveTag('remove', tagId);
 			}
 		},
 		created() {
 			this.$http.get(serviceUrl.userStatus).then((res) => {
 				if (util.filterError(this, res)) {
-			    this.setUserInfo(res.data.resultData);
+					debug(res.data.result);
+			    this.setUserInfo(res.data.result);
+				}
+			}, util.httpErrorFn(this))
+			this.$http.get(serviceUrl.tags).then((res) => {
+				if (util.filterError(this, res)) {
+					this.allTags = res.data.result;
 				}
 			}, util.httpErrorFn(this))
 		},
@@ -122,8 +176,9 @@
 			var component = this;
 			this.$http.get(serviceUrl.qiniu).then((res) => {
 				if (util.filterError(this, res)) {
-					var uptoken = res.data.resultData.uptoken;
-					var bucketUrl = res.data.resultData.bucketUrl;
+					debug('qiniu token %j', res.data);
+					var uptoken = res.data.result.uptoken;
+					var bucketUrl = res.data.result.bucketUrl;
 					var uploader = Qiniu.uploader({
 					    runtimes: 'html5,flash,html4',    //上传模式,依次退化
 					    browse_button: 'pickfiles',       //上传选择的点选按钮，**必需**
@@ -154,6 +209,7 @@
 					               //    "key": "gogopher.jpg"
 					               //  }
 					               var res = JSON.parse(info);
+					               var domain = up.getOption('domain');
 					               // 从第10个找，跳过之前的 http:// ，看看是不是 / 结尾
 					               if (domain.indexOf('/', 10) == -1) {
 					               	  domain += '/';
@@ -161,7 +217,10 @@
 					               var sourceLink = domain + res.key;
 					               debug('sourceLink: %j', sourceLink);
 					               component.avatarUrl = sourceLink;
-					               component.updateUser();
+					               component.updateUser(null, () => {
+					               	  // todo，component 没有进行更新的问题
+					               	  window.location = '/setting.html';
+					               });
 					        },
 					        'Error': function(up, err, errTip) {
 					               debug('qiniu error %j errTip %j', err, errTip);
@@ -185,23 +244,16 @@
 
 <style lang="stylus">
 @import "../stylus/variables.styl";
-	
-	.avatar
-		padding 30px
-		background white
+
+	.avatar-container
 		text-align center
-		border-bottom 1px solid rgba(0,0,0,0.15)
-		width 128px
-		height 128px
-		.avatar-img
-			width 100%
-			height 100%
-			margin 0 auto
-			img
-				width 120px
-				height 120px
 		button
-			margin-top 30px
+			display block
+			margin 10px auto
+		.avatar
+			width 150px
+			height 150px
+			margin 10px
 
 	.setting
 		width 1422px
