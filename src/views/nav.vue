@@ -66,6 +66,7 @@
         this.$http.get(serviceUrl.logout).then((resp) => {
           this.user = {};
           this.userStatus = false;
+          window.localStorage.removeItem('user');
           window.location = '/';
         }, util.httpErrorFn(this));
 			},
@@ -103,7 +104,7 @@
 		},
     created () {
       // console.log('created nav');
-      this.$http.get(serviceUrl.userStatus).then((res) => {
+      /*this.$http.get(serviceUrl.userStatus).then((res) => {
         if (res.data.code != 0) {
           this.userStatus = false;
           this.user = {}
@@ -114,7 +115,11 @@
         }
       }, (res) => {
 
-      })
+      })*/
+      if(window.localStorage.getItem('user')){
+        this.userStatus = true;
+        this.user = JSON.parse(window.localStorage.getItem('user'));
+      }
     }
 	}
 
@@ -131,7 +136,7 @@
   padding 30px 100px
   background white
   .container
-    width 1200px
+    width 1160px
     margin 0 auto
     height 40px
     line-height 38px

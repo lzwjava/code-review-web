@@ -51,12 +51,13 @@ export default {
   .item
     width 300px
     height 406px
-    margin-left 150px
+    margin-left 130px
     background white
     box-shadow: 0px 0px 4px 2px rgba(0,0,0,.2)
     border-radius 3px
     position relative
     margin-bottom 80px
+    vertical-align top
     &:hover
       .cover
         display block
@@ -93,7 +94,6 @@ export default {
       text-align center
       li
         width 33%
-        height 96px
         .num
           font-size 1.5rem
         .text
