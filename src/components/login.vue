@@ -39,7 +39,11 @@
 				this.$parent.overlay = false;
 			},
 			login (){
+<<<<<<< HEAD
+				this.$http.post('user/login', {
+=======
 				this.$http.post(serviceUrl.login, {
+>>>>>>> 1919739bed711e1812ee62a610134f3e0fbba34c
 					mobilePhoneNumber: this.phone,
 					password: md5(this.password)
 				},{
