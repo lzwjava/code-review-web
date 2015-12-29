@@ -159,7 +159,7 @@ export default{
     this.$http.get(serviceUrl.reviewers, {
       limit: 3
     }, (resp) => {
-      if (resp.resultCode == 0) {
+      if (resp.code == 0) {
         debug(resp)
       }
     }, (resp) => {

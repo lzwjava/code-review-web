@@ -38,7 +38,7 @@
 			<h2>想学领域</h2>
 			<div class="tags-content">
 				<ul class="list">
-					<li v-for="tag in tags"><span>{{tag.tagName}}</span><i class="delete">X</i></li>
+					<li v-for="tag in tags"><span>{{tag.tagName}}</span><i class="delete" @click="removeTag(tag.tagId)">X</i></li>
 				</ul>
 				<div class="select-content">
 					<p>输入 「想学领域」</p>
@@ -116,8 +116,8 @@
 					debug(res)
 					if (util.filterError(this, res)) {
 						util.show(this, 'success', '更新成功');
-					   	this.setUserInfo(res.data.resultData);
-					   	util.updateNavUser(this, res.data.resultData);
+					   	this.setUserInfo(res.data.result);
+					   	util.updateNavUser(this, res.data.result);
 					}
 				}, util.httpErrorFn(this));
 			},
@@ -132,23 +132,37 @@
 				this.avatarUrl = user.avatarUrl;
 				this.tags = user.tags;
 			},
+			addOrRemoveTag (op, tagId) {
+				this.$http.post(serviceUrl.userTag, {
+					tagId: tagId,
+					op: op
+				}, {
+					emulateJSON: true
+				}).then((res) => {
+					this.tags = res.data.result;
+				}, util.httpErrorFn(this));
+			},
 			addTag () {
 				if (!this.selected.tagId) {
 					util.show(this, 'warn', '请选择领域');
 				}
-				debug(this.selected.tagId);
+				this.addOrRemoveTag('add', this.selected.tagId);
+			},
+			removeTag(tagId) {
+				debug('removeTag ' + tagId);
+				addOrRemoveTag('remove', tagId);
 			}
 		},
 		created() {
 			this.$http.get(serviceUrl.userStatus).then((res) => {
 				if (util.filterError(this, res)) {
-					debug(res.data.resultData);
-			    this.setUserInfo(res.data.resultData);
+					debug(res.data.result);
+			    this.setUserInfo(res.data.result);
 				}
 			}, util.httpErrorFn(this))
 			this.$http.get(serviceUrl.tags).then((res) => {
 				if (util.filterError(this, res)) {
-					this.allTags = res.data.resultData;
+					this.allTags = res.data.result;
 				}
 			}, util.httpErrorFn(this))
 		},
@@ -156,8 +170,8 @@
 			var component = this;
 			this.$http.get(serviceUrl.qiniu).then((res) => {
 				if (util.filterError(this, res)) {
-					var uptoken = res.data.resultData.uptoken;
-					var bucketUrl = res.data.resultData.bucketUrl;
+					var uptoken = res.data.result.uptoken;
+					var bucketUrl = res.data.result.bucketUrl;
 					var uploader = Qiniu.uploader({
 					    runtimes: 'html5,flash,html4',    //上传模式,依次退化
 					    browse_button: 'pickfiles',       //上传选择的点选按钮，**必需**

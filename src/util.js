@@ -1,7 +1,7 @@
 exports.filterError = (component, res) => {
-  if (res.data.resultCode != 0) {
+  if (res.data.code != 0) {
     var nav = component.$root.$children[0];
-    nav.show('error', res.data.resultInfo);
+    nav.show('error', res.data.error);
     return false;
   } else {
     return true;

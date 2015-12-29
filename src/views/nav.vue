@@ -103,12 +103,12 @@
     created () {
       // console.log('created nav');
       this.$http.get(serviceUrl.userStatus).then((res) => {
-        if (res.data.resultCode != 0) {
+        if (res.data.code != 0) {
           this.userStatus = false;
           this.user = {}
         } else {
           this.userStatus = true;
-          this.user = res.data.resultData;
+          this.user = res.data.result;
           debug('user %j', this.user)
         }
       }, (res) => {

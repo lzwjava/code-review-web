@@ -47,7 +47,7 @@
 				}).then((res) => {
 					if (util.filterError(this, res)) {
 						this.$parent.overlay = false;
-						util.updateNavUser(this, res.data.resultData);
+						util.updateNavUser(this, res.data.result);
 					}
 				}, util.httpErrorFn(this))
 			}
