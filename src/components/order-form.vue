@@ -101,6 +101,7 @@ module.exports = {
   width 45%
   height 100%
   float left
+  padding 40px
 
 .btn-cancel
   float left
@@ -113,5 +114,8 @@ module.exports = {
 .btn-cancel:before 
   content '×'
   font-size 30px
+
+.form-line
+  padding 10px  
 
 </style>

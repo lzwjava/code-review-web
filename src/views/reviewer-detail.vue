@@ -107,7 +107,7 @@ export default {
     margin 30px auto
 
 .top-region
-    height 438px   
+    height 438px
 
 .left-region
     background url('../img/reviewer-detail-bg.png')
