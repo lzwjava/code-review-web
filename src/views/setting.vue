@@ -55,7 +55,7 @@
 </template>
 
 <script type="text/javascript">
-	import util from '../util';
+	import util from '../common/util';
 	import UserAvatar from '../components/user-avatar.vue';
 	var debug = require('debug')('setting');
 	var plupload = require('moxie-plupload');	

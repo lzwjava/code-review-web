@@ -17,7 +17,7 @@
 import reviewerCard from '../components/reviewer-card.vue'
 import serviceUrl from "../common/serviceUrl.js"
 var debug = require('debug')('reviewer-list');
-var util = require('../util');
+var util = require('../common/util');
 export default{
   components: {
       reviewer: reviewerCard

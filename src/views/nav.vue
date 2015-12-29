@@ -39,7 +39,7 @@
   import DropDown from '../components/dropdown.vue';
   import UserAvatar from '../components/user-avatar.vue';
   import serviceUrl from "../common/serviceUrl.js";
-  import util from '../util'
+  import util from '../common/util'
   var debug = require('debug')('components');  
   var clock = new Date().getFullYear();
 	export default {
