@@ -36,9 +36,9 @@
 
             <div class="right-region">
                 <p class="tag-title">擅长领域</p>
-                <template v-for="tag in reviewer.tags">
-                    <tag :tag="tag"></tag>
-                </template>
+                <div class="tag-list">
+                    <tag v-for="tag in reviewer.tags" :tag="tag"></tag>
+                </div>
             </div>
         </div>
 
@@ -102,7 +102,7 @@ export default {
     margin 30px auto
 
 .top-region
-    height 438px    
+    height 438px   
 
 .left-region
     background url('../img/reviewer-detail-bg.png')
@@ -115,6 +115,8 @@ export default {
     height 100%
     background url('../img/reviewer-tag.png')
     float right
+    .tag-list
+        margin 10px
 
 .order-list
     background white
