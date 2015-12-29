@@ -149,8 +149,7 @@
 				this.addOrRemoveTag('add', this.selected.tagId);
 			},
 			removeTag(tagId) {
-				debug('removeTag ' + tagId);
-				addOrRemoveTag('remove', tagId);
+				this.addOrRemoveTag('remove', tagId);
 			}
 		},
 		created() {
