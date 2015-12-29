@@ -8,6 +8,8 @@ import Home from 'views/home.vue'
 Vue.config.debug = true;
 Vue.use(Ajax);
 
+Vue.http.options.root = '/api';
+
 // register filters globally
 for(let  k in filters){
   Vue.filter(k, filters[k])

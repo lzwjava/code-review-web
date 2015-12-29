@@ -33,7 +33,7 @@
 				this.$parent.overlay = false;
 			},
 			login (){
-				this.$http.post('/api/user/login', {
+				this.$http.post('user/login', {
 					mobilePhoneNumber: this.phone,
 					password: this.password
 				},{
