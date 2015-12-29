@@ -10,7 +10,7 @@ import filters from './common/filters'
 import Ajax from 'vue-resource'
 import Nav from 'views/nav.vue'
 import Footer from 'views/footer.vue'
-import ReviewerDetail from 'views/reviewer-detail.vue'
+import List from 'views/reviewer-list.vue'
 
 Vue.config.debug = true;
 Vue.use(Ajax);
@@ -26,6 +26,6 @@ let reviewer = new Vue({
   components:{
     'my-nav': Nav,
     'my-footer': Footer,
-    'reviewer-detail': ReviewerDetail
+    'reviewer-list': List
   }
 })
