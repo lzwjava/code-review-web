@@ -3,7 +3,7 @@
 </template>
 <script>
   var debug = require('debug')('components');
-  var escape = require('../util').escape;
+  var escape = require('../common/util').escape;
   var wordColor = require('word-color');
   module.exports = {
     props: ['user'],

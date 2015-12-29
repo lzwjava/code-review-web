@@ -20,7 +20,7 @@
 <script>
   'use strict'
   import md5 from 'blueimp-md5'
-  import util from '../util'
+  import util from '../common/util'
   import serviceUrl from "../common/serviceUrl.js"
   var debug = require('debug')('components');
   debug(util);
