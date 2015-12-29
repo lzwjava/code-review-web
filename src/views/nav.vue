@@ -11,7 +11,7 @@
 
         <div class="right">
           <ul class="list">
-            <li><a href="./reviewer.html">发现大神</a></li>
+            <li><a href="./reviewers.html">发现大神</a></li>
             <li>精彩案例</li>
             <li v-if="!userStatus" class="signup" @click="signup">注册</li>
             <li v-if="!userStatus" @click="signin">登录</li>

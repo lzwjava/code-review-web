@@ -4,10 +4,41 @@
         <div class="top-region">
             <div class="left-region">
 
+                <div class="region-title">大神信息</div>
+
+                <div class="center-region">
+                    <div class="basic-info">
+                        <user-avatar :user="reviewer"></user-avatar>
+                        <p class="name">{{reviewer.username}}</p>
+                        <p class="intro">{{reviewer.introduction}}</p>
+                    </div>
+
+                    <div class="count-region">
+                        <div class="count-item">
+                          <p class="num">{{reviewer.tags.length}}</p>
+                          <p class="text">擅长领域</p>
+                        </div>
+                        <div class="count-item">
+                          <p class="num">{{reviewer.orderCount}}</p>
+                          <p class="text">审核案例</p>
+                        </div>
+                        <div class="count-item">
+                          <p class="num">{{reviewer.experience}}</p>
+                          <p class="text">经验年限</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button class="order-button">申请 Code Review</button>
+                    </div>
+                </div>
             </div>
 
             <div class="right-region">
-
+                <p class="tag-title">擅长领域</p>
+                <template v-for="tag in reviewer.tags">
+                    <tag :tag="tag"></tag>
+                </template>
             </div>
         </div>
 
@@ -22,8 +53,43 @@
 
 <script type="text/javascript">
 
-export default {
+import UserAvatar from '../components/user-avatar.vue'
+import Tag from '../components/tag.vue'
+import util from '../common/util'
+import serviceUrl from "../common/serviceUrl.js"
 
+var debug = require('debug')('reviewer-detail');
+
+export default {
+    components: {
+        'user-avatar': UserAvatar,
+        'tag': Tag
+    },
+    data () {
+        return {
+            reviewer: {
+                tags: []
+            }
+        }
+    },
+    methods: {
+
+    },
+
+    created() {
+        var params = util.getSearchParameters()
+        if (!params.id) {
+            util.show(this, 'error', '请提供 id 参数');
+            return;
+        }
+        var reviewerId= params.id
+        this.$http.get(serviceUrl.reviewerView, {
+            id:reviewerId
+        }).then((resp) => {
+            this.reviewer = resp.data.result;
+            debug('%j', this.reviewer);
+        }, util.httpErrorFn(this))
+    }
 }
 
 </script>
@@ -40,18 +106,63 @@ export default {
 
 .left-region
     background url('../img/reviewer-detail-bg.png')
-    width 67%
+    width 69%
     float left
     height 100%
 
 .right-region
-    width 30%
+    width 28%
     height 100%
-    background #fff
+    background url('../img/reviewer-tag.png')
     float right
 
 .order-list
     background white
     margin-top 30px
+
+.region-title
+    margin-left 50px
+    margin-top 50px 
+
+.center-region
+    width 373px
+    margin 0 auto
+    text-align center    
+    .basic-info
+        width 260px
+        margin 0 auto
+        .avatar
+            width 100px
+            height 100px
+        .name
+            margin-top 20px
+        .intro
+            margin-top 20px
+
+.count-region
+    margin-top 20px
+    .count-item
+      width 120px
+      display inline-block
+      .num
+        font-size 24px
+      .text
+        font-size 12px
+        color #3B3E3F
+        opacity .6
+        margin-top 10px 
+
+.order-button
+    margin-top 20px
+    background #00CFF5
+    border-radius 3px
+    font-size 16px
+    color #FFFFFF
+    line-height 16px
+    padding 20px
+
+.tag-title
+    margin-left 25px
+    margin-top 25px
 
 </style>
