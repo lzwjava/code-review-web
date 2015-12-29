@@ -65,13 +65,15 @@
               <li class="clo-2">
                 <div class="info">
                   <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
-                  <h6 class="title">
-                    dsadadasdas
-                  </h6>
-                  <h6 class="tips">
-                    <span>1111</span>
-                    <span>2222</span>
-                  </h6>
+                  <div class="text">
+                    <h6 class="title">
+                      dsadadasdas
+                    </h6>
+                    <h6 class="tips">
+                      <span>1111</span>
+                      <span>2222</span>
+                    </h6>
+                  </div>
                 </div>
                 <!-- <div class="detail">
                   <p>
@@ -82,15 +84,75 @@
                   </p>
                 </div> -->
               </li>
-              <li class="clo-1"></li>
+              <li class="clo-1">
+                <div class="info">
+                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <div class="text">
+                    <h6 class="title">
+                      dsadadasdas
+                    </h6>
+                    <h6 class="tips">
+                      <span>1111</span>
+                      <span>2222</span>
+                    </h6>
+                  </div>
+              </li>
             </div>
             <div class="row">
-              <li class="clo-1"></li>
-              <li class="clo-1"></li>
-              <li class="clo-1"></li>
+              <li class="clo-1">
+                <div class="info">
+                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <div class="text">
+                    <h6 class="title">
+                      dsadadasdas
+                    </h6>
+                    <h6 class="tips">
+                      <span>1111</span>
+                      <span>2222</span>
+                    </h6>
+                  </div>
+              </li>
+              <li class="clo-1">
+                <div class="info">
+                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <div class="text">
+                    <h6 class="title">
+                      dsadadasdas
+                    </h6>
+                    <h6 class="tips">
+                      <span>1111</span>
+                      <span>2222</span>
+                    </h6>
+                  </div>
+              </li>
+              <li class="clo-1">
+                <div class="info">
+                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <div class="text">
+                    <h6 class="title">
+                      dsadadasdas
+                    </h6>
+                    <h6 class="tips">
+                      <span>1111</span>
+                      <span>2222</span>
+                    </h6>
+                  </div>
+              </li>
             </div>
             <div class="row">
-              <li class="clo-3"></li>
+              <li class="clo-3">
+                <div class="info">
+                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <div class="text">
+                    <h6 class="title">
+                      dsadadasdas
+                    </h6>
+                    <h6 class="tips">
+                      <span>1111</span>
+                      <span>2222</span>
+                    </h6>
+                  </div>
+              </li>
             </div>
           </ul>
         </div>
