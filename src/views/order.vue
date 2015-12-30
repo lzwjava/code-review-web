@@ -21,13 +21,13 @@
 					<div class="list-cell" v-for="item in tableHead">{{item}}</div>
 				</dt>
 				<dd class="list-row" v-for="item in tableData" :class="{'even': $index%2 == 0}">
-					<div class="list-cell">{{item.number}}</div>
+					<div class="list-cell">{{item.orderId}}</div>
 					<div class="list-cell">
-						<img :src="item.avatar">
-						<span>{{item.nickname}}</span>
+						<img :src="item.reviewer.avatarUrl">
+						<span>{{item.reviewer.username}}</span>
 					</div>
-					<div class="list-cell">{{item.status}}</div>
-					<div class="list-cell">{{item.date}}</div>
+					<div class="list-cell">{{item.status | statusDesc}}</div>
+					<div class="list-cell">{{item.created}}</div>
 					<div class="list-cell">
 						{{item.money}}
 					</div>
@@ -45,11 +45,15 @@
 </template>
 
 <script>
+	import util from '../common/util'
+	import serviceUrl from "../common/serviceUrl.js"
+	var debug = require('debug')('order');
+
 	export default {
 		data () {
 			return { 
 				tableHead: ['序号','用户名','状态','申请日期','打赏金额','接手','详情','拒绝'],
-				tableData: [{number: 1,date: '2015-12-14', nickname: 'IU',avatar: 'http://img5.duitang.com/uploads/item/201411/06/20141106213813_uCE3W.thumb.700_0.jpeg',status: 0,money: '1215'},{number: 2,date: '2015-12-16', nickname: '李智恩',avatar: 'http://img5.duitang.com/uploads/item/201408/02/20140802204944_BK8V5.png',status: 1,money: '125'}],
+				tableData: [],
 				showJump : false,
 				showInfo: false,
 				pageJump: '',
@@ -63,7 +67,12 @@
 			}
 		},
 		created() {
-			
+			this.$http.get(serviceUrl.ordersList)
+			.then((resp) => {
+				if (util.filterError(this, resp)) {
+					this.tableData = resp.data.result;
+				}
+			}, util.httpErrorFn(this))
 		}
 	}
 </script>

@@ -16,10 +16,24 @@ export function fromNow (time) {
   }
 }
 
-function pluralize(time, label) {
+export function pluralize(time, label) {
     if (time === 1) {
         return time + label
     }
 
     return time + label + 's';
+}
+
+export function statusDesc(status) {
+  switch(status) {
+    case 0: 
+      return '未支付';
+    case 1:
+      return '等待审阅';
+    case 2:
+      return '已完成';
+    case 3:
+      return '已拒绝';
+  }
+  return '';
 }

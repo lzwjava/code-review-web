@@ -9,7 +9,7 @@ Vue.config.debug = true;
 Vue.use(Ajax);
 
 // 这里是 debug 模块调试，有用的，不用移除
-localStorage.debug = 'api,user,components,setting,reviewer-list,home,reviewer-detail,order-form';
+localStorage.debug = 'api,user,components,setting,reviewer-list,home,reviewer-detail,order-form,order';
 
 Vue.http.options.root = '/api'
 // register filters globally
