@@ -29,7 +29,6 @@
 							<img :src="item.learner.avatarUrl">
 							<span>{{item.learner.username}}</span>
 						</div>
-						
 					</div>
 					<div class="list-cell">{{item.status | reviewStatus}}</div>
 					<div class="list-cell">{{item.created}}</div>
@@ -50,8 +49,10 @@
 </template>
 
 <script>
-import util from '../common/util'
-import serviceUrl from "../common/serviceUrl.js"
+	import util from '../common/util'
+	import serviceUrl from "../common/serviceUrl.js"
+	var debug = require('debug')('order');
+
 	export default {
 		data () {
 			return { 
@@ -59,14 +60,14 @@ import serviceUrl from "../common/serviceUrl.js"
 				tableData: [],
 				showJump : true,
 				showSearch: true,
-				pageJump: '',
 				pageList: [1,2,3,4],
 				pageStart: 1,
 				pageLimit : {
 					min: 1,
 					max: 30,
 					total: 1
-				}
+				},
+				user : {}
 			}
 		},
 		methods: {
@@ -84,12 +85,26 @@ import serviceUrl from "../common/serviceUrl.js"
 			}
 		},
 		created() {
+			this.user = util.getLocalUser();
 			this.$http.get(serviceUrl.ordersList,{
 				skip: 0,
 				limit: 10
-			}).then((resp) => {
-				this.tableData = resp.data.result;
-			},util.httpErrorFn(this))
+			})
+			.then((resp) => {
+				if (util.filterError(this, resp)) {
+					debug('%j', resp.data.result);
+					this.tableData = resp.data.result;
+				}
+			}, util.httpErrorFn(this))
+		},
+		methods: {
+			targetUser (review) {
+				if (this.user.type == 0) {
+					return review.reviewer;
+				} else {
+					return review.learner;
+				}
+			},
 		}
 	}
 </script>

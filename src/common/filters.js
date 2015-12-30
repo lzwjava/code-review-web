@@ -16,7 +16,6 @@ exports.fromNow =  (time) => {
   }
 }
 
-
 exports.reviewStatus = (state) => {
   let text = '审核中'
     switch(state){
@@ -33,10 +32,32 @@ exports.integer = (val) =>{
 }
 
 
-function pluralize(time, label) {
+exports.pluralize = (time, label) =>{
     if (time === 1) {
         return time + label
     }
 
     return time + label + 's';
+}
+
+exports.statusDesc = (status) =>{
+  switch(status) {
+    case 0: 
+      return '未支付';
+    case 1:
+      return '等待审阅';
+    case 2:
+      return '已完成';
+    case 3:
+      return '已拒绝';
+  }
+  return '';
+}
+
+exports.moneyAsYuan = (money) => {
+  if (!money) {
+    return 0;
+  } else {
+    return money / 1000;
+  }
 }

@@ -6,20 +6,12 @@
  */
 
 import Vue from 'vue'
-import filters from './common/filters'
-import Ajax from 'vue-resource'
 import Nav from 'views/nav.vue'
 import Footer from 'views/footer.vue'
 import OrderDetail from 'views/order-detail.vue'
+import util from './common/util'
 
-Vue.config.debug = true;
-Vue.use(Ajax);
-Vue.http.options.root = '/api'
-
-// register filters globally
-for(let  k in filters){
-  Vue.filter(k, filters[k])
-}
+util.configVue(Vue)
 
 let reviewer = new Vue({
   el: 'body',
