@@ -27,7 +27,7 @@ module.exports = {
       },
       root: srcPath,
       extensions: ['', '.js', '.css'],
-      modulesDirectories: ['node_modules', bootstrapPath, srcPath, 'vendor']
+      modulesDirectories: ['node_modules', bootstrapPath, 'plupload', srcPath]
   },
   module: {
     loaders: [

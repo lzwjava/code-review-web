@@ -2,7 +2,6 @@
 	<section class="setting">
 		<h2>个人设置</h2>
 		<section class="form">
-			<h3>想学领域</h3>
 			<div class="white">
 				<div class="avatar-container" id="upload-container">
 					<user-avatar :user="user"></user-avatar>
@@ -40,13 +39,16 @@
 			</div>
 		</section>
 		<section class="tags">
-			<h3>想学领域</h3>
 			<div class="tags-content">
+				<h3 class="region-title">{{tagTitle}}</h3>
 				<ul class="list">
-					<li v-for="tag in tags"><span>{{tag.tagName}}</span><i class="delete" @click="removeTag(tag.tagId)"></i></li>
+					<li v-for="tag in tags">
+						<tag :tag="tag"></tag>
+						<i class="delete" @click="removeTag(tag.tagId)"></i>
+					</li>
 				</ul>
 				<div class="select-content">
-					<p>输入 「想学领域」</p>
+					<p>输入 「{{tagTitle}}」</p>
 					<select v-model="selected">
 						<option v-for="tag in remains" :value="{tagId: tag.tagId}">{{tag.tagName}}</option>
 					</select>
@@ -63,12 +65,15 @@
 	import util from '../common/util';
 	import UserAvatar from '../components/user-avatar.vue';
 	var debug = require('debug')('setting');
+	var moxie = require('moxie');
 	var plupload = require('moxie-plupload');	
 	import Qiniu from 'qiniu-js-sdk'
 	import serviceUrl from "../common/serviceUrl.js"
+	import Tag from '../components/tag.vue'
 	export default {
 		components: {
-			'user-avatar': UserAvatar
+			'user-avatar': UserAvatar,
+			'tag': Tag
 		},
 		data () {
 			return {
@@ -104,6 +109,14 @@
 					}
 				}
 				return remain;
+			},
+			'tagTitle': function () {
+				debug('type %j', this.user.type);
+				switch (this.user.type) {
+					case 0: return '想学领域';
+					case 1: return '擅长领域';
+				}
+				return '';
 			}
 		},
 		methods: {
@@ -336,26 +349,28 @@
 				box-shadow 0 4px 4px rgba(135,135,135,0.15)
 				font-weight 200
 				border-radius 3px
+				.region-title
+					margin 20px 0px 0px 20px
+					height auto
 				.list
-					padding 20px
+					padding 10px
 					background white
 					min-height 300px
 					li
-						margin-right 20px
-						padding 0 20px
-						margin-bottom 20px
 						border-radius 3px
 						height 48px
-						line-height 48px
-						text-align center
+						width 50%
+						text-align left
+						padding-left 10px
+						.tag-item
+							width auto
 						.delete
-							margin-left 20px
+							margin-left 10px
 							background url(../img/icon/delete.png) no-repeat
 							width 10px
 							height 10px
-							display block
-							float right
-							margin-top 17px
+							display inline-block
+							margin-top 20px
 				.select-content
 					border-top 1px solid rgba(0,0,0,0.15)
 					height 150px

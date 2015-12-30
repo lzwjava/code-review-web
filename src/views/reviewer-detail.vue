@@ -121,6 +121,9 @@ export default {
     float right
     .tag-list
         margin 10px
+        .tag-item
+            width 50%
+            padding 10px
 
 .order-list
     background white

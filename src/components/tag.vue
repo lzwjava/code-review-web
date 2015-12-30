@@ -1,10 +1,7 @@
 <template>
   <div class="tag-item">
-
-    <div class="tag-inner">
-      <div class="point" :style="{ background: '#' + tag.color }"></div>
-      <p class="tag-name">{{tag.tagName}}</p>
-    </div>
+    <div class="point" :style="{ background: '#' + tag.color }"></div>
+    <p class="tag-name">{{tag.tagName}}</p>
   </div>
 </template>
 
@@ -20,26 +17,21 @@ export default {
 
 .tag-item
   display inline-block
-  width 130px
-  height 50px
-  padding 10px
   font-size 14px
-  margin 10px 0px
-
-.tag-inner
+  text-align left
   margin auto 0
   line-height 30px
 
 .point
-  width 10px
-  height 10px
+  width 12px
+  height 12px
   margin 8px 12px 8px 5px
   background #f00
-  border-radius 5px
+  border-radius 6px
   display inline-block
   float left
 
 .tag-name
-  white-space nowrap
+  display inline-block
 
 </style>
