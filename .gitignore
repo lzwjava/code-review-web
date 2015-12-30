@@ -3,3 +3,4 @@ node_modules
 static/*
 !static/logo.png
 fabfile.pyc
+webpack.json

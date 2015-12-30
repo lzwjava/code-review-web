@@ -9,11 +9,8 @@
 					<span>搜索</span>
 				</div>
 				<ul class="lj-page">
-					<li @click="first" v-show="pageStart != 1"><span>首页</span></li>
-					<li @click="prev" v-show="pageStart != 1"><span>上一页</span></li>
-					<li :class="{'active': el == pageStart}" @click="pagePath(el)" v-for="el in pageList"><span>{{el}}</span></li>
-					<li @click="next" v-show="pageStart != pageLimit.max"><span>下一页</span></li>
-					<li @click="last" v-show="pageStart != pageLimit.max"><span>尾页</span></li>
+					<li @click="prev" v-show="currentPage != 0"><span>上一页</span></li>
+					<li @click="next" v-show="showNextPage"><span>下一页</span></li>
 				</ul>
 			</div>
 			<dl class="list">
@@ -56,28 +53,33 @@
 				tableData: [],
 				showJump : false,
 				showInfo: false,
-				pageJump: '',
-				pageList: [1,2,3,4],
-				pageStart: 1,
-				pageLimit : {
-					min: 1,
-					max: 30,
-					total: 1
-				},
+				currentPage: 0,
+				pageLimit: 1,
 				user : {}
+			}
+		},
+		computed: {
+			showNextPage () {
+				return this.tableData.length == this.pageLimit;
 			}
 		},
 		created() {
 			this.user = util.getLocalUser();
-			this.$http.get(serviceUrl.ordersList)
-			.then((resp) => {
-				if (util.filterError(this, resp)) {
-					debug('%j', resp.data.result);
-					this.tableData = resp.data.result;
-				}
-			}, util.httpErrorFn(this))
+			this.loadCurrentPage();
 		},
 		methods: {
+			loadCurrentPage () {
+				this.$http.get(serviceUrl.ordersList, {
+					skip: this.currentPage * this.pageLimit,
+					limit: this.pageLimit
+				})
+				.then((resp) => {
+					if (util.filterError(this, resp)) {
+						debug('%j', resp.data.result);
+						this.tableData = resp.data.result;
+					}
+				}, util.httpErrorFn(this))
+			},
 			targetUser (review) {
 				if (this.user.type == 0) {
 					return review.reviewer;
@@ -85,6 +87,16 @@
 					return review.learner;
 				}
 			},
+			prev() {
+				if (this.currentPage - 1 >= 0) {
+					this.currentPage--;
+					this.loadCurrentPage();
+				}
+			},
+			next() {
+				this.currentPage++;
+				this.loadCurrentPage();
+			}
 		}
 	}
 </script>
