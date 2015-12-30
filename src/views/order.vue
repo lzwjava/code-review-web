@@ -4,8 +4,8 @@
 		<section class="order-list">
 			<div class="lj-pagination">
 				<ul class="lj-page">
-					<li @click="prev" v-show="currentPage != 0"><span>上一页</span></li>
-					<li @click="next" v-show="showNextPage"><span>下一页</span></li>
+					<li @click="prev" :class="{'disable': currentPage == 0 }"><span>上一页</span></li>
+					<li @click="next" :class="{'disable': !showNextPage}"><span>下一页</span></li>
 				</ul>
 				<div class="lj-search" v-if="showSearch">
 					<input type="text" v-model="pageJump"/>
@@ -95,8 +95,10 @@
 				}
 			},
 			next() {
-				this.currentPage++;
-				this.loadCurrentPage();
+				if (this.showNextPage) {
+					this.currentPage++;
+					this.loadCurrentPage();
+				}
 			}
 		}
 	}
@@ -135,6 +137,10 @@
 				color blue
 				&.active
 					color textColor
+				&.disable
+					color gray
+					span
+						cursor default
 				span
 					padding 0 5px
 					display inline-block
