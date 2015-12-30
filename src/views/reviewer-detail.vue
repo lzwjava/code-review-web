@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <order-form transition="fade" :show.sync="showOrder" :reviewerId="reviewer.id"></order-form>
+        <order-form transition="fade" :show.sync="showOrder" :reviewer-id="reviewer.id"></order-form>
     </div>
 
 </template>

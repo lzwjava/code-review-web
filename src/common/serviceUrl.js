@@ -18,5 +18,6 @@ export default {
     reviewerView: 'reviewers/view',
     ordersAdd: 'orders/add',
     ordersList: 'orders',
-    ordersView: 'orders/view'
+    ordersView: 'orders/view',
+    ordersReward: 'orders/reward'
 }

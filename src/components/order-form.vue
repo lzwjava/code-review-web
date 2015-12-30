@@ -16,7 +16,8 @@
           </div>
 
           <div class="right-modal">
-            <form action="/" @submit="addOrder">
+
+            <form action="/" @submit="addOrder" v-show="!qrpay">
               <div class="form-line">
                 <label>打赏费用</label>
                 <div class="reward-input">
@@ -41,7 +42,18 @@
               </div>
               <button class="btn-common btn-blue confirm-btn">申请 Code Review</button>
             </form>
+
+            <div class="pay-region" v-show="qrpay">
+
+              <div class="pay-desc">
+                <p class="title">扫一扫付款</p>
+                <img :src="qrcode">
+                <p class="amount"><span>¥</span> {{reward}}</p>
+              </div>
+            </div>
+
           </div>
+
         </div>
       </div>
     </div>
@@ -55,10 +67,12 @@ var debug = require('debug')('order-form');
 module.exports = {
   data: function () {
     return {
-      gitHubUrl: 'https://github.com/lzwjava/Reveal-In-GitHub',
-      codeLines: 0,
+      gitHubUrl: 'https://github.com/akring/octokit.swift',
+      codeLines: 3000,
       remark: '麻烦了',
-      reward: 8
+      reward: 8,
+      qrpay: false,
+      qrcode: ''
     };
   },
   props: {
@@ -78,7 +92,18 @@ module.exports = {
         reviewerId: this.reviewerId
       }).then((resp) => {
         if (util.filterError(this, resp)) {
+          var order = resp.data.result;
+          debug(order);
           util.show(this, 'success', '申请成功, 请支付打赏额');
+          this.$http.post(serviceUrl.ordersReward, {
+            orderId:order.orderId,
+            amount: this.reward * 1000
+          }).then((resp) => {
+            debug(resp.data)
+            this.qrpay = true;
+            this.qrcode = resp.data.credential.alipay_qr;
+            window.open(this.qrcode, '_blank');
+          }, util.httpErrorFn(this))
         }
       }, util.httpErrorFn(this));
     }
@@ -175,5 +200,22 @@ module.exports = {
   padding 15px
   margin 0 auto
   display block
+
+.pay-region
+  text-align center  
+
+.pay-desc
+  width 200px
+  margin 150px auto
+  p.amount
+    font-size 20px
+    span
+      color #33C96F
+  img
+    margin-top 20px
+    margin-bottom 20px
+    width 200px
+    height 200px
+
 
 </style>
