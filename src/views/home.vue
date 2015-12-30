@@ -55,7 +55,8 @@
     </section>
     <section class="example">
         <div class="container">
-          <!-- <div class="pen"></div>
+        <div class="container"><!-- 
+          <div class="pen"></div>
           <div class="book"></div>
           <div class="cup"></div> -->
           <h2>精选 Code Review 案例</h2>
@@ -65,32 +66,94 @@
               <li class="clo-2">
                 <div class="info">
                   <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
-                  <h6 class="title">
-                    dsadadasdas
-                  </h6>
-                  <h6 class="tips">
-                    <span>1111</span>
-                    <span>2222</span>
-                  </h6>
+                  <div class="text">
+                    <h6 class="title">
+                      dsadadasdas
+                    </h6>
+                    <h6 class="tips">
+                      <span>1111</span>
+                      <span>2222</span>
+                    </h6>
+                  </div>
                 </div>
-                <div class="detail">
+                <!-- <div class="detail">
                   <p>
                     <span class="date">12 八月 2015</span>
                     <span>/ 12次打赏</span>
                     <i class="icon_wx"></i>
                     <i class="icon_wb"></i>
                   </p>
-                </div>
+                </div> -->
               </li>
-              <li class="clo-1"></li>
+              <li class="clo-1">
+                <div class="info">
+                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <div class="text">
+                    <h6 class="title">
+                      dsadadasdas
+                    </h6>
+                    <h6 class="tips">
+                      <span>1111</span>
+                      <span>2222</span>
+                    </h6>
+                  </div>
+              </li>
             </div>
             <div class="row">
-              <li class="clo-1"></li>
-              <li class="clo-1"></li>
-              <li class="clo-1"></li>
+              <li class="clo-1">
+                <div class="info">
+                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <div class="text">
+                    <h6 class="title">
+                      dsadadasdas
+                    </h6>
+                    <h6 class="tips">
+                      <span>1111</span>
+                      <span>2222</span>
+                    </h6>
+                  </div>
+              </li>
+              <li class="clo-1">
+                <div class="info">
+                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <div class="text">
+                    <h6 class="title">
+                      dsadadasdas
+                    </h6>
+                    <h6 class="tips">
+                      <span>1111</span>
+                      <span>2222</span>
+                    </h6>
+                  </div>
+              </li>
+              <li class="clo-1">
+                <div class="info">
+                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <div class="text">
+                    <h6 class="title">
+                      dsadadasdas
+                    </h6>
+                    <h6 class="tips">
+                      <span>1111</span>
+                      <span>2222</span>
+                    </h6>
+                  </div>
+              </li>
             </div>
             <div class="row">
-              <li class="clo-3"></li>
+              <li class="clo-3">
+                <div class="info">
+                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <div class="text">
+                    <h6 class="title">
+                      dsadadasdas
+                    </h6>
+                    <h6 class="tips">
+                      <span>1111</span>
+                      <span>2222</span>
+                    </h6>
+                  </div>
+              </li>
             </div>
           </ul>
         </div>

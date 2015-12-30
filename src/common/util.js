@@ -31,6 +31,7 @@ exports.show = (component, type, text) => {
 
 exports.updateNavUser = (component, user) => {
   var nav = component.$root.$children[0];
+  window.localStorage.setItem('user',JSON.stringify(user));
   nav.user = user;
   nav.userStatus = true;
 }

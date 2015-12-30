@@ -6,13 +6,13 @@ var bootstrapPath = './node_modules/bootstrap/dist/css';
 
 module.exports = {
   entry: {
-    index : './src/index.js',
-    reviewers: './src/reviewers.js',
-    list: './src/list.js',
-    setting: './src/setting.js',
-    order: './src/order.js',
-    reviewer: './src/reviewer.js',
-    'order-detail': './src/order-detail.js'
+    index : ['./src/index.js'],
+    reviewers: ['./src/reviewers.js'],
+    list: ['./src/list.js'],
+    setting: ['./src/setting.js'],
+    order: ['./src/order.js'],
+    reviewer: ['./src/reviewer.js'],
+    'order-detail': ['./src/order-detail.js']
   },
   output: {
     path: __dirname + '/static',

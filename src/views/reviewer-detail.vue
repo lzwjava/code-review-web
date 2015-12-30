@@ -29,16 +29,16 @@
                     </div>
 
                     <div>
-                        <button class="order-button">申请 Code Review</button>
+                        <button class="order-button" @click="showOrder = true">申请 Code Review</button>
                     </div>
                 </div>
             </div>
 
             <div class="right-region">
-                <p class="tag-title">擅长领域</p>
-                <template v-for="tag in reviewer.tags">
-                    <tag :tag="tag"></tag>
-                </template>
+                <p class="region-title">擅长领域</p>
+                <div class="tag-list">
+                    <tag v-for="tag in reviewer.tags" :tag="tag"></tag>
+                </div>
             </div>
         </div>
 
@@ -47,6 +47,8 @@
                 审核案例
             </div>
         </div>
+
+        <order-form transition="fade" :show.sync="showOrder"></order-form>
     </div>
 
 </template>
@@ -54,8 +56,10 @@
 <script type="text/javascript">
 
 import UserAvatar from '../components/user-avatar.vue'
+import OrderForm from '../components/order-form.vue'
 import Tag from '../components/tag.vue'
 import util from '../common/util'
+
 import serviceUrl from "../common/serviceUrl.js"
 
 var debug = require('debug')('reviewer-detail');
@@ -63,19 +67,20 @@ var debug = require('debug')('reviewer-detail');
 export default {
     components: {
         'user-avatar': UserAvatar,
-        'tag': Tag
+        'tag': Tag,
+        'order-form': OrderForm
     },
     data () {
         return {
             reviewer: {
                 tags: []
-            }
+            },
+            showOrder: false
         }
     },
     methods: {
 
     },
-
     created() {
         var params = util.getSearchParameters()
         if (!params.id) {
@@ -102,7 +107,7 @@ export default {
     margin 30px auto
 
 .top-region
-    height 438px    
+    height 438px
 
 .left-region
     background url('../img/reviewer-detail-bg.png')
@@ -115,14 +120,16 @@ export default {
     height 100%
     background url('../img/reviewer-tag.png')
     float right
+    .tag-list
+        margin 10px
 
 .order-list
     background white
     margin-top 30px
 
 .region-title
-    margin-left 50px
-    margin-top 50px 
+    margin-left 35px
+    margin-top 40px 
 
 .center-region
     width 373px
@@ -153,16 +160,12 @@ export default {
         margin-top 10px 
 
 .order-button
-    margin-top 20px
+    margin-top 50px
     background #00CFF5
     border-radius 3px
     font-size 16px
     color #FFFFFF
     line-height 16px
     padding 20px
-
-.tag-title
-    margin-left 25px
-    margin-top 25px
 
 </style>

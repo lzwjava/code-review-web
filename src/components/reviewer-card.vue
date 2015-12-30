@@ -24,8 +24,8 @@
         <p>你想申请</p>
         <p>{{reviewer.username}}</p>
         <p>帮你 Code Review 吗？</p>
-        <button type="button" class="submit">雇佣</button>
-        <button type="button">了解详情</button>
+        <button class="submit action-button" type="button">雇佣</button>
+        <button class="action-button" type="button" @click="goDetail(reviewer.id)">了解详情</button>
       </div>
     </li>
   </ul>
@@ -33,7 +33,12 @@
 
 <script type="text/javascript">
 export default {
-  props:['reviewers']
+  props:['reviewers'],
+  methods: {
+    goDetail (id) {
+      window.location = '/reviewer.html?id='+id;
+    }
+  }
 }
 </script>
 
@@ -46,12 +51,13 @@ export default {
   .item
     width 300px
     height 406px
-    margin-left 150px
+    margin-left 130px
     background white
     box-shadow: 0px 0px 4px 2px rgba(0,0,0,.2)
     border-radius 3px
     position relative
     margin-bottom 80px
+    vertical-align top
     &:hover
       .cover
         display block
@@ -88,7 +94,6 @@ export default {
       text-align center
       li
         width 33%
-        height 96px
         .num
           font-size 1.5rem
         .text
