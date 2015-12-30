@@ -1,17 +1,19 @@
 <template>
   <div class="dropdown">
-    <div class="dropdown-mask" @click="show=false"></div>
-    <div class="dropdown-inner" @click="choose">
-      <slot></slot>
+    <div class="dropdown-mask" @click="show=!show">
+      <slot name="showText"></slot>
+    </div>
+    <div class="dropdown-inner" @click="choose" v-show="show">
+      <slot name="options"></slot>
     </div>
   </div>
 </template>
 
 <script>
   module.exports = {
-    props: {
-      show: {
-        twoWay: true
+    data (){
+      return {
+        show: false
       }
     },
     methods: {
@@ -25,26 +27,20 @@
   };
 </script>
 
-<style>
-  .dropdown {
-    position: relative;
-  }
+<style lang="stylus">
+  .dropdown
+    position relative
+    width 100%
+    height 100%
   .dropdown-mask {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 9;
+    width 100%
+    height 100%
     background: transparent;
   }
-  .dropdown-inner {
+  .dropdown-inner
     position: absolute;
-    min-width: 180px;
-    top: 0;
-    left: auto;
-    right: -8px;
-    margin-top: 10px;
+    top: 100%;
+    margin-top: 20px;
     background-color: white;
     background-clip: padding-box;
     padding: 6px 0;
@@ -52,35 +48,29 @@
     box-shadow: 0 3px 13px rgba(0, 0, 0, 0.18);
     border-radius: 3px;
     z-index: 11;
-  }
-  .dropdown-inner:before, .dropdown-inner:after {
-    position: absolute;
-    right: 10px;
-    content: '';
-    display: inline-block;
-    border: 8px solid transparent;
-  }
-  .dropdown-inner:before {
-    top: -16px;
-    border-bottom-color: rgba(0, 0, 0, 0.18);
-  }
-  .dropdown-inner:after {
-    top: -15px;
-    border-bottom-color: white;
-  }
-  .dropdown-inner .dropdown-item {
-    color: #565656;
-    display: block;
-    font-size: 14px;
-    padding: 7px 10px 7px 18px;
-    margin-bottom: 3px;
-  }
-  .dropdown-inner .dropdown-item:hover {
-    background-color: #71c72e;
-    color: white;
-  }
-  .dropdown-inner .dropdown-divider {
-    border-top: 1px solid #ddd;
-    margin: 8px 0;
-  }
+    &:before, &:after
+      position absolute
+      left 50%
+      margin-left -8px
+      content ''
+      display block
+      border 8px solid transparent
+    &:before 
+      top -16px
+      border-bottom-color rgba(0, 0, 0, 0.18)
+    &:after 
+      top -15px
+      border-bottom-color white
+    &.dropdown-item 
+      color #565656
+      display block
+      font-size 14px
+      padding 7px 10px 7px 18px
+      margin-bottom 3px
+    &.dropdown-item:hover 
+      background-color #71c72e
+      color white
+    &.dropdown-divider 
+      border-top: 1px solid #ddd
+      margin: 8px 0
 </style>
