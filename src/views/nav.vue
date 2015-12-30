@@ -16,12 +16,14 @@
             <li v-if="!userStatus" class="signup" @click="signup">注册</li>
             <li v-if="!userStatus" @click="signin">登录</li>
             <li v-if="userStatus">
-              <user-avatar :user="user" @click="viewUserDropdown"></user-avatar>
-              <dropdown v-show="showUserDropdown" :show.sync="showUserDropdown">
-                <a class="dropdown-item" href="setting.html">个人设置</a>
-                <a class="dropdown-item" href="order.html">Code Review 订单列表</a>
-                <div class="dropdown-divider"></div>                
-                <a class="dropdown-item" @click="logout" href="/">注销</a>
+              <dropdown>
+                <user-avatar slot="showText" :user="user" @click="viewUserDropdown"></user-avatar>
+                <div slot="options">
+                  <a class="dropdown-item" href="setting.html">个人设置</a>
+                  <a class="dropdown-item" href="order.html">Code Review 订单列表</a>
+                  <div class="dropdown-divider"></div>                
+                  <a class="dropdown-item" @click="logout" href="/">注销</a>
+                </div>
               </dropdown>
             </li>
           </ul>
@@ -54,7 +56,6 @@
       return {
         userStatus: false,
         overlayStatus: false,
-        showUserDropdown: false,
         currentView: 'login',
         messages: [],
         user: {}
@@ -132,14 +133,14 @@
 <style lang="stylus">
 @import '../stylus/base.styl';	
 .navbar
-  height 100px
-  padding 30px 100px
+  height 106px
+  padding 29px 100px
   background white
   .container
     width 1160px
     margin 0 auto
-    height 40px
-    line-height 38px
+    height 100%
+    line-height 48px
   .left
     pull-left()
     .title
@@ -157,6 +158,11 @@
         background rgba(51,201,111,.1)
         border 1px solid #33C96F
         color #33C96F
+    .dropdown-inner
+      width 360px
+      right 0
+      &:before,&:after
+        left 83%
 
 #message
   position fixed
