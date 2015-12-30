@@ -50,3 +50,24 @@ exports.getSearchParameters = () => {
       var prmstr = window.location.search.substr(1);
       return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
 }
+
+// 用 import 好像不行，会出现找不到 undefined 的情况
+var filters = require('./filters');
+import Ajax from 'vue-resource'
+
+exports.configVue = (Vue) => {
+
+  Vue.config.debug = true;
+  Vue.use(Ajax);
+  Vue.http.options.root = '/api';
+  Vue.http.options.emulateJSON = true;
+  Vue.http.options.timeout = 1000 * 15;
+
+  // 这里是 debug 模块调试，有用的，不用移除
+  localStorage.debug = 'api,user,components,setting,reviewer-list,home,reviewer-detail,order-form,order';
+
+  // register filters globally
+  for(let  k in filters){
+    Vue.filter(k, filters[k])
+  }
+}

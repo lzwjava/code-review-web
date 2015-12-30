@@ -59,7 +59,6 @@ import UserAvatar from '../components/user-avatar.vue'
 import OrderForm from '../components/order-form.vue'
 import Tag from '../components/tag.vue'
 import util from '../common/util'
-
 import serviceUrl from "../common/serviceUrl.js"
 
 var debug = require('debug')('reviewer-detail');
