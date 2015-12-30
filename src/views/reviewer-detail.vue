@@ -29,7 +29,7 @@
                     </div>
 
                     <div>
-                        <button class="order-button" @click="showOrder = true">申请 Code Review</button>
+                        <button class="btn-common btn-blue order-btn" @click="showOrder = true">申请 Code Review</button>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <order-form transition="fade" :show.sync="showOrder"></order-form>
+        <order-form transition="fade" :show.sync="showOrder" :reviewer-id="reviewer.id"></order-form>
     </div>
 
 </template>
@@ -159,13 +159,8 @@ export default {
         opacity .6
         margin-top 10px 
 
-.order-button
+.order-btn
     margin-top 50px
-    background #00CFF5
-    border-radius 3px
-    font-size 16px
-    color #FFFFFF
-    line-height 16px
     padding 20px
 
 </style>

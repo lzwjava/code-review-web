@@ -14,7 +14,8 @@ import ReviewerDetail from 'views/reviewer-detail.vue'
 
 Vue.config.debug = true;
 Vue.use(Ajax);
-Vue.http.options.root = '/api'
+Vue.http.options.root = '/api';
+Vue.http.options.emulateJSON = true;
 
 // register filters globally
 for(let  k in filters){

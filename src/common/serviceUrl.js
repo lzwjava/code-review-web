@@ -15,5 +15,9 @@ export default {
     qiniu: 'qiniu/token',
     tags: 'tags',
     userTag: 'user/tag',
-    reviewerView: 'reviewers/view'
+    reviewerView: 'reviewers/view',
+    ordersAdd: 'orders/add',
+    ordersList: 'orders',
+    ordersView: 'orders/view',
+    ordersReward: 'orders/reward'
 }
