@@ -151,7 +151,6 @@
   .list
     li
       width 120px
-      height 40px
       text-align center
       cursor pointer
       &.signup

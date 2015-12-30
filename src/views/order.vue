@@ -1,17 +1,16 @@
 <template>
 	<section class="setting">
-		<h2>Review 订单列表</h2>
+		<h2>订单列表</h2>
 		<section class="order-list">
 			<div class="lj-pagination">
-				<div class="lj-info" v-if="showInfo"></div>
-				<div class="lj-jump" v-if="showJump">
-					<input type="text" v-model="pageJump"/>
-					<span>搜索</span>
-				</div>
 				<ul class="lj-page">
 					<li @click="prev" v-show="currentPage != 0"><span>上一页</span></li>
 					<li @click="next" v-show="showNextPage"><span>下一页</span></li>
 				</ul>
+				<div class="lj-search" v-if="showSearch">
+					<input type="text" v-model="pageJump"/>
+					<span>搜索</span>
+				</div>
 			</div>
 			<dl class="list">
 				<dt class="list-row table-header">
@@ -20,19 +19,21 @@
 				<dd class="list-row" v-for="item in tableData" :class="{'even': $index%2 == 0}">
 					<div class="list-cell">{{item.orderId}}</div>
 					<div class="list-cell">
-						<img :src="targetUser(item).avatarUrl">
-						<span>{{targetUser(item).username}}</span>
+						<div>
+							<img :src="item.learner.avatarUrl">
+							<span>{{item.learner.username}}</span>
+						</div>
 					</div>
-					<div class="list-cell">{{item.status | statusDesc}}</div>
+					<div class="list-cell">{{item.status | reviewStatus}}</div>
 					<div class="list-cell">{{item.created}}</div>
 					<div class="list-cell">
-						{{item.money | moneyAsYuan}}
+						{{item.money  | currency '￥' | integer}}
 					</div>
 					<div class="list-cell" :class="{'stop': !item.status}">
-						<button type="button" class="accept">接手</button>
+						<button type="button" class="assess accept"></button>
 					</div>
-					<div class="list-cell"><button type="button" class="detail">详情</button></div>
-					<div class="list-cell"><button type="button" class="reject">拒绝</button></div>
+					<div class="list-cell"><button type="button" class="detail"></button></div>
+					<div class="list-cell"><button type="button" class="reject"></button></div>
 				</dd>
 			</dl>
 		</section>
@@ -54,7 +55,7 @@
 				showJump : false,
 				showInfo: false,
 				currentPage: 0,
-				pageLimit: 1,
+				pageLimit: 2,
 				user : {}
 			}
 		},
@@ -108,27 +109,38 @@
 		text-align center
 		margin 50px 0 30px
 		clearfix()
-		.lj-ibfo,.lj-jump,.lj-page
+		.lj-search,.lj-jump,.lj-page
 			float left
+			line-height 50px
+			input
+				height 50px
+				border 1px solid rgba(40,47,49,.3)
+				box-shadow 0 1px 4px rgba(0,0,0,0.03)
+				font-size 1rem
+				text-align center
+				margin 0 10px
+		.lj-jump
+			input
+				width 50px
+		.lj-search
+			margin-left 20px
+			input
+				width 253px
 		.lj-page
 			margin 0
 			li
 				list-style none
-				margin-right 10px
+				margin-right 5px
 				float left
-				background green
-				color white
+				color blue
 				&.active
-					color red
+					color textColor
 				span
-					height 60px
-					width 60px
-					line-height 60px
 					padding 0 5px
 					display inline-block
 					cursor pointer
 	.setting
-		width 1422px
+		width 1160px
 		padding-bottom 80px
 		font-size 1rem
 		margin 80px auto
@@ -136,8 +148,8 @@
 		input,textarea,select,button
 			border-radius 3px
 		h2
-			font-size 2rem
-			height 70px
+			font-size 1.5rem
+			height 65px
 			border-bottom 1px solid rgba(0,0,0,.3)
 		.list
 			display: table;
@@ -146,9 +158,9 @@
 			.list-row
 				display: table-row
 				background: rgba(255,255,255,0.03)
-				height: 120px
+				height: 96px
 				&.table-header
-					height 90px
+					height 70px
 					background: rgba(40,47,49,.8)
 					color white
 				&.even
@@ -157,6 +169,7 @@
 					display: table-cell;
 					text-align: center;
 					vertical-align: middle;
+					line-height: 50px;
 					min-width: 80px;
 					&:last-child
 						border-right: none;
@@ -164,11 +177,42 @@
 						color: #f04e4b;
 					
 					img
-						width: 60px;
-						height: 60px;
-					
+						width: 50px;
+						height: 50px;
+						float left
+						border-radius 50%
 					.pop-btn
 						color: #249bdf;
 						line-height: 50px;
-						cursor: pointer;
+						cursor: pointer
+					.assess
+						background url(../img/icon/assess.png) no-repeat
+						width 21px
+						height 21px
+						&:hover
+							background-image url(../img/icon/assess_hover.png)
+						&.disable
+							background-image url(../img/icon/assess_disable.png)
+					.accept
+						background url(../img/icon/accept.png) no-repeat
+						width 21px
+						height 21px
+						&:hover
+							background-image url(../img/icon/accept_hover.png)
+						&.disable
+							background-image url(../img/icon/accept_disable.png)
+					.detail
+						background url(../img/icon/detail.png) no-repeat
+						width 23px
+						height 14px
+						&:hover
+							background-image url(../img/icon/detail_hover.png)
+					.reject
+						background url(../img/icon/reject.png) no-repeat
+						width 15px
+						height 15px
+						&:hover
+							background-image url(../img/icon/reject_hover.png)
+						&.disable
+							background-image url(../img/icon/reject_disable.png)
 </style>

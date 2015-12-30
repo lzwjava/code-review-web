@@ -2,43 +2,48 @@
 	<section class="setting">
 		<h2>个人设置</h2>
 		<section class="form">
-			<div class="avatar-container" id="upload-container">
-				<user-avatar :user="user"></user-avatar>
-				<button type="button" id="pickfiles">修改头像</button>
+			<h3>想学领域</h3>
+			<div class="white">
+				<div class="avatar-container" id="upload-container">
+					<user-avatar :user="user"></user-avatar>
+					<button type="button" id="pickfiles">修改头像</button>
+				</div>
+				<div class="row">
+					<p>昵称</p>
+					<input type="text" v-model="username"/>
+				</div>
+				<div class="row">
+					<p>Github 地址</p>
+					<span>github.com/ </span><input style="width: 437px;" type="text" v-model="github"/>
+				</div>
 			</div>
-			<div class="row">
-				<p>昵称</p>
-				<input type="text" v-model="username"/>
-			</div>
-			<div class="row">
-				<p>Github 地址</p>
-				<span>github.com/ </span><input style="width: 599px;" type="text" v-model="github"/>
-			</div>
-			<div class="row">
-				<p>手机号码</p>
-				<p>{{phone}}</p>
-			</div>
-			<div class="row">
-				<p>公司名称</p>
-				<input type="text" v-model="company"/>
-			</div>
-			<div class="row">
-				<p>职位</p>
-				<input type="text"  v-model="jobTitle"/>
-			</div>
-			<div class="row">
-				<p>个人简介</p>
-				<textarea v-model="introduction"></textarea>
-			</div>
-			<div class="row">
-				<button type="button" @click="updateUser">确认修改</button>
+			<div class="color">
+				<div class="row">
+					<p>手机号码</p>
+					<p>{{phone}}</p>
+				</div>
+				<div class="row">
+					<p>公司名称</p>
+					<input type="text" v-model="company"/>
+				</div>
+				<div class="row">
+					<p>职位</p>
+					<input type="text"  v-model="jobTitle"/>
+				</div>
+				<div class="row">
+					<p>个人简介</p>
+					<textarea v-model="introduction"></textarea>
+				</div>
+				<div class="row">
+					<button type="button" @click="updateUser">确认修改</button>
+				</div>
 			</div>
 		</section>
 		<section class="tags">
-			<h2>想学领域</h2>
+			<h3>想学领域</h3>
 			<div class="tags-content">
 				<ul class="list">
-					<li v-for="tag in tags"><span>{{tag.tagName}}</span><i class="delete" @click="removeTag(tag.tagId)">X</i></li>
+					<li v-for="tag in tags"><span>{{tag.tagName}}</span><i class="delete" @click="removeTag(tag.tagId)"></i></li>
 				</ul>
 				<div class="select-content">
 					<p>输入 「想学领域」</p>
@@ -247,16 +252,19 @@
 
 	.avatar-container
 		text-align center
+		background white
+		border-top-left-radius 3px
+		border-top-right-radius 3px
 		button
 			display block
 			margin 10px auto
 		.avatar
-			width 150px
-			height 150px
-			margin 10px
+			width 104px
+			height 112px
+			margin 20px
 
 	.setting
-		width 1422px
+		width 1160px
 		padding-bottom 80px
 		font-size 1rem
 		margin 80px auto
@@ -264,16 +272,29 @@
 		input,textarea,select,button
 			border-radius 3px
 		h2
-			font-size 2rem
-			height 70px
+			font-size 1.5rem
+			height 65px
 			border-bottom 1px solid rgba(0,0,0,.3)
+		h3
+			height 45px
 		.form, .tags
 			float left
-			margin-top 80px
+			margin-top 30px
 		.form
-			width 870px
-			background #FDFFFF
+			width 61%
 			font-weight 200
+			.white
+				background white
+				padding-bottom 40px
+				border 1px solid rgba(0,0,0,.15)
+				border-top-left-radius 3px
+				border-top-right-radius 3px
+			.color
+				background #FDFFFF
+				border-bottom-left-radius 3px
+				border-bottom-right-radius 3px
+				border 1px solid rgba(0,0,0,.15)
+				border-top none
 			button
 				width 150px
 				height 60px
@@ -285,12 +306,15 @@
 				border none
 			.row
 				padding 20px 90px 0;
+				&:last-child
+					border-bottom-left-radius 3px
+					border-bottom-right-radius 3px
 				p
 					opacity 0.6
 					line-height 36px
 				input
 					height 50px
-					border 1px solid rgba(40,47,49,.5)
+					border 1px solid rgba(40,47,49,.3)
 					width 100%
 					font-size 1rem
 					text-indent 20px
@@ -304,40 +328,44 @@
 					margin-top 20px
 					margin-bottom 20px
 		.tags
-			width 480px
-			margin-left 72px
-			h2
-				font-size 1.6rem
-				height 56px
-				border none
+			width 34%
+			margin-left 5%
 			.tags-content
 				background #FDFFFF
 				border 1px solid rgba(0,0,0,0.15)
 				box-shadow 0 4px 4px rgba(135,135,135,0.15)
 				font-weight 200
+				border-radius 3px
 				.list
-					padding 25px
+					padding 20px
 					background white
 					min-height 300px
 					li
 						margin-right 20px
-						padding 15px 20px
+						padding 0 20px
 						margin-bottom 20px
 						border-radius 3px
-						color #F01490
-						background rgba(240,20,144,.1)
+						height 48px
+						line-height 48px
+						text-align center
 						.delete
-							margin-left 10px
+							margin-left 20px
+							background url(../img/icon/delete.png) no-repeat
+							width 10px
+							height 10px
+							display block
+							float right
+							margin-top 17px
 				.select-content
 					border-top 1px solid rgba(0,0,0,0.15)
 					height 150px
-					padding 25px
+					padding 20px
 					p
 						opacity 0.6
 						line-height 50px
 					select
 						height 50px
-						width 300px
+						width 245px
 						-webkit-appearance: none
 						border 1px solid rgba(40,47,49,0.3)
 						box-shadow 0 1px 4px rgba(0,0,0,0.03)
@@ -347,9 +375,9 @@
 							height 40px
 							line-height 40px
 					button
-						width 100px
+						width 82px
 						height 50px
-						background green
+						background blue
 						color white
 						font-size 1rem
 						text-align center
