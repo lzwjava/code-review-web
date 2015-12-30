@@ -158,6 +158,11 @@
         background rgba(51,201,111,.1)
         border 1px solid #33C96F
         color #33C96F
+    .dropdown-inner
+      width 360px
+      right 0
+      &:before,&:after
+        left 83%
 
 #message
   position fixed

@@ -61,16 +61,16 @@
     &:after 
       top -15px
       border-bottom-color white
-    &.dropdown-item 
+    .dropdown-item 
       color #565656
       display block
       font-size 14px
       padding 7px 10px 7px 18px
       margin-bottom 3px
-    &.dropdown-item:hover 
-      background-color #71c72e
-      color white
-    &.dropdown-divider 
+      &:hover 
+        background-color #71c72e
+        color white
+    .dropdown-divider 
       border-top: 1px solid #ddd
       margin: 8px 0
 </style>
