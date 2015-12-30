@@ -23,13 +23,13 @@
 				<dd class="list-row" v-for="item in tableData" :class="{'even': $index%2 == 0}">
 					<div class="list-cell">{{item.orderId}}</div>
 					<div class="list-cell">
-						<img :src="item.reviewer.avatarUrl">
-						<span>{{item.reviewer.username}}</span>
+						<img :src="targetUser(item).avatarUrl">
+						<span>{{targetUser(item).username}}</span>
 					</div>
 					<div class="list-cell">{{item.status | statusDesc}}</div>
 					<div class="list-cell">{{item.created}}</div>
 					<div class="list-cell">
-						{{item.money}}
+						{{item.money | moneyAsYuan}}
 					</div>
 					<div class="list-cell" :class="{'stop': !item.status}">
 						<button type="button" class="accept">接手</button>
@@ -63,16 +63,28 @@
 					min: 1,
 					max: 30,
 					total: 1
-				}
+				},
+				user : {}
 			}
 		},
 		created() {
+			this.user = util.getLocalUser();
 			this.$http.get(serviceUrl.ordersList)
 			.then((resp) => {
 				if (util.filterError(this, resp)) {
+					debug('%j', resp.data.result);
 					this.tableData = resp.data.result;
 				}
 			}, util.httpErrorFn(this))
+		},
+		methods: {
+			targetUser (review) {
+				if (this.user.type == 0) {
+					return review.reviewer;
+				} else {
+					return review.learner;
+				}
+			},
 		}
 	}
 </script>

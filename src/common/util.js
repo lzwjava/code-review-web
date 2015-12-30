@@ -71,3 +71,12 @@ exports.configVue = (Vue) => {
     Vue.filter(k, filters[k])
   }
 }
+
+exports.getLocalUser = () => {
+  var str = window.localStorage.getItem('user')
+  if (str) {
+    return JSON.parse(str);
+  } else {
+    return {};
+  }
+}

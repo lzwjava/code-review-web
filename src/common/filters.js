@@ -37,3 +37,11 @@ export function statusDesc(status) {
   }
   return '';
 }
+
+export function moneyAsYuan(money) {
+  if (!money) {
+    return 0;
+  } else {
+    return money / 1000;
+  }
+}
