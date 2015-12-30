@@ -20,8 +20,8 @@
 					<div class="list-cell">{{item.orderId}}</div>
 					<div class="list-cell">
 						<div>
-							<img :src="item.learner.avatarUrl">
-							<span>{{item.learner.username}}</span>
+							<img :src="targetUser(item).avatarUrl">
+							<span>{{targetUser(item).username}}</span>
 						</div>
 					</div>
 					<div class="list-cell">{{item.status | reviewStatus}}</div>
