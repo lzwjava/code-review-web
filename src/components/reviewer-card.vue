@@ -24,7 +24,7 @@
         <p>你想申请</p>
         <p>{{reviewer.username}}</p>
         <p>帮你 Code Review 吗？</p>
-        <button class="submit action-button" type="button">雇佣</button>
+<!--         <button class="submit action-button" type="button">雇佣</button> -->
         <button class="action-button" type="button" @click="goDetail(reviewer.id)">了解详情</button>
       </div>
     </li>
