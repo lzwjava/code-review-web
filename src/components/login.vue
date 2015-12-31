@@ -1,6 +1,6 @@
 <template>
-	<section class="login" @click="test($event)">
-		<button type="button" class="close" @click="close">X</button>
+	<section class="login" @click="stop($event)">
+		<button type="button" class="cancel" @click="cancel"></button>
 		<h2>欢迎回到 Code Review</h2>
 		<div class="form">
 			<ul class="row">
@@ -32,10 +32,10 @@
 			}
 		},
 		methods:{
-			test (e){
+			stop (e){
 				e.stopPropagation();
 			},
-			close (){
+			cancel (){
 				this.$parent.overlay = false;
 			},
 			login (){
@@ -68,10 +68,8 @@ green = #33C96F
 		left 50%
 		top 50%
 		margin -250px 0 0 -250px
-		.close
+		.cancel
 			position absolute
-			width 20px
-			height 20px
 			right 20px
 			top 20px
 		p

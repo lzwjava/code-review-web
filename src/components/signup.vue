@@ -1,5 +1,5 @@
 <template>
-	<section class="sign-up" @click="test($event)">
+	<section class="sign-up" @click="stop($event)">
 		<button type="button" class="close" @click="close">X</button>
 		<h2>注册开启 Code Review 之旅</h2>
 		<div class="form">
@@ -39,7 +39,7 @@
 			}
 		},
 		methods:{
-			test (e){
+			stop (e){
 				e.stopPropagation();
 			},
 			close (){

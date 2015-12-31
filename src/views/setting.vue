@@ -44,7 +44,6 @@
 				<ul class="list">
 					<li v-for="tag in tags">
 						<tag :tag="tag"></tag>
-						<i class="delete" @click="removeTag(tag.tagId)"></i>
 					</li>
 				</ul>
 				<div class="select-content">
@@ -88,6 +87,16 @@
 				tags: [],
 				allTags: [],
 				selected: ''
+			}
+		},
+		events: {
+			/**
+			 * [使用事件订阅方式来修改列表数据]
+			 * @param  {[type]} newObj [回调的修改数据对象]
+			 * @return {[type]}        [无]
+			 */
+			'remove-tag': function(newTags){
+				this.tags = newTags;
 			}
 		},
 		computed: {
@@ -157,24 +166,18 @@
 				this.avatarUrl = user.avatarUrl;
 				this.tags = user.tags;
 			},
-			addOrRemoveTag (op, tagId) {
+			addTag () {
+				if (!this.selected.tagId) {
+					util.show(this, 'warn', '请选择领域');
+				}
 				this.$http.post(serviceUrl.userTag, {
-					tagId: tagId,
-					op: op
+					tagId: this.selected.tagId,
+					op: 'add'
 				}, {
 					emulateJSON: true
 				}).then((res) => {
 					this.tags = res.data.result;
 				}, util.httpErrorFn(this));
-			},
-			addTag () {
-				if (!this.selected.tagId) {
-					util.show(this, 'warn', '请选择领域');
-				}
-				this.addOrRemoveTag('add', this.selected.tagId);
-			},
-			removeTag(tagId) {
-				this.addOrRemoveTag('remove', tagId);
 			}
 		},
 		created() {
@@ -362,15 +365,6 @@
 						width 50%
 						text-align left
 						padding-left 10px
-						.tag-item
-							width auto
-						.delete
-							margin-left 10px
-							background url(../img/icon/delete.png) no-repeat
-							width 10px
-							height 10px
-							display inline-block
-							margin-top 20px
 				.select-content
 					border-top 1px solid rgba(0,0,0,0.15)
 					height 150px

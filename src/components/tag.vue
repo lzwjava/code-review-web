@@ -3,12 +3,26 @@
     <div class="point" :style="{ background: '#' + tag.color }"></div>
     <p class="tag-name">{{tag.tagName}}</p>
   </div>
+  <i class="delete" @click="removeTag(tag.tagId)"></i>
 </template>
 
 <script type="text/javascript">
-
+import serviceUrl from "../common/serviceUrl.js"
+import util from '../common/util';
 export default {
-  props: ['tag']
+  props: ['tag'],
+  methods: {
+    removeTag (tagId){
+      this.$http.post(serviceUrl.userTag, {
+          tagId: tagId,
+          op: 'remove'
+        }, {
+          emulateJSON: true
+        }).then((res) => {
+          this.$dispatch('remove-tag', res.data.result);
+        }, util.httpErrorFn(this));
+    }
+  }
 }
 
 </script>
@@ -21,6 +35,7 @@ export default {
   text-align left
   margin auto 0
   line-height 30px
+  width auto
 
 .point
   width 12px
@@ -33,5 +48,14 @@ export default {
 
 .tag-name
   display inline-block
+
+.delete
+  margin-left 10px
+  background url(../img/icon/delete.png) no-repeat
+  width 10px
+  height 10px
+  display inline-block
+  margin-top 20px
+  cursor pointer
 
 </style>
