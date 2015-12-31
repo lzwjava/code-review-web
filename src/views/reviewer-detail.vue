@@ -101,10 +101,6 @@ export default {
 
 <style lang="stylus">
 
-.main-container
-    width 1080px
-    margin 30px auto
-
 .top-region
     height 438px
 

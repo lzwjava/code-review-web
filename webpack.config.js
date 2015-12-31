@@ -6,13 +6,14 @@ var bootstrapPath = './node_modules/bootstrap/dist/css';
 
 module.exports = {
   entry: {
-    index : ['./src/index.js'],
+    index : ['./src/index.js'],  // 用 [] 是为了在这里加入 webpack socket，实现自动刷新
     reviewers: ['./src/reviewers.js'],
     list: ['./src/list.js'],
     setting: ['./src/setting.js'],
     order: ['./src/order.js'],
     reviewer: ['./src/reviewer.js'],
-    'order-detail': ['./src/order-detail.js']
+    'order-detail': ['./src/order-detail.js'],
+    'write-review': ['./src/write-review.js']
   },
   output: {
     path: __dirname + '/static',
