@@ -44,7 +44,7 @@
 
         <div class="order-list">
             <div class="list-header">
-                审核案例
+                <div class="order-title">审核案例</div>
             </div>
         </div>
 
@@ -128,6 +128,18 @@ export default {
 .order-list
     background white
     margin-top 30px
+    .list-header 
+        height 60px
+        position relative
+        .order-title
+            position absolute
+            margin auto 20px
+            height 20px
+            line-height 20px
+            top 0
+            bottom 0
+            left 0
+            right 0
 
 .region-title
     margin-left 35px

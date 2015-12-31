@@ -46,13 +46,13 @@
           <h3>一览领域顶尖的编程人物</h3>
           <reviewer :reviewers="reviewers"></reviewer>
           <div>
-            <button class="more" type="button">寻找更多高手</button>
+            <a href="/reviewers.html">
+              <button class="more" type="button">寻找更多高手</button>
+            </a>
           </div>
       </div>
-
-         
-
     </section>
+    
     <section class="example">
         <div class="container"><!-- 
           <div class="pen"></div>
