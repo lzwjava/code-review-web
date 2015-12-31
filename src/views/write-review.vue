@@ -11,6 +11,8 @@ import serviceUrl from "../common/serviceUrl.js"
 
 var debug = require('debug')('write-review');
 
+window.document.title = "填写 Review";
+
 export default {
     components: {
     },

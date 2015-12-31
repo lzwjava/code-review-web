@@ -30,9 +30,11 @@
 						{{item.money  | currency '￥' | integer}}
 					</div>
 					<div class="list-cell" :class="{'stop': !item.status}">
-						<button type="button" class="assess accept" @click="view(item)"></button>
+						<a :href="'write-review.html?id=' + item.orderId">
+							<button type="button" class="assess accept"></button>
+						</a>
 					</div>
-					<div class="list-cell"><button type="button" class="detail"></button></div>
+					<div class="list-cell"><button type="button" class="detail" @click="view(item)"></button></div>
 					<div class="list-cell"><button type="button" class="reject"></button></div>
 				</dd>
 			</dl>
@@ -52,7 +54,7 @@
 	let userType = 'learner';
 	export default {
 		data () {
-			return { 
+			return {
 				tableHead: ['序号','用户名','状态','申请日期','打赏金额','接手','详情','拒绝'],
 				tableData: [],
 				detailData: {
