@@ -64,7 +64,8 @@ exports.configVue = (Vue) => {
   Vue.http.options.timeout = 1000 * 15;
 
   // 这里是 debug 模块调试，有用的，不用移除
-  localStorage.debug = 'api,user,components,setting,reviewer-list,home,reviewer-detail,order-form,order,write-review,tag';
+  localStorage.debug = 'api,user,components,setting,reviewer-list,home,reviewer-detail,order-form,'
+   + 'order,write-review,tag,markdown-area';
 
   // register filters globally
   for(let  k in filters){

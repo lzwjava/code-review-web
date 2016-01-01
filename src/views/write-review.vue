@@ -35,7 +35,7 @@
                     <h3>{{rightTitle}}</h3>
                 </div>
                 <div class="content">
-                    <form @submit="submitReview">
+                    <form @submit.prevent="submitReview">
                         <div class="row input-row">
                             <span>请输入 Review 标题</span>
                             <input v-model="title" required></input>
@@ -44,10 +44,8 @@
                             <span>请输入 Review 结果</span>
                         </div>
                         <div class="edit-area">
-                            <textarea v-model="content" required>
-
-                            </textarea>
-                            <p>支持 Markdown</p>
+                            <markdown-area class="form-field form-content yue" :content.sync="content" placeholder="有什么可以改进的吗？" @submit="submitReview" required></markdown-area>
+                            <p class="tip">支持 Markdown</p>
                         </div>
                         <button class="submit-btn">提交结果</button>
                     </form>
@@ -61,6 +59,7 @@
 
 import util from '../common/util'
 import serviceUrl from "../common/serviceUrl.js"
+import MarkdownArea from "../components/markdown-area.vue"
 
 var debug = require('debug')('write-review');
 
@@ -68,6 +67,7 @@ window.document.title = "填写 Review";
 
 export default {
     components: {
+        'markdown-area': MarkdownArea
     },
     data () {
         return {
@@ -212,7 +212,7 @@ export default {
                 width 100%
                 height 200px
                 font-size 16px
-            p
+            p.tip
                 color rgba(40,47,49,.6)
                 font-size 13px
                 margin 5px 0px
