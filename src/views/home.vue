@@ -9,7 +9,6 @@
         </div>
         <button class="help">如何使用Code Review</button>
       </div>
-        
     </section>
 
     <section class="feature">
@@ -192,5 +191,212 @@
 
 <style lang="stylus">
 @import "../stylus/home.styl";
+@import 'variables.styl';
+.home-main
+  text-align center
+  font-size 1rem
+  h1
+    font-size 3.75rem
+  h2
+    font-size 1.5rem
+  h3,h4
+    font-size 1rem
+  h5
+    font-size 20px
+.slide
+  height 1000px
+  position relative
+  color #fff
+  width 100%
+  overflow hidden
+  .bg
+    background url("../img/home/hero.png") no-repeat
+    width 1920px
+    height 1000px
+    position absolute
+    top 0
+    left 50%
+    margin-left -960px
+    padding-top 315px
+    h3
+      margin-top 50px
+    .begin
+      background url("../img/icon/play.png") no-repeat
+      width 80px
+      height 80px
+      margin-top 60px
+    .help
+      height 66px
+      width 288px
+      background #33C96F
+      font-size 20px
+      margin-top 50px
+      color white
+.feature
+  height 450px
+  padding 125px 0
+  background white
+  .list
+    width 1160px
+    margin 0 auto
+    display flex
+    flex-direction row
+    li
+      height 200px
+      padding-left 50px
+      flex-grow 1
+      &:first-child
+        padding-left 0
+      .short
+        width 235px
+        height 200px
+        margin 0 auto
+      .number
+        margin 20px 0 10px
+      .icon_crown, .icon_article, .icon_doc
+        width 45px
+        height 52px
+        margin 0 auto
+      .icon_crown
+        background url("../img/icon/crown.png") no-repeat
+      .icon_doc
+        background url("../img/icon/doc.png") no-repeat
+      .icon_article
+        background url("../img/icon/article.png") no-repeat
+      .detail
+        margin-top 20px
+        line-height 150%
+        font-size 0.88rem
+.reviewer
+  height 900px;
+  position relative
+  overflow hidden
+  .reviewers
+    width 1160px
+    margin 0 auto
+  .bg
+    background url("../img/home/reviewer.png") no-repeat
+    width 1920px
+    height 900px
+    position absolute
+    top 0
+    left 50%
+    margin-left -960px
+    padding-top 100px
+    h3
+      margin 50px 0
+    .more
+      width 220px
+      height 50px
+      color white
+      text-align center
+      margin-top 50px
+      background #42D0F6
+      font-size 1rem
+      border-radius 3px
+    .item
+      margin-bottom 0 !important
+    
+.example
+  margin 0 auto
+  padding-top 5px
+  background #FDFFFF
+  .container
+    width 1160px
+    margin 0 auto
+    position relative
+    .pen,.book,.cup
+      position absolute
+    .pen
+      background url("../img/icon/pen.png")
+      width 98px
+      height 180px
+      top -85px
+      left -20px
+    .book
+      background url("../img/icon/book.png")
+      width 336px
+      height 173px
+      top -85px
+    .cup
+      background url("../img/icon/cup.png")
+      width 207px
+      height 221px
+      right 95px
+      top -45px
+  .more
+    border-top 1px solid rgba(40,47,49,.3)
+    border-bottom 1px solid rgba(40,47,49,.3)
+    height 135px
+    line-height 135px
+    margin 0 5%
+  h2
+    margin-top 80px
+  h3
+    margin-top 20px
+    opacity .6
+  .list
+    clearfix();
+    padding 70px 0
+    .row
+      clearfix()
+      li:first-child
+        margin-left 0
+    li
+      height 354px
+      margin-left 48px
+      pull-left();
+      margin-bottom 40px
+      .info
+        position relative
+        height 354px
+        width 100%
+        color white
+        box-shadow 0 4px 4px 1px rgba(135,135,135,.1)
+        img
+          position absolute
+          left 0
+          top 0
+          height 100%
+          width 100%
+        .text
+          height 150px
+          width 100%
+          position absolute
+          bottom 0
+          left 0
+          padding 0 0 10px 30px
+          z-index 2
+          text-align left
+          display flex
+          flex-direction column
+          justify-content flex-end
+        h6
+          font-size 1.5rem
+          width 160px
+          word-break break-word
+        .tips
+          font-size .88rem
+          margin-top 15px
+      .detail
+        margin-top 15px
+        height 60px
+        border-top 1px solid rgba(40,47,49,.3)
+        padding 15px 0
+        p
+          text-align left
+          font-size 28px
+          .date
+            font-size 16px
+            opacity 0.6
+            vertical-align super
+        .icon_wx,.icon_wb
+          pull-right()
+      &.clo-1
+        width 354px
+      &.clo-2
+        width 755px
+      &.clo-3
+        width 100%
 
 </style>
