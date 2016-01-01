@@ -4,17 +4,19 @@
   </overlay>
 	<nav class="navbar">
       <div class="container">
-        <a href="/"><div class="left">
+        <a href="/">
+          <div class="left">
           <img class="navbar-brand" src="../img/header_logo.png">
           <span class="title">Code Review</span>
-        </div></a>
+          </div>
+        </a>
 
         <div class="right">
           <ul class="list">
-            <li><a href="./reviewers.html">发现大神</a></li>
-            <li>精彩案例</li>
-            <li v-if="!userStatus" class="signup" @click="signup">注册</li>
-            <li v-if="!userStatus" @click="signin">登录</li>
+            <a href="./reviewers.html"><li class="hover-btn">发现大神</li></a>
+            <li class="hover-btn">精彩案例</li>
+            <li class="hover-btn" v-if="!userStatus" class="signup" @click="signup">注册</li>
+            <li class="hover-btn" v-if="!userStatus" @click="signin">登录</li>
             <li v-if="userStatus">
               <dropdown>
                 <user-avatar slot="showText" :user="user" @click="viewUserDropdown"></user-avatar>
@@ -134,12 +136,10 @@
 @import '../stylus/base.styl';	
 .navbar
   height 70px
-  padding 10px 100px
+  padding 10px 150px
   background white
   .container
-    width 1160px
     margin 0 auto
-    height 100%
     line-height 48px
   .left
     pull-left()
@@ -153,7 +153,9 @@
       width 120px
       text-align center
       cursor pointer
-      &.signup
+      &.hover-btn
+        border 1px solid #ffff // 避免hover之后颤抖
+      &.hover-btn:hover
         background rgba(51,201,111,.1)
         border 1px solid #33C96F
         color #33C96F
