@@ -1,15 +1,17 @@
 <template>
-  <div class="info">
-    <h1>发现各个语言领域的大神，向他们申请帮助</h1>
-    <h1>或者，你也可以先看看他们的 <strong>Code Review 案例</strong></h1>
-    <h2>入住大神：<strong class="num">{{reviewers.length}}</strong></h2>
-  </div>
-  <div class="list-content">
-    <reviewer :reviewers="reviewers"></reviewer>
-  </div>
-  <div class="join-reviewer">
-    <h5>噢，没有更多大神了</h5>
-    <h5>或者，你就是<strong>下一个</strong></h5>
+  <div>
+    <div class="info">
+      <h1>发现各个语言领域的大神，向他们申请帮助</h1>
+      <h1>或者，你也可以先看看他们的 <strong>Code Review 案例</strong></h1>
+      <h2>入住大神：<strong class="num">{{reviewers.length}}</strong></h2>
+    </div>
+    <div class="list-content">
+      <reviewer :reviewers="reviewers"></reviewer>
+    </div>
+    <div class="join-reviewer">
+      <h5>噢，没有更多大神了</h5>
+      <h5>或者，你就是<strong>下一个</strong></h5>
+    </div>
   </div>
 </template>
 
@@ -44,8 +46,6 @@ export default{
 
 <style lang="stylus">
 @import '../stylus/variables.styl';
-body
-  background #F1F5F6
 .info
   font-size 36px
   text-align center

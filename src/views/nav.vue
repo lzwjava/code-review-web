@@ -133,8 +133,8 @@
 <style lang="stylus">
 @import '../stylus/base.styl';	
 .navbar
-  height 106px
-  padding 29px 100px
+  height 70px
+  padding 10px 100px
   background white
   .container
     width 1160px
@@ -158,10 +158,10 @@
         border 1px solid #33C96F
         color #33C96F
     .dropdown-inner
-      width 360px
+      width 200px
       right 0
       &:before,&:after
-        left 83%
+        left 68%
 
 #message
   position fixed

@@ -32,22 +32,21 @@
     position relative
     width 100%
     height 100%
-  .dropdown-mask {
+  .dropdown-mask
     width 100%
     height 100%
-    background: transparent;
-  }
+    background transparent
   .dropdown-inner
-    position: absolute;
-    top: 100%;
-    margin-top: 20px;
-    background-color: white;
-    background-clip: padding-box;
-    padding: 6px 0;
-    border: 1px solid rgba(0, 0, 0, 0.18);
-    box-shadow: 0 3px 13px rgba(0, 0, 0, 0.18);
-    border-radius: 3px;
-    z-index: 11;
+    position absolute
+    top 100%
+    margin-top 20px
+    background-color white
+    background-clip padding-box
+    padding 6px 0
+    border 1px solid rgba(0, 0, 0, 0.18)
+    box-shadow 0 3px 13px rgba(0, 0, 0, 0.18)
+    border-radius 3px
+    z-index 11
     &:before, &:after
       position absolute
       left 50%
@@ -65,7 +64,7 @@
       color #565656
       display block
       font-size 14px
-      padding 7px 10px 7px 18px
+      padding 2px 5px 2px 13px
       margin-bottom 3px
       &:hover 
         background-color #71c72e
