@@ -32,7 +32,7 @@
 
             <div class="item right">
                 <div class="header">
-                    <h3>填写 Review 结果</h3>
+                    <h3>{{rightTitle}}</h3>
                 </div>
                 <div class="content">
                     <form @submit="submitReview">
@@ -74,25 +74,63 @@ export default {
             order: {
                 learner: {}
             },
-            title: '标题',
-            content: '代码有这几个毛病啊'
+            title: '',
+            content: ''
+        }
+    },
+    computed: {
+        mode () {
+            if (this.order.review != null) {
+                return 1; // edit
+            } else {
+                return 0; // create
+            }
+        },
+        rightTitle () {
+            debug('mode: ' + this.mode);
+            switch(this.mode) {
+                case 0: return '填写 Review 结果';
+                case 1: return '编辑 Review 结果';
+            }
+            return '';
         }
     },
     methods: {
-        submitReview(e) {
-            e.preventDefault();
+        returnOrders () {
+            setTimeout(() => {
+                window.location = '/order.html';
+            }, 3000);
+        },
+        addReview() {
             this.$http.post(serviceUrl.reviewsAdd, {
                 orderId: this.order.orderId,
                 title: this.title,
                 content: this.content
             }).then((resp) => {
                 if (util.filterError(this, resp)) {
-                    util.show(this, 'success', '提交成功');
-                    setTimeout(() => {
-                        window.location = '/order.html';
-                    }, 3000);
+                    util.show(this, 'success', '提交成功，将返回订单列表');
+                    this.returnOrders();
                 }
-            }, util.httpErrorFn(this))
+            }, util.httpErrorFn(this));
+        },
+        editReview() {
+            this.$http.post(serviceUrl.reviewsEdit, {
+                reviewId: this.order.review.reviewId,
+                title: this.title,
+                content: this.content
+            }).then((resp) => {
+                if (util.filterError(this, resp)) {
+                    util.show(this, 'success', '编辑成功，将返回订单列表');
+                    this.returnOrders();
+                }
+            }, util.httpErrorFn(this));
+        },
+        submitReview(e) {
+            e.preventDefault();
+            switch(this.mode) {
+                case 0: this.addReview(); break;
+                case 1: this.editReview(); break;
+            }
         }
     },
     created() {
@@ -107,6 +145,10 @@ export default {
             if (util.filterError(this, resp)) {
                 debug('%j', resp.data.result);
                 this.order = resp.data.result;
+                if (this.order.review) {
+                    this.title = this.order.review.title;
+                    this.content = this.order.review.content;
+                }
             }
         }, util.httpErrorFn(this));
     }
