@@ -204,22 +204,19 @@
   h5
     font-size 20px
 .slide
-  height 1000px
+  height 650px
   position relative
   color #fff
   width 100%
   overflow hidden
   .bg
-    background url("../img/home/hero.png") no-repeat
-    width 1920px
-    height 1000px
-    position absolute
-    top 0
-    left 50%
-    margin-left -960px
-    padding-top 315px
-    h3
-      margin-top 50px
+    background url("../img/home/hero.jpg") no-repeat
+    background-size 100% 100%
+    width 100%
+    height 100%
+    padding-top 150px
+    h2
+      margin-top 30px
     .begin
       background url("../img/icon/play.png") no-repeat
       width 80px
