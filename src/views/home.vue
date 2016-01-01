@@ -190,8 +190,8 @@
 </script>
 
 <style lang="stylus">
-@import "../stylus/home.styl";
-@import 'variables.styl';
+@import '../stylus/variables.styl';
+
 .home-main
   text-align center
   font-size 1rem
