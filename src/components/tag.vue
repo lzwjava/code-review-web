@@ -1,16 +1,17 @@
 <template>
-  <div class="tag-item">
-    <div class="point" :style="{ background: '#' + tag.color }"></div>
-    <p class="tag-name">{{tag.tagName}}</p>
-  </div>
-  <i class="delete" @click="removeTag(tag.tagId)"></i>
+    <div class="tag-item">
+      <div class="point" :style="{ background: '#' + tag.color }"></div>
+      <p class="tag-name">{{tag.tagName}}</p>
+      <i v-if="showDel" class="delete" @click="removeTag(tag.tagId)"></i>
+    </div>
 </template>
 
 <script type="text/javascript">
 import serviceUrl from "../common/serviceUrl.js"
 import util from '../common/util';
+var debug = require('debug')('tag');
 export default {
-  props: ['tag'],
+  props: ['tag', 'showDel'],
   methods: {
     removeTag (tagId){
       this.$http.post(serviceUrl.userTag, {
@@ -22,6 +23,9 @@ export default {
           this.$dispatch('remove-tag', res.data.result);
         }, util.httpErrorFn(this));
     }
+  },
+  ready () {
+    // debug('showDel: ' + this.showDel);
   }
 }
 
@@ -40,11 +44,10 @@ export default {
 .point
   width 12px
   height 12px
-  margin 8px 12px 8px 5px
+  margin auto 10px auto 0px
   background #f00
   border-radius 6px
   display inline-block
-  float left
 
 .tag-name
   display inline-block

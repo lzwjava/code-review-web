@@ -2,7 +2,6 @@ var vue = require('vue-loader');
 var webpack = require('webpack');
 var path = require('path');
 var srcPath = path.join(__dirname, 'src');
-var bootstrapPath = './node_modules/bootstrap/dist/css';
 
 module.exports = {
   entry: {
@@ -28,7 +27,7 @@ module.exports = {
       },
       root: srcPath,
       extensions: ['', '.js', '.css'],
-      modulesDirectories: ['node_modules', bootstrapPath, 'plupload', srcPath]
+      modulesDirectories: ['node_modules', 'plupload', srcPath]
   },
   module: {
     loaders: [

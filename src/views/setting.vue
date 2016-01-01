@@ -43,7 +43,7 @@
 				<h3 class="region-title">{{tagTitle}}</h3>
 				<ul class="list">
 					<li v-for="tag in tags">
-						<tag :tag="tag"></tag>
+						<tag :tag="tag" :show-del="true"></tag>
 					</li>
 				</ul>
 				<div class="select-content">

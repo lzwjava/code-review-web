@@ -36,8 +36,6 @@
   },
   "dependencies": {
     "blueimp-md5": "^1.1.1",
-    "bootstrap": "^3.3.6",
-    "bootstrap-webpack": "0.0.5",
     "es6-promise": "^3.0.2",
     "firebase": "^2.3.1",
     "jquery": "^2.1.4",

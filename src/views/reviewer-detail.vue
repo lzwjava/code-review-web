@@ -37,7 +37,7 @@
             <div class="right-region">
                 <p class="region-title">擅长领域</p>
                 <div class="tag-list">
-                    <tag v-for="tag in reviewer.tags" :tag="tag"></tag>
+                    <tag v-for="tag in reviewer.tags" :tag="tag" :showDel="false"></tag>
                 </div>
             </div>
         </div>
@@ -119,6 +119,7 @@ export default {
         margin 10px
         .tag-item
             width 50%
+            float left
             padding 10px
 
 .order-list
