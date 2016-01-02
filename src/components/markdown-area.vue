@@ -1,12 +1,14 @@
 <template>
   <div class="markdown-area" :class="{active: content.length}">
-    <textarea placeholder="{{ placeholder }}" aria-label="{{ placeholder }}" v-show="!html" v-model='content' v-el:text @keydown="keyboardSubmit"></textarea>
-    <div class="markdown-preview markdown-body" v-show="html" v-html="html"></div>
-    <div class="markdown-actions" v-show="!html">
+    <textarea placeholder="{{ placeholder }}" aria-label="{{ placeholder }}" v-show="!showPreview" v-model='content' v-el:text @keydown="keyboardSubmit"></textarea>
+
+    <markdown class="markdown-preview" v-show="showPreview" :content="content" :show = "showPreview"></markdown>
+
+    <div class="markdown-actions" v-show="!showPreview">
 <!--       <a href="#" @click="image" v-show="!uploading">Image</a> -->
       <a href="#" @click="preview">预览模式</a>
     </div>
-    <div class="markdown-actions" v-show="html">
+    <div class="markdown-actions" v-show="showPreview">
       <a href="#" @click="focus">编辑模式</a>
     </div>
 <!--     <input type="file" style="opacity: 0; left: -99999px; position: absolute" v-el:file accept="image/*" @change="upload">
@@ -14,21 +16,12 @@
 </template>
 
 <script>
-  // var api = require('../api');
-  require('../../node_modules/github-markdown-css/github-markdown.css')
   var debug = require('debug')('markdown-area');
-  import marked from 'marked'
-  marked.setOptions({
-    renderer: new marked.Renderer(),
-    gfm: true,
-    tables: true,
-    breaks: false,
-    pedantic: false,
-    sanitize: true,
-    smartLists: true,
-    smartypants: false
-  });
+  import Markdown from './markdown.vue'
   module.exports = {
+    components: {
+      'markdown': Markdown
+    },
     props: {
       placeholder: String,
       content: {
@@ -38,7 +31,7 @@
     },
     data: function() {
       return {
-        html: '',
+        showPreview: false,
         uploading: false
       };
     },
@@ -51,7 +44,8 @@
       },
       focus: function(e) {
         e && e.preventDefault();
-        this.html = '';
+        this.showPreview = false;
+
         var el = this.$els.text;
         setTimeout(function() {
           el.focus();
@@ -59,14 +53,10 @@
       },
       preview: function(e) {
         e.preventDefault();
-        if (this.html) {
-          return this.html = '';
+        if (this.showPreview) {
+          return;
         }
-        this.html = marked(this.content);
-        debug('html ' + this.html);
-        // api.preview(this.content, function(html) {
-        //   this.html = html;
-        // }.bind(this));
+        this.showPreview = true;
       },
       image: function(e) {
         e.preventDefault();

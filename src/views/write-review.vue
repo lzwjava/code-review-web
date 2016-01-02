@@ -45,7 +45,7 @@
                         </div>
                         <div class="edit-area">
                             <markdown-area class="form-field form-content yue" :content.sync="content" placeholder="有什么可以改进的吗？" @submit="submitReview" required></markdown-area>
-                            <p class="tip">支持 Markdown</p>
+                            <p class="tip">* 支持 Markdown</p>
                         </div>
                         <button class="submit-btn">提交结果</button>
                     </form>
@@ -215,10 +215,10 @@ export default {
             p.tip
                 color rgba(40,47,49,.6)
                 font-size 13px
-                margin 5px 0px
+                margin 15px 0px
         .submit-btn
             btn(#00CFF5, #fff, 0.8, 150px, 30px)
-            margin 30px auto 10px
+            margin 20px auto 10px
             display block
             
 </style>
