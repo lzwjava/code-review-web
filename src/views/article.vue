@@ -1,8 +1,18 @@
 <template>
     <div class="main-container">
-        <div class="content-area">
+        <div class="header-area">
             <h1 class="title">{{order.review.title}}</h1>
-            <div><span>{{order.review.created}}</span> <span>{{order.reviewer.username}}</span></div>
+            <div class="intro">
+                <img src="../img/icon/clock.png">
+                <span class="review-time">{{order.review.created}}</span>
+                <img src="../img/icon/reward.png">
+                <span>54</span>
+                <img src="../img/icon/small-pen.png">
+                <span><a :href="'./reviewer.html?id=' + order.reviewer.id">{{order.reviewer.username}}</a></span>
+             </div>
+        </div>
+
+        <div class="content-area">
             <markdown :content="order.review.content" :show="true"></markdown>
         </div>
     </div>
@@ -64,11 +74,24 @@ export default {
 body
     background #fff
 
-.content-area
-    max-width 600px
-    margin 0 auto
+.header-area
+    max-width 900px
+    margin 0px auto
+    text-align center
     h1.title
         font-size 2.2rem
         margin 20px 0px
+    .intro
+        img
+            width 18px
+            height 18px
+        span
+            margin-right 20px
+            line-height 24px
+            font-size 20px
+
+.content-area
+    max-width 700px
+    margin 40px auto
 
 </style>

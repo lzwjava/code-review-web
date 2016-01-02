@@ -16,7 +16,7 @@ def _set_user_dir():
 def _prepare_local_website(install='true'):
   local('npm run build')
   local('mkdir -p %s' % tmp_dir)
-  local('cp -rv static *.html css %s' % tmp_dir)
+  local('cp -rv static *.html css plupload %s' % tmp_dir)
 
 def prepare_remote_dirs():
   _set_user_dir()
