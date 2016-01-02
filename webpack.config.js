@@ -12,7 +12,8 @@ module.exports = {
     order: ['./src/order.js'],
     reviewer: ['./src/reviewer.js'],
     'order-detail': ['./src/order-detail.js'],
-    'write-review': ['./src/write-review.js']
+    'write-review': ['./src/write-review.js'],
+    article: ['./src/article.js']
   },
   output: {
     path: __dirname + '/static',
