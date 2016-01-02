@@ -15,14 +15,28 @@
         <div class="content-area">
             <markdown :content="order.review.content" :show="true"></markdown>
         </div>
+
+
+        <div class="bottom-area" @click="overlayStatus = true">
+            <button class="btn btn-green btn-reward">
+                <img src="../img/icon/white-reward.png">
+                <span>打赏支持</span>
+            </button>
+        </div>
+
+        <overlay :overlay.sync="overlayStatus">
+            <reward-form></reward-form>
+        </overlay>
     </div>
 </template>
 
 <script type="text/javascript">
 
+import Overlay from '../components/overlay.vue'
 import util from '../common/util'
 import serviceUrl from "../common/serviceUrl.js"
 import Markdown from "../components/markdown.vue"
+import RewardForm from '../components/reward-form.vue'
 
 var debug = require('debug')('article');
 
@@ -30,10 +44,13 @@ window.document.title = "Review";
 
 export default {
     components: {
-        'markdown': Markdown
+        'markdown': Markdown,
+        'overlay': Overlay,
+        'reward-form': RewardForm
     },
     data () {
         return {
+            overlayStatus: false,
             order: {
                 learner: {},
                 review: {
@@ -69,8 +86,6 @@ export default {
 
 <style lang="stylus">
 
-@import '../stylus/variables.styl';
-
 body
     background #fff
 
@@ -90,8 +105,20 @@ body
             line-height 24px
             font-size 20px
 
+.bottom-area
 .content-area
     max-width 700px
     margin 40px auto
+
+.bottom-area
+    .btn-reward
+        padding 15px 35px
+        img
+            width 18px
+            height 18px
+            margin-right 10px
+        span
+            line-height 18px
+            font-size 18px
 
 </style>
