@@ -194,7 +194,7 @@
 
 .navbar
   position fixed
-  z-index 1000
+  z-index 8 // signup login overlay = 9
 
 .home-main
   text-align center
