@@ -1,3 +1,7 @@
+// 用 import 好像不行，会出现找不到 undefined 的情况
+var filters = require('./filters');
+import Ajax from 'vue-resource'
+
 exports.filterError = (component, res) => {
   if (res.data.code != 0) {
     var nav = component.$root.$children[0];
@@ -51,10 +55,6 @@ exports.getSearchParameters = () => {
       return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
 }
 
-// 用 import 好像不行，会出现找不到 undefined 的情况
-var filters = require('./filters');
-import Ajax from 'vue-resource'
-
 exports.configVue = (Vue) => {
 
   Vue.config.debug = true;
@@ -65,7 +65,7 @@ exports.configVue = (Vue) => {
 
   // 这里是 debug 模块调试，有用的，不用移除
   localStorage.debug = 'api,user,components,setting,reviewer-list,home,reviewer-detail,order-form,'
-   + 'order,write-review,tag,markdown-area,markdown,article';
+   + 'order,write-review,tag,markdown-area,markdown,article,reward-form';
 
   // register filters globally
   for(let  k in filters){

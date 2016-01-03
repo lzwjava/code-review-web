@@ -25,7 +25,7 @@
         </div>
 
         <overlay :overlay.sync="overlayStatus">
-            <reward-form></reward-form>
+            <reward-form :order="order"></reward-form>
         </overlay>
     </div>
 </template>
