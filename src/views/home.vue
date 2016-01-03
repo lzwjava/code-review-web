@@ -7,7 +7,7 @@
         <div>
           <button class="begin"></button>
         </div>
-        <button class="help">如何使用Code Review</button>
+        <button class="help">如何使用 Code Review</button>
       </div>
     </section>
 
@@ -204,7 +204,7 @@
   h5
     font-size 20px
 .slide
-  height 650px
+  height 800px
   position relative
   color #fff
   width 100%
@@ -214,7 +214,7 @@
     background-size 100% 100%
     width 100%
     height 100%
-    padding-top 150px
+    padding-top 250px
     h2
       margin-top 30px
     .begin
@@ -223,10 +223,10 @@
       height 80px
       margin-top 60px
     .help
-      height 66px
-      width 288px
-      background #33C96F
-      font-size 20px
+      height 50px
+      width 220px
+      background blue
+      font-size 1rem
       margin-top 50px
       color white
 .feature

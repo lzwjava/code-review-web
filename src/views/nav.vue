@@ -6,8 +6,11 @@
       <div class="container">
         <a href="/">
           <div class="left">
-          <img class="navbar-brand" src="../img/header_logo.png">
-          <span class="title">Code Review</span>
+            <img class="navbar-brand" src="../img/header_logo.png">
+            <div class="title">
+              <span class="light">Code</span>
+              <span class="bold">Review</span>
+            </div>
           </div>
         </a>
 
@@ -133,26 +136,42 @@
   }
 </script>
 <style lang="stylus">
-@import '../stylus/base.styl';	
+@import '../stylus/base.styl';
+
 .navbar
-  height 70px
+  height 50px
   padding 10px 150px
   background white
+  position fixed
+  left 0
+  right 0
+  z-index 1000
   .container
     margin 0 auto
-    line-height 48px
+    line-height 30px
+  .navbar-brand
+    width 35px
+    top 3px
+    position relative
   .left
     pull-left()
     .title
-      font-size 1.5rem
+      font-size 20px
       margin-left 10px
+      display inline-block
+      .light
+        font-family Raleway-Light
+      .bold
+        font-family Raleway-SemiBold
   .right
     pull-right()
   .list
     li
-      width 120px
+      padding-left 20px
+      padding-right 20px
       text-align center
       cursor pointer
+      font-size 14px
       &.hover-btn
         border 1px solid #ffff // 避免hover之后颤抖
       &.hover-btn:hover
