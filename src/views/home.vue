@@ -192,6 +192,10 @@
 <style lang="stylus">
 @import '../stylus/variables.styl';
 
+.navbar
+  position fixed
+  z-index 1000
+
 .home-main
   text-align center
   font-size 1rem

@@ -142,10 +142,8 @@
   height 50px
   padding 10px 150px
   background white
-  position fixed
   left 0
   right 0
-  z-index 1000
   .container
     margin 0 auto
     line-height 30px
