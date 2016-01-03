@@ -1,20 +1,23 @@
 <template>
     <div class="reward-form absolute-center" @click="stop">
 
-        <button type="button" class="close" @click="close">X</button>
+        <button type="button" class="close" @click="close">×</button>
 
         <div class="reviewer-region">
             <user-avatar :user="order.reviewer"></user-avatar>
-            <p class="gray-text">“送人玫瑰，手有余香”<br>谢谢支持，您的打赏是作者的动力</p>
+            <p class="gray-text">“送人玫瑰，手有余香”</p>
+            <p class="gray-text">谢谢支持，您的打赏是作者的动力</p>
         </div>
 
         <form @submit="rewardSubmit" v-show="!qrpay">
             <div class="form-line">
-              <input class="reward-input" v-model="reward" placeholder="￥5" type="number"></input>
+              <input class="reward-input" v-model="reward" placeholder="￥5" type="number" min="1"></input>
             </div>
             <div class="form-line">
-              <input type="radio" name="pay" value="wechat" checked="checked" />微信支付
-              <input type="radio" name="pay" value="alipay" />支付宝支付
+              <input class="pay-radio" type="radio" name="pay" value="wechat" checked="checked" />
+              <label>微信支付</label>
+              <input class="pay-radio" type="radio" name="pay" value="alipay" />
+              <label>支付宝支付</label>
             </div>
             <div class="action">
                 <button class="btn btn-blue">立即打赏</button>
@@ -104,27 +107,49 @@ export default {
 .reward-form
     background white
     width 350px
-    height 450px
+    height 480px
     .close
         float right
         margin 10px 10px 0 0
+        font-size 22px
+        line-height 15px
     .reviewer-region
         text-align  center
-        margin-top 60px
+        margin-top 50px
         .avatar
             width 96px
             height 96px
+            margin-bottom 20px
         p
-            margin-top 30px
+            margin-top 10px
     form
-        margin-top 30px
+        margin-top 50px
         width 100%
         padding 0px 20px
+        .form-line
+            margin 10px 0
         .reward-input
             height 55px
             width 100%
+            font-size 22px
+            border 1px solid rgba(40,47,49,.3)
+        .pay-radio
+            width 40px
+            height 40px
+            margin auto 0
+            -webkit-appearance none
+            border none
+            outline none
+            appearance none
+            &:before
+                content url('../other/radio.svg')
+            &:checked:before
+                content url('../other/radio-checked.svg')
+        label
+            position relative
+            bottom 12px
         .action
-            margin-top 30px
+            margin-top 20px
             text-align center
             button
                 width 90%
