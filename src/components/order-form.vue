@@ -1,62 +1,56 @@
 <template>
-  <div>
-    <div class="modal-mask" v-show="show">
-      <div class="modal-wrapper">
-        <div class="modal-container">
+  <div class="modal-container absolute-center">
 
-          <div class="left-modal">
+    <div class="left-modal">
 
-            <div class="belt">
-              <button class="btn-cancel"
-                @click="show = false">
-                取消申请
-              </button>
-            </div>
+      <div class="belt">
+        <button class="btn-cancel"
+          @click="close">
+          取消申请
+        </button>
+      </div>
 
+    </div>
+
+    <div class="right-modal">
+
+      <form action="/" @submit="addOrder" v-show="!qrpay">
+        <div class="form-line">
+          <label>打赏费用</label>
+          <div class="reward-input">
+            <input v-model="reward"></input>元
           </div>
+        </div>
+        <div class="form-line">
+          <input type="radio" name="pay" value="wechat" checked="checked" />微信支付
+          <input type="radio" name="pay" value="alipay" />支付宝支付
+        </div>
+        <div class="form-line">
+          <label class="form-label">项目 GitHub 地址</label>
+          <input class="github-input" required v-model="gitHubUrl" placeholder="https://github.com/user/repo"></input>
+        </div>
+        <div class="form-line">
+          <label class="form-label">Review 大致代码行数</label>
+          <input required type="number" v-model="codeLines"></input>行
+        </div>
+        <div class="form-line remark-div">
+          <label class="form-label">备注</label>
+          <textarea v-model="remark"></textarea>
+        </div>
+        <button class="btn-common btn-blue confirm-btn">申请 Code Review</button>
+      </form>
 
-          <div class="right-modal">
+      <div class="pay-region" v-show="qrpay">
 
-            <form action="/" @submit="addOrder" v-show="!qrpay">
-              <div class="form-line">
-                <label>打赏费用</label>
-                <div class="reward-input">
-                  <input v-model="reward"></input>元
-                </div>
-              </div>
-              <div class="form-line">
-                <input type="radio" name="pay" value="wechat" checked="checked" />微信支付
-                <input type="radio" name="pay" value="alipay" />支付宝支付
-              </div>
-              <div class="form-line">
-                <label class="form-label">项目 GitHub 地址</label>
-                <input class="github-input" required v-model="gitHubUrl" placeholder="https://github.com/user/repo"></input>
-              </div>
-              <div class="form-line">
-                <label class="form-label">Review 大致代码行数</label>
-                <input required type="number" v-model="codeLines"></input>行
-              </div>
-              <div class="form-line remark-div">
-                <label class="form-label">备注</label>
-                <textarea v-model="remark"></textarea>
-              </div>
-              <button class="btn-common btn-blue confirm-btn">申请 Code Review</button>
-            </form>
-
-            <div class="pay-region" v-show="qrpay">
-
-              <div class="pay-desc">
-                <p class="title">扫一扫付款</p>
-                <img :src="qrcode">
-                <p class="amount"><span>¥</span> {{reward}}</p>
-              </div>
-            </div>
-
-          </div>
-
+        <div class="pay-desc">
+          <p class="title">扫一扫付款</p>
+          <img :src="qrcode">
+          <p class="amount"><span>¥</span> {{reward}}</p>
         </div>
       </div>
+
     </div>
+
   </div>
 </template>
 
@@ -82,9 +76,12 @@ module.exports = {
     reviewerId: String
   },
   methods: {
+    close () {
+      this.$parent.overlay = false;
+    },
     addOrder (e) {
       e.preventDefault();
-      debug('reviewerId:' + this.reviewerId);      
+
       this.$http.post(serviceUrl.ordersAdd, {
         gitHubUrl: this.gitHubUrl,
         codeLines: this.codeLines,
@@ -109,6 +106,7 @@ module.exports = {
     }
   },
   created () {
+    debug('reviewerId:' + this.reviewerId);
   }
 };
 
@@ -116,25 +114,9 @@ module.exports = {
 
 <style lang="stylus">
 
-.modal-mask
-  position fixed
-  z-index 9998
-  top 0
-  left 0
-  width 100%
-  height 100%
-  background-color rgba(0, 0, 0, .5)
-  transition opacity .3s ease
-  display table
-
-.modal-wrapper
-  display table-cell
-  vertical-align middle
-
 .modal-container
   width 800px
-  height 600px  
-  margin 0px auto
+  height 600px
   background-color #fff
   border-radius 2px
   box-shadow 0 2px 8px rgba(0, 0, 0, .33)
@@ -162,7 +144,7 @@ module.exports = {
   font-size 20px
   line-height 32px
 
-.btn-cancel:before 
+.btn-cancel:before
   content '×'
   font-size 30px
 
@@ -173,12 +155,12 @@ module.exports = {
     padding 10px
 
 .form-label
-  display block    
+  display block
   margin-bottom 10px
   opacity 0.6
   font-size 14px
   color #282F31
-  line-height 32px    
+  line-height 32px
 
 .reward-input
   float right
@@ -188,7 +170,7 @@ module.exports = {
     text-align right
 
 .github-input
-  width 100%    
+  width 100%
 
 .remark-div
   textarea
@@ -202,7 +184,7 @@ module.exports = {
   display block
 
 .pay-region
-  text-align center  
+  text-align center
 
 .pay-desc
   width 200px

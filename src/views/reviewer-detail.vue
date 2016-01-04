@@ -29,7 +29,7 @@
                     </div>
 
                     <div>
-                        <button class="btn-common btn-blue order-btn" @click="showOrder = true">申请 Code Review</button>
+                        <button class="btn-common btn-blue order-btn" @click="overlayStatus = true">申请 Code Review</button>
                     </div>
                 </div>
             </div>
@@ -48,13 +48,16 @@
             </div>
         </div>
 
-        <order-form transition="fade" :show.sync="showOrder" :reviewer-id="reviewer.id"></order-form>
+        <overlay :overlay.sync="overlayStatus">
+          <order-form :reviewer-id="reviewer.id"></order-form>
+        </overlay>
     </div>
 
 </template>
 
 <script type="text/javascript">
 
+import Overlay from '../components/overlay.vue'
 import UserAvatar from '../components/user-avatar.vue'
 import OrderForm from '../components/order-form.vue'
 import Tag from '../components/tag.vue'
@@ -67,14 +70,15 @@ export default {
     components: {
         'user-avatar': UserAvatar,
         'tag': Tag,
-        'order-form': OrderForm
+        'order-form': OrderForm,
+        'overlay': Overlay
     },
     data () {
         return {
             reviewer: {
                 tags: []
             },
-            showOrder: false
+            overlayStatus: false
         }
     },
     methods: {
@@ -125,7 +129,7 @@ export default {
 .order-list
     background white
     margin-top 30px
-    .list-header 
+    .list-header
         height 60px
         position relative
         .order-title
@@ -140,12 +144,12 @@ export default {
 
 .region-title
     margin-left 35px
-    margin-top 40px 
+    margin-top 40px
 
 .center-region
     width 373px
     margin 0 auto
-    text-align center    
+    text-align center
     .basic-info
         width 260px
         margin 0 auto
@@ -168,7 +172,7 @@ export default {
         font-size 12px
         color #3B3E3F
         opacity .6
-        margin-top 10px 
+        margin-top 10px
 
 .order-btn
     margin-top 50px

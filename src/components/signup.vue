@@ -129,7 +129,7 @@
 				border-radius 3px
 				margin-top 50px
 				margin-bottom 30px
-					
+
 		.row
 			width 100%
 			height 58px
@@ -143,5 +143,5 @@
 				margin-top 1px
 				border none
 				outline none
-		
+
 </style>
