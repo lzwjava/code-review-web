@@ -24,7 +24,12 @@
           </div>
           <div class="row">
             <span>项目 GitHub 地址</span>
-            <span class="right">{{order.gitHubUrl}}</span>
+            <span class="right">
+              <a target="_blank" :href="order.gitHubUrl">
+                <button class="btn-github" type="button" name="button">
+                </button>
+              </a>
+            </span>
           </div>
           <div class="row">
             <span>项目备注</span>

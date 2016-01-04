@@ -21,7 +21,9 @@
                     </div>
                     <div class="row">
                         <span>项目Github地址</span>
-                        <button class="github">{{order.gitHubUrl}}</button>
+                        <a target="_blank" :href="order.gitHubUrl">
+                          <button class="btn-github"></button>
+                        </a>
                     </div>
                     <h4>备注</h4>
                     <div class="row">
@@ -196,9 +198,8 @@ export default {
                 &.right
                     pull-right()
                     color textColor
-                .github
-                    btn(url(../img/icon/github.png), white, 1, 85, 30)
-                    pull-right()
+            .btn-github
+                pull-right()
         .input-row
             span
                 display block
@@ -220,5 +221,5 @@ export default {
             btn(#00CFF5, #fff, 0.8, 150px, 30px)
             margin 20px auto 10px
             display block
-            
+
 </style>

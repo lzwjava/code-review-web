@@ -29,7 +29,9 @@
 				</div>
 				<div class="row">
 					<span>项目Github地址</span>
-					<button class="github"></button>
+					<a target="_blank" :href="detail.gitHubUrl">
+						<button class="btn-github"></button>
+					</a>
 				</div>
 				<h3>Review 结果</h3>
 				<div class="row">
@@ -114,8 +116,7 @@
 					.check-result
 						btn(green, white, 0.8, 85, 30)
 						pull-right()
-					.github
-						btn(url(../img/icon/github.png), white, 1, 85, 30)
+					.btn-github
 						pull-right()
 </style>
 
