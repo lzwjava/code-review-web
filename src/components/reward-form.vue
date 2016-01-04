@@ -92,6 +92,7 @@ export default {
 </script>
 
 <style lang="stylus">
+@import "../stylus/variables.styl"
 
 .absolute-center
     margin auto
@@ -159,7 +160,7 @@ export default {
                 margin-top 10px
 
 .pay-region
-  text-align center  
+  text-align center
 
 .pay-desc
   width 200px

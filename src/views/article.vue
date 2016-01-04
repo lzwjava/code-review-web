@@ -12,10 +12,30 @@
              </div>
         </div>
 
+        <div class="order-area">
+          <h3>用户需求一览</h3>
+          <div class="row">
+            <span>申请者</span>
+            <span class="right">{{order.learner.username}}</span>
+          </div>
+          <div class="row">
+            <span>项目大致代码行数</span>
+            <span class="right">{{order.codeLines}}</span>
+          </div>
+          <div class="row">
+            <span>项目 GitHub 地址</span>
+            <span class="right">{{order.gitHubUrl}}</span>
+          </div>
+          <div class="row">
+            <span>项目备注</span>
+            <p class="remark">{{order.remark}}</p>
+          </div>
+
+        </div>
+
         <div class="content-area">
             <markdown :content="order.review.content" :show="true"></markdown>
         </div>
-
 
         <div class="bottom-area" @click="overlayStatus = true">
             <button class="btn btn-green btn-reward">
@@ -85,6 +105,7 @@ export default {
 
 
 <style lang="stylus">
+@import "../stylus/variables.styl"
 
 body
     background #fff
@@ -106,9 +127,30 @@ body
             font-size 20px
 
 .bottom-area
+.order-area
 .content-area
     max-width 700px
     margin 40px auto
+
+.order-area
+  padding 30px
+  background #FFFFFF
+  border 1px solid rgba(0,0,0,0.15)
+  border-radius 3px
+  h3
+    font-size 18px
+  .row
+    margin-top 30px
+    color gray
+    .right
+      float right
+      color light-dark
+    p.remark
+      color light-dark
+      margin-top 15px
+
+.content-area
+  margin-top 50px
 
 .bottom-area
     .btn-reward

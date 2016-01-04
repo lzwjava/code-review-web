@@ -4,32 +4,36 @@ clearfix()
 		display table
 	&:after
 		clear: both
-	
+
 pull-left()
 	float left
 
 pull-right()
 	float right
-    
+
 ellipsis()
 	text-overflow ellipsis
 	overflow hidden
 	white-space nowrap
-	
+
 boxShadow(color = #ddd)
 	box-shadow: 0px 1px 4px 0px color
 
 .clearfix
 	clearfix()
 
-	
+
 textColor = #282F31
 
 blue = #00cff5
 
 green = #33C96F
 
+// 用在很多 form 里
 gray = #909292
+
+// 用在 reward-form.vue
+light-dark = #282F31
 
 btn(bg, color, fontSize, w, h)
 	background bg
