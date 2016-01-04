@@ -181,6 +181,11 @@
 				}).then((res) => {
 					this.tags = res.data.result;
 				}, util.httpErrorFn(this));
+			},
+			loaded() {
+				if (this.username && this.allTags) {
+					this.$broadcast('loaded');
+				}
 			}
 		},
 		created() {
@@ -188,11 +193,13 @@
 				if (util.filterError(this, res)) {
 					debug(res.data.result);
 			    this.setUserInfo(res.data.result);
+					this.loaded();
 				}
 			}, util.httpErrorFn(this))
 			this.$http.get(serviceUrl.tags).then((res) => {
 				if (util.filterError(this, res)) {
 					this.allTags = res.data.result;
+					this.loaded();
 				}
 			}, util.httpErrorFn(this))
 		},
@@ -200,9 +207,6 @@
 			var component = this;
 			this.$http.get(serviceUrl.qiniu).then((res) => {
 				if (util.filterError(this, res)) {
-					if (this.username && this.allTags) {
-						this.$broadcast('loaded');
-					}
 					debug('qiniu token %j', res.data);
 					var uptoken = res.data.result.uptoken;
 					var bucketUrl = res.data.result.bucketUrl;
