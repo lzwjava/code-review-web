@@ -71,13 +71,11 @@
     text-align: center;
     font-size: 24px;
     border-radius: 50%;
-
   }
   .avatar img{
     position:relative;
-    top: -2px;
-    left: -2px;
-    
+    horizontal-align:middle;
+    vertical-align: middle;
   }
   .avatar.small span {
     font-size: 18px;

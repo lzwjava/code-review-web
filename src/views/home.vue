@@ -63,14 +63,14 @@
             <div class="row">
               <li class="clo-2">
                 <div class="info">
-                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <img src="https://images.unsplash.com/photo-1450849608880-6f787542c88a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=b256aa5102c408322cdb99ce6a6a0f53">
                   <div class="text">
                     <h6 class="title">
-                      dsadadasdas
+                      特邀采访<br>传奇开发者<br>Loren Brichter
                     </h6>
                     <h6 class="tips">
-                      <span>1111</span>
-                      <span>2222</span>
+                      <span>#传感器</span>
+                      <span>#iOS</span>
                     </h6>
                   </div>
                 </div>
@@ -85,14 +85,14 @@
               </li>
               <li class="clo-1">
                 <div class="info">
-                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <img src="https://images.unsplash.com/photo-1431975562098-bac8ded504c7?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=b8e0ca83863bf59b4668cec00931a155">
                   <div class="text">
                     <h6 class="title">
-                      dsadadasdas
+                      传感器使用误区<br>与性能优化
                     </h6>
                     <h6 class="tips">
-                      <span>1111</span>
-                      <span>2222</span>
+                      <span>#传感器</span>
+                      <span>#iOS</span>
                     </h6>
                   </div>
               </li>
@@ -100,40 +100,40 @@
             <div class="row">
               <li class="clo-1">
                 <div class="info">
-                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <img src="https://images.unsplash.com/photo-1443916765281-9937110585db?crop=entropy&fit=crop&fm=jpg&h=675&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200">
                   <div class="text">
                     <h6 class="title">
-                      dsadadasdas
+                      传感器使用误区<br>与性能优化
                     </h6>
                     <h6 class="tips">
-                      <span>1111</span>
-                      <span>2222</span>
+                      <span>#传感器</span>
+                      <span>#iOS</span>
                     </h6>
                   </div>
               </li>
               <li class="clo-1">
                 <div class="info">
-                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <img src="https://images.unsplash.com/photo-1439737567250-e9ea931e97a4?crop=entropy&fit=crop&fm=jpg&h=800&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200">
                   <div class="text">
                     <h6 class="title">
-                      dsadadasdas
+                      传感器使用误区<br>与性能优化
                     </h6>
                     <h6 class="tips">
-                      <span>1111</span>
-                      <span>2222</span>
+                      <span>#传感器</span>
+                      <span>#iOS</span>
                     </h6>
                   </div>
               </li>
               <li class="clo-1">
                 <div class="info">
-                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <img src="https://images.unsplash.com/photo-1448814100339-234df1d4005d?crop=entropy&fit=crop&fm=jpg&h=900&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200">
                   <div class="text">
                     <h6 class="title">
-                      dsadadasdas
+                      传感器使用误区<br>与性能优化
                     </h6>
                     <h6 class="tips">
-                      <span>1111</span>
-                      <span>2222</span>
+                      <span>#传感器</span>
+                      <span>#iOS</span>
                     </h6>
                   </div>
               </li>
@@ -141,14 +141,14 @@
             <div class="row">
               <li class="clo-3">
                 <div class="info">
-                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <img src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?crop=entropy&fit=crop&fm=jpg&h=800&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200">
                   <div class="text">
                     <h6 class="title">
-                      dsadadasdas
+                      传感器使用误区<br>与性能优化
                     </h6>
                     <h6 class="tips">
-                      <span>1111</span>
-                      <span>2222</span>
+                      <span>#传感器</span>
+                      <span>#iOS</span>
                     </h6>
                   </div>
               </li>
@@ -376,11 +376,16 @@
         color white
         box-shadow 0 4px 4px 1px rgba(135,135,135,.1)
         img
-          position absolute
+          position relative
           left 0
           top 0
           height 100%
           width 100%
+          -webkit-filter brightness(0.5)
+          transition: all 0.3s ease 0s;
+          -webkit-transition: all 0.3s ease 0s;
+          &:hover
+            -webkit-filter brightness(0.3)
         .text
           height 150px
           width 100%
@@ -395,11 +400,17 @@
           justify-content flex-end
         h6
           font-size 1.5rem
-          width 160px
+          line-height 2rem
+          font-weight 100
+          width 200px
           word-break break-word
+          font-family "PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
+
         .tips
           font-size .88rem
-          margin-top 15px
+          font-weight 100
+          //margin-top 15px
+          margin-bottom 10px
       .detail
         margin-top 15px
         height 60px
