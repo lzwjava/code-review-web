@@ -42,7 +42,7 @@ export default{
     }).then((resp) => {
       if (util.filterError(this, resp)) {
         this.reviewers = resp.data.result;
-        //this.$broadcast('loaded');
+        this.$broadcast('loaded');
       }
     }, util.httpErrorFn(this));
   }
