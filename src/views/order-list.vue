@@ -198,7 +198,7 @@
 						border-right: none;
 					&.stop
 						color: #f04e4b;
-					
+
 					img
 						width: 50px;
 						height: 50px;
