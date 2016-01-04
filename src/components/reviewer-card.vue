@@ -6,20 +6,6 @@
       </div>
       <h4>{{reviewer.username}}</h4>
       <h5>{{reviewer.introduction}}</h5>
-      <ul class="list data">
-        <li>
-          <p class="num">{{reviewer.tags.length}}</p>
-          <p class="text">擅长领域</p>
-        </li>
-        <li>
-          <p class="num">{{reviewer.orderCount}}</p>
-          <p class="text">审核案例</p>
-        </li>
-        <li>
-          <p class="num">{{reviewer.orderCount}}</p>
-          <p class="text">打赏次数</p>
-        </li>
-      </ul>
       <div class="cover">
         <p>你想申请</p>
         <p>{{reviewer.username}}</p>
@@ -53,23 +39,29 @@ export default {
     height 406px
     margin-left 130px
     background white
-    box-shadow: 0px 0px 4px 2px rgba(0,0,0,.2)
+    box-shadow: 0px 1px 2px 1px rgba(0,0,0,.1)
     border-radius 3px
     position relative
+    margin-top 0px
     margin-bottom 80px
     vertical-align top
+    transition all 0.4s
+    border
+    border-width 1px
+    border-color rgba(0,0,0,1)
     &:hover
-      .cover
-        display block
+      box-shadow: 0px 22px 43px rgba(0,0,0,0.2)
+      -webkit-box-shadow:0 22px 43px rgba(0, 0, 0, 0.2)
+      webkit-transform:translateY(-20px)
+      transform:translateY(-20px)
     &:first-child
       margin-left 0
     .avatar
-      width 100px
-      height 100px
+      width 96px
+      height 96px
       border-radius 50%
       padding 5px
       background white
-      box-shadow: 0px 1px 3px 1px rgba(0,0,0,.5)
       margin 70px auto 30px
       img
         height 100%
@@ -79,28 +71,10 @@ export default {
       margin-bottom 20px
       font-size 1rem
     h5
-      line-height 150%
+      line-height 180%
       padding 0 20px
-      font-size 0.8rem
-    .data
-      height 103px
-      position absolute
-      bottom 0
-      left 0 
-      right 0
-      background #FDFFFF
-      border-top 1px solid rgba(0,0,0,.15)
-      padding 19px
-      text-align center
-      li
-        width 33%
-        .num
-          font-size 1.5rem
-        .text
-          font-size 12px
-          color #3B3E3F
-          opacity .6
-          margin-top 20px
+      font-size 0.88rem
+      font-weight 500
     .cover
       display none
       position absolute

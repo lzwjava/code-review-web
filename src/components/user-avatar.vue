@@ -14,7 +14,7 @@
       compile: function() {
         var user = this.user;
         if (!user.username) return;
-        
+
         var el = this.$els.avatar;
         if (!user.avatarUrl) {
           var span = '<span style="background-color:#1;color:#2">#3<\/span>';
@@ -68,13 +68,19 @@
   }
   .avatar span, .avatar img {
     display: inline-block;
-    width: 100%;
-    height: 100%;
+    width: 70%;
+    height: 70%;
     color: white;
     text-align: center;
     font-size: 24px;
     border-radius: 50%;
-    vertical-align: top;
+
+  }
+  .avatar img{
+    position:relative;
+    top: -2px;
+    left: -2px;
+    
   }
   .avatar.small span {
     font-size: 18px;

@@ -3,7 +3,7 @@
     <section class="slide">
       <div class="bg">
         <h1>最高效的代码审核服务</h1>
-        <h2>Code Review，迅速帮你提升核心竞争力</h2>
+        <h2 id="header2">Code Review，迅速帮你提升核心竞争力</h2>
         <div>
           <button class="begin"></button>
         </div>
@@ -19,7 +19,7 @@
             <h4 class="number">280大神入驻</h4>
             <p class="detail">我们邀请了业内知名的开发者帮助大家解决在编码过程中所遇到的问题，这些高手利用自己所擅长的技术为各位竭诚服务。</p>
           </div>
-          
+
         </li>
         <li>
           <div class="short">
@@ -27,14 +27,14 @@
             <h4 class="number">2800+审核文档</h4>
             <p class="detail">每一次 Code Review 的过程都凝结着大神的心血 Code Review 上线半年以来，已经帮助重构、简化了 1400 份代码文件。</p>
           </div>
-          
+
         </li>
         <li>
           <div class="short">
             <div class="icon_article"></div>
             <h4 class="number">280经验总结</h4>
             <p class="detail">代码审核无论对于审核者还是帮助申请人来说，都是宝贵的经验财富，在获得许可的情况下，我们提供 Code Review 经验文摘。</p>
-          </div> 
+          </div>
         </li>
       </ul>
     </section>
@@ -42,7 +42,7 @@
     <section class="reviewer">
       <div class="bg">
           <h2>发现行业内精英开发者</h2>
-          <h3>一览领域顶尖的编程人物</h3>
+          <h3>一览各个语言领域顶尖的编程人物，了解他们，并申请帮助。</h3>
           <reviewer :reviewers="reviewers"></reviewer>
           <div>
             <a href="/reviewers.html">
@@ -51,9 +51,9 @@
           </div>
       </div>
     </section>
-    
+
     <section class="example">
-        <div class="container"><!-- 
+        <div class="container"><!--
           <div class="pen"></div>
           <div class="book"></div>
           <div class="cup"></div> -->
@@ -191,16 +191,27 @@
 
 <style lang="stylus">
 @import '../stylus/variables.styl';
-
+#header2
+  font-size 1.5rem
+  font-weight 100
+  font-family Raleway-ExtraLight,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
 .home-main
   text-align center
   font-size 1rem
   h1
     font-size 3.75rem
+    font-weight 100
   h2
     font-size 1.5rem
-  h3,h4
+    font-weight 400
+    font-family "PingFang SC","Helvetica Neue",Helvetica,"Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
+  h3
     font-size 1rem
+    opacity 0.6
+  h4
+    font-size 1rem
+    font-weight 600
+    font-family "PingFang SC","Helvetica Neue",Helvetica,"Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
   h5
     font-size 20px
 .slide
@@ -211,7 +222,8 @@
   overflow hidden
   .bg
     background url("../img/home/hero.jpg") no-repeat
-    background-size 100% 100%
+    background-size contain
+    position 200% 200%
     width 100%
     height 100%
     padding-top 250px
@@ -226,6 +238,8 @@
       height 50px
       width 220px
       background blue
+      border-radius 3px
+      font-family Raleway-Regular,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
       font-size 1rem
       margin-top 50px
       color white
@@ -251,18 +265,21 @@
       .number
         margin 20px 0 10px
       .icon_crown, .icon_article, .icon_doc
-        width 45px
+        width 49px
         height 52px
         margin 0 auto
       .icon_crown
         background url("../img/icon/crown.png") no-repeat
+        background-size: contain
       .icon_doc
         background url("../img/icon/doc.png") no-repeat
+        background-size: contain
       .icon_article
         background url("../img/icon/article.png") no-repeat
+        background-size: contain
       .detail
         margin-top 20px
-        line-height 150%
+        line-height 180%
         font-size 0.88rem
 .reviewer
   height 900px;
@@ -281,19 +298,20 @@
     margin-left -960px
     padding-top 100px
     h3
-      margin 50px 0
+      margin 30px 0
+      margin-bottom 90px
     .more
       width 220px
       height 50px
       color white
       text-align center
-      margin-top 50px
+      margin-top 60px
       background #42D0F6
       font-size 1rem
       border-radius 3px
     .item
       margin-bottom 0 !important
-    
+
 .example
   margin 0 auto
   padding-top 5px
@@ -330,7 +348,7 @@
   h2
     margin-top 80px
   h3
-    margin-top 20px
+    margin-top 30px
     opacity .6
   .list
     clearfix();

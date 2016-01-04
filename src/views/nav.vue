@@ -26,7 +26,7 @@
                 <div slot="options">
                   <a class="dropdown-item" href="setting.html">个人设置</a>
                   <a class="dropdown-item" href="order.html">Code Review 订单列表</a>
-                  <div class="dropdown-divider"></div>                
+                  <div class="dropdown-divider"></div>
                   <a class="dropdown-item" @click="logout" href="/">注销</a>
                 </div>
               </dropdown>
@@ -47,7 +47,7 @@
   import UserAvatar from '../components/user-avatar.vue';
   import serviceUrl from "../common/serviceUrl.js";
   import util from '../common/util'
-  var debug = require('debug')('components');  
+  var debug = require('debug')('components');
   var clock = new Date().getFullYear();
 	export default {
     components: {
@@ -161,8 +161,12 @@
       display inline-block
       .light
         font-family Raleway-Light
+        top -2px
+        position relative
       .bold
         font-family Raleway-SemiBold
+        top -2px
+        position relative
   .right
     pull-right()
   .list
@@ -174,6 +178,9 @@
       font-size 14px
       &.hover-btn
         border 1px solid #ffff // 避免hover之后颤抖
+        top -12.5px
+        position relative
+        font-weight 600
       &.hover-btn:hover
         background rgba(51,201,111,.1)
         border 1px solid #33C96F
@@ -182,7 +189,7 @@
       width 200px
       right 0
       &:before,&:after
-        left 68%
+        left 85%
 
 #message
   position fixed
