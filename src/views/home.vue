@@ -191,10 +191,16 @@
 
 <style lang="stylus">
 @import '../stylus/variables.styl';
+
 #header2
   font-size 1.5rem
   font-weight 100
   font-family Raleway-ExtraLight,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
+
+.navbar
+  position fixed
+  z-index 8 // signup login overlay = 9
+
 .home-main
   text-align center
   font-size 1rem
@@ -222,7 +228,8 @@
   overflow hidden
   .bg
     background url("../img/home/hero.jpg") no-repeat
-    background-size contain
+    background-size cover
+    background-position-y 40%
     position 200% 200%
     width 100%
     height 100%

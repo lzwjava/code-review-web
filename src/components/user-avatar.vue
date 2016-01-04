@@ -54,9 +54,6 @@
   .avatar {
     display: inline-block;
     text-decoration: none;
-    width: 48px;
-    height: 48px;
-    line-height: 48px;
   }
   .avatar.small {
     width: 36px;

@@ -4,6 +4,7 @@
   </overlay>
 	<nav class="navbar">
       <div class="container">
+
         <a href="/">
           <div class="left">
             <img class="navbar-brand" src="../img/header_logo.png">
@@ -33,6 +34,7 @@
             </li>
           </ul>
         </div>
+
       </div>
     </nav>
     <div id="message" aria-live="assertive">
@@ -139,16 +141,16 @@
 @import '../stylus/base.styl';
 
 .navbar
-  height 50px
-  padding 10px 150px
+  height totalHeight = 50px
+  padding paddingTop=5px 150px
   background white
-  position fixed
   left 0
   right 0
-  z-index 1000
   .container
     margin 0 auto
-    line-height 30px
+    line-height totalHeight - 2 * paddingTop
+    width 100%
+    height 100%
   .navbar-brand
     width 35px
     top 3px
@@ -189,7 +191,10 @@
       width 200px
       right 0
       &:before,&:after
-        left 85%
+        left 89%
+  .avatar
+    width totalHeight - 2 * paddingTop
+    height totalHeight - 2 * paddingTop
 
 #message
   position fixed
