@@ -1,62 +1,63 @@
 <template>
-	<section class="setting">
-		<h2>个人设置</h2>
-		<section class="form">
-			<div class="white">
-				<div class="avatar-container" id="upload-container">
-					<user-avatar :user="user"></user-avatar>
-					<button type="button" id="pickfiles">修改头像</button>
+	<loading>
+		<section class="setting">
+			<h2>个人设置</h2>
+			<section class="form">
+				<div class="white">
+					<div class="avatar-container" id="upload-container">
+						<user-avatar :user="user"></user-avatar>
+						<button type="button" id="pickfiles">修改头像</button>
+					</div>
+					<div class="row">
+						<p>昵称</p>
+						<input type="text" v-model="username"/>
+					</div>
+					<div class="row">
+						<p>Github 地址</p>
+						<span>github.com/ </span><input style="width: 437px;" type="text" v-model="github"/>
+					</div>
 				</div>
-				<div class="row">
-					<p>昵称</p>
-					<input type="text" v-model="username"/>
+				<div class="color">
+					<div class="row">
+						<p>手机号码</p>
+						<p>{{phone}}</p>
+					</div>
+					<div class="row">
+						<p>公司名称</p>
+						<input type="text" v-model="company"/>
+					</div>
+					<div class="row">
+						<p>职位</p>
+						<input type="text"  v-model="jobTitle"/>
+					</div>
+					<div class="row">
+						<p>个人简介</p>
+						<textarea v-model="introduction"></textarea>
+					</div>
+					<div class="row">
+						<button type="button" @click="updateUser">确认修改</button>
+					</div>
 				</div>
-				<div class="row">
-					<p>Github 地址</p>
-					<span>github.com/ </span><input style="width: 437px;" type="text" v-model="github"/>
+			</section>
+			<section class="tags">
+				<div class="tags-content">
+					<h3 class="region-title">{{tagTitle}}</h3>
+					<ul class="list">
+						<li v-for="tag in tags">
+							<tag :tag="tag" :show-del="true"></tag>
+						</li>
+					</ul>
+					<div class="select-content">
+						<p>输入 「{{tagTitle}}」</p>
+						<select v-model="selected">
+							<option v-for="tag in remains" :value="{tagId: tag.tagId}">{{tag.tagName}}</option>
+						</select>
+						<button type="button" @click="addTag">添加</button>
+					</div>
 				</div>
-			</div>
-			<div class="color">
-				<div class="row">
-					<p>手机号码</p>
-					<p>{{phone}}</p>
-				</div>
-				<div class="row">
-					<p>公司名称</p>
-					<input type="text" v-model="company"/>
-				</div>
-				<div class="row">
-					<p>职位</p>
-					<input type="text"  v-model="jobTitle"/>
-				</div>
-				<div class="row">
-					<p>个人简介</p>
-					<textarea v-model="introduction"></textarea>
-				</div>
-				<div class="row">
-					<button type="button" @click="updateUser">确认修改</button>
-				</div>
-			</div>
+			</section>
 		</section>
-		<section class="tags">
-			<div class="tags-content">
-				<h3 class="region-title">{{tagTitle}}</h3>
-				<ul class="list">
-					<li v-for="tag in tags">
-						<tag :tag="tag" :show-del="true"></tag>
-					</li>
-				</ul>
-				<div class="select-content">
-					<p>输入 「{{tagTitle}}」</p>
-					<select v-model="selected">
-						<option v-for="tag in remains" :value="{tagId: tag.tagId}">{{tag.tagName}}</option>
-					</select>
-					<button type="button" @click="addTag">添加</button>
-				</div>
-			</div>
-		</section>
-	</section>
-	
+	</loading>
 
 </template>
 
@@ -65,14 +66,16 @@
 	import UserAvatar from '../components/user-avatar.vue';
 	var debug = require('debug')('setting');
 	var moxie = require('moxie');
-	var plupload = require('moxie-plupload');	
+	var plupload = require('moxie-plupload');
 	import Qiniu from 'qiniu-js-sdk'
 	import serviceUrl from "../common/serviceUrl.js"
 	import Tag from '../components/tag.vue'
+	import Loading from '../components/loading.vue'
 	export default {
 		components: {
 			'user-avatar': UserAvatar,
-			'tag': Tag
+			'tag': Tag,
+			'loading': Loading
 		},
 		data () {
 			return {
@@ -197,6 +200,9 @@
 			var component = this;
 			this.$http.get(serviceUrl.qiniu).then((res) => {
 				if (util.filterError(this, res)) {
+					if (this.username && this.allTags) {
+						this.$broadcast('loaded');
+					}
 					debug('qiniu token %j', res.data);
 					var uptoken = res.data.result.uptoken;
 					var bucketUrl = res.data.result.bucketUrl;

@@ -73,7 +73,7 @@ module.exports = {
     show: {
       twoWay: true
     },
-    reviewerId: String
+    reviewerId: {}
   },
   methods: {
     close () {

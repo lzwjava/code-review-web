@@ -1,5 +1,5 @@
 <template>
-
+  <loading>
     <div class="main-container">
         <div class="top-region">
             <div class="left-region">
@@ -52,6 +52,7 @@
           <order-form :reviewer-id="reviewer.id"></order-form>
         </overlay>
     </div>
+  </loading>
 
 </template>
 
@@ -61,6 +62,7 @@ import Overlay from '../components/overlay.vue'
 import UserAvatar from '../components/user-avatar.vue'
 import OrderForm from '../components/order-form.vue'
 import Tag from '../components/tag.vue'
+import Loading from '../components/loading.vue'
 import util from '../common/util'
 import serviceUrl from "../common/serviceUrl.js"
 
@@ -71,7 +73,8 @@ export default {
         'user-avatar': UserAvatar,
         'tag': Tag,
         'order-form': OrderForm,
-        'overlay': Overlay
+        'overlay': Overlay,
+        'loading': Loading
     },
     data () {
         return {
@@ -82,9 +85,12 @@ export default {
         }
     },
     methods: {
-
     },
     created() {
+        this.$on('loaded', ()=> {
+          debug('on loaded in detail');
+          return true;
+        });
         var params = util.getSearchParameters()
         if (!params.id) {
             util.show(this, 'error', '请提供 id 参数');
@@ -94,8 +100,11 @@ export default {
         this.$http.get(serviceUrl.reviewerView, {
             id:reviewerId
         }).then((resp) => {
-            this.reviewer = resp.data.result;
-            debug('%j', this.reviewer);
+            if (util.filterError(this, resp)) {
+              this.$broadcast('loaded');
+              this.reviewer = resp.data.result;
+              debug('%j', this.reviewer);
+            }
         }, util.httpErrorFn(this))
     }
 }
