@@ -189,13 +189,16 @@
 			}
 		},
 		created() {
-			this.$http.get(serviceUrl.userStatus).then((res) => {
+			/*this.$http.get(serviceUrl.userStatus).then((res) => {
 				if (util.filterError(this, res)) {
 					debug(res.data.result);
 			    this.setUserInfo(res.data.result);
 					this.loaded();
 				}
-			}, util.httpErrorFn(this))
+			}, util.httpErrorFn(this))*/
+			if(window.localStorage.getItem('user')){
+			        this.setUserInfo(JSON.parse(window.localStorage.getItem('user')));
+			      }
 			this.$http.get(serviceUrl.tags).then((res) => {
 				if (util.filterError(this, res)) {
 					this.allTags = res.data.result;
