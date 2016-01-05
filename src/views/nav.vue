@@ -26,7 +26,7 @@
                 <user-avatar slot="showText" :user="user" @click="viewUserDropdown"></user-avatar>
                 <div slot="options">
                   <div><user-avatar :user="user"></user-avatar>
-                    <div class="name">MartinRGB</div>
+                    <div class="name">{{user.username}}</div>
                   <div>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="setting.html">个人设置</a>
