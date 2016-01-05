@@ -13,6 +13,7 @@ module.exports = {
     reviewer: ['./src/reviewer.js'],
     'order-detail': ['./src/order-detail.js'],
     'write-review': ['./src/write-review.js'],
+    case: ['./src/case.js'],
     article: ['./src/article.js']
   },
   output: {
