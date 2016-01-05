@@ -191,7 +191,7 @@
       &.hover-btn:hover
         color #00CFF5
     .dropdown-inner
-      width 300px
+      width 220px
       right 0
       &:before,&:after
         left 90%

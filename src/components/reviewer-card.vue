@@ -6,13 +6,7 @@
       </div>
       <h4>{{reviewer.username}}</h4>
       <h5>{{reviewer.introduction}}</h5>
-      <div class="cover">
-        <p>你想申请</p>
-        <p>{{reviewer.username}}</p>
-        <p>帮你 Code Review 吗？</p>
-<!--         <button class="submit action-button" type="button">雇佣</button> -->
-        <button class="action-button" type="button" @click="goDetail(reviewer.id)">了解详情</button>
-      </div>
+      <button class="action-button" type="button" @click="goDetail(reviewer.id)">了解详情</button>
     </li>
   </ul>
 </template>
@@ -50,24 +44,29 @@ export default {
     border-width 1px
     border-color rgba(0,0,0,1)
     &:hover
-      box-shadow: 0px 22px 43px rgba(0,0,0,0.2)
-      -webkit-box-shadow:0 22px 43px rgba(0, 0, 0, 0.2)
-      webkit-transform:translateY(-20px)
-      transform:translateY(-20px)
+      box-shadow: 0px 22px 43px rgba(0,0,0,0.15)
+      -webkit-box-shadow:0 22px 43px rgba(0, 0, 0, 0.15)
+      webkit-transform:translateY(-10px)
+      transform:translateY(-10px)
+      button
+        background #33C96F
+        color white
+        border 1px solid #33C96F
     &:first-child
       margin-left 0
     .avatar
-      width 96px
-      height 96px
+      width 106px
+      height 106px
       border-radius 50%
       padding 5px
       background white
-      margin 70px auto 30px
+      margin 40px auto 0px
       img
         height 100%
         width 100%
         border-radius 50%
     h4
+      margin-top 30px
       margin-bottom 20px
       font-size 1rem
     h5
@@ -75,34 +74,16 @@ export default {
       padding 0 20px
       font-size 0.88rem
       font-weight 500
-    .cover
-      display none
-      position absolute
-      top 0
-      bottom 0
-      left 0
-      right 0
-      background rgba(40,47,49,.9)
-      color white
-      text-align center
-      padding-top 120px
-      p
-        line-height 180%
-        font-weight 200
-      button
-        width 96px
-        line-height 48px
-        height 50px
-        border-radius 3px
-        border 1px solid white
-        color white
-        font-size 1rem
-        margin-top 30px
-        background rgba(255,255,255,.1)
-        box-shadow 0 1px 4px rgba(0,0,0,.06)
-      .submit
-        background blue
-        border-color blue
-        margin-right 15px
-        box-shadow 0 2px 4px rgba(0,0,0,.5)
+    button
+      width 160px
+      line-height 45px
+      height 45px
+      border-radius 30px
+      border 1px solid rgba(47/255.0,49/255.0,30/255.0,0.15)
+      color #282F31
+      font-size 0.75rem
+      letter-spacing 2px
+      margin-top 45px
+      transition all 0.3s ease 0s
+      -webkit-transition all 0.3s ease 0s
 </style>
