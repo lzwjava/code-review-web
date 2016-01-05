@@ -289,7 +289,7 @@
         line-height 180%
         font-size 0.88rem
 .reviewer
-  height 900px;
+  height 800px;
   position relative
   overflow hidden
   .reviewers
@@ -303,10 +303,10 @@
     top 0
     left 50%
     margin-left -960px
-    padding-top 100px
+    padding-top 80px
     h3
       margin 30px 0
-      margin-bottom 90px
+      margin-bottom 40px
     .more
       width 220px
       height 50px
@@ -317,6 +317,7 @@
       font-size 1rem
       border-radius 3px
     .item
+      margin-top 14px
       margin-bottom 0 !important
 
 .example
