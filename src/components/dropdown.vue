@@ -49,6 +49,7 @@
     box-shadow 0 3px 13px rgba(0, 0, 0, 0.18)
     border-radius 3px
     z-index 11
+    padding 10px 20px
     &:before, &:after
       position absolute
       left 50%
@@ -63,41 +64,26 @@
       top -15px
       border-bottom-color white
     .dropdown-item
-      &:after
-        content ""
-        height 100%
-        left 0
-        top 0
-        width 0px
-        position absolute
-        transition all 0.3s ease 0s
-        -webkit-transition all 0.3s ease 0s
-        z-index -1
-
       padding 20px
       position relative
-      color #565656
+      color #282F31
       display block
       font-size 14px
+      font-weight 700
       padding 2px 5px 2px 13px
       margin-bottom 3px
-      transition: all 0.3s ease-out 0s;
-      -webkit-transition: all 0.3s ease-out 0s;
       z-index: 20;
+      &:last-child
+        opacity 0.6
       &:hover
-        //background-color #00CFF5
-        border-bottom 0px
-        color #fff
-        &:after
-          width 100%
+        color #00BDEF
+        &:last-child
+          opacity 0.6
+          color #EF0031
     .dropdown-divider
       border-top: 1px solid #ddd
+      opacity 0.75
       margin: 8px 0
-    &:last-child
-      a
-        border-left 0px solid #f0776c
-        &:after
-          background #00CFF5
     .avatar
       margin-left 14px
     .name

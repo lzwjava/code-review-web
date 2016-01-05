@@ -149,6 +149,7 @@
   padding paddingTop=5px 150px
   background white
   border-bottom 1px solid rgba(0,0,0,0.15)
+  box-shadow 0 2px 1px 0px rgba(135,135,135,.15)
   min-width 1200px
   left 0
   right 0
@@ -192,7 +193,7 @@
       &.hover-btn:hover
         color #00CFF5
     .dropdown-inner
-      width 300px
+      width 220px
       right 0
       &:before,&:after
         left 90%
