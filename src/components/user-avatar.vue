@@ -19,7 +19,6 @@
     compiled: function() {
       var user = this.user;
       if (!user.avatarUrl) {
-        console.log(user.username)
         var bg = wordColor.rgb(user.username);
         if ((bg[0] * 299 + bg[1] * 587 + bg[2] * 114) > 200000) {
           this.spanColor = 'black';
@@ -30,7 +29,7 @@
       }else{
         //debug('avatarUrl: ' + user.avatarUrl);
       }
-      
+
     }
   };
 </script>

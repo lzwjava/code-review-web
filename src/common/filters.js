@@ -19,10 +19,11 @@ exports.fromNow =  (time) => {
 exports.reviewStatus = (state) => {
   let text = '未知'
     switch(state){
-      case 0:  text = '未打赏';break;
-      case 1:  text = '等待审阅';break;
-      case 2:  text = '已完成';break;
-      case 3:  text = '已拒绝';break;
+      case 'unpaid':  text = '未打赏';break;
+      case 'paid':  text = '等待审阅';break;
+      case 'finished':  text = '已完成';break;
+      case 'consented': text = '已接手';break;
+      case 'rejected':  text = '已拒绝';break;
     }
     return text;
 }
@@ -44,6 +45,6 @@ exports.moneyAsYuan = (money) => {
   if (!money) {
     return 0;
   } else {
-    return money / 1000;
+    return money / 100;
   }
 }
