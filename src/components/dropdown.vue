@@ -81,8 +81,8 @@
       font-size 14px
       padding 2px 5px 2px 13px
       margin-bottom 3px
-      transition: all 0.3s ease 0s;
-      -webkit-transition: all 0.3s ease 0s;
+      transition: all 0.3s ease-out 0s;
+      -webkit-transition: all 0.3s ease-out 0s;
       z-index: 20;
       &:hover
         //background-color #00CFF5
