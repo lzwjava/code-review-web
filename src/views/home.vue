@@ -140,8 +140,8 @@
             </div>
             <div class="row">
               <li class="clo-3">
-                <div class="info">
-                  <img src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?crop=entropy&fit=crop&fm=jpg&h=800&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200">
+                <div class="info big-img-wrap">
+                  <span class="big-img"></span>
                   <div class="text">
                     <h6 class="title">
                       传感器使用误区<br>与性能优化
@@ -369,23 +369,49 @@
       margin-left 48px
       pull-left();
       margin-bottom 40px
+      .big-img-wrap
+        .big-img
+          background-image url('https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?crop=entropy&fit=crop&fm=jpg&h=800&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200')
+          background-size cover
+          background-repeat no-repeat
+          display block
+          width 100%
+          height 100%
+          -webkit-filter brightness(0.4)
+          transition: all 0.35s ease 0s;
+          -webkit-transition all 0.35s ease 0s
+          &:hover
+            -webkit-filter brightness(0.6)
+            transform: scale(1.2,1.2)
       .info
         position relative
         height 354px
         width 100%
         color white
         box-shadow 0 4px 4px 1px rgba(135,135,135,.1)
+        overflow hidden
+        backface-visibility hidden
+        &:hover
+          img
+            transform: scale(1.2,1.2)
+            -webkit-filter brightness(0.6)
+          .title
+            -webkit-transform translate(0, -20px)
+            transfrom translate(0, -20px)
+            opacity 1.0
+          .tips
+            -webkit-transform translate(0, -10px)
+            transfrom translate(0, -10px)
+            opacity 0.8
         img
           position relative
           left 0
           top 0
           height 100%
           width 100%
-          -webkit-filter brightness(0.5)
-          transition: all 0.3s ease 0s;
-          -webkit-transition: all 0.3s ease 0s;
-          &:hover
-            -webkit-filter brightness(0.3)
+          -webkit-filter brightness(0.4)
+          transition: all 0.35s ease 0s;
+          -webkit-transition: all 0.35s ease 0s;
         .text
           height 150px
           width 100%
@@ -399,18 +425,28 @@
           flex-direction column
           justify-content flex-end
         h6
-          font-size 1.5rem
-          line-height 2rem
-          font-weight 100
           width 200px
           word-break break-word
           font-family "PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
-
+        .title
+          font-size 1.5rem
+          line-height 2rem
+          font-weight 100
+          -webkit-transform translate(0, 10px)
+          transfrom translate(0, 10px)
+          opacity 0.92
+          transition: all 0.35s ease 0s;
+          -webkit-transition: all 0.35s ease 0s;
         .tips
           font-size .88rem
           font-weight 100
           //margin-top 15px
           margin-bottom 10px
+          -webkit-transform translate(0, 20px)
+          transfrom translate(0, 20px)
+          opacity 0
+          transition: all 0.35s ease 0.05s;
+          -webkit-transition: all 0.35s ease 0.05s;
       .detail
         margin-top 15px
         height 60px
