@@ -9,83 +9,77 @@
     </section>
     <section class="case-list">
     	<h3>全部文章</h3>
-    	<div class="list">
+    	<div class="list" v-for="item in caseList">
     		<div class="list-content">
     			<div class="article-logo">
-    				<img src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=160cee1dce3d70cf53faad0dc8dcd1ba/79f0f736afc3793163673a0decc4b74543a91182.jpg">
+    				<img :src="item.articleLogo">
     			</div>
     			<div class="article-info">
     				<div class="date-tags">
-    					<span class="data">13 八月 2015</span>
-    					<span class="tag">#基础类问题</span>
+    					<span class="data">{{item.date}}</span>
+    					<span class="tag" v-for="tag in item.tags">{{tag}}</span>
     				</div>
-    				<h6 class="title">
-    					Swift 与 Objective-C 混编的一些问题
-    				</h6>
+    				<h6 class="title">{{item.title}}</h6>
     				<div class="info">
-    					在 Objective-C++ 中，可以用 C++ 代码调用方法也可以从 Objective-C 调用方法。在这两种语言里对象都是指针，可以在任何地方使用。例 如，C++ 类可以使用 Objective-C 对象的指针作为数据成员，Objective-C 类也可以有 C++ 对象指针做实例变量。下例说明了这一点。
+    					
     				</div>
     				<div class="count">
-    					<span>6024 次阅读</span>
-    					<span>6024 次打赏</span>
-    					<span>6024 条评论</span>
+    					<span>{{item.view}} 次阅读</span>
+    					<span>{{item.tip}} 次打赏</span>
+    					<span>{{item.comment}} 条评论</span>
     				</div>
     			</div>
     		</div>
     	</div>
-    	<div class="list">
-    		<div class="list-content">
-    			<div class="article-logo">
-    				<img src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=160cee1dce3d70cf53faad0dc8dcd1ba/79f0f736afc3793163673a0decc4b74543a91182.jpg">
-    			</div>
-    			<div class="article-info">
-    				<div class="date-tags">
-    					<span class="data">13 八月 2015</span>
-    					<span class="tag">#基础类问题</span>
-    				</div>
-    				<h6 class="title">
-    					Swift 与 Objective-C 混编的一些问题
-    				</h6>
-    				<div class="info">
-    					在 Objective-C++ 中，可以用 C++ 代码调用方法也可以从 Objective-C 调用方法。在这两种语言里对象都是指针，可以在任何地方使用。例 如，C++ 类可以使用 Objective-C 对象的指针作为数据成员，Objective-C 类也可以有 C++ 对象指针做实例变量。下例说明了这一点。
-    				</div>
-    				<div class="count">
-    					<span>6024 次阅读</span>
-    					<span>6024 次打赏</span>
-    					<span>6024 条评论</span>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-    	<div class="list">
-    		<div class="list-content">
-    			<div class="article-logo">
-    				<img src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=160cee1dce3d70cf53faad0dc8dcd1ba/79f0f736afc3793163673a0decc4b74543a91182.jpg">
-    			</div>
-    			<div class="article-info">
-    				<div class="date-tags">
-    					<span class="data">13 八月 2015</span>
-    					<span class="tag">#基础类问题</span>
-    				</div>
-    				<h6 class="title">
-    					Swift 与 Objective-C 混编的一些问题
-    				</h6>
-    				<div class="info">
-    					在 Objective-C++ 中，可以用 C++ 代码调用方法也可以从 Objective-C 调用方法。在这两种语言里对象都是指针，可以在任何地方使用。例 如，C++ 类可以使用 Objective-C 对象的指针作为数据成员，Objective-C 类也可以有 C++ 对象指针做实例变量。下例说明了这一点。
-    				</div>
-    				<div class="count">
-    					<span>6024 次阅读</span>
-    					<span>6024 次打赏</span>
-    					<span>6024 条评论</span>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-    	<div class="paganition">
-    		这是分页位置 先占位。
+    	<div class="pagination">
+    		<pagination></pagination>
     	</div>
     </section>
 </template>
+<script>
+    export default{
+        data (){
+            return {
+                caseList: [{
+                    articleLogo: 'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=160cee1dce3d70cf53faad0dc8dcd1ba/79f0f736afc3793163673a0decc4b74543a91182.jpg',
+                    date: '13 八月 2015',
+                    tags: ['#IOS基础'],
+                    title: 'Swift 与 Objective-C 混编的一些问题',
+                    info: '在 Objective-C++ 中，可以用 C++ 代码调用方法也可以从 Objective-C 调用方法。在这两种语言里对象都是指针，可以在任何地方使用。例 如，C++ 类可以使用 Objective-C 对象的指针作为数据成员，Objective-C 类也可以有 C++ 对象指针做实例变量。下例说明了这一点。',
+                    view: 6024,
+                    comment: 300,
+                    tip: 30
+                },{
+                    articleLogo: 'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=160cee1dce3d70cf53faad0dc8dcd1ba/79f0f736afc3793163673a0decc4b74543a91182.jpg',
+                    date: '13 八月 2015',
+                    tags: ['#IOS基础'],
+                    title: 'Swift 与 Objective-C 混编的一些问题',
+                    info: '在 Objective-C++ 中，可以用 C++ 代码调用方法也可以从 Objective-C 调用方法。在这两种语言里对象都是指针，可以在任何地方使用。例 如，C++ 类可以使用 Objective-C 对象的指针作为数据成员，Objective-C 类也可以有 C++ 对象指针做实例变量。下例说明了这一点。',
+                    view: 6024,
+                    comment: 300,
+                    tip: 30
+                },{
+                    articleLogo: 'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=160cee1dce3d70cf53faad0dc8dcd1ba/79f0f736afc3793163673a0decc4b74543a91182.jpg',
+                    date: '13 八月 2015',
+                    tags: ['#IOS基础'],
+                    title: 'Swift 与 Objective-C 混编的一些问题',
+                    info: '在 Objective-C++ 中，可以用 C++ 代码调用方法也可以从 Objective-C 调用方法。在这两种语言里对象都是指针，可以在任何地方使用。例 如，C++ 类可以使用 Objective-C 对象的指针作为数据成员，Objective-C 类也可以有 C++ 对象指针做实例变量。下例说明了这一点。',
+                    view: 6024,
+                    comment: 300,
+                    tip: 30
+                }]
+            }
+        },
+        events:{
+            'pagination-success': function(res){
+                console.log(res);//这里处理分页获取数据的回调
+            },
+            'pagination-error': function(res){
+                console.log(res, 'error')
+            }
+        }
+    }
+</script>
 <style lang="stylus">
 .slide
   height 620px
@@ -163,5 +157,6 @@
 				img
 					width 100%
 					height 100%
-
+.pagination
+    text-align center
 </style>

@@ -10,8 +10,22 @@ import Nav from 'views/nav.vue'
 import Footer from 'views/footer.vue'
 import Case from 'views/case.vue'
 import util from './common/util'
+import Pagination from './components/pagination/main.js'
 util.configVue(Vue)
-
+Vue.use(Pagination);
+let page = new Pagination({
+    remote: {
+        pageSize: 10,
+        pageIndexName: 'page_no',
+        pageSizeName: 'page_size',
+        params: {},
+        url: 'clerk/getlist',
+        totalName: 'total_nums',
+        offset: -1,
+        dataKey: 'showcases'
+    }
+});
+page.init();
 let caseVue = new Vue({
   el: 'body',
   components:{
