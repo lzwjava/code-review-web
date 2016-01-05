@@ -17,8 +17,8 @@
 
         <div class="right">
           <ul class="list">
-            <a href="./reviewers.html"><li class="hover-btn">发现大神</li></a>
-            <li class="hover-btn">精彩案例</li>
+            <a href="/reviewers.html"><li class="hover-btn">发现大神</li></a>
+            <a href="/case.html"><li class="hover-btn">精彩案例</li></a>
             <li class="hover-btn" v-if="!userStatus" class="signup" @click="signup">注册</li>
             <li class="hover-btn" v-if="!userStatus" @click="signin">登录</li>
             <li v-if="userStatus">
@@ -149,6 +149,7 @@
   padding paddingTop=5px 150px
   background white
   border-bottom 1px solid rgba(0,0,0,0.15)
+  min-width 1200px
   left 0
   right 0
   .container

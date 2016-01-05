@@ -46,9 +46,7 @@ export default {
     margin-bottom 80px
     vertical-align top
     transition all 0.4s
-    border
-    border-width 1px
-    border-color rgba(0,0,0,1)
+    border 1px solid rgba(0,0,0,.1)
     &:hover
       box-shadow: 0px 22px 43px rgba(0,0,0,0.2)
       -webkit-box-shadow:0 22px 43px rgba(0, 0, 0, 0.2)

@@ -1,22 +1,22 @@
 /**
  * 
- * @authors yuqiu (you@example.org)
- * @date    2015-12-20 17:17:32
+ * @authors yuqiu (yuqiu@luojilab.com)
+ * @date    2016-01-05 11:41:43
  * @version $Id$
  */
 
 import Vue from 'vue'
 import Nav from 'views/nav.vue'
 import Footer from 'views/footer.vue'
-import ReviewerDetail from 'views/reviewer-detail.vue'
+import Case from 'views/case.vue'
 import util from './common/util'
 util.configVue(Vue)
 
-let reviewer = new Vue({
+let caseVue = new Vue({
   el: 'body',
   components:{
     'my-nav': Nav,
     'my-footer': Footer,
-    'reviewer-detail': ReviewerDetail
+    'case': Case
   }
 })
