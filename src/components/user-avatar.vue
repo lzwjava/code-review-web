@@ -18,6 +18,11 @@
     },
     compiled: function() {
       var user = this.user;
+      if (!user.username) {
+        // 因为父对象的 user 一开始可能没有数据
+        return;
+      }
+      debug('user: %j', user);
       if (!user.avatarUrl) {
         var bg = wordColor.rgb(user.username);
         if ((bg[0] * 299 + bg[1] * 587 + bg[2] * 114) > 200000) {
