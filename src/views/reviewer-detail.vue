@@ -81,6 +81,7 @@ export default {
             reviewer: {
                 tags: []
             },
+            orders: [],
             overlayStatus: false
         }
     },
@@ -105,7 +106,14 @@ export default {
               this.reviewer = resp.data.result;
               debug('%j', this.reviewer);
             }
-        }, util.httpErrorFn(this))
+        }, util.httpErrorFn(this));
+        this.$http.get('users/' + reviewerId + '/orders', {})
+        .then((resp) => {
+          if (util.filterError(this, resp)) {
+            debug('orders: %j', resp.data.result);
+            this.orders = resp.data.result;
+          }
+        }, util.httpErrorFn(this));
     }
 }
 

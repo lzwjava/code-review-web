@@ -17,7 +17,7 @@ export default {
     userTag: 'user/tag',
     reviewerView: 'reviewers/view',
     ordersAdd: 'orders/add',
-    ordersList: 'orders',
+    ordersList: 'user/orders',
     ordersView: 'orders/view',
     ordersReward: 'orders/reward',
     reviewsAdd: 'reviews/add',

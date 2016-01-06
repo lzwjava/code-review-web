@@ -34,7 +34,6 @@
       }else{
         //debug('avatarUrl: ' + user.avatarUrl);
       }
-
     }
   };
 </script>
