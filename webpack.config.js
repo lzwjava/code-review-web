@@ -11,7 +11,6 @@ module.exports = {
     setting: ['./src/setting.js'],
     order: ['./src/order.js'],
     reviewer: ['./src/reviewer.js'],
-    'order-detail': ['./src/order-detail.js'],
     'write-review': ['./src/write-review.js'],
     case: ['./src/case.js'],
     article: ['./src/article.js']
@@ -46,14 +45,14 @@ module.exports = {
         test: /\.(png|jpg|gif)$/,
         loader: 'url-loader?limit=8190'
       },
-      { test: /\.css$/, 
-        loader: "style-loader!css-loader" 
+      { test: /\.css$/,
+        loader: "style-loader!css-loader"
       },
-      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-        loader: "url-loader?limit=10000&minetype=application/font-woff" 
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url-loader?limit=10000&minetype=application/font-woff"
       },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-        loader: "file-loader" 
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "file-loader"
       },
       // {
       //   test: /vendor\/plupload\/plupload\.dev\.js/,

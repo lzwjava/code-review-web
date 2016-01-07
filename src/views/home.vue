@@ -53,102 +53,56 @@
     </section>
 
     <section class="example">
-        <div class="container"><!--
-          <div class="pen"></div>
-          <div class="book"></div>
-          <div class="cup"></div> -->
+        <div class="container">
           <h2>精选 Code Review 案例</h2>
           <h3>我们精心挑选了一些典型问题的优雅解决方案，分享给大家</h3>
           <ul class="list">
             <div class="row">
-              <li class="clo-2">
+              <li class="clo-2" @click="goDetail(reviews[0].reviewId)">
                 <div class="info">
-                  <img src="https://images.unsplash.com/photo-1450849608880-6f787542c88a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=b256aa5102c408322cdb99ce6a6a0f53">
+                  <img :src="reviews[0].coverUrl">
                   <div class="text">
-                    <h6 class="title">
-                      特邀采访<br>传奇开发者<br>Loren Brichter
+                    <h6 class="title" v-html="reviews[0].title">
                     </h6>
                     <h6 class="tips">
-                      <span>#传感器</span>
-                      <span>#iOS</span>
+                      <span v-for="tag in reviews[0].tags">#{{tag.tagName}}</span>
                     </h6>
                   </div>
                 </div>
-                <!-- <div class="detail">
-                  <p>
-                    <span class="date">12 八月 2015</span>
-                    <span>/ 12次打赏</span>
-                    <i class="icon_wx"></i>
-                    <i class="icon_wb"></i>
-                  </p>
-                </div> -->
               </li>
-              <li class="clo-1">
+              <li class="clo-1" @click="goDetail(reviews[1].reviewId)">
                 <div class="info">
-                  <img src="https://images.unsplash.com/photo-1431975562098-bac8ded504c7?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=b8e0ca83863bf59b4668cec00931a155">
+                  <img :src="reviews[1].coverUrl">
                   <div class="text">
-                    <h6 class="title">
-                      传感器使用误区<br>与性能优化
+                    <h6 class="title" v-html="reviews[1].title">
                     </h6>
                     <h6 class="tips">
-                      <span>#传感器</span>
-                      <span>#iOS</span>
+                      <span v-for="tag in reviews[1].tags">#{{tag.tagName}}</span>
                     </h6>
                   </div>
               </li>
             </div>
             <div class="row">
-              <li class="clo-1">
+              <li class="clo-1" @click="goDetail(reviews[2 + i].reviewId)" v-for="i in 3">
                 <div class="info">
-                  <img src="https://images.unsplash.com/photo-1443916765281-9937110585db?crop=entropy&fit=crop&fm=jpg&h=675&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200">
+                  <img :src="reviews[2 + i].coverUrl">
                   <div class="text">
-                    <h6 class="title">
-                      传感器使用误区<br>与性能优化
-                    </h6>
+                    <h6 class="title" v-html="reviews[2 + i].title">
                     <h6 class="tips">
-                      <span>#传感器</span>
-                      <span>#iOS</span>
-                    </h6>
-                  </div>
-              </li>
-              <li class="clo-1">
-                <div class="info">
-                  <img src="https://images.unsplash.com/photo-1439737567250-e9ea931e97a4?crop=entropy&fit=crop&fm=jpg&h=800&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200">
-                  <div class="text">
-                    <h6 class="title">
-                      传感器使用误区<br>与性能优化
-                    </h6>
-                    <h6 class="tips">
-                      <span>#传感器</span>
-                      <span>#iOS</span>
-                    </h6>
-                  </div>
-              </li>
-              <li class="clo-1">
-                <div class="info">
-                  <img src="https://images.unsplash.com/photo-1448814100339-234df1d4005d?crop=entropy&fit=crop&fm=jpg&h=900&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200">
-                  <div class="text">
-                    <h6 class="title">
-                      传感器使用误区<br>与性能优化
-                    </h6>
-                    <h6 class="tips">
-                      <span>#传感器</span>
-                      <span>#iOS</span>
+                      <span v-for="tag in reviews[2 + i].tags">#{{tag.tagName}}</span>
                     </h6>
                   </div>
               </li>
             </div>
             <div class="row">
-              <li class="clo-3">
+              <li class="clo-3" @click="goDetail(reviews[5].reviewId)">
                 <div class="info big-img-wrap">
                   <span class="big-img"></span>
                   <div class="text">
-                    <h6 class="title">
-                      传感器使用误区<br>与性能优化
+                    <h6 class="title" v-html="reviews[5].title">
                     </h6>
                     <h6 class="tips">
-                      <span>#传感器</span>
-                      <span>#iOS</span>
+                      <span v-for="tag in reviews[5].tags">#{{tag.tagName}}</span>
                     </h6>
                   </div>
               </li>
@@ -174,7 +128,33 @@
     },
     data () {
       return {
-        reviewers: []
+        reviewers: [],
+        reviews: [
+          {reviewId: 2,
+           coverUrl: 'https://images.unsplash.com/photo-1450849608880-6f787542c88a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=b256aa5102c408322cdb99ce6a6a0f53',
+           title: '特邀采访<br>传奇开发者<br>Loren Brichter',
+           tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
+          {reviewId: 8,
+           coverUrl: 'https://images.unsplash.com/photo-1431975562098-bac8ded504c7?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=b8e0ca83863bf59b4668cec00931a155',
+           title: '传感器使用误区<br>与性能优化',
+           tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
+          {reviewId: 9,
+           coverUrl: 'https://images.unsplash.com/photo-1443916765281-9937110585db?crop=entropy&fit=crop&fm=jpg&h=675&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200',
+           title: '传感器使用误区<br>与性能优化',
+           tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
+          {reviewId: 10,
+           coverUrl: 'https://images.unsplash.com/photo-1448814100339-234df1d4005d?crop=entropy&fit=crop&fm=jpg&h=900&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200',
+           title: '传感器使用误区<br>与性能优化',
+           tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
+           {reviewId: 9,
+            coverUrl: 'https://images.unsplash.com/photo-1439737567250-e9ea931e97a4?crop=entropy&fit=crop&fm=jpg&h=800&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200',
+            title: '传感器使用误区<br>与性能优化',
+            tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
+           {reviewId: 10,
+            coverUrl: '',
+            title: '传感器使用误区<br>与性能优化',
+            tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
+        ]
       }
     },
     created () {
@@ -185,6 +165,11 @@
           this.reviewers = resp.data.result;
         }
       }, util.httpErrorFn(this));
+    },
+    methods: {
+      goDetail: (id) => {
+        window.location = '/article.html?reviewId=' + id;
+      }
     }
   }
 </script>

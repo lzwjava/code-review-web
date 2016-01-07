@@ -37,7 +37,7 @@
 				<div class="row">
 					<span>Review 结果</span>
 					<span v-if="!detail.review" class="right">暂无</span>
-					<a href="./article.html?id={{detail.orderId}}" v-if="detail.review"><button type="button" class="check-result">查看结果</button></a>
+					<a href="./article.html?reviewId={{detail.orderId}}" v-if="detail.review"><button type="button" class="check-result">查看结果</button></a>
 				</div>
 			</div>
 			<div class="item right">

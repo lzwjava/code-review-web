@@ -1,10 +1,10 @@
 <template>
     <div class="main-container">
         <div class="header-area">
-            <h1 class="title">{{order.review.title}}</h1>
+            <h1 class="title">{{review.title}}</h1>
             <div class="intro">
                 <img src="../img/icon/clock.png">
-                <span class="review-time">{{order.review.created}}</span>
+                <span class="review-time">{{review.created}}</span>
                 <img src="../img/icon/reward.png">
                 <span>54</span>
                 <img src="../img/icon/small-pen.png">
@@ -39,7 +39,7 @@
         </div>
 
         <div class="content-area">
-            <markdown :content="order.review.content" :show="true"></markdown>
+            <markdown :content="review.content" :show="true"></markdown>
         </div>
 
         <div class="bottom-area" @click="overlayStatus = true">
@@ -78,29 +78,40 @@ export default {
             overlayStatus: false,
             order: {
                 learner: {},
-                review: {
-                    content: ''
-                },
                 reviewer: {}
+            },
+            review: {
+              content: ''
             }
         }
     },
     computed: {
     },
     methods: {
-    },
-    created() {
-        var params = util.getSearchParameters()
-        if (!params.id) {
-            util.show(this, 'error', '请提供 id 参数');
-            return;
-        }
-        this.$http.get(serviceUrl.ordersView.replace(/:id/, params.id))
+      fetchOrder (orderId) {
+        this.$http.get(serviceUrl.ordersView.replace(/:id/, orderId))
         .then((resp) => {
             if (util.filterError(this, resp)) {
                 debug('%j', resp.data.result);
                 this.order = resp.data.result;
             }
+        }, util.httpErrorFn(this));
+      }
+    },
+    created() {
+        var params = util.getSearchParameters()
+        if (!params.reviewId) {
+            util.show(this, 'error', '请提供 reviewId 参数');
+            return;
+        }
+
+        this.$http.get(serviceUrl.reviewsView.replace(/:id/, params.reviewId))
+        .then((resp) => {
+          if (util.filterError(this, resp)) {
+            debug('%j', resp.data.result);
+            this.review = resp.data.result;
+            this.fetchOrder(this.review.orderId);
+          }
         }, util.httpErrorFn(this));
     }
 }
