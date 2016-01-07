@@ -189,7 +189,7 @@
 				if (util.filterError(this, res)) {
 					debug(res.data.result);
 			    this.setUserInfo(res.data.result);
-					util.updateNavUser(this, user); // addTag 等操作没有更新 nav user，这里更新一次
+					util.updateNavUser(this, res.data.result); // addTag 等操作没有更新 nav user，这里更新一次
 					this.loaded();
 				}
 			}, util.httpErrorFn(this))
