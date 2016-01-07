@@ -116,7 +116,7 @@ export default {
             }, util.httpErrorFn(this));
         },
         editReview() {
-            this.$http.post(serviceUrl.reviewsEdit.replace(/:id/, this.order.review.reviewId), {
+            this.$http.patch(serviceUrl.reviewsEdit.replace(/:id/, this.order.review.reviewId), {
                 title: this.title,
                 content: this.content
             }).then((resp) => {
