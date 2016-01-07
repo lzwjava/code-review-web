@@ -85,7 +85,7 @@ module.exports = {
       e.preventDefault();
 
       this.$http.post(serviceUrl.ordersAdd, {
-        gitHubUrl: this.gitHubUrl,
+        gitHubUrl: 'https://github.com/'+this.gitHubUrl,
         codeLines: this.codeLines,
         remark: this.remark,
         reviewerId: this.reviewerId

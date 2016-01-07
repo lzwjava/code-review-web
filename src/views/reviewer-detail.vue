@@ -1,57 +1,46 @@
 <template>
   <loading>
-    <div class="main-container">
-        <div class="top-region">
-            <div class="left-region">
-
-                <div class="region-title">大神信息</div>
-
-                <div class="center-region">
-                    <div class="basic-info">
-                        <user-avatar :user="reviewer"></user-avatar>
-                        <p class="name">{{reviewer.username}}</p>
-                        <p class="intro">{{reviewer.introduction}}</p>
+    <div class="top-region">
+        <div class="review-info">
+            <div class="basic-info">
+                <user-avatar :user="reviewer"></user-avatar>
+            </div>
+            <div class="center-region">
+                <div class="count-region">
+                    <div class="count-item">
+                      <p class="num">{{reviewer.tags.length}}</p>
+                      <p class="text">擅长领域</p>
                     </div>
-
-                    <div class="count-region">
-                        <div class="count-item">
-                          <p class="num">{{reviewer.tags.length}}</p>
-                          <p class="text">擅长领域</p>
-                        </div>
-                        <div class="count-item">
-                          <p class="num">{{reviewer.orderCount}}</p>
-                          <p class="text">审核案例</p>
-                        </div>
-                        <div class="count-item">
-                          <p class="num">{{reviewer.experience}}</p>
-                          <p class="text">经验年限</p>
-                        </div>
+                    <div class="count-item">
+                      <p class="num">{{reviewer.orderCount}}</p>
+                      <p class="text">审核案例</p>
                     </div>
-
-                    <div>
-                        <button class="btn-common btn-blue order-btn" @click="overlayStatus = true">申请 Code Review</button>
+                    <div class="count-item">
+                      <p class="num">{{reviewer.experience}}</p>
+                      <p class="text">经验年限</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="right-region">
-                <p class="region-title">擅长领域</p>
                 <div class="tag-list">
-                    <tag v-for="tag in reviewer.tags" :tag="tag" :showDel="false"></tag>
+                <tag v-for="tag in reviewer.tags" :tag="tag" :showDel="false"></tag>
+            </div>
+
+                <div>
+                    <button class="btn-common btn-blue order-btn" @click="overlayStatus = true">申请 Code Review</button>
                 </div>
             </div>
         </div>
-
-        <div class="order-list">
-            <div class="list-header">
-                <div class="order-title">审核案例</div>
-            </div>
-        </div>
-
-        <overlay :overlay.sync="overlayStatus">
-          <order-form :reviewer-id="reviewer.id"></order-form>
-        </overlay>
     </div>
+
+    <div class="article-list">
+        <div class="list-title">经验文章</div>
+        <div class="list-container">
+            <div class="row"></div>
+        </div>
+    </div>
+
+    <overlay :overlay.sync="overlayStatus">
+      <order-form :reviewer-id="reviewer.id"></order-form>
+    </overlay>
   </loading>
 
 </template>
@@ -123,13 +112,9 @@ export default {
 <style lang="stylus">
 
 .top-region
-    height 438px
-
-.left-region
+    height 466px
     background url('../img/reviewer-detail-bg.png')
-    width 69%
-    float left
-    height 100%
+    background-size 100% 100%
 
 .right-region
     width 28%
