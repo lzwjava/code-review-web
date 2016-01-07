@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-container absolute-center">
+  <div class="modal-container absolute-center" @click="stop($event)">
 
     <div class="left-modal">
 
@@ -76,6 +76,9 @@ module.exports = {
     reviewerId: {}
   },
   methods: {
+    stop (e){
+        e.stopPropagation();
+      },
     close () {
       this.$parent.overlay = false;
     },
