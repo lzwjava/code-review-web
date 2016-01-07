@@ -50,7 +50,7 @@ exports.moneyAsYuan = (money) => {
 }
 
 exports.truncate = (s, len) => {
-  if (s.length > len) {
+  if (s && s.length > len) {
     return s.substring(0, len);
   } else {
     return s;
