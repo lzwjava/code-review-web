@@ -94,9 +94,8 @@ module.exports = {
           var order = resp.data.result;
           debug(order);
           util.show(this, 'success', '申请成功, 请支付打赏额');
-          this.$http.post(serviceUrl.ordersReward, {
-            orderId:order.orderId,
-            amount: this.reward * 1000
+          this.$http.post(serviceUrl.ordersReward.replace(/:id/, order.orderId), {
+            amount: this.reward * 100
           }).then((resp) => {
             debug(resp.data)
             this.qrpay = true;

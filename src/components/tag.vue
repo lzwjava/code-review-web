@@ -14,10 +14,7 @@ export default {
   props: ['tag', 'showDel'],
   methods: {
     removeTag (tagId){
-      this.$http.post(serviceUrl.userTag, {
-          tagId: tagId,
-          op: 'remove'
-        }, {
+      this.$http.delete(serviceUrl.userTagDelete.replace(/:tagId/, tagId), {
           emulateJSON: true
         }).then((res) => {
           this.$dispatch('remove-tag', res.data.result);

@@ -71,9 +71,8 @@ export default {
             if (!user.username) {
                 alert('弹出注册 form ')
             } else {
-                this.$http.post(serviceUrl.ordersReward, {
-                  orderId:this.order.orderId,
-                  amount: this.reward * 1000
+                this.$http.post(serviceUrl.ordersReward.replace(/:id/, this.order.orderId),{
+                  amount: this.reward * 100
                 }).then((resp) => {
                     if (resp.data && resp.data.credential) {
                         debug('%j', resp.data)

@@ -24,7 +24,7 @@ var rewriteUrl = function(replacePath) {
 var prod = true;
 var target;
 if (prod) {
-  target = "http://api.reviewcode.cn"; 
+  target = "http://api.reviewcode.cn";
 } else {
   target = "http://localhost:3005";
 }

@@ -95,9 +95,8 @@ export default {
             util.show(this, 'error', '请提供 id 参数');
             return;
         }
-        this.$http.get(serviceUrl.ordersView, {
-            orderId: params.id
-        }).then((resp) => {
+        this.$http.get(serviceUrl.ordersView.replace(/:id/, params.id))
+        .then((resp) => {
             if (util.filterError(this, resp)) {
                 debug('%j', resp.data.result);
                 this.order = resp.data.result;

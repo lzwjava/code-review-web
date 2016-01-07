@@ -21,7 +21,7 @@
     				</div>
     				<h6 class="title">{{item.title}}</h6>
     				<div class="info">
-    					
+
     				</div>
     				<div class="count">
     					<span>{{item.view}} 次阅读</span>
