@@ -5,36 +5,22 @@
             <div class="basic-info">
                 <user-avatar :user="reviewer"></user-avatar>
             </div>
-            <div class="center-region">
-                <div class="count-region">
-                    <div class="count-item">
-                      <p class="num">{{reviewer.tags.length}}</p>
-                      <p class="text">擅长领域</p>
-                    </div>
-                    <div class="count-item">
-                      <p class="num">{{reviewer.orderCount}}</p>
-                      <p class="text">审核案例</p>
-                    </div>
-                    <div class="count-item">
-                      <p class="num">{{reviewer.experience}}</p>
-                      <p class="text">经验年限</p>
-                    </div>
-                </div>
-                <div class="tag-list">
+            <h2>{{reviewer.username}}</h2>
+            <h3>{{reviewer.introduction}}</h3>
+            <p><span>{{reviewer.tags.length}} 个擅长领域</span><span>{{reviewer.orderCount}} 个审核案例</span><span>{{reviewer.experience}} 年经验</span></p>
+            <div class="tag-list">
+                <span>{{reviewer.username}}</span>
                 <tag v-for="tag in reviewer.tags" :tag="tag" :showDel="false"></tag>
+                <span>等领域</span>
             </div>
-
-                <div>
-                    <button class="btn-common btn-blue order-btn" @click="overlayStatus = true">申请 Code Review</button>
-                </div>
-            </div>
+            <button class=" order-btn" @click="overlayStatus = true">申请 Code Review</button>
         </div>
     </div>
 
-    <div class="article-list">
-        <div class="list-title">经验文章</div>
+    <div class="reviewer-case">
+        <h3>{{reviewer.username}}经验文章</h3>
         <div class="list-container">
-            <div class="row"></div>
+            <reviewer-case :article-list="reviewerCase"></reviewer-case>
         </div>
     </div>
 
@@ -54,6 +40,7 @@ import Tag from '../components/tag.vue'
 import Loading from '../components/loading.vue'
 import util from '../common/util'
 import serviceUrl from "../common/serviceUrl.js"
+import ArticleList from '../components/article-item.vue'
 
 var debug = require('debug')('reviewer-detail');
 
@@ -63,13 +50,42 @@ export default {
         'tag': Tag,
         'order-form': OrderForm,
         'overlay': Overlay,
-        'loading': Loading
+        'loading': Loading,
+        'reviewer-case': ArticleList
     },
     data () {
         return {
             reviewer: {
                 tags: []
             },
+            reviewerCase: [{
+                    articleLogo: 'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=160cee1dce3d70cf53faad0dc8dcd1ba/79f0f736afc3793163673a0decc4b74543a91182.jpg',
+                    date: '13 八月 2015',
+                    tags: ['#IOS基础'],
+                    title: 'Swift 与 Objective-C 混编的一些问题',
+                    info: '在 Objective-C++ 中，可以用 C++ 代码调用方法也可以从 Objective-C 调用方法。在这两种语言里对象都是指针，可以在任何地方使用。例 如，C++ 类可以使用 Objective-C 对象的指针作为数据成员，Objective-C 类也可以有 C++ 对象指针做实例变量。下例说明了这一点。',
+                    view: 6024,
+                    comment: 300,
+                    tip: 30
+                },{
+                    articleLogo: 'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=160cee1dce3d70cf53faad0dc8dcd1ba/79f0f736afc3793163673a0decc4b74543a91182.jpg',
+                    date: '13 八月 2015',
+                    tags: ['#IOS基础'],
+                    title: 'Swift 与 Objective-C 混编的一些问题',
+                    info: '在 Objective-C++ 中，可以用 C++ 代码调用方法也可以从 Objective-C 调用方法。在这两种语言里对象都是指针，可以在任何地方使用。例 如，C++ 类可以使用 Objective-C 对象的指针作为数据成员，Objective-C 类也可以有 C++ 对象指针做实例变量。下例说明了这一点。',
+                    view: 6024,
+                    comment: 300,
+                    tip: 30
+                },{
+                    articleLogo: 'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=160cee1dce3d70cf53faad0dc8dcd1ba/79f0f736afc3793163673a0decc4b74543a91182.jpg',
+                    date: '13 八月 2015',
+                    tags: ['#IOS基础'],
+                    title: 'Swift 与 Objective-C 混编的一些问题',
+                    info: '在 Objective-C++ 中，可以用 C++ 代码调用方法也可以从 Objective-C 调用方法。在这两种语言里对象都是指针，可以在任何地方使用。例 如，C++ 类可以使用 Objective-C 对象的指针作为数据成员，Objective-C 类也可以有 C++ 对象指针做实例变量。下例说明了这一点。',
+                    view: 6024,
+                    comment: 300,
+                    tip: 30
+                }],
             orders: [],
             overlayStatus: false
         }
@@ -109,74 +125,53 @@ export default {
 
 
 <style lang="stylus">
-
+@import "../stylus/variables.styl";
+body
+    background: #FDFFFF
 .top-region
     height 466px
     background url('../img/reviewer-detail-bg.png')
     background-size 100% 100%
-
-.right-region
-    width 28%
-    height 100%
-    background url('../img/reviewer-tag.png')
-    float right
-    .tag-list
-        margin 10px
-        .tag-item
-            width 50%
-            float left
-            padding 10px
-
-.order-list
-    background white
-    margin-top 30px
-    .list-header
-        height 60px
-        position relative
-        .order-title
-            position absolute
-            margin auto 20px
-            height 20px
-            line-height 20px
-            top 0
-            bottom 0
-            left 0
-            right 0
-
-.region-title
-    margin-left 35px
-    margin-top 40px
-
-.center-region
-    width 373px
-    margin 0 auto
-    text-align center
-    .basic-info
-        width 260px
+    padding-top 90px
+    .review-info
+        width 1160px
         margin 0 auto
-        .avatar
-            width 100px
-            height 100px
-        .name
-            margin-top 20px
-        .intro
-            margin-top 20px
-
-.count-region
-    margin-top 20px
-    .count-item
-      width 120px
-      display inline-block
-      .num
-        font-size 24px
-      .text
-        font-size 12px
-        color #3B3E3F
-        opacity .6
-        margin-top 10px
-
-.order-btn
-    margin-top 50px
-    padding 20px
-
+        text-align left
+        h2
+            font-size 1.5rem
+            margin-bottom 25px
+        h3
+            width 300px
+            line-height 150%
+            margin-bottom 25px
+        p
+            font-size 0.88rem
+            opacity .6
+            span
+                margin-right 20px
+    .basic-info
+        float right
+        width 128px
+        height 128px
+        background white
+        padding 2px
+        border-radius 50%
+        img
+            width 100%
+            height 100%
+    .tag-list
+        margin-top 30px
+        border-top 1px solid rgba(0,0,0,.15)
+        font-size 0.88rem
+        line-height 50px
+    .order-btn
+        btn(blue, white, 1, 220, 50)
+        margin-top 30px
+.reviewer-case
+    margin 0 auto
+    width 1160px
+    h3
+        line-height 80px
+        padding-left 50px
+        border-bottom 1px solid rgba(0,0,0,.15)
 </style>
