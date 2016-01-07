@@ -98,16 +98,15 @@ export default {
             return;
         }
         var reviewerId= params.id
-        this.$http.get(serviceUrl.reviewerView, {
-            id:reviewerId
-        }).then((resp) => {
+        this.$http.get(serviceUrl.reviewerView.replace(/:id/, reviewerId))
+        .then((resp) => {
             if (util.filterError(this, resp)) {
               this.$broadcast('loaded');
               this.reviewer = resp.data.result;
               debug('%j', this.reviewer);
             }
         }, util.httpErrorFn(this));
-        this.$http.get('users/' + reviewerId + '/orders', {})
+        this.$http.get(serviceUrl.reviewerReviews.replace(/:id/, reviewerId), {})
         .then((resp) => {
           if (util.filterError(this, resp)) {
             debug('orders: %j', resp.data.result);

@@ -145,14 +145,13 @@
 				if (this.avatarUrl && this.avatarUrl.length > 0) {
 					data.avatarUrl = this.avatarUrl;
 				}
-				this.$http.post(serviceUrl.updateUser, data, {
-					emulateJSON: true
-				}).then((res) => {
+				this.$http.patch(serviceUrl.updateUser, data)
+				.then((res) => {
 					debug(res)
 					if (util.filterError(this, res)) {
 						util.show(this, 'success', '更新成功');
 					   	this.setUserInfo(res.data.result);
-					   	util.updateNavUser(this, res.data.result);
+							util.updateNavUser(this, user);
 					   	debug('cb: %j', cb);
 					   	cb && cb();
 					}
@@ -174,10 +173,7 @@
 					util.show(this, 'warn', '请选择领域');
 				}
 				this.$http.post(serviceUrl.userTag, {
-					tagId: this.selected.tagId,
-					op: 'add'
-				}, {
-					emulateJSON: true
+					tagId: this.selected.tagId
 				}).then((res) => {
 					this.tags = res.data.result;
 				}, util.httpErrorFn(this));
@@ -189,16 +185,14 @@
 			}
 		},
 		created() {
-			/*this.$http.get(serviceUrl.userStatus).then((res) => {
+			this.$http.get(serviceUrl.userStatus).then((res) => {
 				if (util.filterError(this, res)) {
 					debug(res.data.result);
 			    this.setUserInfo(res.data.result);
+					util.updateNavUser(this, user); // addTag 等操作没有更新 nav user，这里更新一次
 					this.loaded();
 				}
-			}, util.httpErrorFn(this))*/
-			if(window.localStorage.getItem('user')){
-			        this.setUserInfo(JSON.parse(window.localStorage.getItem('user')));
-			      }
+			}, util.httpErrorFn(this))
 			this.$http.get(serviceUrl.tags).then((res) => {
 				if (util.filterError(this, res)) {
 					this.allTags = res.data.result;
