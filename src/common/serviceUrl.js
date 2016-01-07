@@ -22,6 +22,8 @@ export default {
     ordersList: 'user/orders',
     ordersView: 'orders/:id',
     ordersReward: 'orders/:id/reward',
+    ordersReview: 'orders/:id/review',
     reviewsAdd: 'reviews',
-    reviewsEdit: 'reviews/:id'
+    reviewsEdit: 'reviews/:id', // post
+    reviewsView: 'reviews/:id', // get
 }
