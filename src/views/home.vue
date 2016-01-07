@@ -165,6 +165,18 @@
           this.reviewers = resp.data.result;
         }
       }, util.httpErrorFn(this));
+      this.$http.get(serviceUrl.reviewsGet, {
+        limit: 6
+      }).then((resp) => {
+        if (util.filterError(this, resp)) {
+          var reviews = resp.data.result;
+          for (var i = 0; i < reviews.length; i++) {
+            // this.reviews[i].title = reviews[i].title;
+            // this.reviews[i].reviewId = reviews[i].reviewId;
+            // this.reviews[i].tags = reviews[i].tags;
+          }
+        }
+      },util.httpErrorFn(this));
     },
     methods: {
       goDetail: (id) => {

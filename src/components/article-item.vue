@@ -2,16 +2,16 @@
   <div class="article-list" v-for="item in articleList">
     		<div class="list-content">
     			<div class="article-logo">
-    				<img :src="item.articleLogo">
+    				<img :src="item.coverUrl">
     			</div>
     			<div class="article-info">
     				<div class="date-tags">
-    					<span class="data">{{item.date}}</span>
-    					<span class="tag" v-for="tag in item.tags">{{tag}}</span>
+    					<span class="data">{{item.created}}</span>
+    					<span class="tag" v-for="tag in item.tags">{{tag.tagName}}</span>
     				</div>
     				<h6 class="title">{{item.title}}</h6>
     				<div class="info">
-
+              {{item.content | truncate 200}}
     				</div>
     				<div class="count">
     					<span>{{item.view}} 次阅读</span>

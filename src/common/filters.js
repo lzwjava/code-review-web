@@ -48,3 +48,11 @@ exports.moneyAsYuan = (money) => {
     return money / 100;
   }
 }
+
+exports.truncate = (s, len) => {
+  if (s.length > len) {
+    return s.substring(0, len);
+  } else {
+    return s;
+  }
+}

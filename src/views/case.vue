@@ -17,42 +17,16 @@
 </template>
 <script>
     import ArticleList from '../components/article-item.vue'
+		var debug = require('debug')('case');
     export default{
         data (){
             return {
-                caseList: [{
-                    articleLogo: 'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=160cee1dce3d70cf53faad0dc8dcd1ba/79f0f736afc3793163673a0decc4b74543a91182.jpg',
-                    date: '13 八月 2015',
-                    tags: ['#IOS基础'],
-                    title: 'Swift 与 Objective-C 混编的一些问题',
-                    info: '在 Objective-C++ 中，可以用 C++ 代码调用方法也可以从 Objective-C 调用方法。在这两种语言里对象都是指针，可以在任何地方使用。例 如，C++ 类可以使用 Objective-C 对象的指针作为数据成员，Objective-C 类也可以有 C++ 对象指针做实例变量。下例说明了这一点。',
-                    view: 6024,
-                    comment: 300,
-                    tip: 30
-                },{
-                    articleLogo: 'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=160cee1dce3d70cf53faad0dc8dcd1ba/79f0f736afc3793163673a0decc4b74543a91182.jpg',
-                    date: '13 八月 2015',
-                    tags: ['#IOS基础'],
-                    title: 'Swift 与 Objective-C 混编的一些问题',
-                    info: '在 Objective-C++ 中，可以用 C++ 代码调用方法也可以从 Objective-C 调用方法。在这两种语言里对象都是指针，可以在任何地方使用。例 如，C++ 类可以使用 Objective-C 对象的指针作为数据成员，Objective-C 类也可以有 C++ 对象指针做实例变量。下例说明了这一点。',
-                    view: 6024,
-                    comment: 300,
-                    tip: 30
-                },{
-                    articleLogo: 'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=160cee1dce3d70cf53faad0dc8dcd1ba/79f0f736afc3793163673a0decc4b74543a91182.jpg',
-                    date: '13 八月 2015',
-                    tags: ['#IOS基础'],
-                    title: 'Swift 与 Objective-C 混编的一些问题',
-                    info: '在 Objective-C++ 中，可以用 C++ 代码调用方法也可以从 Objective-C 调用方法。在这两种语言里对象都是指针，可以在任何地方使用。例 如，C++ 类可以使用 Objective-C 对象的指针作为数据成员，Objective-C 类也可以有 C++ 对象指针做实例变量。下例说明了这一点。',
-                    view: 6024,
-                    comment: 300,
-                    tip: 30
-                }]
+                caseList: []
             }
         },
         events:{
-            'pagination-success': function(res){
-                console.log(res);//这里处理分页获取数据的回调
+            'pagination-success': function(res) {
+							this.caseList = res.data.result;
             },
             'pagination-error': function(res){
                 console.log(res, 'error')

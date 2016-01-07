@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * @authors yuqiu (yuqiu@luojilab.com)
  * @date    2016-01-05 11:41:43
  * @version $Id$
@@ -19,7 +19,7 @@ let page = new Pagination({
         pageIndexName: 'page_no',
         pageSizeName: 'page_size',
         params: {},
-        url: 'clerk/getlist',
+        url: 'reviews',
         totalName: 'total_nums',
         offset: -1,
         dataKey: 'showcases'
