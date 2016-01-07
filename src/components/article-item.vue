@@ -15,7 +15,7 @@
     				</div>
     				<div class="count">
     					<span>{{item.view}} 次阅读</span>
-    					<span>{{item.tip}} 次打赏</span>
+    					<span>{{item.rewardCount}} 次打赏</span>
     					<span>{{item.comment}} 条评论</span>
     				</div>
     			</div>
