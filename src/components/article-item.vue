@@ -6,7 +6,7 @@
     			</div>
     			<div class="article-info">
     				<div class="date-tags">
-    					<span class="data">{{item.created}}</span>
+    					<span class="data">{{item.created | formatTime 'Do MMMM YYYY'}}</span>
     					<span class="tag" v-for="tag in item.tags">{{tag.tagName}}</span>
     				</div>
     				<h6><a class="title" href="/article.html?reviewId={{item.reviewId}}">{{item.title}}</a></h6>
@@ -16,7 +16,7 @@
     				<div class="count">
     					<span>{{item.visitCount}} 次阅读</span>
     					<span>{{item.rewardCount}} 次打赏</span>
-    					<span>{{item.comment}} 条评论</span>
+    					<!-- <span>{{item.comment}} 条评论</span> -->
     				</div>
     			</div>
     		</div>

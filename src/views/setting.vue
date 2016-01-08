@@ -39,7 +39,7 @@
 			</section>
 			<section class="tags">
 				<h3 class="region-title">{{tagTitle}}</h3>
-				<div class="tags-content">	
+				<div class="tags-content">
 					<ul class="list">
 						<li v-for="tag in tags">
 							<tag :tag="tag" :show-del="true"></tag>
@@ -169,11 +169,14 @@
 			addTag () {
 				if (!this.selected.tagId) {
 					util.show(this, 'warn', '请选择领域');
+					return;
 				}
 				this.$http.post(serviceUrl.userTag, {
 					tagId: this.selected.tagId
 				}).then((res) => {
-					this.tags = res.data.result;
+					if (util.filterError(this, res)) {
+						this.tags = res.data.result;
+					}
 				}, util.httpErrorFn(this));
 			},
 			loaded() {

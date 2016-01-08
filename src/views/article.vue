@@ -4,9 +4,11 @@
             <h1 class="title">{{review.title}}</h1>
             <div class="intro">
                 <img src="../img/icon/clock.png">
-                <span class="review-time">{{review.created}}</span>
+                <span class="review-time">{{review.created | formatTime}}</span>
                 <img src="../img/icon/reward.png">
-                <span>54</span>
+                <span>{{review.visitCount}}</span>
+                <img src="../img/icon/reward.png">
+                <span>{{review.rewardCount}}</span>
                 <img src="../img/icon/small-pen.png">
                 <span><a :href="'./reviewer.html?id=' + order.reviewer.id">{{order.reviewer.username}}</a></span>
              </div>
@@ -114,7 +116,6 @@ export default {
           }
         }, util.httpErrorFn(this));
 
-        debug('referrer: ' + document.referrer);
         this.$http.post(serviceUrl.reviewVisitCreate.replace(/:id/, params.reviewId),{
           referrer: document.referrer
         }).then((resp) => {
