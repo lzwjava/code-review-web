@@ -62,7 +62,6 @@
   }
   .avatar img{
     position:relative;
-    horizontal-align:middle;
     vertical-align: middle;
   }
   .avatar.small span {

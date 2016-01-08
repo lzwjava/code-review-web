@@ -3,6 +3,7 @@
 		<section class="setting">
 			<h2>个人设置</h2>
 			<section class="form">
+				<h3>个人资料</h3>
 				<div class="white">
 					<div class="avatar-container" id="upload-container">
 						<user-avatar :user="user"></user-avatar>
@@ -14,14 +15,11 @@
 					</div>
 					<div class="row">
 						<p>Github 地址</p>
-						<span>github.com/ </span><input style="width: 437px;" type="text" v-model="github"/>
+						<input type="text" v-model="github" style="text-indent: 110px" />
+						<span>github.com / </span>
 					</div>
 				</div>
 				<div class="color">
-					<div class="row">
-						<p>手机号码</p>
-						<p>{{phone}}</p>
-					</div>
 					<div class="row">
 						<p>公司名称</p>
 						<input type="text" v-model="company"/>
@@ -40,8 +38,8 @@
 				</div>
 			</section>
 			<section class="tags">
-				<div class="tags-content">
-					<h3 class="region-title">{{tagTitle}}</h3>
+				<h3 class="region-title">{{tagTitle}}</h3>
+				<div class="tags-content">	
 					<ul class="list">
 						<li v-for="tag in tags">
 							<tag :tag="tag" :show-del="true"></tag>
@@ -280,11 +278,11 @@
 		border-top-right-radius 3px
 		button
 			display block
-			margin 10px auto
+			margin 0 auto
 		.avatar
 			width 104px
 			height 112px
-			margin 20px
+			margin-top 32px
 
 	.setting
 		width 1160px
@@ -299,24 +297,28 @@
 			height 65px
 			border-bottom 1px solid rgba(0,0,0,.3)
 		h3
-			height 45px
+			line-height 80px
+			border-bottom 1px solid rgba(0,0,0,.15)
+			background white
+			border-top-left-radius 3px
+			border-top-right-radius 3px
+			padding-left 40px
 		.form, .tags
 			float left
-			margin-top 30px
+			margin-top 50px
+			border 1px solid rgba(0,0,0,.15)
+			border-radius 3px
 		.form
 			width 61%
 			font-weight 200
 			.white
 				background white
-				padding-bottom 40px
-				border 1px solid rgba(0,0,0,.15)
-				border-top-left-radius 3px
-				border-top-right-radius 3px
+				padding-bottom 54px
+				border-bottom 1px solid rgba(0,0,0,.15)
 			.color
 				background #FDFFFF
 				border-bottom-left-radius 3px
 				border-bottom-right-radius 3px
-				border 1px solid rgba(0,0,0,.15)
 				border-top none
 			button
 				width 150px
@@ -328,60 +330,65 @@
 				line-height 60px
 				border none
 			.row
-				padding 20px 90px 0;
+				padding 27px 40px 0;
+				position relative
 				&:last-child
 					border-bottom-left-radius 3px
 					border-bottom-right-radius 3px
 				p
 					opacity 0.6
-					line-height 36px
+					line-height 32px
+				span
+					opacity .6
+					position absolute
+					top 78px
+					left 50px
 				input
 					height 50px
 					border 1px solid rgba(40,47,49,.3)
 					width 100%
 					font-size 1rem
-					text-indent 20px
+					text-indent 15px
 					box-shadow 0 1px 4px rgba(0,0,0,0.03)
+					color rgba(40,47,49,.6)
 				textarea
 					width 100%
 					height 280px
-					text-indent 20px
+					padding 15px
 					resize none
+					color rgba(40,47,49,.6)
+					font-size 1rem
+					border 1px solid rgba(40,47,49,.3)
 				button
-					margin-top 20px
-					margin-bottom 20px
+					margin 27px 0 54px
+					background blue
 		.tags
 			width 34%
 			margin-left 5%
+			box-shadow 0 4px 4px rgba(135,135,135,0.15)
 			.tags-content
 				background #FDFFFF
-				border 1px solid rgba(0,0,0,0.15)
-				box-shadow 0 4px 4px rgba(135,135,135,0.15)
 				font-weight 200
-				border-radius 3px
-				.region-title
-					margin 20px 0px 0px 20px
-					height auto
 				.list
-					padding 10px
 					background white
 					min-height 300px
+					padding 40px
 					li
 						border-radius 3px
 						height 48px
 						width 50%
 						text-align left
-						padding-left 10px
 				.select-content
 					border-top 1px solid rgba(0,0,0,0.15)
-					height 150px
-					padding 20px
+					padding 40px
+					border-bottom-left-radius 3px
+					border-bottom-right-radius 3px
 					p
 						opacity 0.6
 						line-height 50px
 					select
 						height 50px
-						width 245px
+						width 205px
 						-webkit-appearance: none
 						border 1px solid rgba(40,47,49,0.3)
 						box-shadow 0 1px 4px rgba(0,0,0,0.03)
