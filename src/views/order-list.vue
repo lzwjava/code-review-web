@@ -27,7 +27,7 @@
 					<div class="list-cell">{{item.status | reviewStatus}}</div>
 					<div class="list-cell">{{item.created}}</div>
 					<div class="list-cell">
-						{{item.money  | currency '￥' | integer}}
+						{{item.amount | moneyAsYuan | currency '￥' | integer}}
 					</div>
 					<div class="list-cell" :class="{'stop': !item.status}">
 						<a :href="'write-review.html?id=' + item.orderId">

@@ -113,6 +113,17 @@ export default {
             this.fetchOrder(this.review.orderId);
           }
         }, util.httpErrorFn(this));
+
+        debug('referrer: ' + document.referrer);
+        this.$http.post(serviceUrl.reviewVisitCreate.replace(/:id/, params.reviewId),{
+          referrer: document.referrer
+        }).then((resp) => {
+          if (util.filterError(this, resp)) {
+
+          }
+        }, (resp) => {
+          // 一秒中访问次数超过1，太快了
+        })
     }
 }
 
