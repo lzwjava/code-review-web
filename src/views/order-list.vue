@@ -64,7 +64,7 @@
 				},
 				overlayStatus: false,
 				currentPage: 0,
-				pageLimit: 2,
+				pageLimit: 6,
 				userType :'',
 				user : {}
 			}
@@ -141,7 +141,7 @@
 	.lj-pagination
 		font-size 1rem
 		text-align center
-		margin 50px 0 30px
+		margin 10px 0px
 		clearfix()
 		.lj-search,.lj-jump,.lj-page
 			float left

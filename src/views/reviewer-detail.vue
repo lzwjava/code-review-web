@@ -9,7 +9,7 @@
             <h3>{{reviewer.introduction}}</h3>
             <p><span>{{reviewer.tags.length}} 个擅长领域</span><span>{{reviewer.orderCount}} 个审核案例</span><span>{{reviewer.experience}} 年经验</span></p>
             <div class="tag-list">
-                <span>{{reviewer.username}}</span>
+                <span>{{reviewer.username}}擅长</span>
                 <tag v-for="tag in reviewer.tags" :tag="tag" :showDel="false"></tag>
                 <span>等领域</span>
             </div>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="reviewer-case">
-        <h3>{{reviewer.username}}经验文章</h3>
+        <h3>{{reviewer.username}} 的审核案例</h3>
         <div class="list-container">
             <reviewer-case :article-list="reviewerCase"></reviewer-case>
         </div>
@@ -135,6 +135,10 @@ body
         border-top 1px solid rgba(0,0,0,.15)
         font-size 0.88rem
         line-height 50px
+        .tag-item
+          margin-right 5px
+        .point
+          margin 0px
     .order-btn
         btn(blue, white, 1, 220, 50)
         margin-top 30px

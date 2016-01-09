@@ -13,7 +13,8 @@ module.exports = {
     reviewer: ['./src/reviewer.js'],
     'write-review': ['./src/write-review.js'],
     case: ['./src/case.js'],
-    article: ['./src/article.js']
+    article: ['./src/article.js'],
+    statement: ['./src/statement.js']
   },
   output: {
     path: __dirname + '/static',
