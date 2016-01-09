@@ -63,8 +63,8 @@
 	import util from '../common/util';
 	import UserAvatar from '../components/user-avatar.vue';
 	var debug = require('debug')('setting');
-	var moxie = require('moxie');
-	var plupload = require('moxie-plupload');
+	require('moxie');
+	require('plupload'); // use for Qiniu js sdk
 	import Qiniu from 'qiniu-js-sdk'
 	import serviceUrl from "../common/serviceUrl.js"
 	import Tag from '../components/tag.vue'

@@ -23,8 +23,8 @@ module.exports = {
   resolve: {
       alias: {
           jquery: path.join(__dirname, './node_modules/jquery'),
-          moxie: path.join(__dirname, 'plupload/js/moxie.js'),
-          'moxie-plupload': path.join(__dirname, 'plupload/js/plupload.dev.js')
+          moxie: path.join(__dirname, 'plupload/js/moxie.min.js'),
+          plupload: path.join(__dirname, 'plupload/js/plupload.min.js')
       },
       root: srcPath,
       extensions: ['', '.js', '.css'],
@@ -54,12 +54,12 @@ module.exports = {
       { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: "file-loader"
       },
-      // {
-      //   test: /vendor\/plupload\/plupload\.dev\.js/,
-      //   loader: 'imports?mOxie=moxie!exports?window.plupload'
-      // },
       {
-        test: /plupload\/js\/moxie\.js/,
+        test: /plupload\/js\/plupload\.min\.js/,
+        loader: 'imports?mOxie=moxie'
+      },
+      {
+        test: /plupload\/js\/moxie\.min\.js/,
         loader: 'exports?this.mOxie'
       }
     ]
@@ -68,11 +68,6 @@ module.exports = {
     presets: ['es2015'],
     plugins: ['transform-runtime']
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-      mOxie: 'moxie'
-    }),
-  ],
   debug: true,
   displayErrorDetails: true,
   outputPathinfo: true,
@@ -91,8 +86,16 @@ if (process.env.NODE_ENV === 'production') {
         warnings: false
       }
     }),
+    new webpack.ProvidePlugin({
+        mOxie: 'moxie'
+    }),
     new webpack.optimize.OccurenceOrderPlugin()
   ]
 } else {
+  module.exports.plugins = [
+    new webpack.ProvidePlugin({
+        mOxie: 'moxie'
+    }),
+  ]
   module.exports.devtool = '#source-map'
 }
