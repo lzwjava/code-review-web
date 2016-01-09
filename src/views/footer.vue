@@ -1,6 +1,6 @@
 <template>
 	<footer>
-    <p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    <p>Copyright &copy; 2016 北京大米互娱科技有限公司 &middot; <a target="_blank" href="http://www.miibeian.gov.cn/">京ICP备15064530号</a> &middot; <a target="_blank" href="./statement.html">用户协议</a></p>
 	</footer>
 </template>
 
@@ -18,7 +18,7 @@ footer
   height 70px
   padding 20px
   text-align center
-  p 
+  p
     line-height 30px
 
 </style>

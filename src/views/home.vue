@@ -16,7 +16,7 @@
         <li>
           <div class="short">
             <div class="icon_crown"></div>
-            <h4 class="number">280大神入驻</h4>
+            <h4 class="number">15大神入驻</h4>
             <p class="detail">我们邀请了业内知名的开发者帮助大家解决在编码过程中所遇到的问题，这些高手利用自己所擅长的技术为各位竭诚服务。</p>
           </div>
 
@@ -24,7 +24,7 @@
         <li>
           <div class="short">
             <div class="icon_doc"></div>
-            <h4 class="number">2800+审核文档</h4>
+            <h4 class="number">20+审核文档</h4>
             <p class="detail">每一次 Code Review 的过程都凝结着大神的心血 Code Review 上线半年以来，已经帮助重构、简化了 1400 份代码文件。</p>
           </div>
 
@@ -32,7 +32,7 @@
         <li>
           <div class="short">
             <div class="icon_article"></div>
-            <h4 class="number">280经验总结</h4>
+            <h4 class="number">20+经验总结</h4>
             <p class="detail">代码审核无论对于审核者还是帮助申请人来说，都是宝贵的经验财富，在获得许可的情况下，我们提供 Code Review 经验文摘。</p>
           </div>
         </li>
