@@ -21,9 +21,17 @@
   font-family Raleway-SemiBold
   src url('../font/Raleway-SemiBold.ttf')
 
-html, body, a
+.raleway-first-font
   font-family Raleway-Regular,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
-  font-size 16px
+
+.pingfang-first-font
+  font-family "PingFang SC","Helvetica Neue",Helvetica,"Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
+
+.raleway-regular-font
+  font-family Raleway-Regular,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
+
+html, body, a
+  @extend .raleway-first-font
   color textColor
   text-decoration none
 

@@ -29,7 +29,7 @@
 					<div class="list-cell">
 						{{item.amount | moneyAsYuan | currency '￥' | integer}}
 					</div>
-					<div class="list-cell" :class="{'stop': !item.status}" v-if="userType!='learner'">
+					<div class="list-cell" :class="{'stop': !item.status}" v-if="userType=='reviewer'">
 						<a :href="'write-review.html?id=' + item.orderId">
 							<button type="button" class="assess accept"></button>
 						</a>

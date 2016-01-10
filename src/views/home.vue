@@ -19,7 +19,6 @@
             <h4 class="number">15大神入驻</h4>
             <p class="detail">我们邀请了业内知名的开发者帮助大家解决在编码过程中所遇到的问题，这些高手利用自己所擅长的技术为各位竭诚服务。</p>
           </div>
-
         </li>
         <li>
           <div class="short">
@@ -27,7 +26,6 @@
             <h4 class="number">20+审核文档</h4>
             <p class="detail">每一次 Code Review 的过程都凝结着大神的心血 Code Review 上线半年以来，已经帮助重构、简化了 1400 份代码文件。</p>
           </div>
-
         </li>
         <li>
           <div class="short">
@@ -188,6 +186,7 @@
 
 <style lang="stylus">
 @import '../stylus/variables.styl';
+@import '../stylus/base.styl';
 
 #header2
   font-size 1.5rem
@@ -205,16 +204,16 @@
     font-size 3.75rem
     font-weight 100
   h2
+    @extend .pingfang-first-font
     font-size 1.5rem
     font-weight 400
-    font-family "PingFang SC","Helvetica Neue",Helvetica,"Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
   h3
     font-size 1rem
     opacity 0.6
   h4
     font-size 1rem
     font-weight 600
-    font-family "PingFang SC","Helvetica Neue",Helvetica,"Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
+    @extend .pingfang-first-font
   h5
     font-size 20px
 .slide
@@ -239,11 +238,11 @@
       height 80px
       margin-top 60px
     .help
+      @extend .raleway-regular-font
       height 50px
       width 220px
       background blue
       border-radius 3px
-      font-family Raleway-Regular,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
       font-size 1rem
       margin-top 50px
       color white

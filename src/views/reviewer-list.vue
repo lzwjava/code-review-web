@@ -1,17 +1,17 @@
 <template>
   <loading>
-    <div>
+    <div class="list-containter">
       <div class="info">
-        <h1>发现各个语言领域的大神，向他们申请帮助</h1>
-        <h1>或者，你也可以先看看他们的 <strong>Code Review 案例</strong></h1>
-        <h2>入住大神：<strong class="num">{{reviewers.length}}</strong></h2>
+        <h2>发现各个语言领域的大神，向他们申请帮助</h2>
+        <h2>或者，你也可以先看看他们的 <a href="case.html"><strong>Code Review 案例</strong></a></h2>
+        <h3>入住大神：<strong class="num">{{reviewers.length}}</strong></h3>
       </div>
       <div class="list-content">
         <reviewer v-show="!loading" :reviewers="reviewers"></reviewer>
       </div>
       <div class="join-reviewer">
-        <h5>噢，没有更多大神了</h5>
-        <h5>或者，你就是<strong>下一个</strong></h5>
+        <h2>噢，没有更多大神了</h2>
+        <h2>或者，你就是<strong>下一个</strong></h2>
       </div>
     </div>
   </loading>
@@ -51,30 +51,33 @@ export default{
 
 <style lang="stylus">
 @import '../stylus/variables.styl';
-.info
-  font-size 36px
-  text-align center
-  line-height 120%
-  padding-top 80px
-  strong
-    color blue
-  h2
+
+.list-containter
+  h2  // 上边和下边的标题都有用到
     font-size 24px
-    line-height 65px
-    margin-top 100px
+    margin 15px 0px
+
+.info
+  text-align center
+  margin-top 50px
+  a
+    color blue
+    font-size inherit
+  h3
+    font-size 20px
+    margin-top 30px
     .num
       font-size 48px
       color green
       vertical-align sub
+
 .list-content
   width 1200px
-  margin 80px auto
+  margin 30px auto
 
 .join-reviewer
-  font-size 36px
   text-align center
-  line-height 120%
-  padding 80px
+  margin-bottom 100px
   strong
     color blue
 
