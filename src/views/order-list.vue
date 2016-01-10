@@ -21,7 +21,7 @@
 					<div class="list-cell">
 						<div>
 							<img :src="item[userType].avatarUrl">
-							<span>{{item[userType].username}}</span>
+							<span style="margin-left: -40px;">{{item[userType].username}}</span>
 						</div>
 					</div>
 					<div class="list-cell">{{item.status | reviewStatus}}</div>
@@ -29,13 +29,13 @@
 					<div class="list-cell">
 						{{item.amount | moneyAsYuan | currency '￥' | integer}}
 					</div>
-					<div class="list-cell" :class="{'stop': !item.status}">
+					<div class="list-cell" :class="{'stop': !item.status}" v-if="userType!='learner'">
 						<a :href="'write-review.html?id=' + item.orderId">
 							<button type="button" class="assess accept"></button>
 						</a>
 					</div>
 					<div class="list-cell"><button type="button" class="detail" @click="view(item)"></button></div>
-					<div class="list-cell"><button type="button" class="reject" @click="reject(item)"></button></div>
+					<div class="list-cell" v-if="userType!='learner'"><button type="button" class="reject" @click="reject(item)"></button></div>
 				</dd>
 			</dl>
 		</section>
@@ -51,11 +51,10 @@
 	import Detail from '../components/order-detail.vue'
 	import Overlay from '../components/overlay.vue';
 	var debug = require('debug')('order');
-	let userType = 'learner';
 	export default {
 		data () {
 			return {
-				tableHead: ['序号','用户名','状态','申请日期','打赏金额','接手','详情','拒绝'],
+				tableHead: ['序号','用户名','状态','申请日期','打赏金额'],
 				tableData: [],
 				detailData: {
 					userType: 'reviewer',
@@ -81,7 +80,15 @@
 		created() {
 			this.user = util.getLocalUser();
 			this.loadCurrentPage();
-			this.user.type == 0 ? this.userType = 'reviewer': this.userType = 'learner';
+			if(this.user.type == 0) { 
+				this.userType = 'reviewer';
+				this.tableHead.push('接手');
+				this.tableHead.push('详情');
+				this.tableHead.push('拒绝');
+			}else{ 
+				this.userType = 'learner';
+				this.tableHead.push('详情');
+			}
 		},
 		methods: {
 			loadCurrentPage () {
