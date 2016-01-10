@@ -19,9 +19,9 @@
 				<dd class="list-row" v-for="item in tableData" :class="{'even': $index%2 == 0}">
 					<div class="list-cell">{{item.orderId}}</div>
 					<div class="list-cell">
-						<div>
+						<div class="cell-img">
 							<img :src="item[userType].avatarUrl">
-							<span style="margin-left: -40px;">{{item[userType].username}}</span>
+							<span>{{item[userType].username}}</span>
 						</div>
 					</div>
 					<div class="list-cell">{{item.status | reviewStatus}}</div>
@@ -220,11 +220,14 @@
 						border-right: none;
 					&.stop
 						color: #f04e4b;
-
+					.cell-img
+						position relative
+						min-width 130px
 					img
 						width: 50px;
 						height: 50px;
-						float left
+						position absolute
+						left 0
 						border-radius 50%
 					.pop-btn
 						color: #249bdf;
