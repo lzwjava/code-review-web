@@ -27,7 +27,7 @@
 					<div class="list-cell">{{item.status | reviewStatus}}</div>
 					<div class="list-cell">{{item.created}}</div>
 					<div class="list-cell">
-						{{item.money  | currency '￥' | integer}}
+						{{item.amount | moneyAsYuan | currency '￥' | integer}}
 					</div>
 					<div class="list-cell" :class="{'stop': !item.status}">
 						<a :href="'write-review.html?id=' + item.orderId">
@@ -35,7 +35,7 @@
 						</a>
 					</div>
 					<div class="list-cell"><button type="button" class="detail" @click="view(item)"></button></div>
-					<div class="list-cell"><button type="button" class="reject"></button></div>
+					<div class="list-cell"><button type="button" class="reject" @click="reject(item)"></button></div>
 				</dd>
 			</dl>
 		</section>
@@ -64,7 +64,7 @@
 				},
 				overlayStatus: false,
 				currentPage: 0,
-				pageLimit: 2,
+				pageLimit: 6,
 				userType :'',
 				user : {}
 			}
@@ -116,6 +116,21 @@
 					this.currentPage++;
 					this.loadCurrentPage();
 				}
+			},
+			consentOrReject(order, status) {
+				this.$http.post('orders/' + order.orderId, {
+					status:status
+				}).then((resp) => {
+					if (util.filterError(this, resp)) {
+						order.status = status;
+					}
+				}, util.httpErrorFn(this))
+			},
+			consent(order) {
+				this.consentOrReject(order, 'consented');
+			},
+			reject(order) {
+				this.consentOrReject(order, 'rejected');
 			}
 		}
 	}
@@ -126,7 +141,7 @@
 	.lj-pagination
 		font-size 1rem
 		text-align center
-		margin 50px 0 30px
+		margin 10px 0px
 		clearfix()
 		.lj-search,.lj-jump,.lj-page
 			float left
@@ -198,7 +213,7 @@
 						border-right: none;
 					&.stop
 						color: #f04e4b;
-					
+
 					img
 						width: 50px;
 						height: 50px;

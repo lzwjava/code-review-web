@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * @authors Your Name (you@example.org)
  * @date    2015-12-28 22:43:14
  * @version $Id$
@@ -11,15 +11,21 @@ export default {
     register: 'user/register',
     userStatus: 'user/self',
     reviewers: 'reviewers',
-    updateUser: 'user/update',
+    updateUser: 'user',
     qiniu: 'qiniu/token',
     tags: 'tags',
-    userTag: 'user/tag',
-    reviewerView: 'reviewers/view',
-    ordersAdd: 'orders/add',
-    ordersList: 'orders',
-    ordersView: 'orders/view',
-    ordersReward: 'orders/reward',
-    reviewsAdd: 'reviews/add',
-    reviewsEdit: 'reviews/edit'
+    userTag: 'user/tags',
+    userTagDelete: 'user/tags/:id',
+    reviewerView: 'reviewers/:id',
+    reviewerReviews: 'reviewers/:id/reviews',
+    ordersAdd: 'orders',
+    ordersList: 'user/orders',
+    ordersView: 'orders/:id',
+    ordersReward: 'orders/:id/reward',
+    ordersReview: 'orders/:id/review',
+    reviewsAdd: 'reviews',
+    reviewsEdit: 'reviews/:id', // post
+    reviewsView: 'reviews/:id', // get
+    reviewsGet: 'reviews',
+    reviewVisitCreate: 'reviews/:id/visits'
 }

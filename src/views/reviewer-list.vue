@@ -1,28 +1,32 @@
 <template>
-  <div>
-    <div class="info">
-      <h1>发现各个语言领域的大神，向他们申请帮助</h1>
-      <h1>或者，你也可以先看看他们的 <strong>Code Review 案例</strong></h1>
-      <h2>入住大神：<strong class="num">{{reviewers.length}}</strong></h2>
+  <loading>
+    <div>
+      <div class="info">
+        <h1>发现各个语言领域的大神，向他们申请帮助</h1>
+        <h1>或者，你也可以先看看他们的 <strong>Code Review 案例</strong></h1>
+        <h2>入住大神：<strong class="num">{{reviewers.length}}</strong></h2>
+      </div>
+      <div class="list-content">
+        <reviewer v-show="!loading" :reviewers="reviewers"></reviewer>
+      </div>
+      <div class="join-reviewer">
+        <h5>噢，没有更多大神了</h5>
+        <h5>或者，你就是<strong>下一个</strong></h5>
+      </div>
     </div>
-    <div class="list-content">
-      <reviewer :reviewers="reviewers"></reviewer>
-    </div>
-    <div class="join-reviewer">
-      <h5>噢，没有更多大神了</h5>
-      <h5>或者，你就是<strong>下一个</strong></h5>
-    </div>
-  </div>
+  </loading>
 </template>
 
 <script>
 import reviewerCard from '../components/reviewer-card.vue'
 import serviceUrl from "../common/serviceUrl.js"
+import Loading from '../components/loading.vue'
 var debug = require('debug')('reviewer-list');
 var util = require('../common/util');
 export default{
   components: {
-      reviewer: reviewerCard
+      reviewer: reviewerCard,
+      loading: Loading
   },
   data (){
     return {
@@ -38,6 +42,7 @@ export default{
     }).then((resp) => {
       if (util.filterError(this, resp)) {
         this.reviewers = resp.data.result;
+        this.$broadcast('loaded');
       }
     }, util.httpErrorFn(this));
   }

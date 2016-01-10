@@ -24,6 +24,7 @@
     "debug": "^2.2.0",
     "exports-loader": "^0.6.2",
     "file-loader": "^0.8.5",
+    "imports-loader": "^0.6.5",
     "style-loader": "^0.13.0",
     "stylus-loader": "^1.4.0",
     "url-loader": "^0.5.7",
@@ -41,7 +42,9 @@
     "github-markdown-css": "^2.1.1",
     "jquery": "^2.1.4",
     "marked": "^0.3.5",
+    "moment": "^2.11.0",
     "qiniu-js-sdk": "0.0.2",
+    "sprintf-js": "^1.0.3",
     "vue": "^1.0.10",
     "vue-router": "^0.7.5",
     "word-color": "^1.2.0"

@@ -1,62 +1,61 @@
 <template>
-	<section class="setting">
-		<h2>个人设置</h2>
-		<section class="form">
-			<div class="white">
-				<div class="avatar-container" id="upload-container">
-					<user-avatar :user="user"></user-avatar>
-					<button type="button" id="pickfiles">修改头像</button>
+	<loading>
+		<section class="setting">
+			<h2>个人设置</h2>
+			<section class="form">
+				<h3>个人资料</h3>
+				<div class="white">
+					<div class="avatar-container" id="upload-container">
+						<user-avatar :user="user"></user-avatar>
+						<button type="button" id="pickfiles">修改头像</button>
+					</div>
+					<div class="row">
+						<p>昵称</p>
+						<input type="text" v-model="username"/>
+					</div>
+					<div class="row">
+						<p>Github 地址</p>
+						<input type="text" v-model="github" style="text-indent: 110px" />
+						<span>github.com / </span>
+					</div>
 				</div>
-				<div class="row">
-					<p>昵称</p>
-					<input type="text" v-model="username"/>
+				<div class="color">
+					<div class="row">
+						<p>公司名称</p>
+						<input type="text" v-model="company"/>
+					</div>
+					<div class="row">
+						<p>职位</p>
+						<input type="text"  v-model="jobTitle"/>
+					</div>
+					<div class="row">
+						<p>个人简介</p>
+						<textarea v-model="introduction"></textarea>
+					</div>
+					<div class="row">
+						<button type="button" @click="updateUser">确认修改</button>
+					</div>
 				</div>
-				<div class="row">
-					<p>Github 地址</p>
-					<span>github.com/ </span><input style="width: 437px;" type="text" v-model="github"/>
-				</div>
-			</div>
-			<div class="color">
-				<div class="row">
-					<p>手机号码</p>
-					<p>{{phone}}</p>
-				</div>
-				<div class="row">
-					<p>公司名称</p>
-					<input type="text" v-model="company"/>
-				</div>
-				<div class="row">
-					<p>职位</p>
-					<input type="text"  v-model="jobTitle"/>
-				</div>
-				<div class="row">
-					<p>个人简介</p>
-					<textarea v-model="introduction"></textarea>
-				</div>
-				<div class="row">
-					<button type="button" @click="updateUser">确认修改</button>
-				</div>
-			</div>
-		</section>
-		<section class="tags">
-			<div class="tags-content">
+			</section>
+			<section class="tags">
 				<h3 class="region-title">{{tagTitle}}</h3>
-				<ul class="list">
-					<li v-for="tag in tags">
-						<tag :tag="tag" :show-del="true"></tag>
-					</li>
-				</ul>
-				<div class="select-content">
-					<p>输入 「{{tagTitle}}」</p>
-					<select v-model="selected">
-						<option v-for="tag in remains" :value="{tagId: tag.tagId}">{{tag.tagName}}</option>
-					</select>
-					<button type="button" @click="addTag">添加</button>
+				<div class="tags-content">
+					<ul class="list">
+						<li v-for="tag in tags">
+							<tag :tag="tag" :show-del="true"></tag>
+						</li>
+					</ul>
+					<div class="select-content">
+						<p>输入 「{{tagTitle}}」</p>
+						<select v-model="selected">
+							<option v-for="tag in remains" :value="{tagId: tag.tagId}">{{tag.tagName}}</option>
+						</select>
+						<button type="button" @click="addTag">添加</button>
+					</div>
 				</div>
-			</div>
+			</section>
 		</section>
-	</section>
-	
+	</loading>
 
 </template>
 
@@ -64,15 +63,17 @@
 	import util from '../common/util';
 	import UserAvatar from '../components/user-avatar.vue';
 	var debug = require('debug')('setting');
-	var moxie = require('moxie');
-	var plupload = require('moxie-plupload');	
+	require('moxie');
+	require('plupload'); // use for Qiniu js sdk
 	import Qiniu from 'qiniu-js-sdk'
 	import serviceUrl from "../common/serviceUrl.js"
 	import Tag from '../components/tag.vue'
+	import Loading from '../components/loading.vue'
 	export default {
 		components: {
 			'user-avatar': UserAvatar,
-			'tag': Tag
+			'tag': Tag,
+			'loading': Loading
 		},
 		data () {
 			return {
@@ -142,14 +143,13 @@
 				if (this.avatarUrl && this.avatarUrl.length > 0) {
 					data.avatarUrl = this.avatarUrl;
 				}
-				this.$http.post(serviceUrl.updateUser, data, {
-					emulateJSON: true
-				}).then((res) => {
+				this.$http.patch(serviceUrl.updateUser, data)
+				.then((res) => {
 					debug(res)
 					if (util.filterError(this, res)) {
 						util.show(this, 'success', '更新成功');
 					   	this.setUserInfo(res.data.result);
-					   	util.updateNavUser(this, res.data.result);
+							util.updateNavUser(this, user);
 					   	debug('cb: %j', cb);
 					   	cb && cb();
 					}
@@ -169,15 +169,20 @@
 			addTag () {
 				if (!this.selected.tagId) {
 					util.show(this, 'warn', '请选择领域');
+					return;
 				}
 				this.$http.post(serviceUrl.userTag, {
-					tagId: this.selected.tagId,
-					op: 'add'
-				}, {
-					emulateJSON: true
+					tagId: this.selected.tagId
 				}).then((res) => {
-					this.tags = res.data.result;
+					if (util.filterError(this, res)) {
+						this.tags = res.data.result;
+					}
 				}, util.httpErrorFn(this));
+			},
+			loaded() {
+				if (this.username && this.allTags) {
+					this.$broadcast('loaded');
+				}
 			}
 		},
 		created() {
@@ -185,11 +190,14 @@
 				if (util.filterError(this, res)) {
 					debug(res.data.result);
 			    this.setUserInfo(res.data.result);
+					util.updateNavUser(this, res.data.result); // addTag 等操作没有更新 nav user，这里更新一次
+					this.loaded();
 				}
 			}, util.httpErrorFn(this))
 			this.$http.get(serviceUrl.tags).then((res) => {
 				if (util.filterError(this, res)) {
 					this.allTags = res.data.result;
+					this.loaded();
 				}
 			}, util.httpErrorFn(this))
 		},
@@ -273,11 +281,11 @@
 		border-top-right-radius 3px
 		button
 			display block
-			margin 10px auto
+			margin 0 auto
 		.avatar
 			width 104px
 			height 112px
-			margin 20px
+			margin-top 32px
 
 	.setting
 		width 1160px
@@ -292,24 +300,28 @@
 			height 65px
 			border-bottom 1px solid rgba(0,0,0,.3)
 		h3
-			height 45px
+			line-height 80px
+			border-bottom 1px solid rgba(0,0,0,.15)
+			background white
+			border-top-left-radius 3px
+			border-top-right-radius 3px
+			padding-left 40px
 		.form, .tags
 			float left
-			margin-top 30px
+			margin-top 50px
+			border 1px solid rgba(0,0,0,.15)
+			border-radius 3px
 		.form
 			width 61%
 			font-weight 200
 			.white
 				background white
-				padding-bottom 40px
-				border 1px solid rgba(0,0,0,.15)
-				border-top-left-radius 3px
-				border-top-right-radius 3px
+				padding-bottom 54px
+				border-bottom 1px solid rgba(0,0,0,.15)
 			.color
 				background #FDFFFF
 				border-bottom-left-radius 3px
 				border-bottom-right-radius 3px
-				border 1px solid rgba(0,0,0,.15)
 				border-top none
 			button
 				width 150px
@@ -321,60 +333,65 @@
 				line-height 60px
 				border none
 			.row
-				padding 20px 90px 0;
+				padding 27px 40px 0;
+				position relative
 				&:last-child
 					border-bottom-left-radius 3px
 					border-bottom-right-radius 3px
 				p
 					opacity 0.6
-					line-height 36px
+					line-height 32px
+				span
+					opacity .6
+					position absolute
+					top 78px
+					left 50px
 				input
 					height 50px
 					border 1px solid rgba(40,47,49,.3)
 					width 100%
 					font-size 1rem
-					text-indent 20px
+					text-indent 15px
 					box-shadow 0 1px 4px rgba(0,0,0,0.03)
+					color rgba(40,47,49,.6)
 				textarea
 					width 100%
 					height 280px
-					text-indent 20px
+					padding 15px
 					resize none
+					color rgba(40,47,49,.6)
+					font-size 1rem
+					border 1px solid rgba(40,47,49,.3)
 				button
-					margin-top 20px
-					margin-bottom 20px
+					margin 27px 0 54px
+					background blue
 		.tags
 			width 34%
 			margin-left 5%
+			box-shadow 0 4px 4px rgba(135,135,135,0.15)
 			.tags-content
 				background #FDFFFF
-				border 1px solid rgba(0,0,0,0.15)
-				box-shadow 0 4px 4px rgba(135,135,135,0.15)
 				font-weight 200
-				border-radius 3px
-				.region-title
-					margin 20px 0px 0px 20px
-					height auto
 				.list
-					padding 10px
 					background white
 					min-height 300px
+					padding 40px
 					li
 						border-radius 3px
 						height 48px
 						width 50%
 						text-align left
-						padding-left 10px
 				.select-content
 					border-top 1px solid rgba(0,0,0,0.15)
-					height 150px
-					padding 20px
+					padding 40px
+					border-bottom-left-radius 3px
+					border-bottom-right-radius 3px
 					p
 						opacity 0.6
 						line-height 50px
 					select
 						height 50px
-						width 245px
+						width 205px
 						-webkit-appearance: none
 						border 1px solid rgba(40,47,49,0.3)
 						box-shadow 0 1px 4px rgba(0,0,0,0.03)

@@ -1,43 +1,37 @@
 <template>
-  <div class="modal-container absolute-center">
-
-    <div class="left-modal">
-
-      <div class="belt">
-        <button class="btn-cancel"
-          @click="close">
-          取消申请
-        </button>
-      </div>
-
-    </div>
-
-    <div class="right-modal">
+  <div class="modal-container absolute-center" @click="stop($event)">
+    <div class="modal">
 
       <form action="/" @submit="addOrder" v-show="!qrpay">
         <div class="form-line">
           <label>打赏费用</label>
-          <div class="reward-input">
-            <input v-model="reward"></input>元
-          </div>
+          <input v-model="reward" class="reward-input"></input>
+          <span>元</span>
         </div>
-        <div class="form-line">
-          <input type="radio" name="pay" value="wechat" checked="checked" />微信支付
-          <input type="radio" name="pay" value="alipay" />支付宝支付
+        <div class="form-line row">
+          <input type="radio" name="pay" value="wechat" v-model="payType" />
+          <label>微信支付</label>
+          <input type="radio" name="pay" value="alipay" v-model="payType" />
+          <label>支付宝支付</label>
         </div>
         <div class="form-line">
           <label class="form-label">项目 GitHub 地址</label>
-          <input class="github-input" required v-model="gitHubUrl" placeholder="https://github.com/user/repo"></input>
+          <div class="github-input">
+            <span>github.com / </span><input  required v-model="gitHubUrl" placeholder="https://github.com/user/repo"></input>
+          </div>
         </div>
         <div class="form-line">
           <label class="form-label">Review 大致代码行数</label>
-          <input required type="number" v-model="codeLines"></input>行
+          <input required type="number" v-model="codeLines" class="code-line"></input>行
         </div>
         <div class="form-line remark-div">
-          <label class="form-label">备注</label>
+          <label class="form-label">问题简介</label>
           <textarea v-model="remark"></textarea>
+          <p>请简要描述您的问题</p>
         </div>
-        <button class="btn-common btn-blue confirm-btn">申请 Code Review</button>
+        <div style="text-align: center">
+          <button class="confirm-btn">申请 Code Review</button>
+        </div>
       </form>
 
       <div class="pay-region" v-show="qrpay">
@@ -50,7 +44,11 @@
       </div>
 
     </div>
-
+    <div class="modal bg">
+      <div class="belt">
+        <button class="btn-cancel" @click="close">取消申请</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -61,21 +59,25 @@ var debug = require('debug')('order-form');
 module.exports = {
   data: function () {
     return {
-      gitHubUrl: 'https://github.com/akring/octokit.swift',
+      gitHubUrl: 'akring/octokit.swift',
       codeLines: 3000,
       remark: '麻烦了',
       reward: 8,
       qrpay: false,
-      qrcode: ''
+      qrcode: '',
+      payType: 'wechat'
     };
   },
   props: {
     show: {
       twoWay: true
     },
-    reviewerId: String
+    reviewerId: {}
   },
   methods: {
+    stop (e){
+        e.stopPropagation();
+      },
     close () {
       this.$parent.overlay = false;
     },
@@ -83,7 +85,7 @@ module.exports = {
       e.preventDefault();
 
       this.$http.post(serviceUrl.ordersAdd, {
-        gitHubUrl: this.gitHubUrl,
+        gitHubUrl: 'https://github.com/'+this.gitHubUrl,
         codeLines: this.codeLines,
         remark: this.remark,
         reviewerId: this.reviewerId
@@ -92,9 +94,8 @@ module.exports = {
           var order = resp.data.result;
           debug(order);
           util.show(this, 'success', '申请成功, 请支付打赏额');
-          this.$http.post(serviceUrl.ordersReward, {
-            orderId:order.orderId,
-            amount: this.reward * 1000
+          this.$http.post(serviceUrl.ordersReward.replace(/:id/, order.orderId), {
+            amount: this.reward * 100
           }).then((resp) => {
             debug(resp.data)
             this.qrpay = true;
@@ -113,91 +114,118 @@ module.exports = {
 </script>
 
 <style lang="stylus">
-
+@import '../stylus/variables.styl';
 .modal-container
-  width 800px
+  width 870px
   height 600px
-  background-color #fff
+  display flex
+  flex-deriction row
+  background-color #FDFFFF
   border-radius 2px
   box-shadow 0 2px 8px rgba(0, 0, 0, .33)
   transition all .3s ease
-  font-family Helvetica, Arial, sans-serif
 
-.left-modal
-  width 55%
-  height 100%
-  float left
-  background url('../img/love-program.png')
-  background-size 100% 100%
+  .modal
+    flex 1 1
+    position relative
+    &.bg
+      background url('../img/love-program.png')
+      background-size 100% 100%
+    .belt
+      height 50px
+      background rgba(0,0,0,.11)
+      margin-top 35px
+      text-align right
+      padding-right 30px
+      .btn-cancel
+        color #fff
+        font-size 1rem
+        height 45px
+        &:after
+          content '×'
+          font-size 24px
+          margin-left 5px
+    form
+      padding 35px 0
+    .form-line
+      padding 10px 45px
+      &.row
+        height 50px
+        line-height 30px
+        label
+          vertical-align super
+          margin-right 10px
+        input
+          height 100%
+      &:first-child
+        height 50px
+        background #F1F5F6
+        line-height 30px
+        text-align right
+        label
+          float left
+        .reward-input
+          width 50px
+          text-align right
+          padding-right 5px
+          height 100%
+      input
+        outline none
+        border 1px solid rgba(40,47,49,.3)
+        height 40px
+        font-size 1rem
+        color rgba(40,47,49,.8)
+      .code-line
+        width 65px
+        text-align center
 
-.right-modal
-  width 45%
-  height 100%
-  float left
-  padding 20px
+    .form-label
+      display block
+      opacity 0.6
+      font-size 14px
+      color textColor
+      line-height 25px
 
-.btn-cancel
-  float left
-  color #fff
-  margin-top 50px
-  margin-left 50px
-  font-size 20px
-  line-height 32px
+    .github-input
+      line-height 40px
+      height 40px
+      span
+        opacity .8
+      input
+        width 240px
+        text-indent 25px
 
-.btn-cancel:before
-  content '×'
-  font-size 30px
+    .remark-div
+      textarea
+        width 100%
+        resize none
+        height 164px
+        padding 10px
+        border 1px solid rgba(40,47,49,.3)
+        color rgba(40,47,49,.8)
+        font-size 1rem
+      p
+        font-size 12px
+        opacity .8
 
-.form-line
-  width 100%
-  padding 10px 20px
-  input
-    padding 10px
+    .confirm-btn
+      btn(blue, white, 1,220,50)
 
-.form-label
-  display block
-  margin-bottom 10px
-  opacity 0.6
-  font-size 14px
-  color #282F31
-  line-height 32px
+    .pay-region
+      text-align center
 
-.reward-input
-  float right
-  width 40%
-  input
-    width 80px
-    text-align right
-
-.github-input
-  width 100%
-
-.remark-div
-  textarea
-    width 100%
-    height 130px
-    padding 5px
-
-.confirm-btn
-  padding 15px
-  margin 0 auto
-  display block
-
-.pay-region
-  text-align center
-
-.pay-desc
-  width 200px
-  margin 150px auto
-  p.amount
-    font-size 20px
-    span
-      color #33C96F
-  img
-    margin-top 20px
-    margin-bottom 20px
-    width 200px
-    height 200px
+    .pay-desc
+      width 200px
+      margin 150px auto
+      p.amount
+        font-size 20px
+        span
+          color #33C96F
+      img
+        margin-top 20px
+        margin-bottom 20px
+        width 200px
+        height 200px
 
 
 </style>

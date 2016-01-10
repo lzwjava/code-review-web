@@ -29,12 +29,15 @@
 				</div>
 				<div class="row">
 					<span>项目Github地址</span>
-					<button class="github"></button>
+					<a target="_blank" :href="detail.gitHubUrl">
+						<button class="btn-github"></button>
+					</a>
 				</div>
 				<h3>Review 结果</h3>
 				<div class="row">
 					<span>Review 结果</span>
-					<button type="button" class="check-result">查看结果</button>
+					<span v-if="!detail.review" class="right">暂无</span>
+					<a href="./article.html?reviewId={{detail.orderId}}" v-if="detail.review"><button type="button" class="check-result">查看结果</button></a>
 				</div>
 			</div>
 			<div class="item right">
@@ -113,12 +116,12 @@
 					.check-result
 						btn(green, white, 0.8, 85, 30)
 						pull-right()
-					.github
-						btn(url(../img/icon/github.png), white, 1, 85, 30)
+					.btn-github
 						pull-right()
 </style>
 
 <script>
+	var debug = require('debug')('order-detail');
 	export default {
 		props:['detail'],
 		methods: {
@@ -128,6 +131,9 @@
 			cancel(){
 				this.$parent.overlay = false;
 			}
+		},
+		ready () {
+			debug('%j', this.detail);
 		}
 	}
 </script>

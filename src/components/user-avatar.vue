@@ -1,5 +1,8 @@
 <template>
-  <a v-el:avatar class="avatar" aria-label="View @{{user.username}} profile"></a>
+  <a v-el:avatar class="avatar" aria-label="View @{{user.username}} profile">
+    <img v-if="user.avatarUrl" :src="user.avatarUrl" :alt="user.username" />
+    <span v-if="!user.avatarUrl" style="{background-color: spanBgColor, color: spanColor}">{{user.username}}</span>
+  </a>
 </template>
 <script>
   var debug = require('debug')('components');
@@ -7,45 +10,30 @@
   var wordColor = require('word-color');
   module.exports = {
     props: ['user'],
-    watch: {
-      'user.username': 'compile'
-    },
-    methods: {
-      compile: function() {
-        var user = this.user;
-        if (!user.username) return;
-
-        var el = this.$els.avatar;
-        if (!user.avatarUrl) {
-          var span = '<span style="background-color:#1;color:#2">#3<\/span>';
-          var bg = wordColor.rgb(user.username);
-          var fg = 'white';
-          if ((bg[0] * 299 + bg[1] * 587 + bg[2] * 114) > 200000) {
-            fg = 'black';
-          }
-
-          span = span
-            .replace('#1', 'rgb(' + bg.join(',') + ')')
-            .replace('#2', fg)
-            .replace('#3', escape(user.username.charAt(0).toUpperCase()));
-          el.innerHTML = span;
-          debug('avatarUrl: ' + user.avatarUrl);
-        } else {
-          var img = new Image();
-          img.src = user.avatarUrl;
-          img.alt = user.username;
-          img.onload = function() {
-            el.innerHTML = '';
-            el.appendChild(img);
-          };
-          img.onerror = function() {
-            debug('img onerror');
-          };
-        }
+    data (){
+      return {
+        spanBgColor: '',
+        spanColor: 'white'
       }
     },
     compiled: function() {
-      this.compile();
+      var user = this.user;
+      if (!user.username) {
+        // 因为父对象的 user 一开始可能没有数据
+        return;
+      }
+      debug('user: %j', user);
+      if (!user.avatarUrl) {
+        var bg = wordColor.rgb(user.username);
+        if ((bg[0] * 299 + bg[1] * 587 + bg[2] * 114) > 200000) {
+          this.spanColor = 'black';
+        }
+        this.spanBgColor = 'rgb(' + bg.join(',') + ')';
+        user.username = escape(user.username.charAt(0).toUpperCase())
+        debug('avatarUrl: ' + user.avatarUrl);
+      }else{
+        //debug('avatarUrl: ' + user.avatarUrl);
+      }
     }
   };
 </script>
@@ -71,13 +59,10 @@
     text-align: center;
     font-size: 24px;
     border-radius: 50%;
-
   }
   .avatar img{
     position:relative;
-    top: -2px;
-    left: -2px;
-    
+    vertical-align: middle;
   }
   .avatar.small span {
     font-size: 18px;

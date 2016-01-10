@@ -1,10 +1,12 @@
 <template>
   <div class="dropdown">
+
     <div class="dropdown-mask" @click="show=!show">
       <slot name="showText"></slot>
     </div>
     <div class="dropdown-inner" @click="choose" v-show="show">
       <slot name="options"></slot>
+    </div>
     </div>
   </div>
 </template>
@@ -47,6 +49,7 @@
     box-shadow 0 3px 13px rgba(0, 0, 0, 0.18)
     border-radius 3px
     z-index 11
+    padding 10px 20px
     &:before, &:after
       position absolute
       left 50%
@@ -54,22 +57,37 @@
       content ''
       display block
       border 8px solid transparent
-    &:before 
+    &:before
       top -16px
       border-bottom-color rgba(0, 0, 0, 0.18)
-    &:after 
+    &:after
       top -15px
       border-bottom-color white
-    .dropdown-item 
-      color #565656
+    .dropdown-item
+      padding 20px
+      position relative
+      color #282F31
       display block
       font-size 14px
+      font-weight 700
       padding 2px 5px 2px 13px
       margin-bottom 3px
-      &:hover 
-        background-color #71c72e
-        color white
-    .dropdown-divider 
+      z-index: 20;
+      &:last-child
+        opacity 0.6
+      &:hover
+        color #00BDEF
+        &:last-child
+          opacity 0.6
+          color #EF0031
+    .dropdown-divider
       border-top: 1px solid #ddd
+      opacity 0.75
       margin: 8px 0
+    .avatar
+      margin-left 14px
+    .name
+      position relative
+      margin-left 54px
+      margin-top -38px
 </style>

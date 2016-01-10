@@ -17,14 +17,18 @@
 
         <div class="right">
           <ul class="list">
-            <a href="./reviewers.html"><li class="hover-btn">发现大神</li></a>
-            <li class="hover-btn">精彩案例</li>
+            <a href="/reviewers.html"><li class="hover-btn">发现大神</li></a>
+            <a href="/case.html"><li class="hover-btn">精彩案例</li></a>
             <li class="hover-btn" v-if="!userStatus" class="signup" @click="signup">注册</li>
             <li class="hover-btn" v-if="!userStatus" @click="signin">登录</li>
             <li v-if="userStatus">
               <dropdown>
                 <user-avatar slot="showText" :user="user" @click="viewUserDropdown"></user-avatar>
                 <div slot="options">
+                    <div><user-avatar :user="user"></user-avatar>
+                    <div class="name">{{user.username}}</div>
+                  <div>
+                  <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="setting.html">个人设置</a>
                   <a class="dropdown-item" href="order.html">Code Review 订单列表</a>
                   <div class="dropdown-divider"></div>
@@ -144,6 +148,9 @@
   height totalHeight = 50px
   padding paddingTop=5px 150px
   background white
+  border-bottom 1px solid rgba(0,0,0,0.15)
+  box-shadow 0 2px 1px 0px rgba(135,135,135,.15)
+  min-width 1200px
   left 0
   right 0
   .container
@@ -175,23 +182,21 @@
     li
       padding-left 20px
       padding-right 20px
-      text-align center
+      text-align left
       cursor pointer
       font-size 14px
+      top -2px
+      position relative
       &.hover-btn
         border 1px solid #ffff // 避免hover之后颤抖
-        top -12.5px
-        position relative
         font-weight 600
       &.hover-btn:hover
-        background rgba(51,201,111,.1)
-        border 1px solid #33C96F
-        color #33C96F
+        color #00CFF5
     .dropdown-inner
-      width 200px
+      width 220px
       right 0
       &:before,&:after
-        left 89%
+        left 90%
   .avatar
     width totalHeight - 2 * paddingTop
     height totalHeight - 2 * paddingTop

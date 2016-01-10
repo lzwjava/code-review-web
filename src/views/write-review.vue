@@ -21,7 +21,9 @@
                     </div>
                     <div class="row">
                         <span>项目Github地址</span>
-                        <button class="github">{{order.gitHubUrl}}</button>
+                        <a target="_blank" :href="order.gitHubUrl">
+                          <button class="btn-github"></button>
+                        </a>
                     </div>
                     <h4>备注</h4>
                     <div class="row">
@@ -75,12 +77,13 @@ export default {
                 learner: {}
             },
             title: '',
-            content: ''
+            content: '',
+            review: {}
         }
     },
     computed: {
         mode () {
-            if (this.order.review != null) {
+            if (this.order.status == "finished") {
                 return 1; // edit
             } else {
                 return 0; // create
@@ -114,8 +117,7 @@ export default {
             }, util.httpErrorFn(this));
         },
         editReview() {
-            this.$http.post(serviceUrl.reviewsEdit, {
-                reviewId: this.order.review.reviewId,
+            this.$http.patch(serviceUrl.reviewsEdit.replace(/:id/, this.review.reviewId), {
                 title: this.title,
                 content: this.content
             }).then((resp) => {
@@ -139,15 +141,22 @@ export default {
             util.show(this, 'error', '请提供 id 参数');
             return;
         }
-        this.$http.get(serviceUrl.ordersView, {
-            orderId: params.id
-        }).then((resp) => {
+        this.$http.get(serviceUrl.ordersView.replace(/:id/,params.id))
+        .then((resp) => {
             if (util.filterError(this, resp)) {
                 debug('%j', resp.data.result);
                 this.order = resp.data.result;
-                if (this.order.review) {
-                    this.title = this.order.review.title;
-                    this.content = this.order.review.content;
+                if (this.order.status == "finished") {
+                  this.$http.get(serviceUrl.ordersReview.replace(/:id/, params.id), {})
+                  .then((resp) => {
+                    if (util.filterError(this, resp)) {
+                      var review = resp.data.result;
+                      this.review = review;
+                      debug('%j', review);
+                      this.title = review.title;
+                      this.content = review.content;
+                    }
+                  }, util.httpErrorFn(this))
                 }
             }
         }, util.httpErrorFn(this));
@@ -196,9 +205,8 @@ export default {
                 &.right
                     pull-right()
                     color textColor
-                .github
-                    btn(url(../img/icon/github.png), white, 1, 85, 30)
-                    pull-right()
+            .btn-github
+                pull-right()
         .input-row
             span
                 display block
@@ -220,5 +228,5 @@ export default {
             btn(#00CFF5, #fff, 0.8, 150px, 30px)
             margin 20px auto 10px
             display block
-            
+
 </style>

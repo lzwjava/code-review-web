@@ -16,7 +16,7 @@
         <li>
           <div class="short">
             <div class="icon_crown"></div>
-            <h4 class="number">280大神入驻</h4>
+            <h4 class="number">15大神入驻</h4>
             <p class="detail">我们邀请了业内知名的开发者帮助大家解决在编码过程中所遇到的问题，这些高手利用自己所擅长的技术为各位竭诚服务。</p>
           </div>
 
@@ -24,7 +24,7 @@
         <li>
           <div class="short">
             <div class="icon_doc"></div>
-            <h4 class="number">2800+审核文档</h4>
+            <h4 class="number">20+审核文档</h4>
             <p class="detail">每一次 Code Review 的过程都凝结着大神的心血 Code Review 上线半年以来，已经帮助重构、简化了 1400 份代码文件。</p>
           </div>
 
@@ -32,7 +32,7 @@
         <li>
           <div class="short">
             <div class="icon_article"></div>
-            <h4 class="number">280经验总结</h4>
+            <h4 class="number">20+经验总结</h4>
             <p class="detail">代码审核无论对于审核者还是帮助申请人来说，都是宝贵的经验财富，在获得许可的情况下，我们提供 Code Review 经验文摘。</p>
           </div>
         </li>
@@ -53,102 +53,56 @@
     </section>
 
     <section class="example">
-        <div class="container"><!--
-          <div class="pen"></div>
-          <div class="book"></div>
-          <div class="cup"></div> -->
+        <div class="container">
           <h2>精选 Code Review 案例</h2>
           <h3>我们精心挑选了一些典型问题的优雅解决方案，分享给大家</h3>
           <ul class="list">
             <div class="row">
-              <li class="clo-2">
+              <li class="clo-2" @click="goDetail(reviews[0].reviewId)">
                 <div class="info">
-                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <img :src="reviews[0].coverUrl">
                   <div class="text">
-                    <h6 class="title">
-                      dsadadasdas
+                    <h6 class="title" v-html="reviews[0].title">
                     </h6>
                     <h6 class="tips">
-                      <span>1111</span>
-                      <span>2222</span>
+                      <span v-for="tag in reviews[0].tags">#{{tag.tagName}}</span>
                     </h6>
                   </div>
                 </div>
-                <!-- <div class="detail">
-                  <p>
-                    <span class="date">12 八月 2015</span>
-                    <span>/ 12次打赏</span>
-                    <i class="icon_wx"></i>
-                    <i class="icon_wb"></i>
-                  </p>
-                </div> -->
               </li>
-              <li class="clo-1">
+              <li class="clo-1" @click="goDetail(reviews[1].reviewId)">
                 <div class="info">
-                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <img :src="reviews[1].coverUrl">
                   <div class="text">
-                    <h6 class="title">
-                      dsadadasdas
+                    <h6 class="title" v-html="reviews[1].title">
                     </h6>
                     <h6 class="tips">
-                      <span>1111</span>
-                      <span>2222</span>
+                      <span v-for="tag in reviews[1].tags">#{{tag.tagName}}</span>
                     </h6>
                   </div>
               </li>
             </div>
             <div class="row">
-              <li class="clo-1">
+              <li class="clo-1" @click="goDetail(reviews[2 + i].reviewId)" v-for="i in 3">
                 <div class="info">
-                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+                  <img :src="reviews[2 + i].coverUrl">
                   <div class="text">
-                    <h6 class="title">
-                      dsadadasdas
-                    </h6>
+                    <h6 class="title" v-html="reviews[2 + i].title">
                     <h6 class="tips">
-                      <span>1111</span>
-                      <span>2222</span>
-                    </h6>
-                  </div>
-              </li>
-              <li class="clo-1">
-                <div class="info">
-                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
-                  <div class="text">
-                    <h6 class="title">
-                      dsadadasdas
-                    </h6>
-                    <h6 class="tips">
-                      <span>1111</span>
-                      <span>2222</span>
-                    </h6>
-                  </div>
-              </li>
-              <li class="clo-1">
-                <div class="info">
-                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
-                  <div class="text">
-                    <h6 class="title">
-                      dsadadasdas
-                    </h6>
-                    <h6 class="tips">
-                      <span>1111</span>
-                      <span>2222</span>
+                      <span v-for="tag in reviews[2 + i].tags">#{{tag.tagName}}</span>
                     </h6>
                   </div>
               </li>
             </div>
             <div class="row">
-              <li class="clo-3">
-                <div class="info">
-                  <img src="http://img0.imgtn.bdimg.com/it/u=2405375823,572106225&fm=21&gp=0.jpg">
+              <li class="clo-3" @click="goDetail(reviews[5].reviewId)">
+                <div class="info big-img-wrap">
+                  <span class="big-img"></span>
                   <div class="text">
-                    <h6 class="title">
-                      dsadadasdas
+                    <h6 class="title" v-html="reviews[5].title">
                     </h6>
                     <h6 class="tips">
-                      <span>1111</span>
-                      <span>2222</span>
+                      <span v-for="tag in reviews[5].tags">#{{tag.tagName}}</span>
                     </h6>
                   </div>
               </li>
@@ -174,7 +128,33 @@
     },
     data () {
       return {
-        reviewers: []
+        reviewers: [],
+        reviews: [
+          {reviewId: 2,
+           coverUrl: 'https://images.unsplash.com/photo-1450849608880-6f787542c88a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=b256aa5102c408322cdb99ce6a6a0f53',
+           title: '特邀采访<br>传奇开发者<br>Loren Brichter',
+           tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
+          {reviewId: 8,
+           coverUrl: 'https://images.unsplash.com/photo-1431975562098-bac8ded504c7?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=b8e0ca83863bf59b4668cec00931a155',
+           title: '传感器使用误区<br>与性能优化',
+           tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
+          {reviewId: 9,
+           coverUrl: 'https://images.unsplash.com/photo-1443916765281-9937110585db?crop=entropy&fit=crop&fm=jpg&h=675&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200',
+           title: '传感器使用误区<br>与性能优化',
+           tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
+          {reviewId: 10,
+           coverUrl: 'https://images.unsplash.com/photo-1448814100339-234df1d4005d?crop=entropy&fit=crop&fm=jpg&h=900&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200',
+           title: '传感器使用误区<br>与性能优化',
+           tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
+           {reviewId: 9,
+            coverUrl: 'https://images.unsplash.com/photo-1439737567250-e9ea931e97a4?crop=entropy&fit=crop&fm=jpg&h=800&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200',
+            title: '传感器使用误区<br>与性能优化',
+            tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
+           {reviewId: 10,
+            coverUrl: '',
+            title: '传感器使用误区<br>与性能优化',
+            tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
+        ]
       }
     },
     created () {
@@ -185,6 +165,23 @@
           this.reviewers = resp.data.result;
         }
       }, util.httpErrorFn(this));
+      this.$http.get(serviceUrl.reviewsGet, {
+        limit: 6
+      }).then((resp) => {
+        if (util.filterError(this, resp)) {
+          var reviews = resp.data.result;
+          for (var i = 0; i < reviews.length; i++) {
+            // this.reviews[i].title = reviews[i].title;
+            // this.reviews[i].reviewId = reviews[i].reviewId;
+            // this.reviews[i].tags = reviews[i].tags;
+          }
+        }
+      },util.httpErrorFn(this));
+    },
+    methods: {
+      goDetail: (id) => {
+        window.location = '/article.html?reviewId=' + id;
+      }
     }
   }
 </script>
@@ -289,7 +286,7 @@
         line-height 180%
         font-size 0.88rem
 .reviewer
-  height 900px;
+  height 800px;
   position relative
   overflow hidden
   .reviewers
@@ -303,10 +300,10 @@
     top 0
     left 50%
     margin-left -960px
-    padding-top 100px
+    padding-top 80px
     h3
       margin 30px 0
-      margin-bottom 90px
+      margin-bottom 40px
     .more
       width 220px
       height 50px
@@ -317,6 +314,7 @@
       font-size 1rem
       border-radius 3px
     .item
+      margin-top 14px
       margin-bottom 0 !important
 
 .example
@@ -369,18 +367,49 @@
       margin-left 48px
       pull-left();
       margin-bottom 40px
+      .big-img-wrap
+        .big-img
+          background-image url('https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?crop=entropy&fit=crop&fm=jpg&h=800&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200')
+          background-size cover
+          background-repeat no-repeat
+          display block
+          width 100%
+          height 100%
+          -webkit-filter brightness(0.4)
+          transition: all 0.35s ease 0s;
+          -webkit-transition all 0.35s ease 0s
+          &:hover
+            -webkit-filter brightness(0.6)
+            transform: scale(1.2,1.2)
       .info
         position relative
         height 354px
         width 100%
         color white
         box-shadow 0 4px 4px 1px rgba(135,135,135,.1)
+        overflow hidden
+        backface-visibility hidden
+        &:hover
+          img
+            transform: scale(1.2,1.2)
+            -webkit-filter brightness(0.6)
+          .title
+            -webkit-transform translate(0, -20px)
+            transfrom translate(0, -20px)
+            opacity 1.0
+          .tips
+            -webkit-transform translate(0, -10px)
+            transfrom translate(0, -10px)
+            opacity 0.8
         img
-          position absolute
+          position relative
           left 0
           top 0
           height 100%
           width 100%
+          -webkit-filter brightness(0.4)
+          transition: all 0.35s ease 0s;
+          -webkit-transition: all 0.35s ease 0s;
         .text
           height 150px
           width 100%
@@ -394,12 +423,28 @@
           flex-direction column
           justify-content flex-end
         h6
-          font-size 1.5rem
-          width 160px
+          width 200px
           word-break break-word
+          font-family "PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
+        .title
+          font-size 1.5rem
+          line-height 2rem
+          font-weight 100
+          -webkit-transform translate(0, 10px)
+          transfrom translate(0, 10px)
+          opacity 0.92
+          transition: all 0.35s ease 0s;
+          -webkit-transition: all 0.35s ease 0s;
         .tips
           font-size .88rem
-          margin-top 15px
+          font-weight 100
+          //margin-top 15px
+          margin-bottom 10px
+          -webkit-transform translate(0, 20px)
+          transfrom translate(0, 20px)
+          opacity 0
+          transition: all 0.35s ease 0.05s;
+          -webkit-transition: all 0.35s ease 0.05s;
       .detail
         margin-top 15px
         height 60px

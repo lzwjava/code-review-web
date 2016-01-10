@@ -11,9 +11,10 @@ module.exports = {
     setting: ['./src/setting.js'],
     order: ['./src/order.js'],
     reviewer: ['./src/reviewer.js'],
-    'order-detail': ['./src/order-detail.js'],
     'write-review': ['./src/write-review.js'],
-    article: ['./src/article.js']
+    case: ['./src/case.js'],
+    article: ['./src/article.js'],
+    statement: ['./src/statement.js']
   },
   output: {
     path: __dirname + '/static',
@@ -23,8 +24,8 @@ module.exports = {
   resolve: {
       alias: {
           jquery: path.join(__dirname, './node_modules/jquery'),
-          moxie: path.join(__dirname, 'plupload/js/moxie.js'),
-          'moxie-plupload': path.join(__dirname, 'plupload/js/plupload.dev.js')
+          moxie: path.join(__dirname, 'plupload/js/moxie.min.js'),
+          plupload: path.join(__dirname, 'plupload/js/plupload.min.js')
       },
       root: srcPath,
       extensions: ['', '.js', '.css'],
@@ -45,21 +46,21 @@ module.exports = {
         test: /\.(png|jpg|gif)$/,
         loader: 'url-loader?limit=8190'
       },
-      { test: /\.css$/, 
-        loader: "style-loader!css-loader" 
+      { test: /\.css$/,
+        loader: "style-loader!css-loader"
       },
-      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-        loader: "url-loader?limit=10000&minetype=application/font-woff" 
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url-loader?limit=10000&minetype=application/font-woff"
       },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-        loader: "file-loader" 
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "file-loader"
       },
-      // {
-      //   test: /vendor\/plupload\/plupload\.dev\.js/,
-      //   loader: 'imports?mOxie=moxie!exports?window.plupload'
-      // },
       {
-        test: /plupload\/js\/moxie\.js/,
+        test: /plupload\/js\/plupload\.min\.js/,
+        loader: 'imports?mOxie=moxie'
+      },
+      {
+        test: /plupload\/js\/moxie\.min\.js/,
         loader: 'exports?this.mOxie'
       }
     ]
@@ -68,11 +69,6 @@ module.exports = {
     presets: ['es2015'],
     plugins: ['transform-runtime']
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-      mOxie: 'moxie'
-    }),
-  ],
   debug: true,
   displayErrorDetails: true,
   outputPathinfo: true,
@@ -91,8 +87,16 @@ if (process.env.NODE_ENV === 'production') {
         warnings: false
       }
     }),
+    new webpack.ProvidePlugin({
+        mOxie: 'moxie'
+    }),
     new webpack.optimize.OccurenceOrderPlugin()
   ]
 } else {
+  module.exports.plugins = [
+    new webpack.ProvidePlugin({
+        mOxie: 'moxie'
+    }),
+  ]
   module.exports.devtool = '#source-map'
 }

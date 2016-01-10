@@ -1,0 +1,44 @@
+.lj-pagination{
+	margin: 10px 0;
+	color: #282F31;
+}
+
+.lj-page{
+	margin: 0;
+	border: 1px solid #e6e6e6;
+	border-radius: 3px;
+	display: inline-block;
+}
+
+.lj-page:after{
+	content: " ";
+	display: table;
+	clear: both;
+}
+
+
+.lj-page li{
+	float: left;
+	border-right: 1px solid #e6e6e6;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.lj-page li:last-of-type{
+	border-right: none;
+}
+
+.lj-page li:hover{
+	background: #00cff5;
+	color:  white;
+}
+
+.lj-page li.active{
+	background: #00cff5;
+	color:  white;
+}
+
+.lj-page li span{
+	padding: 1em;
+	display: inline-block;
+}
