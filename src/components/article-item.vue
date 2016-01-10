@@ -34,7 +34,7 @@
 <style lang="stylus">
 	.article-list
 		border-bottom 1px solid rgba(0,0,0,.15)
-		padding 30px 50px
+		padding 30px 80px
 		.list-content
 			width 935px
 			display flex

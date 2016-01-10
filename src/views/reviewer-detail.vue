@@ -108,6 +108,8 @@ body
         width 1160px
         margin 0 auto
         text-align left
+        padding-left 80px
+        padding-right 500px
         h2
             font-size 1.5rem
             margin-bottom 25px
