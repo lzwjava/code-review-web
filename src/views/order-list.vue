@@ -29,13 +29,13 @@
 					<div class="list-cell">
 						{{item.amount | moneyAsYuan | currency '￥' | integer}}
 					</div>
-					<div class="list-cell" :class="{'stop': !item.status}">
+					<div class="list-cell"><button type="button" class="detail" @click="view(item)"></button></div>
+					<div class="list-cell" :class="{'stop': !item.status}" v-if="userType == 'reviewer'">
 						<a :href="'write-review.html?id=' + item.orderId">
 							<button type="button" class="assess accept"></button>
 						</a>
 					</div>
-					<div class="list-cell"><button type="button" class="detail" @click="view(item)"></button></div>
-					<div class="list-cell"><button type="button" class="reject" @click="reject(item)"></button></div>
+					<div class="list-cell" v-if="userType == 'reviewer'"><button type="button" class="reject" @click="reject(item)"></button></div>
 				</dd>
 			</dl>
 		</section>
@@ -55,7 +55,6 @@
 	export default {
 		data () {
 			return {
-				tableHead: ['序号','用户名','状态','申请日期','打赏金额','接手','详情','拒绝'],
 				tableData: [],
 				detailData: {
 					userType: 'reviewer',
@@ -76,12 +75,22 @@
 		computed: {
 			showNextPage () {
 				return this.tableData.length == this.pageLimit;
+			},
+			tableHead () {
+				if (!this.userType) {
+					return [];
+				}
+				if (this.userType == 'reviewer') {
+					return ['序号','用户名','状态','申请日期','打赏金额','详情','接手','拒绝'];
+				} else {
+					return ['序号','用户名','状态','申请日期','打赏金额','详情'];
+				}
 			}
 		},
 		created() {
 			this.user = util.getLocalUser();
 			this.loadCurrentPage();
-			this.user.type == 0 ? this.userType = 'reviewer': this.userType = 'learner';
+			this.user.type == 0 ? this.userType = 'learner': this.userType = 'reviewer';
 		},
 		methods: {
 			loadCurrentPage () {
