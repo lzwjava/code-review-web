@@ -20,8 +20,8 @@
 					<div class="list-cell">{{item.orderId}}</div>
 					<div class="list-cell">
 						<div class="cell-img">
-							<img :src="item[userType].avatarUrl">
-							<span>{{item[userType].username}}</span>
+							<img :src="targetUser(item).avatarUrl">
+							<span>{{targetUser(item).username}}</span>
 						</div>
 					</div>
 					<div class="list-cell">{{item.status | reviewStatus}}</div>
@@ -31,9 +31,7 @@
 					</div>
 					<div class="list-cell"><button type="button" class="detail" @click="view(item)"></button></div>
 					<div class="list-cell" :class="{'stop': !item.status}" v-if="userType=='reviewer'">
-						<a :href="'write-review.html?id=' + item.orderId">
-							<button type="button" class="assess accept"></button>
-						</a>
+						<button type="button" class="assess accept" @click="consent(item)"></button>
 					</div>
 					<div class="list-cell" v-if="userType!='learner'"><button type="button" class="reject" @click="reject(item)"></button></div>
 				</dd>
@@ -102,10 +100,11 @@
 						this.tableData = resp.data.result;
 					}
 				}, util.httpErrorFn(this))
-			},/*
+			},
 			targetUser (review) {
-				return this.user.type == 0 ? review.reviewer:review.learner;
-			},*/
+				// 显示对方的头像、用户名
+				return this.user.type == 'learner' ? review.reviewer:review.learner;
+			},
 			view (item){
 				this.overlayStatus = true;
 				this.detailData = item;
@@ -124,17 +123,28 @@
 					this.loadCurrentPage();
 				}
 			},
+			writeOrEditView (orderId) {
+				window.location = 'write-review.html?id=' + orderId;
+			},
 			consentOrReject(order, status) {
 				this.$http.post('orders/' + order.orderId, {
 					status:status
 				}).then((resp) => {
 					if (util.filterError(this, resp)) {
 						order.status = status;
+						if (status == 'consented') {
+							this.writeOrEditView(order.orderId);
+						}
 					}
 				}, util.httpErrorFn(this))
 			},
 			consent(order) {
-				this.consentOrReject(order, 'consented');
+				debug('order: %j', order);
+				if (order.status == 'finished' || order.status == 'consented')  {
+					this.writeOrEditView(order.orderId)
+				} else {
+					this.consentOrReject(order, 'consented');
+				}
 			},
 			reject(order) {
 				this.consentOrReject(order, 'rejected');

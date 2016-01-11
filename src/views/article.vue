@@ -5,11 +5,11 @@
             <div class="intro">
                 <img src="../img/icon/clock.png">
                 <span class="review-time">{{review.created | formatTime}}</span>
-                <img src="../img/icon/reward.png">
+                <img src="../img/icon/visit_count.png">
                 <span>{{review.visitCount}}</span>
                 <img src="../img/icon/reward.png">
                 <span>{{review.rewardCount}}</span>
-                <img src="../img/icon/small-pen.png">
+                <img src="../img/icon/small_pen.png">
                 <span><a :href="'./reviewer.html?id=' + order.reviewer.id">{{order.reviewer.username}}</a></span>
              </div>
         </div>
@@ -147,7 +147,7 @@ body
     .intro
         img
             width 18px
-            height 18px
+            max-height 18px
         span
             margin-right 20px
             line-height 24px
