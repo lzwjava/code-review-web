@@ -60,6 +60,10 @@ module.exports = {
         loader: 'imports?mOxie=moxie'
       },
       {
+        test: /\.styl$/,
+        loader: 'style-loader!css-loader!stylus-loader'
+      },
+      {
         test: /plupload\/js\/moxie\.min\.js/,
         loader: 'exports?this.mOxie'
       }

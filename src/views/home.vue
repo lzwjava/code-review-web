@@ -108,7 +108,7 @@
           </ul>
         </div>
         <div class="more">
-          阅读更多
+          <a href="./case.html">阅读更多</a>
         </div>
     </section>
   </div>
@@ -200,22 +200,9 @@
 .home-main
   text-align center
   font-size 1rem
-  h1
-    font-size 3.75rem
-    font-weight 100
-  h2
-    @extend .pingfang-first-font
-    font-size 1.5rem
-    font-weight 400
   h3
-    font-size 1rem
     opacity 0.6
-  h4
-    font-size 1rem
-    font-weight 600
-    @extend .pingfang-first-font
-  h5
-    font-size 20px
+
 .slide
   height 800px
   position relative

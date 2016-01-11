@@ -1,5 +1,5 @@
 <template>
-	<footer>
+	<footer class="footer-area">
     <p>Copyright &copy; 2016 北京大米互娱科技有限公司 &middot; <a target="_blank" href="http://www.miibeian.gov.cn/">京ICP备15064530号</a> &middot; <a target="_blank" href="./statement.html">用户协议</a></p>
 	</footer>
 </template>
@@ -12,13 +12,9 @@ export default {
 
 <style lang="stylus">
 
-footer
-  max-width 1080px
-  margin 0 auto
-  height 70px
-  padding 20px
-  text-align center
-  p
-    line-height 30px
+.footer-area
+	width 100%
+	margin 60px 0px
+	text-align center
 
 </style>

@@ -4,7 +4,6 @@
  * @date    2015-12-23 16:08:22
  * @version $Id$
  */
-
 import Vue from 'vue'
 import Nav from 'views/nav.vue'
 import Footer from 'views/footer.vue'

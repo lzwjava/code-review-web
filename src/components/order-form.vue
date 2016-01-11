@@ -129,7 +129,7 @@ module.exports = {
     flex 1 1
     position relative
     &.bg
-      background url('../img/love-program.png')
+      background url('../img/love-program.jpg')
       background-size 100% 100%
     .belt
       height 50px
