@@ -30,11 +30,15 @@
 						{{item.amount | moneyAsYuan | currency '￥' | integer}}
 					</div>
 					<div class="list-cell"><button type="button" class="detail" @click="view(item)"></button></div>
-					<div class="list-cell" v-if="userType=='learner' && item.status=='unpaid'"><button type="button" class="detail" @click="showPayForm(item)"></button></div>
+					<div class="list-cell" v-if="userType=='learner'">
+						<button v-if="item.status=='unpaid'" type="button" class="detail" @click="showPayForm(item)"></button>
+					</div>
 					<div class="list-cell" :class="{'stop': !item.status}" v-if="userType=='reviewer'">
 						<button type="button" class="assess accept" @click="consent(item)"></button>
 					</div>
-					<div class="list-cell" v-if="userType=='reviewer'"><button type="button" class="reject" @click="reject(item)"></button></div>
+					<div class="list-cell" v-if="userType=='reviewer'">
+						<button v-if="item.status=='paid'" type="button" class="reject" @click="reject(item)"></button>
+					</div>
 				</dd>
 			</dl>
 		</section>
