@@ -29,12 +29,12 @@
 					<div class="list-cell">
 						{{item.amount | moneyAsYuan | currency '￥' | integer}}
 					</div>
+					<div class="list-cell"><button type="button" class="detail" @click="view(item)"></button></div>
 					<div class="list-cell" :class="{'stop': !item.status}" v-if="userType=='reviewer'">
 						<a :href="'write-review.html?id=' + item.orderId">
 							<button type="button" class="assess accept"></button>
 						</a>
 					</div>
-					<div class="list-cell"><button type="button" class="detail" @click="view(item)"></button></div>
 					<div class="list-cell" v-if="userType!='learner'"><button type="button" class="reject" @click="reject(item)"></button></div>
 				</dd>
 			</dl>
@@ -80,12 +80,12 @@
 		created() {
 			this.user = util.getLocalUser();
 			this.loadCurrentPage();
-			if(this.user.type == 0) { 
+			if(this.user.type == 'reviewer') {
 				this.userType = 'reviewer';
-				this.tableHead.push('接手');
 				this.tableHead.push('详情');
+				this.tableHead.push('接手');
 				this.tableHead.push('拒绝');
-			}else{ 
+			}else{
 				this.userType = 'learner';
 				this.tableHead.push('详情');
 			}
@@ -110,7 +110,7 @@
 				this.overlayStatus = true;
 				this.detailData = item;
 				this.detailData.userType = this.userType;
-				this.detailData.typeText = this.user.type == 0 ? '申请者':'代码审核者';
+				this.detailData.typeText = this.user.type == 'reviewer' ? '申请者':'代码审核者';
 			},
 			prev() {
 				if (this.currentPage - 1 >= 0) {
