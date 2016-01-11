@@ -88,7 +88,8 @@ module.exports = {
         gitHubUrl: 'https://github.com/'+this.gitHubUrl,
         codeLines: this.codeLines,
         remark: this.remark,
-        reviewerId: this.reviewerId
+        reviewerId: this.reviewerId,
+        amount: this.reward * 100,
       }).then((resp) => {
         if (util.filterError(this, resp)) {
           var order = resp.data.result;
