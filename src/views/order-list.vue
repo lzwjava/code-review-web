@@ -30,25 +30,36 @@
 						{{item.amount | moneyAsYuan | currency '￥' | integer}}
 					</div>
 					<div class="list-cell"><button type="button" class="detail" @click="view(item)"></button></div>
+					<div class="list-cell" v-if="userType=='learner' && item.status=='unpaid'"><button type="button" class="detail" @click="showPayForm(item)"></button></div>
 					<div class="list-cell" :class="{'stop': !item.status}" v-if="userType=='reviewer'">
 						<button type="button" class="assess accept" @click="consent(item)"></button>
 					</div>
-					<div class="list-cell" v-if="userType!='learner'"><button type="button" class="reject" @click="reject(item)"></button></div>
+					<div class="list-cell" v-if="userType=='reviewer'"><button type="button" class="reject" @click="reject(item)"></button></div>
 				</dd>
 			</dl>
 		</section>
+
+		<overlay :overlay.sync="overlayStatus">
+		    <detail :detail="detailData"></detail>
+		</overlay>
+
+		<overlay :overlay.sync="payOverlayStatus">
+				<order-form mode="pay" :order="payOrder"></order-form>
+		</overlay>
+
+
 	</section>
-	<overlay :overlay.sync="overlayStatus">
-	    <detail :detail="detailData"></detail>
-	</overlay>
+
 </template>
 
 <script>
 	import util from '../common/util'
 	import serviceUrl from "../common/serviceUrl.js"
 	import Detail from '../components/order-detail.vue'
-	import Overlay from '../components/overlay.vue';
+	import Overlay from '../components/overlay.vue'
+	import OrderForm from '../components/order-form.vue'
 	var debug = require('debug')('order');
+
 	export default {
 		data () {
 			return {
@@ -63,12 +74,15 @@
 				currentPage: 0,
 				pageLimit: 6,
 				userType :'',
-				user : {}
+				user : {},
+				payOrder: {},
+				payOverlayStatus: false
 			}
 		},
 		components:{
 			overlay: Overlay,
-			detail: Detail
+			detail: Detail,
+			'order-form': OrderForm
 		},
 		computed: {
 			showNextPage () {
@@ -86,6 +100,7 @@
 			}else{
 				this.userType = 'learner';
 				this.tableHead.push('详情');
+				this.tableHead.push('打赏');
 			}
 		},
 		methods: {
@@ -148,6 +163,10 @@
 			},
 			reject(order) {
 				this.consentOrReject(order, 'rejected');
+			},
+			showPayForm(order) {
+				this.payOrder = order;
+				this.payOverlayStatus = true;
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 <template>
-  <div class="overlay" @click="hide" v-show="overlay">
+  <div class="overlay" @click="hide" v-if="overlay">
     <slot></slot>
   </div>
 </template>
