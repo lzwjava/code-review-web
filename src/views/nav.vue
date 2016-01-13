@@ -25,7 +25,7 @@
               <dropdown>
                 <user-avatar slot="showText" :user="user" @click="viewUserDropdown"></user-avatar>
                 <div slot="options">
-                  <div><user-avatar :user="user"></user-avatar>
+                    <div><user-avatar :user="user"></user-avatar>
                     <div class="name">{{user.username}}</div>
                   <div>
                   <div class="dropdown-divider"></div>

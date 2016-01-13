@@ -6,32 +6,35 @@
     			</div>
     			<div class="article-info">
     				<div class="date-tags">
-    					<span class="data">{{item.created}}</span>
+    					<span class="data">{{item.created | formatTime 'Do MMMM YYYY'}}</span>
     					<span class="tag" v-for="tag in item.tags">{{tag.tagName}}</span>
     				</div>
-    				<h6 class="title">{{item.title}}</h6>
+    				<h6><a class="title" href="/article.html?reviewId={{item.reviewId}}">{{item.title}}</a></h6>
     				<div class="info">
               {{item.content | truncate 200}}
     				</div>
     				<div class="count">
-    					<span>{{item.view}} 次阅读</span>
+    					<span>{{item.visitCount}} 次阅读</span>
     					<span>{{item.rewardCount}} 次打赏</span>
-    					<span>{{item.comment}} 条评论</span>
+    					<!-- <span>{{item.comment}} 条评论</span> -->
     				</div>
     			</div>
     		</div>
     	</div>
 </template>
 <script>
+  var debug = require('debug')('article-item');
 	export default{
-		props:['articleList']
+		props:['articleList'],
+    methods: {
+    }
 	}
 </script>
 
 <style lang="stylus">
 	.article-list
 		border-bottom 1px solid rgba(0,0,0,.15)
-		padding 30px 50px
+		padding 30px 80px
 		.list-content
 			width 935px
 			display flex

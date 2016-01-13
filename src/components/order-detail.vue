@@ -36,27 +36,27 @@
 				<h3>Review 结果</h3>
 				<div class="row">
 					<span>Review 结果</span>
-					<span v-if="!detail.review" class="right">暂无</span>
-					<a href="./article.html?reviewId={{detail.orderId}}" v-if="detail.review"><button type="button" class="check-result">查看结果</button></a>
+					<span v-if="!detail.reviewId" class="right">暂无</span>
+					<a target="_blank" href="./article.html?reviewId={{detail.reviewId}}" v-if="detail.reviewId"><button type="button" class="check-result">查看结果</button></a>
 				</div>
 			</div>
-			<div class="item right">
+			<!-- <div class="item right">
 				<h4>请输入你对Review的看法</h4>
 				<textarea></textarea>
 				<button type="button" class="assess">进行评价</button>
-			</div>
+			</div> -->
 		</div>
 	</section>
 </template>
 <style lang="stylus">
 @import '../stylus/variables.styl';
 	.order-detail
-		width 960px
+		width 480px
 		height 600px
 		position absolute
 		left 50%
 		top 50%
-		margin -300px 0 0 -480px
+		margin -300px 0 0 -240px
 		background #FDFFFF
 		padding 20px 30px
 		border 1px solid rgba(0,0,0,0.15)
@@ -79,7 +79,7 @@
 					border-left 1px solid rgba(0,0,0,.15)
 					padding-left 50px
 				&.left
-					padding-right 50px
+					padding-right 0px
 				h3
 					border-bottom 1px solid rgba(0,0,0,.15)
 					line-height 20px

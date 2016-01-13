@@ -1,19 +1,19 @@
 <template>
   <div class="modal-container absolute-center" @click="stop($event)">
-    <div class="modal">
 
+    <div class="modal">
       <form action="/" @submit="addOrder" v-show="!qrpay">
         <div class="form-line">
           <label>打赏费用</label>
           <input v-model="reward" class="reward-input"></input>
           <span>元</span>
         </div>
-        <div class="form-line row">
+        <!-- <div class="form-line row">
           <input type="radio" name="pay" value="wechat" v-model="payType" />
           <label>微信支付</label>
           <input type="radio" name="pay" value="alipay" v-model="payType" />
           <label>支付宝支付</label>
-        </div>
+        </div> -->
         <div class="form-line">
           <label class="form-label">项目 GitHub 地址</label>
           <div class="github-input">
@@ -36,27 +36,38 @@
 
       <div class="pay-region" v-show="qrpay">
 
-        <div class="pay-desc">
-          <p class="title">扫一扫付款</p>
-          <img :src="qrcode">
-          <p class="amount"><span>¥</span> {{reward}}</p>
-        </div>
+          <div class="pay-desc">
+            <p class="title">扫一扫付款</p>
+            <loading>
+              <!-- <img :src="qrcode"> -->
+              <img src="../img/qrcode.png">
+            </loading>
+            <p class="amount"><span>¥</span> {{reward}}</p>
+          </div>
       </div>
-
     </div>
+
     <div class="modal bg">
       <div class="belt">
-        <button class="btn-cancel" @click="close">取消申请</button>
+        <button class="btn-cancel" @click="close">取消</button>
       </div>
     </div>
+
   </div>
+
+
 </template>
 
 <script type="text/javascript">
 import serviceUrl from "../common/serviceUrl.js"
 import util from '../common/util'
+import Loading from '../components/loading.vue'
+
 var debug = require('debug')('order-form');
 module.exports = {
+  components: {
+    loading : Loading
+  },
   data: function () {
     return {
       gitHubUrl: 'akring/octokit.swift',
@@ -72,42 +83,62 @@ module.exports = {
     show: {
       twoWay: true
     },
-    reviewerId: {}
+    mode: {
+      default: 'create'
+    },
+    order: {
+      default: null
+    },
+    reviewerId: {
+      default: null
+    }
   },
   methods: {
     stop (e){
         e.stopPropagation();
-      },
+    },
     close () {
       this.$parent.overlay = false;
     },
     addOrder (e) {
       e.preventDefault();
-
       this.$http.post(serviceUrl.ordersAdd, {
         gitHubUrl: 'https://github.com/'+this.gitHubUrl,
         codeLines: this.codeLines,
         remark: this.remark,
-        reviewerId: this.reviewerId
+        reviewerId: this.reviewerId,
+        amount: this.reward * 100,
       }).then((resp) => {
         if (util.filterError(this, resp)) {
           var order = resp.data.result;
           debug(order);
           util.show(this, 'success', '申请成功, 请支付打赏额');
-          this.$http.post(serviceUrl.ordersReward.replace(/:id/, order.orderId), {
-            amount: this.reward * 100
-          }).then((resp) => {
-            debug(resp.data)
-            this.qrpay = true;
-            this.qrcode = resp.data.credential.alipay_qr;
-            window.open(this.qrcode, '_blank');
-          }, util.httpErrorFn(this))
+          this.qrpay = true;
+          this.payOrder(order);
         }
       }, util.httpErrorFn(this));
+    },
+    payOrder (order) {
+      this.$http.post(serviceUrl.ordersReward.replace(/:id/, order.orderId), {
+        amount: order.amount * 100
+      }).then((resp) => {
+        debug(resp.data)
+        // this.qrcode = resp.data.credential.alipay_qr;
+        this.$broadcast('loaded');
+        //window.open(this.qrcode, '_blank');
+      }, util.httpErrorFn(this))
     }
   },
   created () {
-    debug('reviewerId:' + this.reviewerId);
+    if (typeof this.mode !=='undefined' && this.mode == 'pay') {
+      this.qrpay = true;
+      this.payOrder(this.order);
+    }
+  },
+  ready() {
+  },
+  attached () {
+    debug('attached');
   }
 };
 
@@ -129,7 +160,7 @@ module.exports = {
     flex 1 1
     position relative
     &.bg
-      background url('../img/love-program.png')
+      background url('../img/love-program.jpg')
       background-size 100% 100%
     .belt
       height 50px

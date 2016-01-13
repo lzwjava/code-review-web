@@ -19,43 +19,55 @@
 				<dd class="list-row" v-for="item in tableData" :class="{'even': $index%2 == 0}">
 					<div class="list-cell">{{item.orderId}}</div>
 					<div class="list-cell">
-						<div>
-							<img :src="item[userType].avatarUrl">
-							<span>{{item[userType].username}}</span>
+						<div class="cell-img">
+							<img :src="targetUser(item).avatarUrl">
+							<span>{{targetUser(item).username}}</span>
 						</div>
 					</div>
 					<div class="list-cell">{{item.status | reviewStatus}}</div>
 					<div class="list-cell">{{item.created}}</div>
 					<div class="list-cell">
-						{{item.money  | currency '￥' | integer}}
-					</div>
-					<div class="list-cell" :class="{'stop': !item.status}">
-						<a :href="'write-review.html?id=' + item.orderId">
-							<button type="button" class="assess accept"></button>
-						</a>
+						{{item.amount | moneyAsYuan | currency '￥' | integer}}
 					</div>
 					<div class="list-cell"><button type="button" class="detail" @click="view(item)"></button></div>
-					<div class="list-cell"><button type="button" class="reject" @click="reject(item)"></button></div>
+					<div class="list-cell" v-if="userType=='learner'">
+						<button v-if="item.status=='unpaid'" type="button" class="detail" @click="showPayForm(item)"></button>
+					</div>
+					<div class="list-cell" :class="{'stop': !item.status}" v-if="userType=='reviewer'">
+						<button type="button" class="assess accept" @click="consent(item)"></button>
+					</div>
+					<div class="list-cell" v-if="userType=='reviewer'">
+						<button v-if="item.status=='paid'" type="button" class="reject" @click="reject(item)"></button>
+					</div>
 				</dd>
 			</dl>
 		</section>
+
+		<overlay :overlay.sync="overlayStatus">
+		    <detail :detail="detailData"></detail>
+		</overlay>
+
+		<overlay :overlay.sync="payOverlayStatus">
+				<order-form mode="pay" :order="payOrder"></order-form>
+		</overlay>
+
+
 	</section>
-	<overlay :overlay.sync="overlayStatus">
-	    <detail :detail="detailData"></detail>
-	</overlay>
+
 </template>
 
 <script>
 	import util from '../common/util'
 	import serviceUrl from "../common/serviceUrl.js"
 	import Detail from '../components/order-detail.vue'
-	import Overlay from '../components/overlay.vue';
+	import Overlay from '../components/overlay.vue'
+	import OrderForm from '../components/order-form.vue'
 	var debug = require('debug')('order');
-	let userType = 'learner';
+
 	export default {
 		data () {
 			return {
-				tableHead: ['序号','用户名','状态','申请日期','打赏金额','接手','详情','拒绝'],
+				tableHead: ['序号','用户名','状态','申请日期','打赏金额'],
 				tableData: [],
 				detailData: {
 					userType: 'reviewer',
@@ -64,14 +76,17 @@
 				},
 				overlayStatus: false,
 				currentPage: 0,
-				pageLimit: 2,
+				pageLimit: 6,
 				userType :'',
-				user : {}
+				user : {},
+				payOrder: {},
+				payOverlayStatus: false
 			}
 		},
 		components:{
 			overlay: Overlay,
-			detail: Detail
+			detail: Detail,
+			'order-form': OrderForm
 		},
 		computed: {
 			showNextPage () {
@@ -81,7 +96,16 @@
 		created() {
 			this.user = util.getLocalUser();
 			this.loadCurrentPage();
-			this.user.type == 0 ? this.userType = 'reviewer': this.userType = 'learner';
+			if(this.user.type == 'reviewer') {
+				this.userType = 'reviewer';
+				this.tableHead.push('详情');
+				this.tableHead.push('接手');
+				this.tableHead.push('拒绝');
+			}else{
+				this.userType = 'learner';
+				this.tableHead.push('详情');
+				this.tableHead.push('打赏');
+			}
 		},
 		methods: {
 			loadCurrentPage () {
@@ -95,15 +119,16 @@
 						this.tableData = resp.data.result;
 					}
 				}, util.httpErrorFn(this))
-			},/*
+			},
 			targetUser (review) {
-				return this.user.type == 0 ? review.reviewer:review.learner;
-			},*/
+				// 显示对方的头像、用户名
+				return this.user.type == 'learner' ? review.reviewer:review.learner;
+			},
 			view (item){
 				this.overlayStatus = true;
 				this.detailData = item;
 				this.detailData.userType = this.userType;
-				this.detailData.typeText = this.user.type == 0 ? '申请者':'代码审核者';
+				this.detailData.typeText = this.user.type == 'reviewer' ? '申请者':'代码审核者';
 			},
 			prev() {
 				if (this.currentPage - 1 >= 0) {
@@ -117,20 +142,35 @@
 					this.loadCurrentPage();
 				}
 			},
+			writeOrEditView (orderId) {
+				window.location = 'write-review.html?id=' + orderId;
+			},
 			consentOrReject(order, status) {
 				this.$http.post('orders/' + order.orderId, {
 					status:status
 				}).then((resp) => {
 					if (util.filterError(this, resp)) {
 						order.status = status;
+						if (status == 'consented') {
+							this.writeOrEditView(order.orderId);
+						}
 					}
 				}, util.httpErrorFn(this))
 			},
 			consent(order) {
-				this.consentOrReject(order, 'consented');
+				debug('order: %j', order);
+				if (order.status == 'finished' || order.status == 'consented')  {
+					this.writeOrEditView(order.orderId)
+				} else {
+					this.consentOrReject(order, 'consented');
+				}
 			},
 			reject(order) {
 				this.consentOrReject(order, 'rejected');
+			},
+			showPayForm(order) {
+				this.payOrder = order;
+				this.payOverlayStatus = true;
 			}
 		}
 	}
@@ -141,7 +181,7 @@
 	.lj-pagination
 		font-size 1rem
 		text-align center
-		margin 50px 0 30px
+		margin 10px 0px
 		clearfix()
 		.lj-search,.lj-jump,.lj-page
 			float left
@@ -213,11 +253,14 @@
 						border-right: none;
 					&.stop
 						color: #f04e4b;
-
+					.cell-img
+						position relative
+						min-width 130px
 					img
 						width: 50px;
 						height: 50px;
-						float left
+						position absolute
+						left 0
 						border-radius 50%
 					.pop-btn
 						color: #249bdf;

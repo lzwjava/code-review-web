@@ -1,5 +1,7 @@
 const urlParser = document.createElement('a')
 
+import moment from 'moment'
+
 exports.domain = (url) => {
   urlParser.href = url
   return urlParser.hostname
@@ -55,4 +57,16 @@ exports.truncate = (s, len) => {
   } else {
     return s;
   }
+}
+
+moment.locale('zh-CN');
+
+exports.formatTime = (time, format) => {
+  if (!time) {
+    return ''
+  }
+  if (!format) {
+    format = 'll';
+  }
+  return moment(time).format(format);
 }

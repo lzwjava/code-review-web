@@ -12,14 +12,14 @@
 </template>
 
 <script type="text/javascript">
-export default {
-  props:['reviewers'],
-  methods: {
-    goDetail (id) {
-      window.location = '/reviewer.html?id='+id;
+  export default {
+    props:['reviewers'],
+    methods: {
+      goDetail (id) {
+        window.location = '/reviewer.html?id='+id;
+      }
     }
   }
-}
 </script>
 
 <style lang="stylus">
@@ -33,7 +33,7 @@ export default {
     height 406px
     margin-left 130px
     background white
-    box-shadow: 0px 1px 2px 1px rgba(0,0,0,.1)
+    box-shadow 0px 1px 2px 1px rgba(0,0,0,.1)
     border-radius 3px
     position relative
     margin-top 0px

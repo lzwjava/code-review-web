@@ -4,10 +4,12 @@
             <h1 class="title">{{review.title}}</h1>
             <div class="intro">
                 <img src="../img/icon/clock.png">
-                <span class="review-time">{{review.created}}</span>
+                <span class="review-time">{{review.created | formatTime}}</span>
+                <img src="../img/icon/visit_count.png">
+                <span>{{review.visitCount}}</span>
                 <img src="../img/icon/reward.png">
-                <span>54</span>
-                <img src="../img/icon/small-pen.png">
+                <span>{{review.rewardCount}}</span>
+                <img src="../img/icon/small_pen.png">
                 <span><a :href="'./reviewer.html?id=' + order.reviewer.id">{{order.reviewer.username}}</a></span>
              </div>
         </div>
@@ -42,7 +44,7 @@
             <markdown :content="review.content" :show="true"></markdown>
         </div>
 
-        <div class="bottom-area" @click="overlayStatus = true">
+        <!-- <div class="bottom-area" @click="overlayStatus = true">
             <button class="btn btn-green btn-reward">
                 <img src="../img/icon/white-reward.png">
                 <span>打赏支持</span>
@@ -51,7 +53,7 @@
 
         <overlay :overlay.sync="overlayStatus">
             <reward-form :order="order"></reward-form>
-        </overlay>
+        </overlay> -->
     </div>
 </template>
 
@@ -113,6 +115,16 @@ export default {
             this.fetchOrder(this.review.orderId);
           }
         }, util.httpErrorFn(this));
+
+        this.$http.post(serviceUrl.reviewVisitCreate.replace(/:id/, params.reviewId),{
+          referrer: document.referrer
+        }).then((resp) => {
+          if (util.filterError(this, resp)) {
+
+          }
+        }, (resp) => {
+          // 一秒中访问次数超过1，太快了
+        })
     }
 }
 
@@ -135,7 +147,7 @@ body
     .intro
         img
             width 18px
-            height 18px
+            max-height 18px
         span
             margin-right 20px
             line-height 24px

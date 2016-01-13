@@ -51,7 +51,7 @@
 					password: md5(this.password),
 					username: this.username,
 					smsCode: this.smsCode,
-					type: 0
+					type: 'learner'
 				},{
 					emulateJSON: true
 				}).then((res) => {

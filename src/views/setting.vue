@@ -39,7 +39,7 @@
 			</section>
 			<section class="tags">
 				<h3 class="region-title">{{tagTitle}}</h3>
-				<div class="tags-content">	
+				<div class="tags-content">
 					<ul class="list">
 						<li v-for="tag in tags">
 							<tag :tag="tag" :show-del="true"></tag>
@@ -63,8 +63,8 @@
 	import util from '../common/util';
 	import UserAvatar from '../components/user-avatar.vue';
 	var debug = require('debug')('setting');
-	var moxie = require('moxie');
-	var plupload = require('moxie-plupload');
+	require('moxie');
+	require('plupload'); // use for Qiniu js sdk
 	import Qiniu from 'qiniu-js-sdk'
 	import serviceUrl from "../common/serviceUrl.js"
 	import Tag from '../components/tag.vue'
@@ -169,11 +169,14 @@
 			addTag () {
 				if (!this.selected.tagId) {
 					util.show(this, 'warn', '请选择领域');
+					return;
 				}
 				this.$http.post(serviceUrl.userTag, {
 					tagId: this.selected.tagId
 				}).then((res) => {
-					this.tags = res.data.result;
+					if (util.filterError(this, res)) {
+						this.tags = res.data.result;
+					}
 				}, util.httpErrorFn(this));
 			},
 			loaded() {
