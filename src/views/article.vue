@@ -44,7 +44,7 @@
             <markdown :content="review.content" :show="true"></markdown>
         </div>
 
-        <div class="bottom-area" @click="overlayStatus = true">
+        <!-- <div class="bottom-area" @click="overlayStatus = true">
             <button class="btn btn-green btn-reward">
                 <img src="../img/icon/white-reward.png">
                 <span>打赏支持</span>
@@ -53,7 +53,7 @@
 
         <overlay :overlay.sync="overlayStatus">
             <reward-form :order="order"></reward-form>
-        </overlay>
+        </overlay> -->
     </div>
 </template>
 

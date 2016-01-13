@@ -8,12 +8,12 @@
           <input v-model="reward" class="reward-input"></input>
           <span>元</span>
         </div>
-        <div class="form-line row">
+        <!-- <div class="form-line row">
           <input type="radio" name="pay" value="wechat" v-model="payType" />
           <label>微信支付</label>
           <input type="radio" name="pay" value="alipay" v-model="payType" />
           <label>支付宝支付</label>
-        </div>
+        </div> -->
         <div class="form-line">
           <label class="form-label">项目 GitHub 地址</label>
           <div class="github-input">
@@ -39,7 +39,8 @@
           <div class="pay-desc">
             <p class="title">扫一扫付款</p>
             <loading>
-              <img :src="qrcode">
+              <!-- <img :src="qrcode"> -->
+              <img src="../img/qrcode.png">
             </loading>
             <p class="amount"><span>¥</span> {{reward}}</p>
           </div>
@@ -122,9 +123,9 @@ module.exports = {
         amount: order.amount * 100
       }).then((resp) => {
         debug(resp.data)
-        this.qrcode = resp.data.credential.alipay_qr;
+        // this.qrcode = resp.data.credential.alipay_qr;
         this.$broadcast('loaded');
-        window.open(this.qrcode, '_blank');
+        //window.open(this.qrcode, '_blank');
       }, util.httpErrorFn(this))
     }
   },
