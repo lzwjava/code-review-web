@@ -49,14 +49,7 @@ config.plugins = (config.plugins || []).concat([
   }),
   new webpack.optimize.OccurenceOrderPlugin(),
   // extract css into its own file
-  new ExtractTextPlugin('[name].[contenthash].css'),
-  // generate dist index.html with correct asset hash for caching.
-  // you can customize output by editing /build/index.template.html
-  // see https://github.com/ampedandwired/html-webpack-plugin
-  new HtmlWebpackPlugin({
-    filename: '../index.html',
-    template: path.resolve(__dirname, '../index.html')
-  })
-])
+  new ExtractTextPlugin('[name].[contenthash].css')
+]).concat(htmlConfig)
 
 module.exports = config

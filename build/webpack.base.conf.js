@@ -1,7 +1,7 @@
 var vue = require('vue-loader');
 var webpack = require('webpack');
 var path = require('path');
-var srcPath = path.join(__dirname, 'src');
+var srcPath = path.join(__dirname, '../src');
 
 module.exports = {
   entry: {
@@ -13,7 +13,8 @@ module.exports = {
     reviewer: ['./src/reviewer.js'],
     'write-review': ['./src/write-review.js'],
     case: ['./src/case.js'],
-    article: ['./src/article.js']
+    article: ['./src/article.js'],
+    statement: ['./src/statement.js']
   },
   output: {
     path: path.resolve(__dirname, '../dist/static'),
@@ -23,11 +24,11 @@ module.exports = {
   resolve: {
       alias: {
           moxie: path.join(__dirname, '../plupload/js/moxie.js'),
-          'moxie-plupload': path.join(__dirname, '../plupload/js/plupload.dev.js')
+          'plupload': path.join(__dirname, '../plupload/js/plupload.dev.js')
       },
       root: srcPath,
       extensions: ['', '.js', '.css'],
-      modulesDirectories: ['node_modules', 'plupload', srcPath]
+      modulesDirectories: ['node_modules','plupload', srcPath]
   },
   module: {
     loaders: [
