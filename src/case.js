@@ -6,9 +6,9 @@
  */
 
 import Vue from 'vue'
-import Nav from 'views/nav.vue'
-import Footer from 'views/footer.vue'
-import Case from 'views/case.vue'
+import Nav from './views/nav.vue'
+import Footer from './views/footer.vue'
+import Case from './views/case.vue'
 import util from './common/util'
 import Pagination from './components/pagination/main.js'
 util.configVue(Vue)

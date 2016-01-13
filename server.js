@@ -1,7 +1,7 @@
 
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config');
+var config = require('./build/webpack.dev.conf');
 
 // 当修改时，让 webpack 自动刷新页面
 for (entryPoint in config.entry) {

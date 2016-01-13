@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import Nav from 'views/nav.vue'
-import Footer from 'views/footer.vue'
-import Home from 'views/home.vue'
+import Nav from './views/nav.vue'
+import Footer from './views/footer.vue'
+import Home from './views/home.vue'
 import util from './common/util'
 util.configVue(Vue)
 
