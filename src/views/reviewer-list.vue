@@ -54,8 +54,10 @@ export default{
 
 .list-containter
   h2  // 上边和下边的标题都有用到
-    font-size 24px
+    font-size 1.5rem
     margin 15px 0px
+    font-weight 400
+    font-family Raleway-ExtraLight, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", Arial, "Microsoft Yahei", Verdana, sans-serif
 
 .info
   text-align center
