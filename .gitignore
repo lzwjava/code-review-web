@@ -4,3 +4,4 @@ static/*
 !static/logo.png
 fabfile.pyc
 webpack.json
+dist
