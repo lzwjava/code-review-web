@@ -3,6 +3,7 @@ var config = require('./webpack.base.conf')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var path = require('path')
+var htmlConfig = require('./html.plugin.conf')
 
 // naming output files with hashes for better caching.
 // dist/index.html will be auto-generated with correct URLs.
