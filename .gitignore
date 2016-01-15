@@ -5,3 +5,4 @@ static/*
 fabfile.pyc
 webpack.json
 dist
+npm-debug.log
