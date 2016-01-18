@@ -33,7 +33,8 @@
 						<textarea v-model="introduction"></textarea>
 					</div>
 					<div class="row">
-						<button type="button" @click="updateUser">确认修改</button>
+						<button class="update-btn" type="button" @click="updateUser">确认修改</button>
+						<button class="apply-btn" v-if="user.type != 'reviewer'" type="button" @click="applyReviewer">申请成为大神</button>
 					</div>
 				</div>
 			</section>
@@ -183,6 +184,14 @@
 				if (this.username && this.allTags) {
 					this.$broadcast('loaded');
 				}
+			},
+			applyReviewer () {
+				this.$http.post(serviceUrl.applicationsCreate, {
+				}).then((resp) => {
+					if (util.filterError(this, resp)) {
+						util.show('info', '已收到您的申请，将尽快处理');
+					}
+				}, util.httpErrorFn(this))
 			}
 		},
 		created() {
@@ -362,9 +371,12 @@
 					color rgba(40,47,49,.6)
 					font-size 1rem
 					border 1px solid rgba(40,47,49,.3)
-				button
+				.update-btn
 					margin 27px 0 54px
 					background blue
+				.apply-btn
+					margin 27px 0 54px
+					float right
 		.tags
 			width 34%
 			margin-left 5%

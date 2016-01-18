@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * @authors yuqiu (yuqiu@luojilab.com)
  * @date    2016-01-13 19:01:04
  * @version $Id$

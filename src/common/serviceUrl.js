@@ -27,5 +27,6 @@ export default {
     reviewsEdit: 'reviews/:id', // post
     reviewsView: 'reviews/:id', // get
     reviewsGet: 'reviews',
-    reviewVisitCreate: 'reviews/:id/visits'
+    reviewVisitCreate: 'reviews/:id/visits',
+    applicationsCreate: 'applications'
 }
