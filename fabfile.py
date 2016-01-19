@@ -14,9 +14,10 @@ def _set_user_dir():
     issue = run('id root').lower()
 
 def _prepare_local_website(install='true'):
-  local('npm run build')
-  local('mkdir -p %s' % tmp_dir)
-  local('cp -rv dist/* %s' % tmp_dir)
+    if install =='true':
+        local('npm run build')
+    local('mkdir -p %s' % tmp_dir)
+    local('cp -rv dist/static/* %s' % tmp_dir)
 
 def prepare_remote_dirs():
   _set_user_dir()
@@ -31,7 +32,7 @@ def _clean_local_dir():
 def host_type():
     run('uname -s')
 
-def deploy(install='false'):
+def deploy(install='true'):
   _prepare_local_website(install)
   prepare_remote_dirs()
   rsync_project(local_dir=tmp_dir + '/',remote_dir=server_dir,delete=True)
