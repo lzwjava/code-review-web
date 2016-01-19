@@ -10,7 +10,7 @@
 					<div class="row" style="width: 250px;">
 						<input type="text" v-model="smsCode" placeholder="验证码">
 					</div>
-					<button class="send" type="button" @click="requestSmsCode">发送验证码</button>
+					<button class="send" :class="{'disabled': this.sendState}" type="button" @click="requestSmsCode" v-text="sendText"></button>
 				</div>
 				<div class="row">
 					<input type="password"  v-model="password" placeholder="密码">
@@ -35,7 +35,9 @@
 				phone:'',
 				smsCode: '',
 				password: '',
-				username: ''
+				username: '',
+				sendState: false,
+				sendText: '发送验证码'
 			}
 		},
 		methods:{
@@ -62,13 +64,30 @@
 				}, util.httpErrorFn(this))
 			},
 			requestSmsCode () {
+				if(this.sendState){
+					return;
+				}
+				this.sendState = true;
 				this.$http.post('/api/user/requestSmsCode', {
 					mobilePhoneNumber:this.phone
 				}, {
 					emulateJSON: true
 				}).then((res) => {
+					this.sendText = 60;
+					let time = setInterval(()=>{
+						this.sendText --;
+						if(this.sendText == 0){
+							clearInterval(time);
+							this.sendText = '发送验证码';
+							this.sendState = false;
+						}
+					}, 1000);
 					if (util.filterError(this, res)) {
-						debug('send succeed');
+						
+					}else{
+						clearInterval(time);
+						this.sendText = '发送验证码';
+						this.sendState = false;
 					}
 				}, util.httpErrorFn(this))
 			}
@@ -116,6 +135,9 @@
 					margin 0
 					width 135px
 					background blue
+				.disabled
+					background #767676
+					cursor not-allowed
 			p
 				margin-bottom 10px
 			button
