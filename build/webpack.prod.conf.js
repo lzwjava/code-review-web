@@ -4,6 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var path = require('path')
 var htmlConfig = require('./html.plugin.conf')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 // naming output files with hashes for better caching.
 // dist/index.html will be auto-generated with correct URLs.
@@ -12,7 +13,7 @@ config.output.chunkFilename = '[id].[chunkhash].js'
 
 // whether to generate source map for production files.
 // disabling this can speed up the build.
-var SOURCE_MAP = true
+var SOURCE_MAP = false;
 
 config.devtool = SOURCE_MAP ? 'source-map' : false
 
@@ -48,6 +49,7 @@ config.plugins = (config.plugins || []).concat([
       warnings: false
     }
   }),
+  new CopyWebpackPlugin([{from: 'static/'}]),
   new webpack.optimize.OccurenceOrderPlugin(),
   // extract css into its own file
   new ExtractTextPlugin('[name].[contenthash].css')
