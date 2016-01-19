@@ -16,8 +16,8 @@ module.exports = {
     statement: ['./src/statement.js']
   },
   output: {
-    path: path.resolve(__dirname, '../dist/static'),
-    publicPath: '/static/',
+    path: path.resolve(__dirname, '../dist/'),
+    publicPath: '',
     filename: '[name].js'
   },
   resolve: {
