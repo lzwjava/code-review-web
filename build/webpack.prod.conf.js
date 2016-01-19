@@ -51,6 +51,6 @@ config.plugins = (config.plugins || []).concat([
   new webpack.optimize.OccurenceOrderPlugin(),
   // extract css into its own file
   new ExtractTextPlugin('[name].[contenthash].css')
-]).concat(htmlConfig)
+]).concat(htmlConfig);
 
 module.exports = config
