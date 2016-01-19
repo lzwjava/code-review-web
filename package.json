@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --hot --quiet --port 9090",
     "server": "node server.js",
-    "build": "rimraf dist && webpack --progress --hide-modules --config build/webpack.prod.conf.js",
+    "build": "webpack --progress --hide-modules --config build/webpack.prod.conf.js",
     "deploy": "fab -H root@reviewcode.cn deploy"
   },
   "repository": {
@@ -35,7 +35,6 @@
     "vue-html-loader": "^1.0.0",
     "vue-loader": "^7.0.3",
     "vue-resource": "latest",
-    "rimraf": "^2.5.0",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.0"
   },
