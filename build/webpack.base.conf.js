@@ -7,7 +7,6 @@ module.exports = {
   entry: {
     index : ['./src/index.js'],  // 用 [] 是为了在这里加入 webpack socket，实现自动刷新
     reviewers: ['./src/reviewers.js'],
-    list: ['./src/list.js'],
     setting: ['./src/setting.js'],
     order: ['./src/order.js'],
     reviewer: ['./src/reviewer.js'],

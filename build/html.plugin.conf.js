@@ -22,10 +22,6 @@ var HtmlWebpackPluginConfig = [new HtmlWebpackPlugin({
     template: path.resolve(__dirname, '../article.html')
   }),
   new HtmlWebpackPlugin({
-    filename: 'list.html',
-    template: path.resolve(__dirname, '../list.html')
-  }),
-  new HtmlWebpackPlugin({
     filename: 'order.html',
     template: path.resolve(__dirname, '../order.html')
   }),
