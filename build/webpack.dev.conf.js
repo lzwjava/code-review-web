@@ -1,5 +1,4 @@
 var config = require('./webpack.base.conf')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
 var path = require('path')
 var htmlConfig = require('./html.plugin.conf')
 
@@ -19,6 +18,6 @@ config.devServer = {
 // when serving the html from in-memory
 config.output.publicPath = '/'
 
-config.plugins = (config.plugins || []).concat(htmlConfig)
+config.plugins = (config.plugins || []).concat(htmlConfig('dev'))
 
 module.exports = config

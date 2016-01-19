@@ -4,7 +4,7 @@
   "description": "Code Review project",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot --quiet --port 9090",
+    "dev": "webpack-dev-server --inline --hot --config build/webpack.dev.conf.js --port 9090",
     "server": "node server.js",
     "build": "rimraf dist && webpack --progress --hide-modules --config build/webpack.prod.conf.js",
     "deploy": "fab -H root@reviewcode.cn deploy"

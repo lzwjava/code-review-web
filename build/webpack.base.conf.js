@@ -75,7 +75,7 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       mOxie: 'moxie'
-    }),
+    })
   ],
   debug: true,
   displayErrorDetails: true,
