@@ -17,7 +17,7 @@ def _prepare_local_website(install='true'):
     if install =='true':
         local('npm run build')
     local('mkdir -p %s' % tmp_dir)
-    local('cp -rv dist/static/* %s' % tmp_dir)
+    local('cp -rv dist/* %s' % tmp_dir)
 
 def prepare_remote_dirs():
   _set_user_dir()
