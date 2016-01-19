@@ -129,23 +129,23 @@
         reviewers: [],
         reviews: [
           {reviewId: 2,
-           coverUrl: 'https://images.unsplash.com/photo-1450849608880-6f787542c88a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=b256aa5102c408322cdb99ce6a6a0f53',
+           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1450849608880-6f787542c88a.jpeg',
            title: '特邀采访<br>传奇开发者<br>Loren Brichter',
            tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
           {reviewId: 8,
-           coverUrl: 'https://images.unsplash.com/photo-1431975562098-bac8ded504c7?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=b8e0ca83863bf59b4668cec00931a155',
+           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1431975562098-bac8ded504c7.jpeg',
            title: '传感器使用误区<br>与性能优化',
            tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
           {reviewId: 9,
-           coverUrl: 'https://images.unsplash.com/photo-1443916765281-9937110585db?crop=entropy&fit=crop&fm=jpg&h=675&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200',
+           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1443916765281-9937110585db.jpeg',
            title: '传感器使用误区<br>与性能优化',
            tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
           {reviewId: 10,
-           coverUrl: 'https://images.unsplash.com/photo-1448814100339-234df1d4005d?crop=entropy&fit=crop&fm=jpg&h=900&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200',
+           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1448814100339-234df1d4005d.jpeg',
            title: '传感器使用误区<br>与性能优化',
            tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
            {reviewId: 9,
-            coverUrl: 'https://images.unsplash.com/photo-1439737567250-e9ea931e97a4?crop=entropy&fit=crop&fm=jpg&h=800&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200',
+            coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1439737567250-e9ea931e97a4.jpeg',
             title: '传感器使用误区<br>与性能优化',
             tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
            {reviewId: 10,
@@ -355,7 +355,7 @@
       margin-bottom 40px
       .big-img-wrap
         .big-img
-          background-image url('https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?crop=entropy&fit=crop&fm=jpg&h=800&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1200')
+          background-image url('http://7xotd0.com1.z0.glb.clouddn.com/photo-1449157291145-7efd050a4d0e.jpeg')
           background-size cover
           background-repeat no-repeat
           display block
