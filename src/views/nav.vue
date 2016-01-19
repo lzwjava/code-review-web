@@ -72,6 +72,11 @@
         user: {}
       }
     },
+    events:{
+      changeView(view){
+        this.currentView = view;
+      }
+    },
 		methods: {
 			logout (e){
         e && e.preventDefault();

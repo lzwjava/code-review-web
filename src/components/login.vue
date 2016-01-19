@@ -14,7 +14,7 @@
 			<button type="button" @click="login">登录</button>
 <!-- 			<p>忘记密码？</p> -->
 		</div>
-		<p style="padding-top: 30px;">您还没有<strong>注册？</strong></p>
+		<p style="padding-top: 30px;">您还没有<strong style="cursor:pointer;margin-left:5px;" @click="toSignup">注册？</strong></p>
 	</section>
 </template>
 <script>
@@ -37,6 +37,10 @@
 			},
 			cancel (){
 				this.$parent.overlay = false;
+			},
+			toSignup(e){
+				e.stopPropagation();
+				this.$dispatch('changeView', 'signup');
 			},
 			login (){
 				this.$http.post(serviceUrl.login, {
