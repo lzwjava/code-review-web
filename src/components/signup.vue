@@ -32,10 +32,10 @@
 	export default{
 		data () {
 			return {
-				phone:'13261630925',
-				smsCode: '5555',
-				password: '123456',
-				username: 'lzwjava1'
+				phone:'',
+				smsCode: '',
+				password: '',
+				username: ''
 			}
 		},
 		methods:{

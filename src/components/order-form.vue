@@ -17,7 +17,7 @@
         <div class="form-line">
           <label class="form-label">项目 GitHub 地址</label>
           <div class="github-input">
-            <span>github.com / </span><input  required v-model="gitHubUrl" placeholder="https://github.com/user/repo"></input>
+            <span>github.com / </span><input  required v-model="gitHubUrl" placeholder="user/repo"></input>
           </div>
         </div>
         <div class="form-line">
@@ -70,13 +70,13 @@ module.exports = {
   },
   data: function () {
     return {
-      gitHubUrl: 'akring/octokit.swift',
-      codeLines: 3000,
-      remark: '麻烦了',
-      reward: 8,
+      gitHubUrl: '',
+      codeLines: 0,
+      remark: '',
+      reward: 50,
       qrpay: false,
       qrcode: '',
-      payType: 'wechat'
+      payType: 'alipay'
     };
   },
   props: {
