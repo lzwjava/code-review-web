@@ -1,6 +1,6 @@
 <template>
 	<section class="sign-up" @click="stop($event)">
-		<button type="button" class="close" @click="close">X</button>
+		<button type="button" class="cancel" @click="close"></button>
 		<h2>注册开启 Code Review 之旅</h2>
 		<div class="form">
 				<div class="row">
@@ -87,7 +87,7 @@
 		left 50%
 		top 50%
 		margin -300px 0 0 -250px
-		.close
+		.cancel
 			position absolute
 			width 20px
 			height 20px
