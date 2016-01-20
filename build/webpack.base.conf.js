@@ -61,6 +61,10 @@ module.exports = {
       {
         test: /plupload\/js\/moxie\.js/,
         loader: 'exports?this.mOxie'
+      },
+      {
+        test: /\.md$/,
+        loader: "raw"
       }
     ]
   },
