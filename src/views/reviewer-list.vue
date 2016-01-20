@@ -4,7 +4,7 @@
       <div class="info">
         <h2>发现各个语言领域的大神，向他们申请帮助</h2>
         <h2>或者，你也可以先看看他们的 <a href="case.html"><strong>Code Review 案例</strong></a></h2>
-        <h3>入住大神：<strong class="num">{{reviewers.length}}</strong></h3>
+        <h3>入驻大神：<strong class="num">{{reviewers.length}}</strong></h3>
       </div>
       <div class="list-content">
         <reviewer v-show="!loading" :reviewers="reviewers"></reviewer>
