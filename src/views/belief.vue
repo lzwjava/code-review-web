@@ -1,5 +1,7 @@
 <template>
     <div class="main-container">
+      <h3 class="title">2016，我们想为大家做一点小事</h3>
+      <p class="author">叶孤城</p>
       <markdown :content="content" show="true"></markdown>
     </div>
 </template>
@@ -33,7 +35,18 @@ export default {
 
 </script>
 
-
 <style lang="stylus">
 
+.main-container
+    h3.title
+      text-align center
+      padding-bottom 0.3em
+      line-height 1.43
+      font-size 28px
+      font-weight bold
+      margin-top 1em
+      margin-bottom 16px
+    .author
+      text-align center
+      margin-bottom 40px
 </style>
