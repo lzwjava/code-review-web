@@ -15,6 +15,7 @@ exports.filterError = (component, res) => {
 exports.httpErrorFn = (component) => {
   return function (res) {
     component.$root.$children[0].show('error', res.statusText);
+    //console.erroe(res.statusText)
   }
 };
 
