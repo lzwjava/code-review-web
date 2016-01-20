@@ -37,6 +37,9 @@ export default {
 
 <style lang="stylus">
 
+body
+    background #fff
+
 .main-container
     h3.title
       text-align center
