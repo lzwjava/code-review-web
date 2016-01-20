@@ -10,6 +10,7 @@
     <section class="case-list">
     	<h3>全部文章</h3>
     	<case-list :article-list="caseList"></case-list>
+      <div class="no-case" v-if="articleState" >没有文章可看</div>
     	<div class="pagination">
     		<pagination></pagination>
     	</div>
@@ -21,12 +22,16 @@
     export default{
         data (){
             return {
-                caseList: []
+                caseList: [],
+                articleState: false
             }
         },
         events:{
             'pagination-success': function(res) {
 							this.caseList = res.data.result;
+            },
+            'no-article': function(){
+              this.articleState = true;
             },
             'pagination-error': function(res){
                 console.log(res, 'error')
@@ -76,6 +81,9 @@
 	h3
 		line-height 80px
 		border-bottom 1px solid rgba(0,0,0,.15)
+.no-case
+  line-height 80px
+  text-align center
 .pagination
     text-align center
 </style>

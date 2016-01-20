@@ -3,6 +3,10 @@
 	color: #282F31;
 }
 
+.lj-pagination.hidden{
+	display: none;
+}
+
 .lj-page{
 	margin: 0;
 	border: 1px solid #e6e6e6;

@@ -20,7 +20,7 @@ let page = new Pagination({
         pageSizeName: 'page_size',
         params: {},
         url: 'reviews',
-        totalName: 'total_nums',
+        totalName: 'total',
         offset: -1,
         dataKey: 'showcases'
     }

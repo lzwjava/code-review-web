@@ -24,6 +24,13 @@ function getData(index, size, page) {
 		var resData = res.data;
 		//page.pageData = resData[optionsDefault.remote.dataKey]
 		page.pageLimit.total = resData[optionsDefault.remote.totalName];
+		if(page.pageLimit.total == 0){
+			page.show = false;
+			page.$dispatch('no-article');
+			return;
+		}else{
+			page.show = true;
+		}
 		if (page.pageLimit.total % optionsDefault.pageSize == 0) {
 			page.pageLimit.max = Math.floor(page.pageLimit.total / optionsDefault.pageSize) || 5;
 		} else {
@@ -55,13 +62,14 @@ function pageListInit(now, page) {
 export default {
 	replace: true,
   	inherit: false,
-	template: '<div class="lj-pagination"><div class="lj-info" v-if="showInfo"></div><div class="lj-jump" v-if="showJump"><input type="text" v-model="pageJump"/><span>search</span></div>'+
+	template: '<div class="lj-pagination" :class="{\'hidden\': !show}"><div class="lj-info" v-if="showInfo"></div><div class="lj-jump" v-if="showJump"><input type="text" v-model="pageJump"/><span>search</span></div>'+
 	'<ul class="lj-page" v-if="showList"><li @click="first" v-show="pageStart != 1"><span>first</span></li><li @click="prev" v-show="pageStart != 1" class="button"><span>Prev</span></li><li :class="{\'active\': el == pageStart}" @click="pagePath(el)" v-for="el in pageList"><span>{{el}}</span></li>'+
 	'<li @click="next" v-show="pageStart != pageLimit.max" class="button"><span>Next</span></li><li @click="last" v-show="pageStart != pageLimit.max"><span>Last</span></li></ul></div>',
 	data: function() {
 		return {
 			showJump: false,
 			showInfo: false,
+			show: false,
 			pageJump: '',
 			pageList: [1],
 			pageStart: 1,
@@ -74,7 +82,6 @@ export default {
 		}
 	},
 	ready: function() {
-		console.log(this.$ajaxOptionsDefault);
 		Object.assign(optionsDefault, this.$ajaxOptionsDefault);
 		getData(1, 10, this);
 	},
