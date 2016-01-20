@@ -130,12 +130,16 @@ module.exports = {
     }
   },
   created () {
-    if (typeof this.mode !=='undefined' && this.mode == 'pay') {
-      this.qrpay = true;
-      this.payOrder(this.order);
-    }
   },
   ready() {
+  },
+  events: {
+    showPayOrder() {
+      if (typeof this.mode !=='undefined' && this.mode == 'pay') {
+        this.qrpay = true;
+        this.payOrder(this.order);
+      }
+    }
   },
   attached () {
     debug('attached');

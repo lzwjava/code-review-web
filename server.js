@@ -21,13 +21,13 @@ var rewriteUrl = function(replacePath) {
     };
 };
 
-var prod = true;
+var prod = false;
 var target;
 if (prod) {
   // target = "http://apitest.reviewcode.cn";
   target = "http://api.reviewcode.cn";
 } else {
-  target = "http://localhost:3005";
+  target = "http://localhost:3010";
 }
 
 var proxy = [{
