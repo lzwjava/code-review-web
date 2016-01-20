@@ -132,7 +132,9 @@ module.exports = {
   created () {
     if (typeof this.mode !=='undefined' && this.mode == 'pay') {
       this.qrpay = true;
-      this.payOrder(this.order);
+      if(this.order.orderId){
+        this.payOrder(this.order);
+      }
     }
   },
   ready() {
