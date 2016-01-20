@@ -69,9 +69,13 @@
       font-size 1rem
     h5
       line-height 180%
-      padding 0 20px
+      padding 0px 20px
       font-size 0.88rem
       font-weight 500
+      height 80px
+      text-overflow ellipsis
+      overflow hidden
+      word-wrap break-word
     button
       width 160px
       line-height 45px
@@ -81,7 +85,7 @@
       color #282F31
       font-size 0.75rem
       letter-spacing 2px
-      margin-top 45px
+      margin-top 25px
       transition all 0.3s ease 0s
       -webkit-transition all 0.3s ease 0s
 </style>
