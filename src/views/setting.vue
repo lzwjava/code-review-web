@@ -124,8 +124,8 @@
 			'tagTitle': function () {
 				debug('type %j', this.user.type);
 				switch (this.user.type) {
-					case 0: return '想学领域';
-					case 1: return '擅长领域';
+					case 'learner': return '想学领域';
+					case 'reviewer': return '擅长领域';
 				}
 				return '';
 			}
