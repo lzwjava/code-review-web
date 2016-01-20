@@ -7,7 +7,6 @@
         <div>
           <button class="begin"></button>
         </div>
-        <button class="help">如何使用 Code Review</button>
         <a href="./belief.html"><button class="help">如何使用 Code Review</button></a>
       </div>
     </section>
