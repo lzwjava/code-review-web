@@ -1,5 +1,5 @@
 <template>
-  <div class="overlay" @click="hide" v-show="overlay">
+  <div class="overlay" @click="hide" v-show="overlay" transition="overExpand">
     <slot></slot>
   </div>
 </template>
@@ -24,5 +24,12 @@
   bottom 0
   z-index 9998
   background-color rgba(0,0,0,.5)
-  transition opacity .5s ease
+
+.overExpand-transition {
+  transition: all .5s ease;
+  overflow: hidden;
+}
+
+.overExpand-enter,.overExpand-leave
+  opacity 0;
 </style>
