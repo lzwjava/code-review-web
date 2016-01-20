@@ -19,7 +19,7 @@
 					<input type="text"  v-model="username" placeholder="用户名">
 				</div>
 			<button type="button" @click="register">注册</button>
-			<a href="/statement.html"><p>注册前请仔细阅读 <strong>服务条款</strong></p></a>
+			<a href="/statement.html" target="_blank"><p>注册前请仔细阅读 <strong>服务条款</strong></p></a>
 		</div>
 		<p style="padding-top: 30px;">已经注册? <strong> 登录 </strong></p>
 	</section>
@@ -83,7 +83,7 @@
 						}
 					}, 1000);
 					if (util.filterError(this, res)) {
-						
+
 					}else{
 						clearInterval(time);
 						this.sendText = '发送验证码';
