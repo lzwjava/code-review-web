@@ -13,7 +13,8 @@ module.exports = {
     'write-review': ['./src/write-review.js'],
     case: ['./src/case.js'],
     article: ['./src/article.js'],
-    statement: ['./src/statement.js']
+    statement: ['./src/statement.js'],
+    belief: ['./src/belief.js'],
   },
   output: {
     path: path.resolve(__dirname, '../dist/static/'),
