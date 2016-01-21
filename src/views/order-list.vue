@@ -25,7 +25,7 @@
 						</div>
 					</div>
 					<div class="list-cell">{{item.status | reviewStatus}}</div>
-					<div class="list-cell">{{item.created}}</div>
+					<div class="list-cell">{{item.created | formatTimeCommon}}</div>
 					<div class="list-cell">
 						{{item.amount | moneyAsYuan | currency '￥' | integer}}
 					</div>
@@ -34,14 +34,18 @@
 						<button v-if="item.status=='unpaid'" type="button" class="detail" @click="showPayForm(item)"></button>
 					</div>
 					<div class="list-cell" :class="{'stop': !item.status}" v-if="userType=='reviewer'">
-						<button type="button" class="assess accept" @click="consent(item)"></button>
+						<button v-if="item.status=='paid'" title="将通知申请者您已答应帮忙审阅。" type="button" class="assess accept" @click="consent(item)"></button>
 					</div>
 					<div class="list-cell" v-if="userType=='reviewer'">
-						<button v-if="item.status=='paid'" type="button" class="reject" @click="reject(item)"></button>
+						<button v-if="item.status=='paid'" title="当您觉得无法完成 Review 时，或对打赏额不满意时，可选择这个。平台将退款给申请者。" type="button" class="reject" @click="reject(item)"></button>
+					</div>
+					<div class="list-cell" v-if="userType=='reviewer'">
+						<button v-if="item.status=='consented' || item.status=='finished'" title="填写或者更改 Review"
+										type="button" name="填写" class="write" @click="writeOrEditView(item.orderId)"></button>
 					</div>
 				</dd>
 			</dl>
-			<div class="no-list">暂无订单</div>
+			<div class="no-list" v-show="tableData.length === 0 ">暂无订单</div>
 		</section>
 
 		<overlay :overlay.sync="overlayStatus">
@@ -102,6 +106,7 @@
 				this.tableHead.push('详情');
 				this.tableHead.push('接手');
 				this.tableHead.push('拒绝');
+				this.tableHead.push('填写');
 			}else{
 				this.userType = 'learner';
 				this.tableHead.push('详情');
@@ -116,7 +121,7 @@
 				})
 				.then((resp) => {
 					if (util.filterError(this, resp)) {
-						debug('%j', resp.data.result);
+						debug('orders: %j', resp.data.result);
 						this.tableData = resp.data.result;
 					}
 				}, util.httpErrorFn(this))
@@ -152,19 +157,12 @@
 				}).then((resp) => {
 					if (util.filterError(this, resp)) {
 						order.status = status;
-						if (status == 'consented') {
-							this.writeOrEditView(order.orderId);
-						}
 					}
 				}, util.httpErrorFn(this))
 			},
 			consent(order) {
 				debug('order: %j', order);
-				if (order.status == 'finished' || order.status == 'consented')  {
-					this.writeOrEditView(order.orderId)
-				} else {
-					this.consentOrReject(order, 'consented');
-				}
+				this.consentOrReject(order, 'consented');
 			},
 			reject(order) {
 				this.consentOrReject(order, 'rejected');
@@ -302,4 +300,8 @@
 							background-image url(../img/icon/reject_hover.png)
 						&.disable
 							background-image url(../img/icon/reject_disable.png)
+					.write
+						width 24px
+						height 24px
+						background url(../img/icon/write_review.png)
 </style>

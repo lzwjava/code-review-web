@@ -61,7 +61,7 @@ exports.truncate = (s, len) => {
 
 moment.locale('zh-CN');
 
-exports.formatTime = (time, format) => {
+let formatTime = (time, format) => {
   if (!time) {
     return ''
   }
@@ -69,4 +69,10 @@ exports.formatTime = (time, format) => {
     format = 'll';
   }
   return moment(time).format(format);
+};
+
+exports.formatTime = formatTime;
+
+exports.formatTimeCommon = (time) => {
+  return formatTime(time, 'YYYY-MM-DD hh:mm');
 }

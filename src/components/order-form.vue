@@ -130,19 +130,14 @@ module.exports = {
     }
   },
   created () {
-  },
-  ready() {
-  },
-  events: {
-    showPayOrder() {
-      // todo
-      if (typeof this.mode !=='undefined' && this.mode == 'pay') {
-        this.qrpay = true;
-        if(this.order.orderId){
-          this.payOrder(this.order);
-        }
+    if (typeof this.mode !=='undefined' && this.mode == 'pay') {
+      this.qrpay = true;
+      if(this.order.orderId){
+        this.payOrder(this.order);
       }
     }
+  },
+  ready() {
   },
   attached () {
     debug('attached');
