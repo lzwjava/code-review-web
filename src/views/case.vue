@@ -50,7 +50,7 @@
   width 100%
   overflow hidden
   .bg
-    background url("../img/case.png") no-repeat
+    background url(http://7xotd0.com1.z0.glb.clouddn.com/case.png) no-repeat
     background-size cover
     background-position-y 40%
     position 200% 200%
