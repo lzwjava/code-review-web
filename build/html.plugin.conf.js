@@ -8,7 +8,7 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var path = require('path')
 
-var devConfig = ['index.html', 'case.html', 'article.html', 'order.html', 'reviewer.html', 'setting.html', 'statement.html', 'write-review.html', 'reviewers.html', 'belief.html'];
+var devConfig = ['index.html', 'case.html', 'article.html', 'order.html', 'reviewer.html', 'setting.html', 'statement.html', 'write-review.html', 'reviewers.html', 'belief.html','video.html'];
 
 
 function HtmlWebpackPluginConfig(type) {
