@@ -21,7 +21,7 @@ var rewriteUrl = function(replacePath) {
     };
 };
 
-var prod = false;
+var prod = true;
 var target;
 if (prod) {
   // target = "http://apitest.reviewcode.cn";
@@ -29,6 +29,8 @@ if (prod) {
 } else {
   target = "http://localhost:3010";
 }
+
+// target = "http://localhost:3005";
 
 var proxy = [{
 	path: new RegExp("/api/(.*)"),
@@ -38,7 +40,6 @@ var proxy = [{
 
 // if (process.env.NODE_ENV === 'local') {
 // }
-
 
 var app = new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,

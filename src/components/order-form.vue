@@ -62,6 +62,7 @@
 import serviceUrl from "../common/serviceUrl.js"
 import util from '../common/util'
 import Loading from '../components/loading.vue'
+import pingpp from '../common/pingpp-pc.js'
 
 var debug = require('debug')('order-form');
 module.exports = {
@@ -123,8 +124,15 @@ module.exports = {
         amount: order.amount * 100
       }).then((resp) => {
         debug(resp.data)
+        window.pingppPc.createPayment(resp.data, function (result, err) {
+          if (err != null) {
+            util.show(this, 'error', err)
+          } else {
+            
+          }
+        });
         // this.qrcode = resp.data.credential.alipay_qr;
-        this.$broadcast('loaded');
+        // this.$broadcast('loaded');
         //window.open(this.qrcode, '_blank');
       }, util.httpErrorFn(this))
     }
