@@ -16,7 +16,7 @@
 </template>
 <script>
 	/**
- * 
+ *
  * @authors Your Name (you@example.org)
  * @date    2016-02-16 22:48:12
  * @version $Id$
@@ -104,11 +104,11 @@ export default {
 	[v-cloak] {
         display: none;
     }
-    
+
     html {
         height: 100%;
     }
-    
+
     body {
         width: 100%;
         height: 100%;
@@ -118,14 +118,14 @@ export default {
         font-size: 14px;
         color: #444;
     }
-    
+
     * {
-        -webkit-transition: all ease-in-out .4s;
-        -ms-transition: all ease-in-out .4s;
-        -moz-transition: all ease-in-out .4s;
-        transition: all ease-in-out .4s;
+			-webkit-transition: all ease-in-out .4s;
+			-ms-transition: all ease-in-out .4s;
+			-moz-transition: all ease-in-out .4s;
+			transition: all ease-in-out .4s;
     }
-    
+
     .video-container {
         position: absolute;
         width: 100%;
@@ -147,7 +147,7 @@ export default {
         box-shadow: 0px -1px 4px rgba(0, 0, 0, .05);
         font-size: 16px;
     }
-    
+
     .video-list:before,
     .video-list:after {
         position: absolute;
@@ -156,32 +156,32 @@ export default {
         display: block;
         border: 8px solid transparent;
     }
-    
+
     .video-list:before {
         top: -16px;
         border-bottom-color: rgba(0, 0, 0, .1);
     }
-    
+
     .video-list:after {
         top: -15px;
         border-bottom-color: white;
     }
-    
+
     .video-list .row {
         line-height: 40px;
         padding-left: 15px;
         cursor: pointer;
     }
-    
+
     .video-list .row:hover {
         background-color: #00cff5;
         color: white;
     }
-    
+
     .video-list .row:last-child {
         border-bottom: none;
     }
-    
+
     .scan {
         background: url("../img/icon/section.png") no-repeat;
         padding-left: 26px;
@@ -190,26 +190,26 @@ export default {
         font-size: 14px;
         margin-top: 4px;
     }
-    
+
     .video {
         position: absolute;
         width: 100%;
         top: 50px;
         bottom: 10px;
     }
-    
+
     .title {
         padding: 10px 20px;
         font-size: 22px;
     }
-    
+
     .count {
         opacity: 0.6;
         font-size: 14px;
         margin-top: 4px;
         margin-left: 20px;
     }
-    
+
     .title .download {
         background: url("../img/icon/dl.png") no-repeat;
         padding-left: 16px;
@@ -218,17 +218,17 @@ export default {
         margin-top: 4px;
         margin-left: 20px;
     }
-    
+
     .pull-right {
         float: right;
     }
-    
+
     .hidden {
         display: none;
     }
-    
+
     @media screen and (max-width: 900px) {}
-    
+
     .share-img {
         width: 0px;
         height: 0px;
