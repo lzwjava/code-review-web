@@ -19,7 +19,6 @@ exports.httpErrorFn = (component) => {
   }
 };
 
-
 exports.escape = (html) => {
   html = html || '';
   return html

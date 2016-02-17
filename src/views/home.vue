@@ -175,6 +175,18 @@
           }
         }
       },util.httpErrorFn(this));
+
+      var params = util.getSearchParameters();
+      if (params["sessionToken"]) {
+        this.$http.get(serviceUrl.userStatus, {
+          sessionToken: params["sessionToken"]
+        }).then((resp) => {
+          if (util.filterError(this, resp)) {
+            util.updateNavUser(this, resp.data.result);
+            window.location.href = '.';
+          }
+        });
+      }
     },
     methods: {
       goDetail: (id) => {
