@@ -87,7 +87,7 @@ PingppSDK.prototype = {
         credential["_input_charset"] = 'utf-8';
       }
       var query = stringify_data(credential, channel, true);
-      window.location.href = cfg.ALIPAY_PC_DIRECT_URL + "?" + query;
+      window.open(cfg.ALIPAY_PC_DIRECT_URL + "?" + query, '_blank');
     } else if (channel == channels.cp_b2b) {
       form_submit(cfg.CP_B2B_URL, 'post', credential);
     }
