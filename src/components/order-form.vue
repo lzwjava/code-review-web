@@ -37,11 +37,8 @@
       <div class="pay-region" v-show="qrpay">
 
           <div class="pay-desc">
-            <p class="title">扫一扫付款</p>
-            <loading>
-              <!-- <img :src="qrcode"> -->
-              <img src="../img/qrcode.png">
-            </loading>
+            <p class="title">打赏</p>
+            <p class="tips">您的申请已创建，请按照支付提示完成打赏</p>
             <p class="amount"><span>¥</span> {{reward}}</p>
           </div>
       </div>
@@ -128,7 +125,7 @@ module.exports = {
           if (err != null) {
             util.show(this, 'error', err)
           } else {
-            
+
           }
         });
         // this.qrcode = resp.data.credential.alipay_qr;
@@ -258,10 +255,15 @@ module.exports = {
     .pay-desc
       width 200px
       margin 150px auto
+      p.title
+        font-size 25px
       p.amount
         font-size 20px
         span
           color #33C96F
+      p.tips
+        margin 100px 0px
+        line-height 150%
       img
         margin-top 20px
         margin-bottom 20px
