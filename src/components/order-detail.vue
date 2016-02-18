@@ -4,7 +4,6 @@
 		<h2>此订单的详情</h2>
 		<div class="info">
 			<div class="item left">
-				<h3>订单信息</h3>
 				<div class="row">
 					<span>申请日期</span>
 					<span class="right">{{detail.created}}</span>
@@ -22,7 +21,6 @@
 					<span class="right">{{detail[detail.userType].username}}</span>
 				</div>
 
-				<h3>项目信息</h3>
 				<div class="row">
 					<span>项目大致代码行数</span>
 					<span class="right">{{detail.codeLines}}</span>
@@ -33,7 +31,10 @@
 						<button class="btn-github"></button>
 					</a>
 				</div>
-				<h3>Review 结果</h3>
+				<div class="row">
+					<span>备注</span>
+					<div>{{detail.remark}}</div>
+				</div>
 				<div class="row">
 					<span>Review 结果</span>
 					<span v-if="!detail.reviewId" class="right">暂无</span>
