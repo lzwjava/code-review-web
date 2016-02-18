@@ -7,7 +7,7 @@
         <div>
           <button class="begin"></button>
         </div>
-        <a href="./belief.html"><button class="help">如何使用 Code Review</button></a>
+        <a href="./belief.html"><button class="help">2016，想为大家做一点小事</button></a>
       </div>
     </section>
 
@@ -128,14 +128,14 @@
       return {
         reviewers: [],
         reviews: [
-          {reviewId: 2,
+          {reviewId: 1,
            coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1450849608880-6f787542c88a.jpeg',
-           title: '特邀采访<br>传奇开发者<br>Loren Brichter',
-           tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
-          {reviewId: 8,
+           title: '如何打造<br>令人愉悦的<br>开发环境',
+           tags: [{tagName: 'XCode'}, {tagName: 'iOS'}]},
+          {reviewId: 2,
            coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1431975562098-bac8ded504c7.jpeg',
-           title: '传感器使用误区<br>与性能优化',
-           tags: [{tagName: '传感器'}, {tagName: 'iOS'}]},
+           title: '命名的<br>艺术',
+           tags: [{tagName: 'Code Style'}]},
           {reviewId: 9,
            coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1443916765281-9937110585db.jpeg',
            title: '传感器使用误区<br>与性能优化',
@@ -157,7 +157,7 @@
     },
     created () {
       this.$http.get(serviceUrl.reviewers, {
-        limit: 3
+        page:"home"
       }).then((resp) => {
         if (util.filterError(this, resp)) {
           this.reviewers = resp.data.result;

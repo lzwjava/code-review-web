@@ -2,8 +2,8 @@
 	<section class="slide">
       <div class="bg">
         <div class="text">
-        	<h1>2015年十大IOS开源项目</h1>
-        	<button class="detail">详细阅读</button>
+        	<h1>如何打造令人愉悦的开发环境</h1>
+					<a href="article.html?reviewId=1" target="_blank"><button class="detail">详细阅读</button></a>
         </div>
       </div>
     </section>
