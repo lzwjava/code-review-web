@@ -183,6 +183,8 @@
         }).then((resp) => {
           if (util.filterError(this, resp)) {
             util.updateNavUser(this, resp.data.result);
+            var token = resp.data.result.sessionToken;
+            document.cookie = "crtoken=" + token;
             window.location.href = '.';
           }
         });
