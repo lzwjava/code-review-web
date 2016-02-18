@@ -14,8 +14,9 @@
         <div class="video" id="video"></div>
     </div>
 </template>
+
 <script>
-	/**
+/**
  *
  * @authors Your Name (you@example.org)
  * @date    2016-02-16 22:48:12
@@ -100,145 +101,118 @@ export default {
 	}
 }
 </script>
+
 <style lang="stylus">
-	[v-cloak] {
-        display: none;
-    }
+[v-cloak]
+  display none
 
-    html {
-        height: 100%;
-    }
+html
+  height 100%
 
-    body {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        margin: 0;
-        padding: 0;
-        font-size: 14px;
-        color: #444;
-    }
+body
+  width 100%
+  height 100%
+  overflow hidden
+  margin 0
+  padding 0
+  font-size 14px
+  color #444
 
-    * {
-			-webkit-transition: all ease-in-out .4s;
-			-ms-transition: all ease-in-out .4s;
-			-moz-transition: all ease-in-out .4s;
-			transition: all ease-in-out .4s;
-    }
+*
+  -webkit-transition all ease-in-out .4s
+  -ms-transition all ease-in-out .4s
+  -moz-transition all ease-in-out .4s
+  transition all ease-in-out .4s
 
-    .video-container {
-        position: absolute;
-        width: 100%;
-        top: 50px;
-        bottom: 100px;
-        padding: 5px 0;
-    }
-    .video-list {
-        display: block;
-        width: 320px;
-        margin-top: 10px;
-        border: 1px solid rgba(0, 0, 0, .1);
-        background: #fff;
-        border-radius: 3px;
-        padding: 15px 0;
-        position: absolute;
-        right: 10px;
-        z-index: 100;
-        box-shadow: 0px -1px 4px rgba(0, 0, 0, .05);
-        font-size: 16px;
-    }
+.video-container
+  position absolute
+  width 100%
+  top 50px
+  bottom 100px
+  padding 5px 0
 
-    .video-list:before,
-    .video-list:after {
-        position: absolute;
-        margin-left: 82px;
-        content: '';
-        display: block;
-        border: 8px solid transparent;
-    }
+.video-list
+  display block
+  width 320px
+  margin-top 10px
+  border 1px solid rgba(0, 0, 0, .1)
+  background #fff
+  border-radius 3px
+  padding 15px 0
+  position absolute
+  right 10px
+  z-index 100
+  box-shadow 0px -1px 4px rgba(0, 0, 0, .05)
+  font-size 16px
+  &:before
+    top -16px
+    border-bottom-color rgba(0, 0, 0, .1)
+  &:after
+    top -15px
+    border-bottom-color white
+  .row
+    line-height 40px
+    padding-left 15px
+    cursor pointer
+    &:hover
+      background-color #00cff5
+      color white
+    &:last-child
+      border-bottom none
 
-    .video-list:before {
-        top: -16px;
-        border-bottom-color: rgba(0, 0, 0, .1);
-    }
+.video-list:before,
+    .video-list:after
+  position absolute
+  margin-left 82px
+  content ''
+  display block
+  border 8px solid transparent
 
-    .video-list:after {
-        top: -15px;
-        border-bottom-color: white;
-    }
+.scan
+  background url("../img/icon/section.png") no-repeat
+  padding-left 26px
+  background-size contain
+  cursor pointer
+  font-size 14px
+  margin-top 4px
 
-    .video-list .row {
-        line-height: 40px;
-        padding-left: 15px;
-        cursor: pointer;
-    }
+.video
+  position absolute
+  width 100%
+  top 50px
+  bottom 10px
 
-    .video-list .row:hover {
-        background-color: #00cff5;
-        color: white;
-    }
+.title
+  padding 10px 20px
+  font-size 22px
+  .download
+    background url("../img/icon/dl.png") no-repeat
+    padding-left 16px
+    background-size contain
+    font-size 14px
+    margin-top 4px
+    margin-left 20px
 
-    .video-list .row:last-child {
-        border-bottom: none;
-    }
+.count
+  opacity 0.6
+  font-size 14px
+  margin-top 4px
+  margin-left 20px
 
-    .scan {
-        background: url("../img/icon/section.png") no-repeat;
-        padding-left: 26px;
-        background-size: contain;
-        cursor: pointer;
-        font-size: 14px;
-        margin-top: 4px;
-    }
+.pull-right
+  float right
 
-    .video {
-        position: absolute;
-        width: 100%;
-        top: 50px;
-        bottom: 10px;
-    }
+.hidden
+  display none
 
-    .title {
-        padding: 10px 20px;
-        font-size: 22px;
-    }
+.share-img
+  width 0px
+  height 0px
 
-    .count {
-        opacity: 0.6;
-        font-size: 14px;
-        margin-top: 4px;
-        margin-left: 20px;
-    }
-
-    .title .download {
-        background: url("../img/icon/dl.png") no-repeat;
-        padding-left: 16px;
-        background-size: contain;
-        font-size: 14px;
-        margin-top: 4px;
-        margin-left: 20px;
-    }
-
-    .pull-right {
-        float: right;
-    }
-
-    .hidden {
-        display: none;
-    }
-
-    @media screen and (max-width: 900px) {}
-
-    .share-img {
-        width: 0px;
-        height: 0px;
-    }
-
-    .footer-area{
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 100px;
-        margin: 0;
-    }
+.footer-area
+  position absolute
+  bottom 0
+  width 100%
+  height 100px
+  margin 0
 </style>
