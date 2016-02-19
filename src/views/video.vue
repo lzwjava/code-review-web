@@ -1,17 +1,20 @@
 <template>
 	<div class="video-container">
         <div class="title">
-            <span>{{video.title}}</span>
-            <span class="pull-right download" >PPT下载</span>
-            <span class="count pull-right">{{video.visitCount}}次浏览</span>
+            <span style="font-size: 24px;">{{video.title}}</span>
             <div class="pull-right scan" @click="dropdown">
-    		浏览课程
-    		</div>
-            <div class="video-list" v-show="listState">
-				<div class="row" v-for="item in list" @click="changeSrc(item)">{{item.speaker}}: {{item.title}}</div>
-			</div>
+    		      浏览课程
+    		    </div>
+            <div class="video-list" transition="expand" v-show="listState">
+				      <div class="row" v-for="item in list" @click="changeSrc(item)">{{item.speaker}}: {{item.title}}</div>
+			     </div>
         </div>
         <div class="video" id="video"></div>
+        <div class="title video-bottom">
+          <span>主讲人：{{video.speaker}}</span>
+          <span class="pull-right download" v-if="ppt">PPT下载</span>
+          <span class="count pull-right">{{video.visitCount}}次浏览</span>
+        </div>
     </div>
 </template>
 
@@ -106,6 +109,15 @@ export default {
 [v-cloak]
   display none
 
+  /* 必需 */
+.expand-transition
+  transition: all .6s ease;
+
+/* .expand-enter 定义进入的开始状态 */
+/* .expand-leave 定义离开的结束状态 */
+.expand-enter, .expand-leave
+  opacity: 0;
+
 html
   height 100%
 
@@ -126,9 +138,11 @@ body
 
 .video-container
   position absolute
-  width 100%
-  top 50px
-  bottom 100px
+  width: 960px;
+  left: 50%;
+  margin-left: -480px;
+  top 60px
+  bottom 80px
   padding 5px 0
 
 .video-list
@@ -140,10 +154,16 @@ body
   border-radius 3px
   padding 15px 0
   position absolute
-  right 10px
+  right 0px
   z-index 100
   box-shadow 0px -1px 4px rgba(0, 0, 0, .05)
   font-size 16px
+  &:before,&:after
+    position absolute
+    margin-left 265px
+    content ''
+    display block
+    border 8px solid transparent
   &:before
     top -16px
     border-bottom-color rgba(0, 0, 0, .1)
@@ -160,31 +180,24 @@ body
     &:last-child
       border-bottom none
 
-.video-list:before,
-    .video-list:after
-  position absolute
-  margin-left 82px
-  content ''
-  display block
-  border 8px solid transparent
-
 .scan
   background url("../img/icon/section.png") no-repeat
   padding-left 26px
   background-size contain
   cursor pointer
   font-size 14px
-  margin-top 4px
+  margin-top 12px
+  line-height 100%
 
 .video
-  position absolute
   width 100%
-  top 50px
-  bottom 10px
+  height 540px
 
-.title
-  padding 10px 20px
-  font-size 22px
+.video-container .title
+  padding 10px 0
+  font-size 16px
+  height 60px
+  line-height 40px;
   .download
     background url("../img/icon/dl.png") no-repeat
     padding-left 16px
@@ -193,10 +206,14 @@ body
     margin-top 4px
     margin-left 20px
 
+.video-bottom
+  border-bottom: 1px solid #979797;
+  height 60px
+  line-height 40px
+
 .count
   opacity 0.6
   font-size 14px
-  margin-top 4px
   margin-left 20px
 
 .pull-right
@@ -215,4 +232,5 @@ body
   width 100%
   height 100px
   margin 0
+  line-height 100px
 </style>

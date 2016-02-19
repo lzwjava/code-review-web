@@ -5,7 +5,7 @@
         <h1>最高效的代码审核服务</h1>
         <h2 id="header2">Code Review，迅速帮你提升核心竞争力</h2>
         <div>
-          <button class="begin"></button>
+          <a href="./video.html"><button class="begin"></button></a>
         </div>
         <a href="./belief.html"><button class="help">2016，想为大家做一点小事</button></a>
       </div>
