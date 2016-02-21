@@ -1,19 +1,21 @@
 <template>
   <loading>
-    <div class="top-region">
-        <div class="review-info">
-            <div class="basic-info">
-                <user-avatar :user="reviewer"></user-avatar>
+    <div class="review-bg">
+        <div class="top-region">  
+            <div class="review-info">
+                <div class="basic-info">
+                    <user-avatar :user="reviewer"></user-avatar>
+                </div>
+                <h2>{{reviewer.username}}</h2>
+                <h3>{{reviewer.introduction}}</h3>
+                <p><span>{{reviewer.tags.length}} 个擅长领域</span><span>{{reviewer.orderCount}} 个审核案例</span><span>{{reviewer.experience}} 年经验</span></p>
+                <div class="tag-list">
+                    <span>{{reviewer.username}}擅长</span>
+                    <tag v-for="tag in reviewer.tags" :tag="tag" :showDel="false"></tag>
+                    <span>等领域</span>
+                </div>
+                <button class=" order-btn" @click="overlayStatus = true">申请 Code Review</button>
             </div>
-            <h2>{{reviewer.username}}</h2>
-            <h3>{{reviewer.introduction}}</h3>
-            <p><span>{{reviewer.tags.length}} 个擅长领域</span><span>{{reviewer.orderCount}} 个审核案例</span><span>{{reviewer.experience}} 年经验</span></p>
-            <div class="tag-list">
-                <span>{{reviewer.username}}擅长</span>
-                <tag v-for="tag in reviewer.tags" :tag="tag" :showDel="false"></tag>
-                <span>等领域</span>
-            </div>
-            <button class=" order-btn" @click="overlayStatus = true">申请 Code Review</button>
         </div>
     </div>
 
@@ -99,13 +101,15 @@ export default {
 @import "../stylus/variables.styl";
 body
     background: #FDFFFF
+.review-bg 
+    background url("../img/heroimage.png")
+    background-size cover
+    background-position-y: -30px;
 .top-region
     height 466px
-    background url('../img/reviewer-detail-bg.png')
-    background-size 100% 100%
-    padding-top 90px
     border-bottom: 1px solid rgba(0,0,0,0.15);
     .review-info
+        padding-top 90px
         width 1160px
         margin 0 auto
         text-align left
@@ -139,6 +143,7 @@ body
         font-size 0.88rem
         line-height 50px
         .tag-item
+          margin-left: 5px;
           margin-right 5px
         .point
           margin 0px

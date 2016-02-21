@@ -160,6 +160,10 @@ body
 .content-area
     max-width 700px
     margin 40px auto
+.btn-github
+    width 84px
+    height 27px
+    background-size contain
 
 .order-area
   padding 30px
