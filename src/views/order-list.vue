@@ -227,7 +227,7 @@
 		h2
 			font-size 1.5rem
 			height 65px
-			border-bottom 1px solid rgba(0,0,0,.3)
+			border-bottom 1px solid rgba(0,0,0,.15)
 		.no-list
 			background: rgba(255,255,255,0.9)
 			line-height 96px

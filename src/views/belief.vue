@@ -41,6 +41,7 @@ body
     background #fff
 
 .main-container
+    max-width 700px
     h3.title
       text-align center
       padding-bottom 0.3em
