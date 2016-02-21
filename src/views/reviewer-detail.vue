@@ -104,11 +104,12 @@ body
     background url('../img/reviewer-detail-bg.png')
     background-size 100% 100%
     padding-top 90px
+    border-bottom: 1px solid rgba(0,0,0,0.15);
     .review-info
         width 1160px
         margin 0 auto
         text-align left
-        padding-left 80px
+        padding-left 60px
         padding-right 500px
         h2
             font-size 1.5rem
@@ -149,6 +150,6 @@ body
     width 1160px
     h3
         line-height 80px
-        padding-left 50px
+        padding-left 60px
         border-bottom 1px solid rgba(0,0,0,.15)
 </style>

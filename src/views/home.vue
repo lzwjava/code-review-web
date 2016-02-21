@@ -241,7 +241,7 @@
     .help
       @extend .raleway-regular-font
       height 50px
-      width 220px
+      width 240px
       background blue
       border-radius 3px
       font-size 1rem
@@ -389,6 +389,7 @@
         box-shadow 0 4px 4px 1px rgba(135,135,135,.1)
         overflow hidden
         backface-visibility hidden
+        cursor pointer
         &:hover
           img
             transform: scale(1.2,1.2)

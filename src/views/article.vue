@@ -144,6 +144,7 @@ body
     h1.title
         font-size 2.2rem
         margin 20px 0px
+        font-weight: 200;
     .intro
         img
             width 18px
