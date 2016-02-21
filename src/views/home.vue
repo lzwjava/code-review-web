@@ -4,9 +4,9 @@
       <div class="bg">
         <h1>最高效的代码审核服务</h1>
         <h2 id="header2">Code Review，迅速帮你提升核心竞争力</h2>
-        <div>
+        <!-- <div>
           <a href="./video.html"><button class="begin"></button></a>
-        </div>
+        </div> -->
         <a href="./belief.html"><button class="help">2016，想为大家做一点小事</button></a>
       </div>
     </section>
@@ -230,7 +230,7 @@
     position 200% 200%
     width 100%
     height 100%
-    padding-top 250px
+    padding-top 320px
     h2
       margin-top 30px
     .begin
@@ -245,7 +245,7 @@
       background blue
       border-radius 3px
       font-size 1rem
-      margin-top 50px
+      margin-top 70px
       color white
 .feature
   height 450px
