@@ -71,7 +71,7 @@ module.exports = {
       gitHubUrl: '',
       codeLines: 0,
       remark: '',
-      reward: 50,
+      reward: 20,
       qrpay: false,
       qrcode: '',
       payType: 'alipay'
