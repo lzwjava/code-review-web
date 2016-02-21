@@ -146,6 +146,7 @@ body
         margin 20px 0px
         font-weight: 200;
     .intro
+        opacity 0.6
         img
             width 18px
             max-height 18px
