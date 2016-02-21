@@ -224,7 +224,7 @@
   width 100%
   overflow hidden
   .bg
-    background url(/src/img/home/hero.jpg) no-repeat
+    background url("../img/home/hero.jpg") no-repeat
     background-size cover
     background-position-y 40%
     position 200% 200%
