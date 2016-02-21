@@ -230,7 +230,7 @@
     position 200% 200%
     width 100%
     height 100%
-    padding-top 320px
+    padding-top 280px
     h2
       margin-top 30px
     .begin
