@@ -334,12 +334,12 @@
 				border-top none
 			button
 				width 150px
-				height 60px
+				height 50px
 				color white
 				font-size 1rem
 				background green
 				text-align center
-				line-height 60px
+				line-height 50px
 				border none
 			.row
 				padding 27px 40px 0;
