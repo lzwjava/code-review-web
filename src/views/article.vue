@@ -5,7 +5,7 @@
             <div class="intro">
                 <img src="../img/icon/clock.png">
                 <span class="review-time">{{review.created | formatTime}}</span>
-                <img src="../img/icon/visit_count.png">
+                <img class="title-image" src="../img/icon/visit_count.png">
                 <span>{{review.visitCount}}</span>
                 <img src="../img/icon/reward.png">
                 <span>{{review.rewardCount}}</span>
@@ -146,15 +146,18 @@ body
         margin 20px 0px
         font-weight: 200;
     .intro
+        .title-image
+            vertical-align baseline
         opacity 0.6
         font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
         img
-            width 18px
-            max-height 18px
+            width 16px
+            max-height 16px
+            vertical-align text-top
         span
             margin-right 20px
             line-height 24px
-            font-size 20px
+            font-size 16px
 
 .bottom-area
 .order-area
