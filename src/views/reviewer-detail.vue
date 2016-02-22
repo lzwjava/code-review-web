@@ -155,6 +155,7 @@ body
     height 90px
     background #F1F5F6
     border-bottom 1px solid rgba(0,0,0,0.15)
+    box-shadow: 0 -2px 1px 0 hsla(0,0%,53%,.15);
     .tag-list
         width 1160px
         padding-top 20px
