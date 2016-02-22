@@ -66,7 +66,7 @@
       margin-top 30px
       font-size 60px
       width 440px
-      font-weight 200
+      font-weight 100
       margin-left -20px
       line-height 84px
     .detail

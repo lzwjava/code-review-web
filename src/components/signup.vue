@@ -100,7 +100,7 @@
 	.sign-up
 		background white
 		width 500px
-		height 600px
+		height 652px
 		padding 50px
 		position absolute
 		left 50%
@@ -165,5 +165,6 @@
 				margin-top 1px
 				border none
 				outline none
+				font-size 14px
 
 </style>
