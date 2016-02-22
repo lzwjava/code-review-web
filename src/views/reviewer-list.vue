@@ -81,7 +81,7 @@ export default{
       vertical-align sub
 
 .list-content
-  width 1200px
+  width 1160px
   margin 30px auto
 
 .join-reviewer

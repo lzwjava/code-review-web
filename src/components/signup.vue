@@ -21,7 +21,7 @@
 			<button type="button" @click="register">注册</button>
 			<a href="/statement.html" target="_blank"><p>注册前请仔细阅读 <strong>服务条款</strong></p></a>
 		</div>
-		<p style="padding-top: 30px;">已经注册? <strong> 登录 </strong></p>
+		<p style="padding-top: 30px;">已经注册? <strong style="cursor:pointer;margin-left:5px;" @click="login"> 登录 </strong></p>
 	</section>
 </template>
 <script>
@@ -62,6 +62,10 @@
 						util.updateNavUser(this, res.data.result);
 					}
 				}, util.httpErrorFn(this))
+			},
+			login(e){
+				e.stopPropagation();
+				this.$dispatch('changeView', 'login');
 			},
 			requestSmsCode () {
 				if(this.sendState){
