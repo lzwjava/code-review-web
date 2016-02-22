@@ -84,14 +84,15 @@
 .markdown-area
   position relative
   padding-top 1em
+  margin-top: -31px;
   .markdown-actions
     position absolute
-    top 0
+    top -1px
     right 0
+    opacity 0.6
     line-height 1
     a
       color #666
       font-size 16px
       text-transform uppercase
-      margin-right 12px
 </style>

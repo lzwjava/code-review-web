@@ -366,11 +366,13 @@
 				textarea
 					width 100%
 					height 280px
-					padding 15px
+					padding 10px
 					resize none
 					color rgba(40,47,49,.6)
 					font-size 1rem
 					border 1px solid rgba(40,47,49,.3)
+					font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
+					
 				.update-btn
 					margin 27px 0 54px
 					background blue
