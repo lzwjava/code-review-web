@@ -206,6 +206,9 @@
   .avatar
     width totalHeight - 2 * paddingTop
     height totalHeight - 2 * paddingTop
+    img
+      border-radius 50%
+      border 1px solid rgba(0,0,0,0.1)
 
 #message
   position fixed

@@ -43,6 +43,7 @@
 				flex 0 1 auto
 				padding-left 40px
 				position relative
+				
 				.date-tags
 					font-size 0.88rem
 					color rgba(40,47,49,.6)
@@ -51,6 +52,7 @@
 						margin-right 10px
 					.data
 						margin-right 20px
+						font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
 				.title
 					font-size 1.5rem
 					line-height 60px
@@ -61,6 +63,7 @@
 					color rgba(40,47,49,.6)
 					position absolute
 					bottom 0
+					font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
 					span
 						margin-right 30px
 			.article-logo

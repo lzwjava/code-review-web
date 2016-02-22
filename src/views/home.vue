@@ -24,7 +24,7 @@
           <div class="short">
             <div class="icon_doc"></div>
             <h4 class="number">10+审核文档</h4>
-            <p class="detail">每一次 Code Review 的过程都凝结着大神的心血 Code Review 上线半年以来，已经帮助重构、简化了 1400 份代码文件。</p>
+            <p class="detail">每一次 Code Review 的过程都凝结着大神的心血 Code Review 上线半年以来，已经帮助重构、简化了 <span class="review-document">1400</span> 份代码文件。</p>
           </div>
         </li>
         <li>
@@ -247,6 +247,7 @@
       font-size 1rem
       margin-top 70px
       color white
+      font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
 .feature
   height 450px
   padding 125px 0
@@ -285,6 +286,8 @@
         margin-top 20px
         line-height 180%
         font-size 0.88rem
+        .review-document
+          font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
 .reviewer
   height 800px;
   position relative

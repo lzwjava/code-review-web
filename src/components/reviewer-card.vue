@@ -63,6 +63,7 @@
         height 100%
         width 100%
         border-radius 50%
+        border 1px solid rgba(0,0,0,0.1)
     h4
       margin-top 30px
       margin-bottom 20px

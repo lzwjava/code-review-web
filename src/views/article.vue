@@ -147,6 +147,7 @@ body
         font-weight: 200;
     .intro
         opacity 0.6
+        font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
         img
             width 18px
             max-height 18px

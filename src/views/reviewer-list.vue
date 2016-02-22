@@ -69,6 +69,7 @@ export default{
     font-size 20px
     margin-top 30px
     .num
+      font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
       font-size 48px
       color green
       vertical-align sub

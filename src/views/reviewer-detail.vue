@@ -150,6 +150,7 @@ body
             opacity .6
             span
                 margin-right 20px
+                font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
 .reviewboard
     height 90px
     background #F1F5F6
