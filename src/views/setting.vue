@@ -292,7 +292,7 @@
 			display block
 			margin 0 auto
 		.avatar
-			width 104px
+			width 112px
 			height 112px
 			margin-top 32px
 
