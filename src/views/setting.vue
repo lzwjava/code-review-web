@@ -315,6 +315,7 @@
 			border-top-left-radius 3px
 			border-top-right-radius 3px
 			padding-left 40px
+			font-weight 600
 		.form, .tags
 			float left
 			margin-top 50px
@@ -372,7 +373,7 @@
 					font-size 1rem
 					border 1px solid rgba(40,47,49,.3)
 					font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
-					
+
 				.update-btn
 					margin 27px 0 54px
 					background blue

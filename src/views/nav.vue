@@ -162,7 +162,7 @@
   .container
     margin 0 auto
     line-height totalHeight - 2 * paddingTop
-    width 100%
+    width 1160px
     height 100%
   .navbar-brand
     width 35px

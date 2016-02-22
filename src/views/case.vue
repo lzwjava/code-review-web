@@ -46,6 +46,10 @@
     }
 </script>
 <style lang="stylus">
+.navbar
+  position fixed
+  z-index 8 // signup login overlay = 9
+  
 .slide
   height 620px
   position relative

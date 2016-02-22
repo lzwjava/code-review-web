@@ -180,15 +180,17 @@ export default {
         &.left
             flex 1
             margin-right 25px
+            border 1px solid rgba(0,0,0,0.15)
         &.right
             flex 2
             margin-left 25px
+            border 1px solid rgba(0,0,0,0.15)
         .header
             border-bottom 1px solid rgba(0,0,0,.15)
             padding 30px
             h3
-                font-size 20px
-                font-weight 500
+                font-size 16px
+                font-weight 600
         h4
             border-bottom 1px solid rgba(0,0,0,.15)
             color rgba(40,47,49,.6)

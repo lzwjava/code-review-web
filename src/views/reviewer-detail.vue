@@ -108,6 +108,11 @@ export default {
 @import "../stylus/variables.styl";
 body
     background: #FDFFFF
+
+.navbar
+  position fixed
+  z-index 8 // signup login overlay = 9
+  
 .review-bg 
     background url("../img/heroimage.png")
     background-size cover
