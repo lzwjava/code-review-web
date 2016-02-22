@@ -249,6 +249,7 @@ module.exports = {
 
     .confirm-btn
       btn(blue, white, 1,220,50)
+      margin-top 30px
 
     .pay-region
       text-align center
