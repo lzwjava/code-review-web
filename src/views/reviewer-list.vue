@@ -52,7 +52,13 @@ export default{
 <style lang="stylus">
 @import '../stylus/variables.styl';
 
+.navbar
+  position fixed
+  top 0
+  z-index 2
+
 .list-containter
+  margin-top 75px
   h2  // 上边和下边的标题都有用到
     font-size 1.5rem
     margin 15px 0px
