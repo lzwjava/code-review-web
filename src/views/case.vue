@@ -48,11 +48,13 @@
 <style lang="stylus">
 .navbar
   position fixed
+  top 0
   z-index 8 // signup login overlay = 9
   
 .slide
   height 620px
   position relative
+  top 50px
   color #fff
   width 100%
   .bg

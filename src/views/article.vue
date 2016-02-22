@@ -137,10 +137,16 @@ export default {
 body
     background #fff
 
+.navbar
+  position fixed
+  top 0
+  z-index 2
+
 .header-area
     max-width 900px
     margin 0px auto
     text-align center
+    margin-top 80px
     h1.title
         font-size 2.2rem
         margin 20px 0px
@@ -185,6 +191,7 @@ body
     p.remark
       color light-dark
       margin-top 15px
+      line-height 150%
 
 .content-area
   margin-top 50px
