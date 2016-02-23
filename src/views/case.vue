@@ -2,8 +2,8 @@
 	<section class="slide">
       <div class="bg">
         <div class="text">
-        	<h1>如何打造令人愉悦的开发环境</h1>
-					<a href="article.html?reviewId=1" target="_blank"><button class="detail">详细阅读</button></a>
+        	<h1>耀源：<br/>一些代码建议</h1>
+					<a href="article.html?reviewId=8" target="_blank"><button class="detail">详细阅读</button></a>
         </div>
       </div>
     </section>
@@ -50,7 +50,7 @@
   position fixed
   top 0
   z-index 8 // signup login overlay = 9
-  
+
 .slide
   height 620px
   position relative
@@ -86,7 +86,7 @@
       color #33C96F
       border 1px solid #33C96F
       font-family Raleway-Regular,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
-      transition all 0.4s  
+      transition all 0.4s
       &:hover
           color white
           background #33C96F
