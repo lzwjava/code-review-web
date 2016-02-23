@@ -14,9 +14,9 @@
               <input class="reward-input" v-model="reward" placeholder="￥5" type="number" min="1"></input>
             </div>
             <div class="form-line">
-              <input class="pay-radio" type="radio" name="pay" value="wechat" checked="checked" />
-              <label>微信支付</label>
-              <input class="pay-radio" type="radio" name="pay" value="alipay" />
+              <!-- <input class="pay-radio" type="radio" name="pay" value="wechat" checked="checked" />
+              <label>微信支付</label> -->
+              <input class="pay-radio" type="radio" name="pay" value="alipay" checked="checked"/>
               <label>支付宝支付</label>
             </div>
             <div class="action">
@@ -28,8 +28,8 @@
         <div class="pay-region" v-show="qrpay">
 
           <div class="pay-desc">
-            <p class="title">扫一扫付款</p>
-            <img :src="qrcode">
+            <p class="title">打赏</p>
+            <p class="tips">请按照支付提示完成打赏</p>
             <p class="amount"><span>¥</span> {{reward}}</p>
           </div>
         </div>
@@ -42,6 +42,8 @@
 import serviceUrl from "../common/serviceUrl.js"
 import UserAvatar from "../components/user-avatar.vue"
 import util from '../common/util'
+import pingpp from '../common/pingpp-pc.js'
+
 var debug = require('debug')('reward-form');
 
 export default {
@@ -69,16 +71,20 @@ export default {
             var user = util.getLocalUser()
             debug('user: %j', user);
             if (!user.username) {
-                alert('弹出注册 form ')
+                alert('请先注册')
             } else {
                 this.$http.post(serviceUrl.ordersReward.replace(/:id/, this.order.orderId),{
                   amount: this.reward * 100
                 }).then((resp) => {
                     if (resp.data && resp.data.credential) {
-                        debug('%j', resp.data)
-                        this.qrpay = true;
-                        this.qrcode = resp.data.credential.alipay_qr;
-                        window.open(this.qrcode, '_blank');
+                      this.qrpay = true;
+                      window.pingppPc.createPayment(resp.data, function (result, err) {
+                        if (err != null) {
+                          util.show(this, 'error', err)
+                        } else {
+                          
+                        }
+                      });
                     } else {
                         util.show(this, 'error', resp.data.error);
                     }
@@ -155,16 +161,13 @@ export default {
 
 .pay-desc
   width 200px
-  margin 10px auto
+  margin 30px auto
   p.amount
     font-size 20px
     span
       color #33C96F
-  img
-    margin-top 20px
-    margin-bottom 20px
-    width 200px
-    height 200px
-
+  p.tips
+    margin 60px 0px
+    line-height 150%
 
 </style>

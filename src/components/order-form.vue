@@ -128,9 +128,6 @@ module.exports = {
 
           }
         });
-        // this.qrcode = resp.data.credential.alipay_qr;
-        // this.$broadcast('loaded');
-        //window.open(this.qrcode, '_blank');
       }, util.httpErrorFn(this))
     }
   },
