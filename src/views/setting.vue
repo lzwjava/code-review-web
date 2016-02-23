@@ -187,10 +187,10 @@
 			},
 			applyReviewer () {
 				var localUser = util.getLocalUser();
-				if (localUser.gitHubUsername == '' || localUser.company == ''
-				    || localUser.title == '' || localUser.introduction == ''
+				if (!localUser.gitHubUsername || !localUser.company
+				    || !localUser.jobTitle  || !localUser.introduction
 				    || localUser.avatarUrl == 'http://7xotd0.com1.z0.glb.clouddn.com/defaultAvatar.png') {
-					util.show(this, 'info', '请先完善并保存 GitHub、公司、职位、简介、头像信息。公司名称仅用作审核，不展示。');
+					util.show(this, 'info', '请先完善并保存 GitHub、公司、职位、简介、头像信息。公司名称仅用作审核，不展示。', 8000);
 					return;
 				}
 				this.$http.post(serviceUrl.applicationsCreate, {

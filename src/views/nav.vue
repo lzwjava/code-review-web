@@ -108,16 +108,19 @@
         this.messages.splice(index, 1);
         clock = setTimeout(this.flush.bind(this), 4000);
       },
-      show (type, text) {
+      show (type, text, timeout) {
         // 全局 error、warn、success 提示
         var msg = {type: type, text: text};
         if (!unique(msg, this.messages)) return;
 
+        if (!timeout) {
+          timeout = 3000
+        }
         this.messages.push(msg);
         var index = this.messages.length - 1;
         setTimeout(function() {
           this.clear(index);
-        }.bind(this), 3000);
+        }.bind(this), timeout);
       }
 		},
     created () {

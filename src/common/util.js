@@ -29,8 +29,8 @@ exports.escape = (html) => {
   .replace(/'/g, '&#39;');
 };
 
-exports.show = (component, type, text) => {
-  component.$root.$children[0].show(type, text);
+exports.show = (component, type, text, duration) => {
+  component.$root.$children[0].show(type, text, duration);
 };
 
 exports.updateNavUser = (component, user) => {
