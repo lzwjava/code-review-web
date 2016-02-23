@@ -67,8 +67,6 @@ import RewardForm from '../components/reward-form.vue'
 
 var debug = require('debug')('article');
 
-window.document.title = "Review";
-
 export default {
     components: {
         'markdown': Markdown,
@@ -96,6 +94,7 @@ export default {
             if (util.filterError(this, resp)) {
                 debug('%j', resp.data.result);
                 this.order = resp.data.result;
+                window.document.title = this.order.reviewer.username + ': ' + window.document.title;
             }
         }, util.httpErrorFn(this));
       }
@@ -112,6 +111,7 @@ export default {
           if (util.filterError(this, resp)) {
             debug('%j', resp.data.result);
             this.review = resp.data.result;
+            window.document.title = this.review.title;
             this.fetchOrder(this.review.orderId);
           }
         }, util.httpErrorFn(this));

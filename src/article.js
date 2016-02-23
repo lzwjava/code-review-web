@@ -6,7 +6,7 @@ import util from './common/util'
 util.configVue(Vue)
 
 let reviewer = new Vue({
-  el: 'body',
+  el: 'html',
   components:{
     'my-nav': Nav,
     'my-footer': Footer,
