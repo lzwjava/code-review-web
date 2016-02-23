@@ -152,7 +152,7 @@
 
 .navbar
   height totalHeight = 50px
-  padding paddingTop=5px 150px
+  padding paddingTop=5px 0
   background white
   border-bottom 1px solid rgba(0,0,0,0.15)
   box-shadow 0 2px 1px 0px rgba(135,135,135,.15)
@@ -162,7 +162,7 @@
   .container
     margin 0 auto
     line-height totalHeight - 2 * paddingTop
-    width 100%
+    width 1160px
     height 100%
   .navbar-brand
     width 35px
@@ -206,6 +206,9 @@
   .avatar
     width totalHeight - 2 * paddingTop
     height totalHeight - 2 * paddingTop
+    img
+      border-radius 50%
+      border 1px solid rgba(0,0,0,0.1)
 
 #message
   position fixed

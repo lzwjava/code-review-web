@@ -3,6 +3,7 @@
 		<button type="button" class="cancel" @click="cancel"></button>
 		<h2>欢迎回到 Code Review</h2>
 		<div class="form">
+			<form v-on:submit.prevent="login">
 			<ul class="row">
 				<li>
 					<input type="text" class="phone" v-model="phone" placeholder="手机号码">
@@ -11,7 +12,8 @@
 					<input type="password"  class="password" v-model="password" placeholder="密码">
 				</li>
 			</ul>
-			<button type="button" @click="login">登录</button>
+			<button type="submit">登录</button>
+			</form>
 <!-- 			<p>忘记密码？</p> -->
 		</div>
 		<p style="padding-top: 30px;">您还没有<strong style="cursor:pointer;margin-left:5px;" @click="toSignup">注册？</strong></p>
@@ -119,5 +121,6 @@ green = #33C96F
 				margin-top 1px
 				border none
 				outline none
+				font-size 14px
 
 </style>

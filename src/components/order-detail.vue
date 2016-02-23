@@ -119,6 +119,9 @@
 						pull-right()
 					.btn-github
 						pull-right()
+						width 84px
+						height 27px
+						background-size contain
 </style>
 
 <script>

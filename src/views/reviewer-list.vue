@@ -52,7 +52,13 @@ export default{
 <style lang="stylus">
 @import '../stylus/variables.styl';
 
+.navbar
+  position fixed
+  top 0
+  z-index 2
+
 .list-containter
+  margin-top 75px
   h2  // 上边和下边的标题都有用到
     font-size 1.5rem
     margin 15px 0px
@@ -69,12 +75,13 @@ export default{
     font-size 20px
     margin-top 30px
     .num
+      font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
       font-size 48px
       color green
       vertical-align sub
 
 .list-content
-  width 1200px
+  width 1160px
   margin 30px auto
 
 .join-reviewer

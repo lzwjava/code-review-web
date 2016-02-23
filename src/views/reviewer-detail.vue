@@ -1,20 +1,29 @@
 <template>
   <loading>
-    <div class="top-region">
-        <div class="review-info">
-            <div class="basic-info">
-                <user-avatar :user="reviewer"></user-avatar>
+    <div class="review-bg">
+        <div class="top-region">  
+            <div class="review-info">
+                <div class="basic-info">
+                    <user-avatar :user="reviewer"></user-avatar>
+                </div>
             </div>
-            <h2>{{reviewer.username}}</h2>
-            <h3>{{reviewer.introduction}}</h3>
-            <p><span>{{reviewer.tags.length}} 个擅长领域</span><span>{{reviewer.orderCount}} 个审核案例</span><span>{{reviewer.experience}} 年经验</span></p>
-            <div class="tag-list">
-                <span>{{reviewer.username}}擅长</span>
-                <tag v-for="tag in reviewer.tags" :tag="tag" :showDel="false"></tag>
-                <span>等领域</span>
+            <div class="review-info2">
+                <h2>{{reviewer.username}}</h2>
+                <h3>{{reviewer.introduction}}</h3>
+                <p><span>{{reviewer.tags.length}} 个擅长领域</span><span>{{reviewer.orderCount}} 个审核案例</span><span>{{reviewer.experience}} 年经验</span></p>
             </div>
-            <button class=" order-btn" @click="overlayStatus = true">申请 Code Review</button>
         </div>
+    </div>
+    <div class="reviewboard">
+        <div class="tag-list">
+                        <div class="tag-list-text">
+                            <span>{{reviewer.username}}擅长</span>
+                            <tag v-for="tag in reviewer.tags" :tag="tag" :showDel="false"></tag>
+                            <span>等领域</span>
+                        </div>
+                        <button class=" order-btn" @click="overlayStatus = true">申请 Code Review</button>
+                    </div>
+        
     </div>
 
     <div class="reviewer-case">
@@ -99,52 +108,77 @@ export default {
 @import "../stylus/variables.styl";
 body
     background: #FDFFFF
+
+.navbar
+  position fixed
+  z-index 8 // signup login overlay = 9
+  
+.review-bg 
+    background url("../img/heroimage.png")
+    background-size cover
+    background-position-y: -30px;
 .top-region
     height 466px
-    background url('../img/reviewer-detail-bg.png')
-    background-size 100% 100%
-    padding-top 90px
     border-bottom: 1px solid rgba(0,0,0,0.15);
     .review-info
+        padding-top 90px
         width 1160px
         margin 0 auto
-        text-align left
-        padding-left 60px
-        padding-right 500px
+        text-align center
+    .basic-info
+        margin 0 auto
+        float none
+        width 128px
+        height 128px
+        background white
+        border-radius 50%
+        border 1px solid rgba(0,0,0,0.1)
+        img
+            width 100%
+            height 100%
+    .review-info2
+        width: 1160px
+        margin 40px auto
+        text-align center
         h2
             font-size 1.5rem
             margin-bottom 25px
         h3
-            width 300px
+            max-width 600px
             line-height 150%
             margin-bottom 25px
+            margin-left auto
+            margin-right auto
+            text-align center
         p
             font-size 0.88rem
             opacity .6
             span
                 margin-right 20px
-    .basic-info
-        float right
-        width 128px
-        height 128px
-        background white
-        padding 2px
-        border-radius 50%
-        img
-            width 100%
-            height 100%
+                font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
+.reviewboard
+    height 90px
+    background #F1F5F6
+    border-bottom 1px solid rgba(0,0,0,0.15)
+    box-shadow: 0 -2px 1px 0 hsla(0,0%,53%,.15);
     .tag-list
-        margin-top 30px
-        border-top 1px solid rgba(0,0,0,.15)
+        width 1160px
+        padding-top 20px
+        padding-bottom 20px
         font-size 0.88rem
         line-height 50px
-        .tag-item
-          margin-right 5px
-        .point
-          margin 0px
-    .order-btn
-        btn(blue, white, 1, 220, 50)
-        margin-top 30px
+        margin 0 auto
+        .tag-list-text
+            margin-left 60px
+            float left
+            .tag-item
+              margin-left: 5px;
+              margin-right 5px
+            .point
+              margin 0px
+        .order-btn
+            btn(blue, white, 1, 220, 50)
+            float right
 .reviewer-case
     margin 0 auto
     width 1160px

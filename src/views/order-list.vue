@@ -237,6 +237,7 @@
 			display: table;
 			width: 100%;
 			background #FDFFFF
+			font-family "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", Arial, "Microsoft Yahei", Verdana, sans-serif
 			.list-row
 				display: table-row
 				background: rgba(255,255,255,0.03)

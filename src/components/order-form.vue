@@ -17,7 +17,7 @@
         <div class="form-line">
           <label class="form-label">项目 GitHub 地址</label>
           <div class="github-input">
-            <span>github.com / </span><input  required v-model="gitHubUrl" placeholder="user/repo"></input>
+            <span>github.com / </span><input  required v-model="gitHubUrl" placeholder="user / repo"></input>
           </div>
         </div>
         <div class="form-line">
@@ -215,7 +215,7 @@ module.exports = {
         color rgba(40,47,49,.8)
       .code-line
         width 65px
-        text-align center
+        text-indent: 10px;
 
     .form-label
       display block
@@ -231,7 +231,8 @@ module.exports = {
         opacity .8
       input
         width 240px
-        text-indent 25px
+        text-indent 10px
+        font-family Raleway
 
     .remark-div
       textarea
@@ -248,6 +249,7 @@ module.exports = {
 
     .confirm-btn
       btn(blue, white, 1,220,50)
+      margin-top 30px
 
     .pay-region
       text-align center

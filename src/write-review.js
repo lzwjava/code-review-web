@@ -7,6 +7,11 @@ util.configVue(Vue)
 
 let reviewer = new Vue({
   el: 'body',
+  created (){
+  	if(!window.localStorage.getItem('user')){
+  		window.location.href = '/'
+  	}
+  },
   components:{
     'my-nav': Nav,
     'my-footer': Footer,

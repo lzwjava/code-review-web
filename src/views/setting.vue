@@ -292,7 +292,7 @@
 			display block
 			margin 0 auto
 		.avatar
-			width 104px
+			width 112px
 			height 112px
 			margin-top 32px
 
@@ -315,6 +315,7 @@
 			border-top-left-radius 3px
 			border-top-right-radius 3px
 			padding-left 40px
+			font-weight 600
 		.form, .tags
 			float left
 			margin-top 50px
@@ -334,12 +335,12 @@
 				border-top none
 			button
 				width 150px
-				height 60px
+				height 50px
 				color white
 				font-size 1rem
 				background green
 				text-align center
-				line-height 60px
+				line-height 50px
 				border none
 			.row
 				padding 27px 40px 0;
@@ -366,11 +367,13 @@
 				textarea
 					width 100%
 					height 280px
-					padding 15px
+					padding 10px
 					resize none
 					color rgba(40,47,49,.6)
 					font-size 1rem
 					border 1px solid rgba(40,47,49,.3)
+					font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
+
 				.update-btn
 					margin 27px 0 54px
 					background blue

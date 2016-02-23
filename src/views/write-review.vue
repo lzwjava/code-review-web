@@ -47,7 +47,7 @@
                         </div>
                         <div class="edit-area">
                             <markdown-area class="form-field form-content yue" :content.sync="content" placeholder="有什么可以改进的吗？" @submit="submitReview" required></markdown-area>
-                            <p class="tip">* 支持 Markdown</p>
+                            <p class="tip">支持 Markdown</p>
                         </div>
                         <button class="submit-btn">提交结果</button>
                     </form>
@@ -180,15 +180,17 @@ export default {
         &.left
             flex 1
             margin-right 25px
+            border 1px solid rgba(0,0,0,0.15)
         &.right
             flex 2
             margin-left 25px
+            border 1px solid rgba(0,0,0,0.15)
         .header
             border-bottom 1px solid rgba(0,0,0,.15)
             padding 30px
             h3
-                font-size 20px
-                font-weight 500
+                font-size 16px
+                font-weight 600
         h4
             border-bottom 1px solid rgba(0,0,0,.15)
             color rgba(40,47,49,.6)
@@ -199,6 +201,7 @@ export default {
         .row
             padding 10px 0
             text-align left
+            line-height: 180%;
             span
                 line-height 30px
                 color rgba(40,47,49,.6)
@@ -206,6 +209,9 @@ export default {
                     pull-right()
                     color textColor
             .btn-github
+                width 84px
+                height 27px
+                background-size contain
                 pull-right()
         .input-row
             span
@@ -215,18 +221,31 @@ export default {
                 line-height 40px
                 border 1px inset
                 font-size 18px
+                border 1px solid rgba(40,47,49,0.3)
+                text-indent 10px
+                font-size 16px
+                opacity 0.8
+
         .edit-area
             textarea
                 width 100%
                 height 200px
                 font-size 16px
+                margin-top 5px
+                border 1px solid rgba(40,47,49,0.3)
+                font-size 16px
+                opacity 0.8
+                padding 10px
+
             p.tip
                 color rgba(40,47,49,.6)
                 font-size 13px
-                margin 15px 0px
+                margin 8px 0px
         .submit-btn
-            btn(#00CFF5, #fff, 0.8, 150px, 30px)
+            btn(#00CFF5, #fff, 0.8, 220px, 50px)
             margin 20px auto 10px
             display block
+            font-size: 1rem;
+            line-height: 50px;
 
 </style>

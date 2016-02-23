@@ -5,7 +5,7 @@
             <div class="intro">
                 <img src="../img/icon/clock.png">
                 <span class="review-time">{{review.created | formatTime}}</span>
-                <img src="../img/icon/visit_count.png">
+                <img class="title-image" src="../img/icon/visit_count.png">
                 <span>{{review.visitCount}}</span>
                 <img src="../img/icon/reward.png">
                 <span>{{review.rewardCount}}</span>
@@ -137,29 +137,43 @@ export default {
 body
     background #fff
 
+.navbar
+  position fixed
+  top 0
+  z-index 2
+
 .header-area
     max-width 900px
     margin 0px auto
     text-align center
+    margin-top 80px
     h1.title
         font-size 2.2rem
         margin 20px 0px
         font-weight: 200;
     .intro
+        .title-image
+            vertical-align baseline
         opacity 0.6
+        font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
         img
-            width 18px
-            max-height 18px
+            width 16px
+            max-height 16px
+            vertical-align text-top
         span
             margin-right 20px
             line-height 24px
-            font-size 20px
+            font-size 16px
 
 .bottom-area
 .order-area
 .content-area
     max-width 700px
     margin 40px auto
+.btn-github
+    width 84px
+    height 27px
+    background-size contain
 
 .order-area
   padding 30px
@@ -177,6 +191,7 @@ body
     p.remark
       color light-dark
       margin-top 15px
+      line-height 150%
 
 .content-area
   margin-top 50px
