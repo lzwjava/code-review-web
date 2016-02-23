@@ -128,30 +128,18 @@
       return {
         reviewers: [],
         reviews: [
-          {reviewId: 1,
-           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1450849608880-6f787542c88a.jpeg',
-           title: '如何打造<br>令人愉悦的<br>开发环境',
-           tags: [{tagName: 'XCode'}, {tagName: 'iOS'}]},
-          {reviewId: 2,
-           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1431975562098-bac8ded504c7.jpeg',
-           title: '命名的<br>艺术',
-           tags: [{tagName: 'Code Style'}]},
-          {reviewId: 5,
-           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1443916765281-9937110585db.jpeg',
-           title: '如何封装<br>一个 UI 控件',
-           tags: [{tagName: 'UI'}, {tagName: 'iOS'}]},
-          {reviewId: 4,
-           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1448814100339-234df1d4005d.jpeg',
-           title: '一些优化<br>代码结构的方法',
-           tags: [{tagName: 'Code Style'}, {tagName: 'iOS'}]},
-           {reviewId: 3,
-            coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1439737567250-e9ea931e97a4.jpeg',
-            title: '要你命三千<br>老代码中的那些坑',
-            tags: [{tagName: 'Code Style'}, {tagName: 'iOS'}]},
-           {reviewId: 6,
-            coverUrl: '',
-            title: '不要想当然的<br>使用 UITableView',
-            tags: [{tagName: 'UI'}]},
+          {title: '',
+           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1450849608880-6f787542c88a.jpeg'},
+          {title: '',
+           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1431975562098-bac8ded504c7.jpeg'},
+          {title: '',
+           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1443916765281-9937110585db.jpeg'},
+          {title: '',
+           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1448814100339-234df1d4005d.jpeg'},
+          {title: '',
+           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1439737567250-e9ea931e97a4.jpeg'},
+          {title: '',
+           coverUrl: ''},
         ]
       }
     },
@@ -169,28 +157,34 @@
         if (util.filterError(this, resp)) {
           var reviews = resp.data.result;
           for (var i = 0; i < reviews.length; i++) {
-            // this.reviews[i].title = reviews[i].title;
-            // this.reviews[i].reviewId = reviews[i].reviewId;
-            // this.reviews[i].tags = reviews[i].tags;
+            this.reviews[i].title = reviews[i].title;
+            this.reviews[i].reviewId = reviews[i].reviewId;
+            this.reviews[i].tags = reviews[i].tags;
+            if (i != 0) {
+              this.reviews[i].coverUrl = reviews[i].coverUrl;
+            }
           }
         }
       },util.httpErrorFn(this));
 
-      var params = util.getSearchParameters();
-      if (params["sessionToken"]) {
-        this.$http.get(serviceUrl.userStatus, {
-          sessionToken: params["sessionToken"]
-        }).then((resp) => {
-          if (util.filterError(this, resp)) {
-            util.updateNavUser(this, resp.data.result);
-            var token = resp.data.result.sessionToken;
-            document.cookie = "crtoken=" + token;
-            window.location.href = '.';
-          }
-        });
-      }
+      this.checkSessionToken();
     },
     methods: {
+      checkSessionToken: function () {
+        var params = util.getSearchParameters();
+        if (params["sessionToken"]) {
+          this.$http.get(serviceUrl.userStatus, {
+            sessionToken: params["sessionToken"]
+          }).then((resp) => {
+            if (util.filterError(this, resp)) {
+              util.updateNavUser(this, resp.data.result);
+              var token = resp.data.result.sessionToken;
+              document.cookie = "crtoken=" + token;
+              window.location.href = '.';
+            }
+          });
+        }
+      },
       goDetail: (id) => {
         window.location = '/article.html?reviewId=' + id;
       }
