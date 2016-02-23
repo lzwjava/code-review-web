@@ -148,11 +148,11 @@
 				.then((res) => {
 					debug(res)
 					if (util.filterError(this, res)) {
-						util.show(this, 'success', '更新成功');
-					   	this.setUserInfo(res.data.result);
-							util.updateNavUser(this, user);
-					   	debug('cb: %j', cb);
-					   	cb && cb();
+						 util.show(this, 'success', '更新成功');
+					   this.setUserInfo(res.data.result);
+						 util.updateNavUser(this, res.data.result);
+						 debug('cb: %j', cb);
+						 cb && cb();
 					}
 				}, util.httpErrorFn(this));
 			},
@@ -186,10 +186,17 @@
 				}
 			},
 			applyReviewer () {
+				var localUser = util.getLocalUser();
+				if (localUser.gitHubUsername == '' || localUser.company == ''
+				    || localUser.title == '' || localUser.introduction == ''
+				    || localUser.avatarUrl == 'http://7xotd0.com1.z0.glb.clouddn.com/defaultAvatar.png') {
+					util.show(this, 'info', '请先完善并保存 GitHub、公司、职位、简介、头像信息。公司名称仅用作审核，不展示。');
+					return;
+				}
 				this.$http.post(serviceUrl.applicationsCreate, {
 				}).then((resp) => {
 					if (util.filterError(this, resp)) {
-						util.show('info', '已收到您的申请，将尽快处理');
+						util.show(this, 'info', '已收到您的申请，将尽快处理');
 					}
 				}, util.httpErrorFn(this))
 			}
