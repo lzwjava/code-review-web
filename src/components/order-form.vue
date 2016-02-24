@@ -206,6 +206,7 @@ module.exports = {
           width 50px
           text-align right
           padding-right 5px
+          margin-right 5px
           height 100%
       input
         outline none
@@ -216,6 +217,7 @@ module.exports = {
       .code-line
         width 65px
         text-indent: 10px;
+        margin-right 10px
 
     .form-label
       display block
