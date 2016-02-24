@@ -117,8 +117,10 @@
             </div>
           </ul>
         </div>
-        <div style="margin-top: -58px;">
-            <a href="/reviewers.html">
+
+        <div style="
+    padding-bottom: 100px;">
+            <a href="/reviewers.html" class="readmorebtn">
               <button class="more" type="button">阅读更多</button>
             </a>
         </div>
@@ -358,12 +360,13 @@
   margin 0 auto
   padding-top 5px
   background #FDFFFF
+  .readmorebtn
+    margin-top 12px
   .more 
     width 150px
     height 50px
     color white
     text-align center
-    margin-bottom 100px
     background #1CB2EF
     font-size 1rem
     border-radius 3px
@@ -398,10 +401,10 @@
     margin-top 80px
   h3
     margin-top 30px
+    margin-bottom 70px
     opacity .6
   .list
     clearfix();
-    padding 70px 0
     .row
       clearfix()
       li:first-child
