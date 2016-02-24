@@ -78,6 +78,8 @@
 </script>
 
 <style lang="stylus">
+body
+    background #fff
 .navbar
     position fixed
     top 0
@@ -90,4 +92,5 @@
         text-align center
         font-family Raleway-Regular,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
         font-size 28px
+        margin-bottom 40px !important
 </style>
