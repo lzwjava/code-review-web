@@ -56,7 +56,7 @@
           <h3>我们精心挑选了一些典型问题的优雅解决方案，分享给大家</h3>
           <ul class="list">
             <div class="row">
-              <li class="clo-2" @click="goDetail(reviews[0].reviewId)">
+              <li class="clo-1" @click="goDetail(reviews[0].reviewId)">
                 <div class="info">
                   <img :src="reviews[0].coverUrl">
                   <div class="text">
@@ -79,37 +79,51 @@
                     </h6>
                   </div>
               </li>
-            </div>
-            <div class="row">
-              <li class="clo-1" @click="goDetail(reviews[2 + i].reviewId)" v-for="i in 3">
+              <li class="clo-1" @click="goDetail(reviews[2].reviewId)">
                 <div class="info">
-                  <img :src="reviews[2 + i].coverUrl">
+                  <img :src="reviews[2].coverUrl">
                   <div class="text">
-                    <h6 class="title" v-html="reviews[2 + i].title">
+                    <h6 class="title" v-html="reviews[2].title">
+                    </h6>
                     <h6 class="tips">
-                      <span v-for="tag in reviews[2 + i].tags">#{{tag.tagName}}</span>
+                      <span v-for="tag in reviews[2].tags">#{{tag.tagName}}</span>
                     </h6>
                   </div>
               </li>
             </div>
             <div class="row">
-              <li class="clo-3" @click="goDetail(reviews[5].reviewId)">
-                <div class="info big-img-wrap">
-                  <span class="big-img"></span>
+              <li class="clo-1" @click="goDetail(reviews[3 + i].reviewId)" v-for="i in 3">
+                <div class="info">
+                  <img :src="reviews[3 + i].coverUrl">
                   <div class="text">
-                    <h6 class="title" v-html="reviews[5].title">
-                    </h6>
+                    <h6 class="title" v-html="reviews[3 + i].title">
                     <h6 class="tips">
-                      <span v-for="tag in reviews[5].tags">#{{tag.tagName}}</span>
+                      <span v-for="tag in reviews[3 + i].tags">#{{tag.tagName}}</span>
+                    </h6>
+                  </div>
+              </li>
+            </div>
+            <div class="row">
+              <li class="clo-1" @click="goDetail(reviews[6 + i].reviewId)" v-for="i in 3">
+                <div class="info">
+                  <img :src="reviews[6 + i].coverUrl">
+                  <div class="text">
+                    <h6 class="title" v-html="reviews[6 + i].title">
+                    <h6 class="tips">
+                      <span v-for="tag in reviews[6 + i].tags">#{{tag.tagName}}</span>
                     </h6>
                   </div>
               </li>
             </div>
           </ul>
         </div>
-        <div class="more">
-          <a href="./case.html">阅读更多</a>
+        <div>
+            <a href="/reviewers.html">
+              <button class="more" type="button">阅读更多</button>
+            </a>
         </div>
+        
+        
     </section>
   </div>
 
@@ -128,18 +142,42 @@
       return {
         reviewers: [],
         reviews: [
-          {title: '',
-           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1450849608880-6f787542c88a.jpeg'},
-          {title: '',
-           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1431975562098-bac8ded504c7.jpeg'},
-          {title: '',
-           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1443916765281-9937110585db.jpeg'},
-          {title: '',
-           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1448814100339-234df1d4005d.jpeg'},
-          {title: '',
-           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1439737567250-e9ea931e97a4.jpeg'},
-          {title: '',
-           coverUrl: ''},
+          {reviewId: 1,
+           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1450849608880-6f787542c88a.jpeg',
+           title: '如何打造<br>令人愉悦的<br>开发环境',
+           tags: [{tagName: 'XCode'}, {tagName: 'iOS'}]},
+          {reviewId: 2,
+           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1431975562098-bac8ded504c7.jpeg',
+           title: '命名的<br>艺术',
+           tags: [{tagName: 'Code Style'}]},
+          {reviewId: 5,
+           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1443916765281-9937110585db.jpeg',
+           title: '如何封装<br>一个 UI 控件',
+           tags: [{tagName: 'UI'}, {tagName: 'iOS'}]},
+          {reviewId: 4,
+           coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1448814100339-234df1d4005d.jpeg',
+           title: '一些优化<br>代码结构的方法',
+           tags: [{tagName: 'Code Style'}, {tagName: 'iOS'}]},
+           {reviewId: 3,
+            coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1439737567250-e9ea931e97a4.jpeg',
+            title: '要你命三千<br>老代码中的那些坑',
+            tags: [{tagName: 'Code Style'}, {tagName: 'iOS'}]},
+           {reviewId: 6,
+            coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1452800185063-6db5e12b8e2e.jpeg',
+            title: '不要想当然的<br>使用 UITableView',
+            tags: [{tagName: 'UI'}]},
+            {reviewId: 7,
+            coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1449157291145-7efd050a4d0e.jpeg',
+            title: '关于性能的一些问题',
+            tags: [{tagName: '性能'}]},
+            {reviewId: 8,
+            coverUrl: 'https://images.unsplash.com/photo-1447069387593-a5de0862481e?ixlib=rb-0.3.5&q=80&fm=jpg&w=400&fit=crop&s=2b9eab49407436fcdf8c92b37d784425&h=400',
+            title: '一些代码建议',
+            tags: [{tagName: 'Code Style'}]},
+            {reviewId: 9,
+            coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1448960968772-b63b3f40dfc1.jpeg',
+            title: '话谈 iOS 目录结构的划分',
+            tags: [{tagName: 'Code Style'}]},
         ]
       }
     },
@@ -157,34 +195,28 @@
         if (util.filterError(this, resp)) {
           var reviews = resp.data.result;
           for (var i = 0; i < reviews.length; i++) {
-            this.reviews[i].title = reviews[i].title;
-            this.reviews[i].reviewId = reviews[i].reviewId;
-            this.reviews[i].tags = reviews[i].tags;
-            if (i != 0) {
-              this.reviews[i].coverUrl = reviews[i].coverUrl;
-            }
+            // this.reviews[i].title = reviews[i].title;
+            // this.reviews[i].reviewId = reviews[i].reviewId;
+            // this.reviews[i].tags = reviews[i].tags;
           }
         }
       },util.httpErrorFn(this));
 
-      this.checkSessionToken();
+      var params = util.getSearchParameters();
+      if (params["sessionToken"]) {
+        this.$http.get(serviceUrl.userStatus, {
+          sessionToken: params["sessionToken"]
+        }).then((resp) => {
+          if (util.filterError(this, resp)) {
+            util.updateNavUser(this, resp.data.result);
+            var token = resp.data.result.sessionToken;
+            document.cookie = "crtoken=" + token;
+            window.location.href = '.';
+          }
+        });
+      }
     },
     methods: {
-      checkSessionToken: function () {
-        var params = util.getSearchParameters();
-        if (params["sessionToken"]) {
-          this.$http.get(serviceUrl.userStatus, {
-            sessionToken: params["sessionToken"]
-          }).then((resp) => {
-            if (util.filterError(this, resp)) {
-              util.updateNavUser(this, resp.data.result);
-              var token = resp.data.result.sessionToken;
-              document.cookie = "crtoken=" + token;
-              window.location.href = '.';
-            }
-          });
-        }
-      },
       goDetail: (id) => {
         window.location = '/article.html?reviewId=' + id;
       }
@@ -236,11 +268,14 @@
       @extend .raleway-regular-font
       height 50px
       width 240px
-      background blue
+      background #1CB2EF
       border-radius 3px
       font-size 1rem
       margin-top 70px
       color white
+      border 1px solid #00A3E6
+      -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+      box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
       font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
 .feature
   height 450px
@@ -286,6 +321,8 @@
   height 800px;
   position relative
   overflow hidden
+  border-top 1px solid rgba(0,0,0,0.1)
+  border-bottom 1px solid rgba(0,0,0,0.1)
   .reviewers
     width 1160px
     margin 0 auto
@@ -307,9 +344,12 @@
       color white
       text-align center
       margin-top 60px
-      background #42D0F6
+      background #1CB2EF
       font-size 1rem
       border-radius 3px
+      border 1px solid #00A3E6
+      -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+      box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
     .item
       margin-top 14px
       margin-bottom 0 !important
@@ -318,6 +358,19 @@
   margin 0 auto
   padding-top 5px
   background #FDFFFF
+  .more 
+    width 150px
+    height 50px
+    color white
+    text-align center
+    margin-bottom 100px
+    background #1CB2EF
+    font-size 1rem
+    border-radius 3px
+    border 1px solid #00A3E6
+    -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+    box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+
   .container
     width 1160px
     margin 0 auto
@@ -341,12 +394,6 @@
       height 221px
       right 95px
       top -45px
-  .more
-    border-top 1px solid rgba(40,47,49,.3)
-    border-bottom 1px solid rgba(40,47,49,.3)
-    height 135px
-    line-height 135px
-    margin 0 5%
   h2
     margin-top 80px
   h3
@@ -363,7 +410,7 @@
       height 354px
       margin-left 48px
       pull-left();
-      margin-bottom 40px
+      margin-bottom 48px
       .big-img-wrap
         .big-img
           background-image url('http://7xotd0.com1.z0.glb.clouddn.com/photo-1449157291145-7efd050a4d0e.jpeg')
@@ -404,7 +451,6 @@
           left 0
           top 0
           height 100%
-          width 100%
           -webkit-filter brightness(0.4)
           transition: all 0.35s ease 0s;
           -webkit-transition: all 0.35s ease 0s;

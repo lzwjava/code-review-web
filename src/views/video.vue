@@ -234,4 +234,5 @@ body
   height 100px
   margin 0
   line-height 100px
+  display none
 </style>
