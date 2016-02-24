@@ -78,9 +78,12 @@
 </script>
 
 <style lang="stylus">
+.navbar
+    position fixed
+    top 0
 .main-container
     max-width: 700px;
-    margin-top: 60px;
+    margin-top: 110px;
     margin-bottom: 60px;
 .markdown-body
     h1
