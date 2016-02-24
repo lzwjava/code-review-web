@@ -78,13 +78,19 @@
 </script>
 
 <style lang="stylus">
+body
+    background #fff
+.navbar
+    position fixed
+    top 0
 .main-container
     max-width: 700px;
-    margin-top: 60px;
+    margin-top: 110px;
     margin-bottom: 60px;
 .markdown-body
     h1
         text-align center
         font-family Raleway-Regular,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
         font-size 28px
+        margin-bottom 40px !important
 </style>

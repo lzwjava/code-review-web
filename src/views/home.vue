@@ -117,8 +117,13 @@
             </div>
           </ul>
         </div>
+<<<<<<< HEAD
         <div>
             <a href="/reviewers.html" class="readmorebtn">
+=======
+        <div style="margin-top: -58px;">
+            <a href="/reviewers.html">
+>>>>>>> origin/master
               <button class="more" type="button">阅读更多</button>
             </a>
         </div>

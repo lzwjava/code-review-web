@@ -40,9 +40,13 @@ export default {
 body
     background #fff
 
+.navbar
+  position fixed
+  top 0
+
 .main-container
     max-width 700px
-    margin-top 60px
+    margin-top 110px
     margin-bottom 60px
     h3.title
       text-align center
