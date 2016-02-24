@@ -117,13 +117,10 @@
             </div>
           </ul>
         </div>
-<<<<<<< HEAD
-        <div>
+
+        <div style="
+    padding-bottom: 100px;">
             <a href="/reviewers.html" class="readmorebtn">
-=======
-        <div style="margin-top: -58px;">
-            <a href="/reviewers.html">
->>>>>>> origin/master
               <button class="more" type="button">阅读更多</button>
             </a>
         </div>
@@ -365,13 +362,11 @@
   background #FDFFFF
   .readmorebtn
     margin-top 12px
-    margin-bottom 100px
   .more 
     width 150px
     height 50px
     color white
     text-align center
-    margin-bottom 100px
     background #1CB2EF
     font-size 1rem
     border-radius 3px
