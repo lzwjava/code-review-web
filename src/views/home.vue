@@ -118,7 +118,7 @@
           </ul>
         </div>
         <div>
-            <a href="/reviewers.html">
+            <a href="/reviewers.html" class="readmorebtn">
               <button class="more" type="button">阅读更多</button>
             </a>
         </div>
@@ -358,6 +358,9 @@
   margin 0 auto
   padding-top 5px
   background #FDFFFF
+  .readmorebtn
+    margin-top 12px
+    margin-bottom 100px
   .more 
     width 150px
     height 50px
@@ -398,10 +401,10 @@
     margin-top 80px
   h3
     margin-top 30px
+    margin-bottom 70px
     opacity .6
   .list
     clearfix();
-    padding 70px 0
     .row
       clearfix()
       li:first-child
