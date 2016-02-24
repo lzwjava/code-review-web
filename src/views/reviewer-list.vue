@@ -58,7 +58,7 @@ export default{
   z-index 2
 
 .list-containter
-  margin-top 75px
+  margin-top 110px
   h2  // 上边和下边的标题都有用到
     font-size 1.5rem
     margin 15px 0px

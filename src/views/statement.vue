@@ -79,6 +79,12 @@
 
 <style lang="stylus">
 .main-container
-  h1
-    text-align center
+    max-width: 700px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+.markdown-body
+    h1
+        text-align center
+        font-family Raleway-Regular,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
+        font-size 28px
 </style>

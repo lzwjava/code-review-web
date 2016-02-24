@@ -42,6 +42,8 @@ body
 
 .main-container
     max-width 700px
+    margin-top 60px
+    margin-bottom 60px
     h3.title
       text-align center
       padding-bottom 0.3em
