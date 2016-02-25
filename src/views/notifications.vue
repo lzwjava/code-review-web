@@ -6,14 +6,16 @@
           <button class="btn-notice show-all" :class="{'active': mode=='all'}" @click="showAll">全部通知</button>
           <button class="btn-notice" :class="{'active': mode=='unread'}" @click="showUnread">未读通知</button>
 
-          <button class="btn mark-read" @click="clear">全部标记为已读</button>
+          <button class="btn mark-read" @click="clear"><i class="fa fa-fw fa-check"></i>全部标记为已读</button>
         </div>
 
-        <ul class="unstyled" v-for="notice in notifications">
-          <li class="">
-            <a href="">{{notice.sender.username}}</a> {{ notice.type |message }}
-            <span class="time">2016-02-25 17:57</span>
-          </li>
+        <ul class="unstyled">
+          <loading>
+            <li class="" v-for="notice in notifications">
+              <a href="">{{notice.sender.username}}</a> {{ notice |message }}
+              <span class="time">{{notice.created | formatTimeCommon}}</span>
+            </li>
+          </loading>
         </ul>
       </div>
     </div>
@@ -21,15 +23,19 @@
 
 <script type="text/javascript">
 
+require('font-awesome/css/font-awesome.css');
+
 import util from '../common/util'
 import serviceUrl from '../common/serviceUrl'
 import UserAvatar from '../components/user-avatar.vue'
+import Loading from '../components/loading.vue'
 
 var debug = require('debug')('notifications');
 
 module.exports = {
   components: {
-    'user-avatar': UserAvatar
+    'user-avatar': UserAvatar,
+    'loading': Loading
   },
   data: function() {
     return {
@@ -38,13 +44,14 @@ module.exports = {
     };
   },
   filters: {
-    message: function(t) {
+    message: function(notice) {
       var categories = {
+        agree: notice.text,
         comment: '评论了你',
         new_order: '向您申请了 Code Review',
         finish_order: '已审阅完了您的代码'
       };
-      return categories[t] || t;
+      return categories[notice.type] || t;
     }
   },
   methods: {
@@ -61,10 +68,12 @@ module.exports = {
       if (this.mode == 'unread') {
         params.unread = 1;
       }
+      this.$broadcast('loading');
       this.$http.get(serviceUrl.notifications, params)
        .then((resp) => {
          if (util.filterError(this, resp)) {
            this.notifications = resp.data.result;
+           this.$broadcast('loaded');
            debug('notifications: %j', this.notifications);
          }
        }, util.httpErrorFn(this))
@@ -90,14 +99,15 @@ module.exports = {
 @import "../stylus/variables.styl"
 
 .main-container
-  min-height 600px
+  height 600px
   .notification-list
     margin-top 50px
     max-width 600px
     margin-left auto
     margin-right auto
     h2
-      margin-bottom 20px
+      font-size 28px
+      margin-bottom 40px
       text-align center
     .action
       .btn-notice
@@ -110,6 +120,13 @@ module.exports = {
           color #000
       .mark-read
         float right
+        background whitesmoke
+        box-shadow 0px 1px 2px 0px rgba(0,0,0,0.50)
+        color #999
+        padding 5px
+        &:hover
+          color #555555
+          background-color #eeeeee
     ul.unstyled
       padding-top 10px
       margin-top 20px
