@@ -138,7 +138,7 @@
     <section class="contact">
       <div class="container">
         <div class="pattern">
-        
+
         </div>
         <div class="bg-contact">
             <h2>遇到问题了？我们聊聊</h2>
@@ -150,7 +150,7 @@
               </a>
         </div>
       </div>
-      
+
     </section>
   </div>
 
@@ -184,7 +184,6 @@
            tags: [{tagName: 'XCode'}, {tagName: 'iOS'}],
            authors: [{authorName: '叶孤城'}]
          },
-
           {reviewId: 2,
            coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1431975562098-bac8ded504c7.jpeg',
            title: '命名的<br>艺术',
@@ -233,7 +232,6 @@
             tags: [{tagName: 'Code Style'}],
             authors: [{authorName: 'lzwjava'}]
           },
-
         ]
       }
     },
@@ -263,25 +261,27 @@
         }
       },util.httpErrorFn(this));
 
-      var params = util.getSearchParameters();
-      if (params["sessionToken"]) {
-        this.$http.get(serviceUrl.userStatus, {
-          sessionToken: params["sessionToken"]
-        }).then((resp) => {
-          if (util.filterError(this, resp)) {
-            util.updateNavUser(this, resp.data.result);
-            var token = resp.data.result.sessionToken;
-            document.cookie = "crtoken=" + token;
-            window.location.href = '.';
-          }
-        });
-      }
+      this.checkSessionToken();
     },
     methods: {
+      checkSessionToken: function () {
+           var params = util.getSearchParameters();
+           if (params["sessionToken"]) {
+             this.$http.get(serviceUrl.userStatus, {
+               sessionToken: params["sessionToken"]
+             }).then((resp) => {
+               if (util.filterError(this, resp)) {
+                 util.updateNavUser(this, resp.data.result);
+                 var token = resp.data.result.sessionToken;
+                 document.cookie = "crtoken=" + token;
+                 window.location.href = '.';
+               }
+             });
+           }
+      },
       goDetail: (id) => {
         window.location = '/article.html?reviewId=' + id;
       },
-
       contactus (){
         this.overlayStatus = true;
         this.currentView = 'contactus';
