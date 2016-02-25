@@ -1,27 +1,12 @@
 <template>
 	<section class="sign-up" @click="stop($event)">
 		<button type="button" class="cancel" @click="close"></button>
-		<h2>注册开启 Code Review 之旅</h2>
+		<h2>联系我们</h2>
 		<div class="form">
-				<div class="row">
-					<input type="text" v-model="phone" placeholder="手机号码">
-				</div>
-				<div class="code">
-					<div class="row" style="width: 250px;">
-						<input type="text" v-model="smsCode" placeholder="验证码">
-					</div>
-					<button class="send" :class="{'disabled': this.sendState}" type="button" @click="requestSmsCode" v-text="sendText"></button>
-				</div>
-				<div class="row">
-					<input type="password"  v-model="password" placeholder="密码">
-				</div>
-				<div class="row">
-					<input type="text"  v-model="username" placeholder="用户名">
-				</div>
-			<button type="button" @click="register">注册</button>
-			<a href="/statement.html" target="_blank"><p>注册前请仔细阅读 <strong>服务条款</strong></p></a>
+			<div class="qrcode"></div>
+			<div class="wechattext">Code Review 微信反馈通道</div>
 		</div>
-		<p style="padding-top: 30px;">已经注册? <strong style="cursor:pointer;margin-left:5px;" @click="login"> 登录 </strong></p>
+		<p style="padding-top: 30px;font-weight: bold;">邮箱地址：feedback@reviewcode.cn</p>
 	</section>
 </template>
 <script>
@@ -104,7 +89,7 @@
 	.sign-up
 		background white
 		width 500px
-		height 680px
+		height 615px
 		padding 50px
 		position absolute
 		left 50%
@@ -124,37 +109,20 @@
 		h2
 			font-size 1.5rem
 			text-align center
-		.form
-			border-top 1px solid #E9EAEC
-			border-bottom 1px solid #E9EAEC
-			padding 30px 0
+		.qrcode
+			width 320px
+			height 320px
+			background url("../img/QRCode@2x.png") no-repeat
+			background-size contain
+			margin-top 10px
+			margin 0 auto
+		.wechattext
+			text-align center
+			margin 0 auto
+			font-size 16px
 			margin-top 20px
-			.code
-				clearfix()
-				.row
-					float left
-					width 250px
-				.send
-					float right
-					margin 0
-					width 135px
-					background blue
-				.disabled
-					background #767676
-					cursor not-allowed
-			p
-				margin-bottom 10px
-			button
-				width 100%
-				height 55px
-				color white
-				font-size 1rem
-				text-align center
-				line-height 55px
-				background green
-				border-radius 3px
-				margin-top 50px
-				margin-bottom 30px
+			margin-bottom 10px
+			font-weight bold
 
 		.row
 			width 100%

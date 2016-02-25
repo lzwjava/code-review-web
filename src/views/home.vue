@@ -1,4 +1,7 @@
 <template>
+  <overlay :overlay.sync="overlayStatus">
+    <component :is="currentView"></component>
+  </overlay>
   <div class="home-main">
     <section class="slide">
       <div class="bg">
@@ -132,21 +135,47 @@
         
         
     </section>
+    <section class="contact">
+      <div class="container">
+        <div class="pattern">
+        
+        </div>
+        <div class="bg-contact">
+            <h2>遇到问题了？我们聊聊</h2>
+            <h3>Code Review 团队愿竭诚帮助使用者解决使用过程中的问题。</h3>
+        </div>
+        <div class="rightbtn">
+              <a>
+                <button class="more" type="button" @click="contactus">联系我们</button>
+              </a>
+        </div>
+      </div>
+      
+    </section>
   </div>
 
 </template>
 
 <script type="text/javascript">
   import reviewerCard from '../components/reviewer-card.vue'
-  import serviceUrl from "../common/serviceUrl.js"
+  import serviceUrl from "../common/serviceUrl.js";
+
+  import Overlay from '../components/overlay.vue';
+  import Contactus from '../components/contactus.vue';
+
   var debug = require('debug')('home');
   var util = require('../common/util');
   export default {
     components: {
+      overlay: Overlay,
+      contactus:  Contactus,
       reviewer: reviewerCard
     },
     data () {
       return {
+        overlayStatus: false,
+        currentView: '',
+
         reviewers: [],
         reviews: [
           {reviewId: 1,
@@ -208,6 +237,11 @@
         ]
       }
     },
+    events:{
+      changeView(view){
+        this.currentView = view;
+      }
+    },
     created () {
       this.$http.get(serviceUrl.reviewers, {
         page:"home"
@@ -246,30 +280,68 @@
     methods: {
       goDetail: (id) => {
         window.location = '/article.html?reviewId=' + id;
+      },
+
+      contactus (){
+        this.overlayStatus = true;
+        this.currentView = 'contactus';
       }
     }
+
   }
+
 </script>
 
 <style lang="stylus">
 @import '../stylus/variables.styl';
 @import '../stylus/base.styl';
+.contact
+  height 274px
+  padding-top 100px
+  padding-bottom 100px
+  background #1CB2EF
+  background-size 100%
+  .container
+    width 1160px
+    margin 0 auto
+    height 100%
+    .bg-contact
+      float left
+      text-align left
+      color white
+      Raleway-ExtraLight
+      h3
+        margin-top 30px
+        opacity 1
+    .rightbtn
+      width 127px
+      margin auto 40px auto auto
+      float right
+      .more
+        margin-top 10px
+        width 127px
+        height 50px
+        color #1CB2EF
+        text-align center
+        background white
+        font-size 1rem
+        border-radius 3px
+        border 1px solid #00A3E6
+        -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+        box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
 
 #header2
   font-size 1.5rem
   font-weight 100
   font-family Raleway-ExtraLight,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
-
 .navbar
   position fixed
   z-index 8 // signup login overlay = 9
-
 .home-main
   text-align center
   font-size 1rem
   h3
     opacity 0.6
-
 .slide
   height 800px
   position relative
@@ -380,7 +452,6 @@
     .item
       margin-top 14px
       margin-bottom 0 !important
-
 .example
   margin 0 auto
   padding-top 5px
@@ -398,7 +469,6 @@
     border 1px solid #00A3E6
     -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
     box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
-
   .container
     width 1160px
     margin 0 auto
