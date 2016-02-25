@@ -71,6 +71,10 @@ let formatTime = (time, format) => {
   return moment(time).format(format);
 };
 
+exports.fromNowTime = (time) => {
+  return moment(time).fromNow();
+};
+
 exports.formatTime = formatTime;
 
 exports.formatTimeCommon = (time) => {
