@@ -33,7 +33,8 @@
     height 406px
     margin-left 130px
     background white
-    box-shadow 0px 1px 2px 1px rgba(0,0,0,.1)
+    box-shadow 0px 1px 2px 1px rgba(0,0,0,.05)
+    -webkit-box-shadow 0px 1px 2px 1px rgba(0,0,0,.05)
     border-radius 3px
     position relative
     margin-top 0px
