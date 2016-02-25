@@ -129,8 +129,8 @@
               <button class="more" type="button">阅读更多</button>
             </a>
         </div>
-        
-        
+
+
     </section>
   </div>
 
@@ -193,7 +193,7 @@
             authors: [{authorName: '叶孤城'}]
           },
             {reviewId: 8,
-            coverUrl: 'https://images.unsplash.com/photo-1447069387593-a5de0862481e?ixlib=rb-0.3.5&q=80&fm=jpg&w=400&fit=crop&s=2b9eab49407436fcdf8c92b37d784425&h=400',
+            coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1447069387593-a5de0862481e.jpeg',
             title: '一些代码建议',
             tags: [{tagName: 'Code Style'}],
             authors: [{authorName: '耀源'}]
@@ -204,7 +204,7 @@
             tags: [{tagName: 'Code Style'}],
             authors: [{authorName: 'lzwjava'}]
           },
-            
+
         ]
       }
     },
@@ -387,7 +387,7 @@
   background #FDFFFF
   .readmorebtn
     margin-top 12px
-  .more 
+  .more
     width 150px
     height 50px
     color white
