@@ -178,6 +178,9 @@ body
               margin 0px
         .order-btn
             btn(blue, white, 1, 220, 50)
+            border 1px solid #00a3e6
+            box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+            -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
             float right
 .reviewer-case
     margin 0 auto
