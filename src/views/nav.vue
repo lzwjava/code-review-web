@@ -22,6 +22,14 @@
             <a href="/video.html"><li class="hover-btn">直播视频</li></a>
             <li class="hover-btn" v-if="!userStatus" class="signup" @click="signup">注册</li>
             <li class="hover-btn" v-if="!userStatus" @click="signin">登录</li>
+            <li v-if="userStatus && notificationCount">
+              <a v-if="notificationCount" class="tip notification" href="javascript:;"
+              @click="showNotifications=true"
+              aria-label="You have {{ notificationCount }} unread notifications"></a>
+              <overlay v-if="showNotifications" :overlay.sync="showNotifications">
+                <user-notifications></user-notifications>
+              </overlay>
+            </li>
             <li v-if="userStatus">
               <dropdown>
                 <user-avatar slot="showText" :user="user" @click="viewUserDropdown"></user-avatar>
@@ -52,6 +60,7 @@
   import Signup from '../components/signup.vue';
   import DropDown from '../components/dropdown.vue';
   import UserAvatar from '../components/user-avatar.vue';
+  import UserNotification from '../components/user-notifications.vue'
   import serviceUrl from "../common/serviceUrl.js";
   import util from '../common/util'
   var debug = require('debug')('components');
@@ -62,7 +71,8 @@
       login:  Login,
       signup: Signup,
       dropdown: DropDown,
-      'user-avatar':UserAvatar
+      'user-avatar':UserAvatar,
+      'user-notifications': UserNotification
     },
     data (){
       return {
@@ -70,7 +80,9 @@
         overlayStatus: false,
         currentView: 'login',
         messages: [],
-        user: {}
+        user: {},
+        showNotifications: true,
+        notificationCount: 10
       }
     },
     events:{
@@ -121,6 +133,12 @@
         setTimeout(function() {
           this.clear(index);
         }.bind(this), timeout);
+      },
+      check: function() {
+        if (!this.user.username) return;
+        // api.notification.count(function(resp) {
+        //   this.notificationCount = resp.count;
+        // }.bind(this));
       }
 		},
     created () {
