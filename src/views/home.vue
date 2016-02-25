@@ -402,13 +402,13 @@
         height 52px
         margin 0 auto
       .icon_crown
-        background url("../img/icon/crown.png") no-repeat
+        background url("../img/icon/crown@2x.png") no-repeat
         background-size: contain
       .icon_doc
-        background url("../img/icon/doc.png") no-repeat
+        background url("../img/icon/doc@2x.png") no-repeat
         background-size: contain
       .icon_article
-        background url("../img/icon/article.png") no-repeat
+        background url("../img/icon/article@2x.png") no-repeat
         background-size: contain
       .detail
         margin-top 20px
