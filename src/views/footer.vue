@@ -1,12 +1,15 @@
 <template>
+	<overlay :overlay.sync="overlayStatus">
+    <component :is="currentView"></component>
+  	</overlay>
 	<footer class="footer-area">
 		<ul class="list">
 			<a class="slogan" href="/"></a>
 	        <li>
 	          <div class="short">
 	            <h4 class="number">产品</h4>
-	            <p class="detail"><a target="_blank" href="./case.html">精彩案例</p><br>
-	            <p class="detail"><a target="_blank" href="./reviewers.html">发现大神</p><br>
+	            <p class="detail"><a target="_blank" href="./reviewers.html">发现大神</a></p><br>
+	            <p class="detail"><a target="_blank" href="./case.html">精彩案例</a></p><br>
 	            <p class="detail"><a target="_blank" href="./video.html">视频直播</a></p>
 	          </div>
 	        </li>
@@ -14,7 +17,7 @@
 	          <div class="short">
 	            <h4 class="number">公司</h4>
 	            <p class="detail"><a target="_blank" href="./belief.html">关于我们</a></p><br>
-	            <p class="detail">问题反馈 </p><br>
+	            <p class="detail"><a @click="contactus">问题反馈</a></p><br>
 	            <p class="detail"> <a target="_blank" href="./statement.html">用户协议</a> </p>
 	          </div>
 	        </li>
@@ -31,8 +34,35 @@
 </template>
 
 <script type="text/javascript">
-export default {
+import Overlay from '../components/overlay.vue';
+import Contactus from '../components/contactus.vue';
+import serviceUrl from "../common/serviceUrl.js";
+var debug = require('debug')('home');
+var util = require('../common/util');
 
+export default {
+components: {
+      overlay: Overlay,
+      contactus: Contactus,
+    },
+    data () {
+      return {
+        overlayStatus: false,
+        currentView: '',
+      }
+    },
+    events:{
+      changeView(view){
+        this.currentView = view;
+      }
+    },
+
+    methods: {
+      contactus (){
+        this.overlayStatus = true;
+        this.currentView = 'contactus';
+      }
+    }
 }
 </script>
 
@@ -100,6 +130,7 @@ export default {
 				font-weight normal
 				a
 					color white
+					cursor pointer
 			
 
 </style>

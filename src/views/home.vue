@@ -456,6 +456,7 @@
   margin 0 auto
   padding-top 5px
   background #FDFFFF
+  border-bottom 1px solid rgba(0,0,0,0.1)
   .readmorebtn
     margin-top 12px
   .more
