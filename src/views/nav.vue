@@ -32,7 +32,7 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="setting.html">个人设置</a>
                   <a class="dropdown-item" href="order.html">订单列表</a>
-                  <a class="dropdown-item" href="javascript:;" @click="showNotifications">通知
+                  <a class="dropdown-item" href="notifications.html" >通知
                      <span class="notification-num" v-if="notificationCount" >({{ notificationCount }})<span>
                   </a>
                   <div class="dropdown-divider"></div>
@@ -55,7 +55,6 @@
   import Signup from '../components/signup.vue';
   import DropDown from '../components/dropdown.vue';
   import UserAvatar from '../components/user-avatar.vue';
-  import UserNotification from '../components/user-notifications.vue'
   import serviceUrl from "../common/serviceUrl.js";
   import util from '../common/util'
   var debug = require('debug')('components');
@@ -66,8 +65,7 @@
       login:  Login,
       signup: Signup,
       dropdown: DropDown,
-      'user-avatar':UserAvatar,
-      'user-notifications': UserNotification
+      'user-avatar':UserAvatar
     },
     data (){
       return {
@@ -102,10 +100,6 @@
         this.overlayStatus = true;
         this.currentView = 'signup';
       },
-      showNotifications() {
-        this.overlayStatus = true;
-        this.currentView = 'user-notifications';
-      },
       viewUserDropdown (e) {
         e && e.preventDefault();
         this.showUserDropdown = true;
@@ -139,15 +133,16 @@
         .then((resp) => {
           if (util.filterError(this, resp)) {
             this.notificationCount = resp.data.result.count;
+            debug('notificationsCount: ' + this.notificationCount);
           }
         }, util.httpErrorFn(this))
       }
 		},
     ready () {
-      // setTimeout(this.check.bind(this), 2000);
+      setTimeout(this.check.bind(this), 2000);
       var interval = 300000;
       // check every 5 minutes
-      this.check.bind(this);
+      // this.check.bind(this);
       setInterval(this.check.bind(this), interval);
     },
     created () {
