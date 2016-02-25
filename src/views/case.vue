@@ -88,7 +88,11 @@
       transition all 0.4s
       &:hover
           color white
+          border 1px solid #31B766
+          -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+          box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
           background #33C96F
+
 
 
 .listcontainer
