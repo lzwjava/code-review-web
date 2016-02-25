@@ -2,16 +2,19 @@
     <div class="main-container">
       <div class="notification-list">
         <h2>通知</h2>
-        <div v-for="notice in notifications" class="item-container">
-          <user-avatar :user="notice.sender"></user-avatar>
-          <div class="item-content">
-            <div class="item-info">{{ notice.type |message }}</div>
-            <!-- <a class="topic-title" href="/t/{{notice.topic.id}}">{{notice.}}</a> -->
-          </div>
+        <div class="action">
+          <button class="btn-notice show-all" :class="{'active': mode=='all'}" @click="showAll">全部通知</button>
+          <button class="btn-notice" :class="{'active': mode=='unread'}" @click="showUnread">未读通知</button>
+
+          <button class="btn mark-read" @click="clear">全部标记为已读</button>
         </div>
-        <div class="clear-button">
-          <button class="btn btn-blue" @click="clear">标为已读</button>
-        </div>
+
+        <ul class="unstyled" v-for="notice in notifications">
+          <li class="">
+            <a href="">{{notice.sender.username}}</a> {{ notice.type |message }}
+            <span class="time">2016-02-25 17:57</span>
+          </li>
+        </ul>
       </div>
     </div>
 </template>
@@ -30,22 +33,35 @@ module.exports = {
   },
   data: function() {
     return {
-      notifications: []
+      notifications: [],
+      mode: 'all'
     };
   },
   filters: {
     message: function(t) {
       var categories = {
         comment: '评论了你',
-        new_order: '新的订单',
-        finish_order: '完成了订单'
+        new_order: '向您申请了 Code Review',
+        finish_order: '已审阅完了您的代码'
       };
       return categories[t] || t;
     }
   },
   methods: {
+    showAll () {
+      this.mode = 'all';
+      this.fetch();
+    },
+    showUnread() {
+      this.mode = 'unread';
+      this.fetch();
+    },
     fetch: function() {
-      this.$http.get(serviceUrl.notifications)
+      var params = {};
+      if (this.mode == 'unread') {
+        params.unread = 1;
+      }
+      this.$http.get(serviceUrl.notifications, params)
        .then((resp) => {
          if (util.filterError(this, resp)) {
            this.notifications = resp.data.result;
@@ -53,17 +69,13 @@ module.exports = {
          }
        }, util.httpErrorFn(this))
     },
-    hide: function() {
-      this.$root.showNotifications = false;
-    },
     clear: function() {
       this.$http.patch(serviceUrl.notifications, {})
         .then((resp) => {
           if (util.filterError(this, resp)) {
+            this.fetch();
           }
       }, util.httpErrorFn(this));
-      this.hide();
-      this.$root.notificationCount = 0;
     }
   },
   ready: function() {
@@ -77,35 +89,42 @@ module.exports = {
 <style lang="stylus">
 @import "../stylus/variables.styl"
 
-.notification-list
-  padding-top 50px
-  max-width 560px
-  margin-left auto
-  margin-right auto
-  h2
-    color #fff
-    margin-bottom 1em
-  .item-container
-    margin-bottom 1em
-    padding-bottom 1em
-    background #fff
-    height 100px
-    .avatar
-      width 80px
-  .item-info
-    color #999
-    line-height 1
-    font-size 14px
-    margin-bottom 6px
-  .clear-button
-    padding 30px 0
-    text-align center
+.main-container
+  min-height 600px
+  .notification-list
+    margin-top 50px
+    max-width 600px
+    margin-left auto
+    margin-right auto
+    h2
+      margin-bottom 20px
+      text-align center
+    .action
+      .btn-notice
+        font-size 16px
+        color #999999
+        padding 0px 10px
+        &.show-all
+          border-right 1px solid #d9d9d9
+        &.active
+          color #000
+      .mark-read
+        float right
+    ul.unstyled
+      padding-top 10px
+      margin-top 20px
+      border-top 2px solid #d9d9d9
+      li
+        padding 10px
+        margin-bottom 1px
+        border-bottom 1px solid #eeeeee
+        line-height 1.5
+        span.time
+          float right
+          padding-left 20px
+          margin-top 2px
+          font-size 12px
+          color #999999
 
-.item-container
-  .avatar
-    float left
-    margin-right 12px
-  .item-content
-    overflow hidden
 
 </style>
