@@ -18,7 +18,7 @@
 				<div class="row">
 					<input type="text"  v-model="username" placeholder="用户名">
 				</div>
-			<button type="button" @click="register">注册</button>
+			<button type="button" @click="register" class="gbutton">注册</button>
 			<a href="/statement.html" target="_blank"><p>注册前请仔细阅读 <strong>服务条款</strong></p></a>
 		</div>
 		<p style="padding-top: 30px;">已经注册? <strong style="cursor:pointer;margin-left:5px;" @click="login"> 登录 </strong></p>
@@ -106,6 +106,7 @@
 		width 500px
 		height 680px
 		padding 50px
+		border-radius 3px
 		position absolute
 		left 50%
 		top 50%
@@ -155,7 +156,11 @@
 				border-radius 3px
 				margin-top 50px
 				margin-bottom 30px
-
+				-webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+				box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+				border 1px solid #00a3e6
+			.gbutton
+				border 1px solid #31B766
 		.row
 			width 100%
 			height 58px

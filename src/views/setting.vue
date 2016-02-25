@@ -348,7 +348,9 @@
 				background green
 				text-align center
 				line-height 50px
-				border none
+				-webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+				box-shaodw 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+				border 1px solid #31B766
 			.row
 				padding 27px 40px 0;
 				position relative
@@ -384,6 +386,9 @@
 				.update-btn
 					margin 27px 0 54px
 					background blue
+					-webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+					box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+					border 1px solid #00a3e6
 				.apply-btn
 					margin 27px 0 54px
 					float right
@@ -430,6 +435,8 @@
 						font-size 1rem
 						text-align center
 						line-height 50px
-						border none
+						border 1px solid #00a3e6
+						-webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+						box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
 						margin-left 20px
 </style>

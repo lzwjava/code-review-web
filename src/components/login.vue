@@ -68,6 +68,7 @@ green = #33C96F
 	.login
 		background white
 		width 500px
+		border-radius 3px
 		height 500px
 		padding 50px
 		position absolute
@@ -105,6 +106,9 @@ green = #33C96F
 				border-radius 3px
 				margin-top 50px
 				margin-bottom 30px
+				-webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+				box-shaodw 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+				border 1px solid #31B766
 		.row
 			width 100%
 			height 116px

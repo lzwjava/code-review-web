@@ -1,5 +1,5 @@
 <template>
-	<section class="sign-up" @click="stop($event)">
+	<section class="contact-us" @click="stop($event)">
 		<button type="button" class="cancel" @click="close"></button>
 		<h2>联系我们</h2>
 		<div class="form">
@@ -86,15 +86,21 @@
 <style lang="stylus">
 @import "../stylus/variables.styl";
 
-	.sign-up
+	.contact-us
 		background white
 		width 500px
 		height 615px
 		padding 50px
+		border-radius 3px
 		position absolute
 		left 50%
 		top 50%
 		margin -300px 0 0 -250px
+		.form
+			border-top 1px solid #e9eaec
+			border-bottom 1px solid #e9eaec
+			padding 30px 0
+			margin-top 20px
 		.cancel
 			position absolute
 			width 20px

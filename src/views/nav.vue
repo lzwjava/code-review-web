@@ -31,7 +31,7 @@
                   <div>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="setting.html">个人设置</a>
-                  <a class="dropdown-item" href="order.html">Code Review 订单列表</a>
+                  <a class="dropdown-item" href="order.html">订单列表</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" @click="logout" href="/">注销</a>
                 </div>
@@ -200,7 +200,7 @@
         border 1px solid #ffff // 避免hover之后颤抖
         font-weight 600
       &.hover-btn:hover
-        color #00CFF5
+        color blue
     .dropdown-inner
       width 220px
       right 0

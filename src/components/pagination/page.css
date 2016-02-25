@@ -9,7 +9,6 @@
 
 .lj-page{
 	margin: 0;
-	border: 1px solid #e6e6e6;
 	border-radius: 3px;
 	display: inline-block;
 }
@@ -23,8 +22,11 @@
 
 .lj-page li{
 	float: left;
+	border: 1px solid #e6e6e6;
 	display: inline-block;
 	cursor: pointer;
+	transition: all 0.35s ease 0s;
+	-webkit-transition: all 0.35s ease 0s;
 }
 
 .lj-page li:last-of-type{
@@ -32,13 +34,15 @@
 }
 
 .lj-page li:hover{
-	background: #00cff5;
+	background: #1cb2ef;
 	color:  white;
+	border: 1px solid #00a3e6;
 }
 
 .lj-page li.active{
-	background: #00cff5;
+	background: #1cb2ef;
 	color:  white;
+	border: 1px solid #00a3e6;
 }
 
 .lj-page li span{

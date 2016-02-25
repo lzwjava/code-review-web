@@ -76,7 +76,7 @@
       &:last-child
         opacity 0.6
       &:hover
-        color #00BDEF
+        color #1cb2ef
         &:last-child
           opacity 0.6
           color #EF0031
