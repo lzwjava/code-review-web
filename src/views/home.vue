@@ -58,6 +58,7 @@
             <div class="row">
               <li class="clo-1" @click="goDetail(reviews[0].reviewId)">
                 <div class="info">
+                  <button class="author" v-for="author in reviews[0].authors">{{author.authorName}}</button>
                   <img :src="reviews[0].coverUrl">
                   <div class="text">
                     <h6 class="title" v-html="reviews[0].title">
@@ -70,6 +71,7 @@
               </li>
               <li class="clo-1" @click="goDetail(reviews[1].reviewId)">
                 <div class="info">
+                  <button class="author" v-for="author in reviews[1].authors">{{author.authorName}}</button>
                   <img :src="reviews[1].coverUrl">
                   <div class="text">
                     <h6 class="title" v-html="reviews[1].title">
@@ -81,6 +83,7 @@
               </li>
               <li class="clo-1" @click="goDetail(reviews[2].reviewId)">
                 <div class="info">
+                  <button class="author" v-for="author in reviews[2].authors">{{author.authorName}}</button>
                   <img :src="reviews[2].coverUrl">
                   <div class="text">
                     <h6 class="title" v-html="reviews[2].title">
@@ -94,6 +97,7 @@
             <div class="row">
               <li class="clo-1" @click="goDetail(reviews[3 + i].reviewId)" v-for="i in 3">
                 <div class="info">
+                  <button class="author" v-for="author in reviews[3+i].authors">{{author.authorName}}</button>
                   <img :src="reviews[3 + i].coverUrl">
                   <div class="text">
                     <h6 class="title" v-html="reviews[3 + i].title">
@@ -106,6 +110,7 @@
             <div class="row">
               <li class="clo-1" @click="goDetail(reviews[6 + i].reviewId)" v-for="i in 3">
                 <div class="info">
+                  <button class="author" v-for="author in reviews[6+i].authors">{{author.authorName}}</button>
                   <img :src="reviews[6 + i].coverUrl">
                   <div class="text">
                     <h6 class="title" v-html="reviews[6 + i].title">
@@ -147,39 +152,59 @@
           {reviewId: 1,
            coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1450849608880-6f787542c88a.jpeg',
            title: '如何打造<br>令人愉悦的<br>开发环境',
-           tags: [{tagName: 'XCode'}, {tagName: 'iOS'}]},
+           tags: [{tagName: 'XCode'}, {tagName: 'iOS'}],
+           authors: [{authorName: '叶孤城'}]
+         },
+
           {reviewId: 2,
            coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1431975562098-bac8ded504c7.jpeg',
            title: '命名的<br>艺术',
-           tags: [{tagName: 'Code Style'}]},
+           tags: [{tagName: 'Code Style'}],
+           authors: [{authorName: '叶孤城'}]
+         },
           {reviewId: 5,
            coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1443916765281-9937110585db.jpeg',
            title: '如何封装<br>一个 UI 控件',
-           tags: [{tagName: 'UI'}, {tagName: 'iOS'}]},
+           tags: [{tagName: 'UI'}, {tagName: 'iOS'}],
+           authors: [{authorName: '叶孤城'}]
+         },
           {reviewId: 4,
            coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1448814100339-234df1d4005d.jpeg',
            title: '一些优化<br>代码结构的方法',
-           tags: [{tagName: 'Code Style'}, {tagName: 'iOS'}]},
+           tags: [{tagName: 'Code Style'}, {tagName: 'iOS'}],
+           authors: [{authorName: '叶孤城'}]
+         },
            {reviewId: 3,
             coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1439737567250-e9ea931e97a4.jpeg',
             title: '要你命三千<br>老代码中的那些坑',
-            tags: [{tagName: 'Code Style'}, {tagName: 'iOS'}]},
+            tags: [{tagName: 'Code Style'}, {tagName: 'iOS'}],
+            authors: [{authorName: 'CallMeWhy'}]
+          },
            {reviewId: 6,
             coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1452800185063-6db5e12b8e2e.jpeg',
             title: '不要想当然的<br>使用 UITableView',
-            tags: [{tagName: 'UI'}]},
+            tags: [{tagName: 'UI'}],
+            authors: [{authorName: '江南的悲伤'}]
+          },
             {reviewId: 7,
             coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1449157291145-7efd050a4d0e.jpeg',
             title: '关于性能的一些问题',
-            tags: [{tagName: '性能'}]},
+            tags: [{tagName: '性能'}],
+            authors: [{authorName: '叶孤城'}]
+          },
             {reviewId: 8,
             coverUrl: 'https://images.unsplash.com/photo-1447069387593-a5de0862481e?ixlib=rb-0.3.5&q=80&fm=jpg&w=400&fit=crop&s=2b9eab49407436fcdf8c92b37d784425&h=400',
             title: '一些代码建议',
-            tags: [{tagName: 'Code Style'}]},
+            tags: [{tagName: 'Code Style'}],
+            authors: [{authorName: '耀源'}]
+          },
             {reviewId: 9,
             coverUrl: 'http://7xotd0.com1.z0.glb.clouddn.com/photo-1448960968772-b63b3f40dfc1.jpeg',
             title: '话谈 iOS 目录结构的划分',
-            tags: [{tagName: 'Code Style'}]},
+            tags: [{tagName: 'Code Style'}],
+            authors: [{authorName: 'lzwjava'}]
+          },
+            
         ]
       }
     },
@@ -434,6 +459,7 @@
         width 100%
         color white
         box-shadow 0 4px 4px 1px rgba(135,135,135,.1)
+        -webkit-box-shadow 0 4px 4px 1px rgba(135,135,135,.1)
         overflow hidden
         backface-visibility hidden
         cursor pointer
@@ -449,6 +475,8 @@
             -webkit-transform translate(0, -10px)
             transfrom translate(0, -10px)
             opacity 0.8
+          .author
+            background #1cb2ef
         img
           position relative
           left 0
@@ -469,6 +497,23 @@
           display flex
           flex-direction column
           justify-content flex-end
+        .author
+          position absolute
+          background black
+          z-index 3
+          margin-left 30px
+          margin-top 30px
+          height 30px
+          font-size 14px
+          font-weight normal
+          color white
+          line-height 14px
+          padding-left 20px
+          padding-right 20px
+          border-radius 0px
+          transition all 0.35s ease 0s
+          -webkit-transition all 0.35s ease 0s
+
         h6
           width 200px
           word-break break-word
