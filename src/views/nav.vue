@@ -22,14 +22,6 @@
             <a href="/video.html"><li class="hover-btn">直播视频</li></a>
             <li class="hover-btn" v-if="!userStatus" class="signup" @click="signup">注册</li>
             <li class="hover-btn" v-if="!userStatus" @click="signin">登录</li>
-            <li v-if="userStatus && notificationCount">
-              <a v-if="notificationCount" class="tip notification" href="javascript:;"
-              @click="showNotifications=true"
-              aria-label="You have {{ notificationCount }} unread notifications"></a>
-              <overlay v-if="showNotifications" :overlay.sync="showNotifications">
-                <user-notifications></user-notifications>
-              </overlay>
-            </li>
             <li v-if="userStatus">
               <dropdown>
                 <user-avatar slot="showText" :user="user" @click="viewUserDropdown"></user-avatar>
@@ -40,6 +32,9 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="setting.html">个人设置</a>
                   <a class="dropdown-item" href="order.html">订单列表</a>
+                  <a class="dropdown-item" href="javascript:;" @click="showNotifications">通知
+                     <span class="notification-num" v-if="notificationCount" >({{ notificationCount }})<span>
+                  </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" @click="logout" href="/">注销</a>
                 </div>
@@ -81,8 +76,7 @@
         currentView: 'login',
         messages: [],
         user: {},
-        showNotifications: true,
-        notificationCount: 10
+        notificationCount: 0
       }
     },
     events:{
@@ -107,6 +101,10 @@
       signup (){
         this.overlayStatus = true;
         this.currentView = 'signup';
+      },
+      showNotifications() {
+        this.overlayStatus = true;
+        this.currentView = 'user-notifications';
       },
       viewUserDropdown (e) {
         e && e.preventDefault();
@@ -135,12 +133,23 @@
         }.bind(this), timeout);
       },
       check: function() {
+        debug('check');
         if (!this.user.username) return;
-        // api.notification.count(function(resp) {
-        //   this.notificationCount = resp.count;
-        // }.bind(this));
+        this.$http.get(serviceUrl.notificationsCount)
+        .then((resp) => {
+          if (util.filterError(this, resp)) {
+            this.notificationCount = resp.data.result.count;
+          }
+        }, util.httpErrorFn(this))
       }
 		},
+    ready () {
+      // setTimeout(this.check.bind(this), 2000);
+      var interval = 300000;
+      // check every 5 minutes
+      this.check.bind(this);
+      setInterval(this.check.bind(this), interval);
+    },
     created () {
       // console.log('created nav');
       /*this.$http.get(serviceUrl.userStatus).then((res) => {
@@ -224,6 +233,8 @@
       right 0
       &:before,&:after
         left 90%
+    .notification-num
+      color #f00
   .avatar
     width totalHeight - 2 * paddingTop
     height totalHeight - 2 * paddingTop
