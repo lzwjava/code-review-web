@@ -20,7 +20,7 @@
               <span><i class="fa fa-clock-o fa-fw"></i>{{comment.created | fromNowTime}}</span>
             </div>
 
-            <markdown :content="comment.content" show="true"></markdown>
+            <markdown :content="comment | content" show="true"></markdown>
 
             <div class="">
               <button class="btn-reply" @click="reply(comment)"><i class="fa fa-comment-o fa-fw"></i>回复</button>
@@ -90,6 +90,16 @@ export default {
         return '评论给审阅者';
       } else {
         return '回复 ' + this.parentComment.author.username
+      }
+    }
+  },
+  filters: {
+    content (comment) {
+      debug('content comment: %j', comment);
+      if (comment.parentId) {
+        return '回复 ' + comment.parent.author.username +'：' + comment.content;
+      } else {
+        return comment.content;
       }
     }
   },
@@ -194,9 +204,11 @@ export default {
           position absolute
           left 0px
           width 100px
+          text-align center
           .avatar
-            width 60px
-            height 60px
+            img
+              width 50px
+              height 50px
         .item-right
           margin-left 100px
           display inline-block
@@ -230,8 +242,9 @@ export default {
           width 100px
           text-align center
           .avatar
-            width 60px
-            height 60px
+            img
+              width 50px
+              height 50px
         .form-right
           margin-left 100px
           .markdown-area
