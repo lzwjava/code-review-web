@@ -5,7 +5,7 @@
 				<h2 v-if="step==0">Code Review 使用指南</h2>
 				<button type="button" class="begin" v-if="step==0" @click="begin">开始申请</button>
 				<div class="sliderbg" :class="[stepClass]"></div>
-				<div class"stepcontainer">
+				<div class="stepcontainer">
 					<div class="card-tips" v-if="step>0" :style="styleObject">
 						<button type="button" class="cancel" @click="cancel"></button>
 						<div class="card-content" :class="[stepClass]">
@@ -13,9 +13,9 @@
 							<h6>{{title}}</h6>
 							<p>{{text}}</p>
 							<div class="card-footer" v-if="step<4" :class="[stepClass]">
-								<span style="font-family: PingFang-SC;">{{stepnumber}} of 3</span>	
-								<button type="button" @click="next">下一步 ></button>
-								<button type="button" @click="prev" :class="{'disabled': step==1}">上一步</button>
+								<span style="font-family: PingFang-SC;">{{stepnumber}} of 3</span>
+								<button type="button" @click="next">下一步&gt;</button>
+								<button type="button" @click="prev" :class="{'disabled': step==1}">&lt;上一步</button>
 							</div>
 							<div class="final" :class="[stepClass]"></div>
 						</div>
@@ -28,6 +28,7 @@
 		</div>
 	</section>
 </template>
+
 <style lang="stylus">
 blue = #1cb2ef
 	.guide
@@ -138,7 +139,7 @@ blue = #1cb2ef
 					-webkit-transform scale(1)
 					transition all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)
 					-webkit-transition all 0.6 cubic-bezier(0.68, -0.55, 0.265, 1.55)
-				&。step3
+				&.step3
 					transform scale(0)
 					-webkit-transform scale(0)
 					transition all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)
@@ -284,6 +285,7 @@ blue = #1cb2ef
 	100%
 		box-shadow 0 0 0 20px rgba(255, 150, 44, 0)
 </style>
+
 <script>
 	var text = ['','首先，你需要确定帮你审核代码的审核人，在「首页」或者 「发现大神」页面，选择大神卡片，点击了解详情。','在审核者个人页中，点「申请 Code Review 」按钮，即可进入审核流程。','在弹出的 Code Review 订单中，输入「 GitHub 地址」、「 代码行数」、「问题简介」，输入完成后，点击按钮提交申请。'];
 	var title = ['','发现大神','申请 Code Review','填写订单']
