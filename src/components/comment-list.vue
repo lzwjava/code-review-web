@@ -64,8 +64,6 @@ import UserAvatar from './user-avatar.vue'
 import MarkdownArea from '../components/markdown-area.vue'
 import Markdown from '../components/markdown.vue'
 
-require('font-awesome/css/font-awesome.css');
-
 var debug = require('debug')('comment-list');
 
 export default {

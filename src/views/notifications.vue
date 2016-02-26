@@ -29,8 +29,6 @@
 
 <script type="text/javascript">
 
-require('font-awesome/css/font-awesome.css');
-
 import util from '../common/util'
 import serviceUrl from '../common/serviceUrl'
 import UserAvatar from '../components/user-avatar.vue'

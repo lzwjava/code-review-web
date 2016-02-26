@@ -22,7 +22,9 @@
             <a href="/video.html"><li class="hover-btn">直播视频</li></a>
             <li class="hover-btn" v-if="!userStatus" class="signup" @click="signup">注册</li>
             <li class="hover-btn" v-if="!userStatus" @click="signin">登录</li>
+            <li class="badge-li"><i class="fa fa-circle fa-fw badge"></i></li>
             <li v-if="userStatus">
+
               <dropdown>
                 <user-avatar slot="showText" :user="user" @click="viewUserDropdown"></user-avatar>
                 <div slot="options">
@@ -139,7 +141,8 @@
       }
 		},
     ready () {
-      setTimeout(this.check.bind(this), 2000);
+      this.check();
+      //setTimeout(this.check.bind(this), 500);
       var interval = 300000;
       // check every 5 minutes
       // this.check.bind(this);
@@ -223,6 +226,13 @@
         font-weight 600
       &.hover-btn:hover
         color blue
+      &.badge-li
+        padding-left 20px
+        padding-right 5px
+        .badge
+          width 0px
+          font-size 5px
+          color #7e8283
     .dropdown-inner
       width 220px
       right 0
