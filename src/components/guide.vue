@@ -2,7 +2,7 @@
 	<section class="guide">
 		<div class="browser">
 			<div class="slider" :class="[stepClass]">
-				<h2 v-if="step==0">Code Review 使用指南</h2>
+				<h2 v-if="step==0">Code Review 申请指南</h2>
 				<button type="button" class="begin" v-if="step==0" @click="begin">开始申请</button>
 				<div class="sliderbg" :class="[stepClass]"></div>
 				<div class="stepcontainer">
