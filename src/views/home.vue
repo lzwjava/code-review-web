@@ -39,7 +39,7 @@
         </li>
       </ul>
     </section>
-
+    <guide></guide>
     <section class="reviewer">
       <div class="bg">
           <h2>发现行业内精英开发者</h2>
@@ -159,7 +159,7 @@
 <script type="text/javascript">
   import reviewerCard from '../components/reviewer-card.vue'
   import serviceUrl from "../common/serviceUrl.js";
-
+  import Guide from '../components/guide.vue';
   import Overlay from '../components/overlay.vue';
   import Contactus from '../components/contactus.vue';
 
@@ -168,6 +168,7 @@
   export default {
     components: {
       overlay: Overlay,
+      guide: Guide,
       contactus:  Contactus,
       reviewer: reviewerCard
     },

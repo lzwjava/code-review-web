@@ -7,7 +7,8 @@
     "dev": "webpack-dev-server --inline --hot --config build/webpack.dev.conf.js --port 9090",
     "server": "node server.js",
     "build": "rimraf dist && webpack --progress --hide-modules --config build/webpack.prod.conf.js",
-    "deploy": "fab -H root@reviewcode.cn deploy"
+    "deploy": "fab -H root@reviewcode.cn deploy",
+    "beta": "fab -H root@test.reviewcode.cn deploy"
   },
   "repository": {
     "type": "git",
