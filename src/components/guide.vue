@@ -205,7 +205,7 @@ blue = #1cb2ef
 						&:hover
 							color blue
 						&.disabled
-							opacity .5
+							display none
 							cursor not-allowed
 				.card-content
 					top 0px
