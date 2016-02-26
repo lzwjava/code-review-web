@@ -2,8 +2,8 @@
 	<section class="slide">
       <div class="bg">
         <div class="text">
-        	<h1>耀源：<br/>一些代码建议</h1>
-					<a href="article.html?reviewId=8" target="_blank"><button class="detail">详细阅读</button></a>
+        	<h1>延瑞：<br/>好的代码习惯</h1>
+					<a href="article.html?reviewId=10" target="_blank"><button class="detail">详细阅读</button></a>
         </div>
       </div>
     </section>
@@ -23,7 +23,7 @@
     import ArticleList from '../components/article-item.vue'
 		var debug = require('debug')('case');
     export default{
-        data (){
+        data () {
             return {
                 caseList: [],
                 articleState: false
