@@ -3,7 +3,7 @@
   <div class="comment-container">
     <div class="comment-list">
 
-      <div class="comment-head">
+      <div v-el:comment-head class="comment-head">
         <span class="title">内容评论</span>
         <span class="count">{{comments.length}}</span>
         <button class="comment-new" @click="commentAuthor"></button>
@@ -130,6 +130,8 @@ export default {
     submitComment(e) {
       e && e.preventDefault();
       debug('submit');
+      // 因为 created 之后用户登录了，所以重新获取一遍
+      this.currentUser = util.getLocalUser();
       if (!this.currentUser.username) {
         // 弹出注册 form
         debug('注册');
@@ -148,6 +150,7 @@ export default {
       .then((resp) => {
          if (util.filterError(this, resp)) {
            this.content = '';
+           this.$els.commentHead.scrollIntoView();
            this.loadComments();
          }
        }, util.httpErrorFn(this));
