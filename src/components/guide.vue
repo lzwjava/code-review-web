@@ -14,8 +14,8 @@
 							<p>{{text}}</p>
 							<div class="card-footer" v-if="step<4" :class="[stepClass]">
 								<span style="font-family: PingFang-SC;">{{stepnumber}} of 3</span>
-								<button type="button" @click="next">下一步&gt;</button>
-								<button type="button" @click="prev" :class="{'disabled': step==1}">&lt;上一步</button>
+								<button type="button" @click="next">下一步 &gt;</button>
+								<button type="button" @click="prev" :class="{'disabled': step==1}">&lt; 上一步</button>
 							</div>
 							<div class="final" :class="[stepClass]"></div>
 						</div>
