@@ -1,37 +1,50 @@
 <template>
 	<section class="slide">
-      <div class="bg">
-        <div class="text">
-        	<h1>延瑞：<br/>好的代码习惯</h1>
-					<a href="article.html?reviewId=10" target="_blank"><button class="detail">详细阅读</button></a>
-        </div>
-      </div>
-    </section>
-    <section class="case-list">
-      <div class="listcontainer">
-        <h3>全部文章</h3>
-      </div>
+			<div class="bg">
+				<loading>
+					<div class="text">
+						<h1>{{topReview.title}}</h1>
+						<a href="article.html?reviewId={{topReview.reviewId}}" target="_blank"><button class="detail">详细阅读</button></a>
+					</div>
+				</loading>
+			</div>
+	</section>
+	<section class="case-list">
+			<div class="listcontainer">
+				<h3>全部文章</h3>
+			</div>
 
-    	<case-list :article-list="caseList"></case-list>
-      <div class="no-case" v-if="articleState" >没有文章可看</div>
-    	<div class="pagination">
-    		<pagination></pagination>
-    	</div>
-    </section>
+			<loading>
+				<case-list :article-list="caseList"></case-list>
+			</loading>
+			<div class="no-case" v-if="articleState" >没有文章可看</div>
+			<div class="pagination">
+				<pagination></pagination>
+			</div>
+	</section>
+
 </template>
 <script>
     import ArticleList from '../components/article-item.vue'
+		import Loading from '../components/loading.vue'
 		var debug = require('debug')('case');
     export default{
         data () {
             return {
+								topReview: {
+									title: ' '
+								},
                 caseList: [],
                 articleState: false
             }
         },
         events:{
             'pagination-success': function(res) {
+							this.$broadcast('loaded');
 							this.caseList = res.data.result;
+							if (this.caseList.length > 0) {
+								this.topReview = this.caseList[this.getRandomInt(0, this.caseList.length - 1)];
+							}
             },
             'no-article': function(){
               this.articleState = true;
@@ -41,8 +54,14 @@
             }
         },
         components: {
-            "case-list":ArticleList
-        }
+            "case-list":ArticleList,
+						'loading': Loading
+        },
+				methods: {
+					getRandomInt: function (min, max) {
+						return Math.floor(Math.random() * (max - min + 1)) + min;
+					}
+				}
     }
 </script>
 <style lang="stylus">
