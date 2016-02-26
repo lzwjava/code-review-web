@@ -9,13 +9,13 @@
 					<div class="card-tips" v-if="step>0" :style="styleObject">
 						<button type="button" class="cancel" @click="cancel"></button>
 						<div class="card-content" :class="[stepClass]">
-							<h3 :class="[stepClass]">{{stepText}} <div class ="numbercontainer" :class="[stepClass]"><span v-text="step" v-if="step!=4" :class="[stepClass]"></span></div></h3>
+							<h3 :class="[stepClass]">{{stepText}} <div class ="numbercontainer" :class="[stepClass]"><span v-text="step" v-if="step!=4" :class="[stepClass]"></span> </div> </h3>
 							<h6>{{title}}</h6>
 							<p>{{text}}</p>
 							<div class="card-footer" v-if="step<4" :class="[stepClass]">
 								<span style="font-family: PingFang-SC;">{{stepnumber}} of 3</span>	
 								<button type="button" @click="next">下一步 ></button>
-								<button type="button" @click="prev" :class="{'disabled': step==1}">< 上一步</button>
+								<button type="button" @click="prev" :class="{'disabled': step==1}">上一步</button>
 							</div>
 							<div class="final" :class="[stepClass]"></div>
 						</div>
