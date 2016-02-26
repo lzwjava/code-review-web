@@ -40,7 +40,9 @@
             <markdown-area :content.sync="content" :placeholder="placeholder" @submit="submitComment" required></markdown-area>
 
             <div class="form-comment">
-              <span class="markdown-icon"><i class="fa fa-check"></i>Markdown</span>
+              <a class="markdown-icon" href="https://guides.github.com/features/mastering-markdown/" target="_blank">
+                <i class="fa fa-check"></i>Markdown
+              </a>
               <button class="btn btn-green btn-comment">评论</button>
             </div>
 
@@ -126,9 +128,12 @@ export default {
         debug('注册');
         return;
       }
-      this.$http.post(serviceUrl.commentCreate.replace(/:id/, this.reviewId),{
-        content: this.content
-      }).then((resp) => {
+      var params = {content: this.content};
+      if (this.parentComment) {
+        params.parentId = this.parentComment.commentId;
+      }
+      this.$http.post(serviceUrl.commentCreate.replace(/:id/, this.reviewId),params)
+      .then((resp) => {
          if (util.filterError(this, resp)) {
            this.loadComments()
          }
