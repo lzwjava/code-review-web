@@ -2,7 +2,7 @@
 	<section class="guide">
 		<div class="browser">
 			<div class="slider" :class="[stepClass]">
-				<h2 v-if="step==0">Code Review 使用指南</h2>
+				<h2 v-if="step==0">Code Review 申请指南</h2>
 				<button type="button" class="begin" v-if="step==0" @click="begin">开始申请</button>
 				<div class="sliderbg" :class="[stepClass]"></div>
 				<div class="stepcontainer">
@@ -164,7 +164,7 @@ blue = #1cb2ef
 					-webkit-transform scale(1)
 					transition all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)
 					-webkit-transition all 0.6 cubic-bezier(0.68, -0.55, 0.265, 1.55)
-				&。step4
+				&.step4
 					transform scale(0)
 					-webkit-transform scale(0)
 					transition all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)
