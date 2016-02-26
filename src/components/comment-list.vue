@@ -130,14 +130,14 @@ export default {
     submitComment(e) {
       e && e.preventDefault();
       debug('submit');
-      if (!this.content) {
-        util.show(this, 'warn', '请输入点什么');
-        return;
-      }
       if (!this.currentUser.username) {
         // 弹出注册 form
         debug('注册');
         util.show(this, 'info', '请登录');
+        return;
+      }
+      if (!this.content) {
+        util.show(this, 'warn', '请输入点什么');
         return;
       }
       var params = {content: this.content};
