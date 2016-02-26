@@ -1,37 +1,50 @@
 <template>
 	<section class="slide">
-      <div class="bg">
-        <div class="text">
-        	<h1>耀源：<br/>一些代码建议</h1>
-					<a href="article.html?reviewId=8" target="_blank"><button class="detail">详细阅读</button></a>
-        </div>
-      </div>
-    </section>
-    <section class="case-list">
-      <div class="listcontainer">
-        <h3>全部文章</h3>
-      </div>
+			<div class="bg">
+				<loading>
+					<div class="text">
+						<h1>{{topReview.title}}</h1>
+						<a href="article.html?reviewId={{topReview.reviewId}}" target="_blank"><button class="detail">详细阅读</button></a>
+					</div>
+				</loading>
+			</div>
+	</section>
+	<section class="case-list">
+			<div class="listcontainer">
+				<h3>全部文章</h3>
+			</div>
 
-    	<case-list :article-list="caseList"></case-list>
-      <div class="no-case" v-if="articleState" >没有文章可看</div>
-    	<div class="pagination">
-    		<pagination></pagination>
-    	</div>
-    </section>
+			<loading>
+				<case-list :article-list="caseList"></case-list>
+			</loading>
+			<div class="no-case" v-if="articleState" >没有文章可看</div>
+			<div class="pagination">
+				<pagination></pagination>
+			</div>
+	</section>
+
 </template>
 <script>
     import ArticleList from '../components/article-item.vue'
+		import Loading from '../components/loading.vue'
 		var debug = require('debug')('case');
     export default{
-        data (){
+        data () {
             return {
+								topReview: {
+									title: ' '
+								},
                 caseList: [],
                 articleState: false
             }
         },
         events:{
             'pagination-success': function(res) {
+							this.$broadcast('loaded');
 							this.caseList = res.data.result;
+							if (this.caseList.length > 0) {
+								this.topReview = this.caseList[this.getRandomInt(0, this.caseList.length - 1)];
+							}
             },
             'no-article': function(){
               this.articleState = true;
@@ -41,8 +54,14 @@
             }
         },
         components: {
-            "case-list":ArticleList
-        }
+            "case-list":ArticleList,
+						'loading': Loading
+        },
+				methods: {
+					getRandomInt: function (min, max) {
+						return Math.floor(Math.random() * (max - min + 1)) + min;
+					}
+				}
     }
 </script>
 <style lang="stylus">
@@ -88,7 +107,11 @@
       transition all 0.4s
       &:hover
           color white
+          border 1px solid #31B766
+          -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
+          box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
           background #33C96F
+
 
 
 .listcontainer

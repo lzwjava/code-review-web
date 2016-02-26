@@ -71,6 +71,8 @@ green = #33C96F
 		border-radius 3px
 		height 500px
 		padding 50px
+		box-shadow 0px 13px 21px 7px rgba(0,0,0,.1)
+		-webkit-box-shadow 0px 13px 21px 7px rgba(0,0,0,.1)
 		position absolute
 		left 50%
 		top 50%
