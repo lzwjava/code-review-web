@@ -185,7 +185,7 @@ export default {
     .comment-ul
       .comment-item
         border-top 1px solid rgba(0,0,0,0.15)
-        padding-top 20px
+        padding 15px 0px
         position relative
         img.icon
           width 16px
