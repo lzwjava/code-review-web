@@ -30,5 +30,7 @@ export default {
     reviewVisitCreate: 'reviews/:id/visits',
     applicationsCreate: 'applications',
     notifications: 'notifications',
-    notificationsCount: 'notifications/count'
+    notificationsCount: 'notifications/count',
+    commentsGet: 'reviews/:id/comments',
+    commentCreate: 'reviews/:id/comments',
 }
