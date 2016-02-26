@@ -29,7 +29,7 @@
         </li>
       </ul>
 
-      <form id="comment-form" class="comment-form" action="" @submit="submitComment" method="post">
+      <form v-el:comment-form class="comment-form" action="" @submit="submitComment" method="post">
         <h3>进行评论</h3>
         <div class="form-main">
           <div class="form-left">
@@ -37,7 +37,7 @@
           </div>
           <div class="form-right">
 
-            <markdown-area :content.sync="content" :placeholder="placeholder" @submit="submitComment" required></markdown-area>
+            <markdown-area v-ref:markdown-area :content.sync="content" :placeholder="placeholder" @submit="submitComment" required></markdown-area>
 
             <div class="form-comment">
               <a class="markdown-icon" href="https://guides.github.com/features/mastering-markdown/" target="_blank">
@@ -115,8 +115,9 @@ export default {
     },
     scrollToComment() {
       debug('scroll');
-      var elm = document.getElementById("comment-form");
-      elm.scrollIntoView(false);
+      this.$els.commentForm.scrollIntoView(false);
+      //elm.focus();
+      this.$refs.markdownArea.focus();
     },
     reply(comment) {
       this.parentComment = comment;
@@ -136,6 +137,7 @@ export default {
       if (!this.currentUser.username) {
         // 弹出注册 form
         debug('注册');
+        util.show(this, 'info', '请登录');
         return;
       }
       var params = {content: this.content};
@@ -145,7 +147,8 @@ export default {
       this.$http.post(serviceUrl.commentCreate.replace(/:id/, this.reviewId),params)
       .then((resp) => {
          if (util.filterError(this, resp)) {
-           this.loadComments()
+           this.content = '';
+           this.loadComments();
          }
        }, util.httpErrorFn(this));
     }
