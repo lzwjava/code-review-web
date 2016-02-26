@@ -5,7 +5,7 @@
 				<h2 v-if="step==0">Code Review 使用指南</h2>
 				<button type="button" class="begin" v-if="step==0" @click="begin">开始申请</button>
 				<div class="sliderbg" :class="[stepClass]"></div>
-				<div class"stepcontainer">
+				<div class="stepcontainer">
 					<div class="card-tips" v-if="step>0" :style="styleObject">
 						<button type="button" class="cancel" @click="cancel"></button>
 						<div class="card-content" :class="[stepClass]">
@@ -204,7 +204,7 @@ blue = #1cb2ef
 						&:hover
 							color blue
 						&.disabled
-							opacity .5
+							display none
 							cursor not-allowed
 				.card-content
 					top 0px
