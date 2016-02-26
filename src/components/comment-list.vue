@@ -5,8 +5,8 @@
 
       <div class="comment-head">
         <span class="title">内容评论</span>
-        <span class="count">2</span>
-        <button class="comment-new"></button>
+        <span class="count">{{comments.length}}</span>
+        <button class="comment-new" @click="commentAuthor"></button>
       </div>
 
       <ul class="comment-ul">
@@ -20,25 +20,27 @@
               <span><i class="fa fa-clock-o fa-fw"></i>{{comment.created | fromNowTime}}</span>
             </div>
 
-            <p class="content">{{comment.content}}</p>
+            <markdown :content="comment.content" show="true"></markdown>
 
             <div class="">
-              <button class="btn-reply"><i class="fa fa-comment-o fa-fw"></i>回复</button>
+              <button class="btn-reply" @click="reply(comment)"><i class="fa fa-comment-o fa-fw"></i>回复</button>
             </div>
           </div>
         </li>
       </ul>
 
-      <form class="comment-form" action="" @submit="submitComment" method="post">
+      <form id="comment-form" class="comment-form" action="" @submit="submitComment" method="post">
         <h3>进行评论</h3>
         <div class="form-main">
           <div class="form-left">
             <user-avatar :user="currentUser"></user-avatar>
           </div>
           <div class="form-right">
-            <textarea v-model="content"></textarea>
+
+            <markdown-area :content.sync="content" :placeholder="placeholder" @submit="submitComment" required></markdown-area>
 
             <div class="form-comment">
+              <span class="markdown-icon"><i class="fa fa-check"></i>Markdown</span>
               <button class="btn btn-green btn-comment">评论</button>
             </div>
 
@@ -57,6 +59,9 @@
 import serviceUrl from '../common/serviceUrl.js'
 import util from '../common/util.js'
 import UserAvatar from './user-avatar.vue'
+import MarkdownArea from '../components/markdown-area.vue'
+import Markdown from '../components/markdown.vue'
+
 require('font-awesome/css/font-awesome.css');
 
 var debug = require('debug')('comment-list');
@@ -64,14 +69,27 @@ var debug = require('debug')('comment-list');
 export default {
   props: ['reviewId'],
   components: {
-    'user-avatar': UserAvatar
+    'user-avatar': UserAvatar,
+    'markdown-area': MarkdownArea,
+    'markdown': Markdown
   },
   data() {
     return {
       comments: [],
       currentUser: {},
-      content: ''
+      content: '',
+      parentComment: null,
+      placeholder: ''
     };
+  },
+  computed: {
+    placeholder () {
+      if (this.parentComment == null) {
+        return '评论给审阅者';
+      } else {
+        return '回复 ' + this.parentComment.author.username
+      }
+    }
   },
   methods: {
     loadComments () {
@@ -82,6 +100,19 @@ export default {
            debug('comments: %j', this.comments);
          }
         }, util.httpErrorFn(this))
+    },
+    scrollToComment() {
+      debug('scroll');
+      var elm = document.getElementById("comment-form");
+      elm.scrollIntoView(false);
+    },
+    reply(comment) {
+      this.parentComment = comment;
+      this.scrollToComment();
+    },
+    commentAuthor() {
+      this.parentComment = null;
+      this.scrollToComment();
     },
     submitComment(e) {
       e && e.preventDefault();
@@ -148,6 +179,8 @@ export default {
         background-size contain
     .comment-ul
       .comment-item
+        border-top 1px solid rgba(0,0,0,0.15)
+        padding-top 20px
         position relative
         img.icon
           width 16px
@@ -165,7 +198,7 @@ export default {
           .item-header
             .name
               margin-right 10px
-          .content
+          .markdown-body
             margin 10px 0px
             font-size 16px
             color rgba(40,47,48,0.80)
@@ -196,17 +229,25 @@ export default {
             height 60px
         .form-right
           margin-left 100px
-          textarea
+          .markdown-area
             width 95%
+            min-height 120px
             margin 0px auto
-            height 100px
-            border 1px solid rgba(40,47,48,0.30)
-            box-shadow 0px 1px 4px 0px rgba(0,0,0,0.03);
-            border-radius 3px
+            textarea
+              width 100%
+              min-height 100px
+              border 1px solid rgba(40,47,48,0.30)
+              box-shadow 0px 1px 4px 0px rgba(0,0,0,0.03);
+              border-radius 3px
+              padding 5px
+              font-size 16px
           .form-comment
             height 50px
             padding-top 10px
-            padding-right 30px
+            padding-right 18px
+            .markdown-icon
+              margin-left 10px
+              color rgba(0,0,0,0.5)
             .btn-comment
               float right
               padding 10px 20px
