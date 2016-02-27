@@ -9,7 +9,7 @@
         <button class="comment-new" @click="commentAuthor"></button>
       </div>
 
-      <ul class="comment-ul">
+      <ul class="comment-ul" v-if="comments.length>0">
         <li class="comment-item" v-for="comment in comments">
           <div class="item-left">
             <user-avatar :user="comment.author"></user-avatar>
