@@ -26,6 +26,9 @@ export default {
     this.$on('loaded', () => {
       this.loading = false;
     });
+    this.$on('loading', () => {
+      this.loading = true;
+    });
   }
 };
 

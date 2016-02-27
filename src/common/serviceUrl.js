@@ -28,5 +28,9 @@ export default {
     reviewsView: 'reviews/:id', // get
     reviewsGet: 'reviews',
     reviewVisitCreate: 'reviews/:id/visits',
-    applicationsCreate: 'applications'
+    applicationsCreate: 'applications',
+    notifications: 'notifications',
+    notificationsCount: 'notifications/count',
+    commentsGet: 'reviews/:id/comments',
+    commentCreate: 'reviews/:id/comments',
 }

@@ -1,5 +1,6 @@
 <template>
-    <div class="main-container">
+    <div>
+      <div class="main-container">
         <div class="header-area">
             <h1 class="title">{{review.title}}</h1>
             <div class="intro">
@@ -44,6 +45,8 @@
             <markdown :content="review.content" :show="true"></markdown>
         </div>
 
+
+
         <!-- <div class="bottom-area" @click="overlayStatus = true">
             <button class="btn btn-green btn-reward">
                 <img src="../img/icon/white-reward.png">
@@ -54,6 +57,10 @@
         <overlay :overlay.sync="overlayStatus">
             <reward-form :order="order"></reward-form>
         </overlay> -->
+      </div>
+
+      <comment-list :review-id="reviewId"></comment-list>
+
     </div>
 </template>
 
@@ -64,6 +71,7 @@ import util from '../common/util'
 import serviceUrl from "../common/serviceUrl.js"
 import Markdown from "../components/markdown.vue"
 import RewardForm from '../components/reward-form.vue'
+import CommentList from '../components/comment-list.vue'
 
 var debug = require('debug')('article');
 
@@ -71,7 +79,8 @@ export default {
     components: {
         'markdown': Markdown,
         'overlay': Overlay,
-        'reward-form': RewardForm
+        'reward-form': RewardForm,
+        'comment-list': CommentList
     },
     data () {
         return {
@@ -82,7 +91,8 @@ export default {
             },
             review: {
               content: ''
-            }
+            },
+            reviewId: 0
         }
     },
     computed: {
@@ -97,16 +107,19 @@ export default {
                 window.document.title = this.order.reviewer.username + ': ' + window.document.title;
             }
         }, util.httpErrorFn(this));
-      }
-    },
-    created() {
-        var params = util.getSearchParameters()
-        if (!params.reviewId) {
-            util.show(this, 'error', '请提供 reviewId 参数');
-            return;
-        }
-
-        this.$http.get(serviceUrl.reviewsView.replace(/:id/, params.reviewId))
+      },
+      postVisit(reviewId) {
+        this.$http.post(serviceUrl.reviewVisitCreate.replace(/:id/, reviewId),{
+          referrer: document.referrer
+        }).then((resp) => {
+          if (util.filterError(this, resp)) {
+          }
+        }, (resp) => {
+          // 一秒中访问次数超过1，太快了
+        })
+      },
+      loadReview(reviewId) {
+        this.$http.get(serviceUrl.reviewsView.replace(/:id/, reviewId))
         .then((resp) => {
           if (util.filterError(this, resp)) {
             debug('%j', resp.data.result);
@@ -115,16 +128,21 @@ export default {
             this.fetchOrder(this.review.orderId);
           }
         }, util.httpErrorFn(this));
-
-        this.$http.post(serviceUrl.reviewVisitCreate.replace(/:id/, params.reviewId),{
-          referrer: document.referrer
-        }).then((resp) => {
-          if (util.filterError(this, resp)) {
-
-          }
-        }, (resp) => {
-          // 一秒中访问次数超过1，太快了
-        })
+      }
+    },
+    created() {
+        debug('article created');
+        var params = util.getSearchParameters()
+        if (!params.reviewId) {
+            util.show(this, 'error', '请提供 reviewId 参数');
+            return;
+        }
+        var reviewId = params.reviewId;
+        this.reviewId = reviewId;
+        debug('broadcast events');
+        this.$broadcast('loadComments');
+        this.loadReview(reviewId);
+        this.postVisit(reviewId);
     }
 }
 

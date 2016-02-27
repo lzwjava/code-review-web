@@ -16,7 +16,8 @@ module.exports = {
     statement: ['./src/statement.js'],
     belief: ['./src/belief.js'],
     paid: ['./src/paid.js'],
-    video: ['./src/video.js']
+    video: ['./src/video.js'],
+    notifications: ['./src/notifications.js']
   },
   output: {
     path: path.resolve(__dirname, '../dist/static/'),
