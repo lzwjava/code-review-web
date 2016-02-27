@@ -22,17 +22,14 @@
             <a href="/video.html"><li class="hover-btn">直播视频</li></a>
             <li class="hover-btn" v-if="!userStatus" class="signup" @click="signup">注册</li>
             <li class="hover-btn" v-if="!userStatus" @click="signin">登录</li>
-            <a href="/notifications.html?unread=true">
-              <li class="badge-li">
-                <i class="fa fa-circle fa-fw badge" :class="[badgeRed]"></i>
-              </li>
-            </a>
             <li v-if="userStatus">
-
               <dropdown>
-                <user-avatar slot="showText" :user="user" @click="viewUserDropdown"></user-avatar>
+                <div class="dropdown-anchor" slot="showText">
+                  <i v-show="notificationCount > 0" class="fa fa-circle fa-fw badge"></i>
+                  <user-avatar :user="user" @click="viewUserDropdown"></user-avatar>
+                </div>
                 <div slot="options">
-                    <div><user-avatar :user="user"></user-avatar>
+                    <user-avatar :user="user"></user-avatar>
                     <div class="name">{{user.username}}</div>
                   <div>
                   <div class="dropdown-divider"></div>
@@ -84,13 +81,6 @@
       }
     },
     computed: {
-      badgeRed() {
-        if (this.notificationCount > 0) {
-          return 'badge-red';
-        } else {
-          return '';
-        }
-      }
     },
     events:{
       changeView(view){
@@ -239,15 +229,14 @@
         font-weight 600
       &.hover-btn:hover
         color blue
-      &.badge-li
-        padding-left 20px
-        padding-right 10px
+      .dropdown-anchor
+        position relative
         .badge
-          width 0px
+          position absolute
+          top 2px
+          right 2px
           font-size 5px
-          color #7e8283
-          &.badge-red
-            color #e78170
+          color #f00
     .dropdown-inner
       width 220px
       right 0
