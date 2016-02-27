@@ -222,15 +222,7 @@ export default {
         .item-right
           margin-left 15%
           display inline-block
-<<<<<<< Updated upstream
-          width 85%
-=======
-<<<<<<< HEAD
           width calc(100% - 100px)
-=======
-          width 85%
->>>>>>> origin/master
->>>>>>> Stashed changes
           .item-header
             .name
               margin-right 10px
