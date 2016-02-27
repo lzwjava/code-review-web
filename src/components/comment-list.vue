@@ -207,15 +207,16 @@ export default {
         .item-left
           position absolute
           left 0px
-          width 100px
+          width 15%
           text-align center
           .avatar
             img
               width 50px
               height 50px
         .item-right
-          margin-left 100px
+          margin-left 15%
           display inline-block
+          width 85%
           .item-header
             .name
               margin-right 10px
