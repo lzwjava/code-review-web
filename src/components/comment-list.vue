@@ -88,7 +88,7 @@ export default {
   computed: {
     placeholder () {
       if (this.parentComment == null) {
-        return '评论给审阅者';
+        return '评论';
       } else {
         return '回复 ' + this.parentComment.author.username
       }
