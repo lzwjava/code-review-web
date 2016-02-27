@@ -22,7 +22,7 @@
             <a href="/video.html"><li class="hover-btn">直播视频</li></a>
             <li class="hover-btn" v-if="!userStatus" class="signup" @click="signup">注册</li>
             <li class="hover-btn" v-if="!userStatus" @click="signin">登录</li>
-            <li class="badge-li"><i class="fa fa-circle fa-fw badge"></i></li>
+            <a href="/notifications.html"><li class="badge-li"><i class="fa fa-circle fa-fw badge" :class="[badgeRed]"></i></li></a>
             <li v-if="userStatus">
 
               <dropdown>
@@ -77,6 +77,15 @@
         messages: [],
         user: {},
         notificationCount: 0
+      }
+    },
+    computed: {
+      badgeRed() {
+        if (this.notificationCount > 0) {
+          return 'badge-red';
+        } else {
+          return '';
+        }
       }
     },
     events:{
@@ -228,11 +237,13 @@
         color blue
       &.badge-li
         padding-left 20px
-        padding-right 5px
+        padding-right 10px
         .badge
           width 0px
           font-size 5px
           color #7e8283
+          &.badge-red
+            color #e78170
     .dropdown-inner
       width 220px
       right 0
