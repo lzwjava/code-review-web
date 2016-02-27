@@ -25,7 +25,7 @@
             <li v-if="userStatus">
               <dropdown>
                 <div class="dropdown-anchor" slot="showText">
-                  <i v-show="notificationCount > 0" class="fa fa-circle fa-fw badge"></i>
+                  <span v-show="notificationCount > 0" class="badge"></span>
                   <user-avatar :user="user" @click="viewUserDropdown"></user-avatar>
                 </div>
                 <div slot="options">
@@ -233,10 +233,13 @@
         position relative
         .badge
           position absolute
-          top 2px
-          right 2px
+          top 4px
+          right 4px
+          width 8px
+          height 8px
+          border-radius 50%
           font-size 5px
-          color #f00
+          background #f00
     .dropdown-inner
       width 220px
       right 0
