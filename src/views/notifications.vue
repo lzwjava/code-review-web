@@ -125,13 +125,14 @@ module.exports = {
           color #000
       .mark-read
         float right
-        background whitesmoke
-        box-shadow 0px 1px 2px 0px rgba(0,0,0,0.50)
-        color #999
-        padding 5px
-        &:hover
-          color #555555
-          background-color #eeeeee
+        background #33c96f
+        -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
+        box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
+        border 1px solid #31b766
+        color white
+        padding 8px
+        font-size 14px
+        margin-top -9px
     ul.unstyled
       padding-top 10px
       margin-top 20px
