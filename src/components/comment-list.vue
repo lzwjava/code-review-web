@@ -29,6 +29,12 @@
         </li>
       </ul>
 
+      <div class="empty-state" v-if="comments.length==0">
+        <div class="divider"></div>
+        <div class="empty-pic"></div>
+        <div class="empty-word">高质量的评论能够提高 Reviewer 的积极性哦</div>
+      </div>
+
       <form v-el:comment-form class="comment-form" action="" @submit="submitComment" method="post">
         <h3>进行评论</h3>
         <div class="form-main">
@@ -40,9 +46,6 @@
             <markdown-area v-ref:markdown-area :content.sync="content" :placeholder="placeholder" @submit="submitComment" required></markdown-area>
 
             <div class="form-comment">
-              <a class="markdown-icon" href="https://guides.github.com/features/mastering-markdown/" target="_blank">
-                <i class="fa fa-check"></i>Markdown
-              </a>
               <button class="btn btn-green btn-comment">评论</button>
             </div>
 
@@ -181,21 +184,24 @@ export default {
       text-align center
       padding 40px 0px
       .title
-        font-size 30px
+        font-size 22px
+        font-weight 400
       .count
         padding 2px 8px
         margin-left 5px
-        background #00CFF5
+        background #1cb2ef
         border-radius 20px
         font-size 10px
         color #FFFFFF
         line-height 12px
+        vertical-align text-top
       .comment-new
-        width 35px
-        height 35px
+        width 30px
+        height 30px
         float right
         background url("../img/icon/new-comment.png")
         background-size contain
+        background-repeat no-repeat
     .comment-ul
       .comment-item
         border-top 1px solid rgba(0,0,0,0.15)
@@ -216,7 +222,15 @@ export default {
         .item-right
           margin-left 15%
           display inline-block
+<<<<<<< Updated upstream
           width 85%
+=======
+<<<<<<< HEAD
+          width calc(100% - 100px)
+=======
+          width 85%
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           .item-header
             .name
               margin-right 10px
@@ -225,18 +239,36 @@ export default {
             font-size 16px
             color rgba(40,47,48,0.80)
             line-height 27.2px
+            word-wrap break-word
           .btn-reply
             color #b4b9ba
+    .empty-state
+      .divider
+        border-bottom 1px solid rgba(0,0,0,0.15)
+      .empty-pic
+        background-image url("../img/comment-emptystate@2x.png")
+        background-size contain
+        background-repeat no-repeat
+        width 453px
+        margin 0 auto
+        height 281px
+        margin-top  40px
+        margin-bottom 40px
+      .empty-word
+        font-size 24px
+        text-align center
     .comment-form
       margin-top 50px
       background #FDFFFF
-      border 0px solid rgba(0,0,0,0.15)
+      border 1px solid rgba(0,0,0,0.15)
       box-shadow 0px -1px 4px 0px rgba(135,135,135,0.15)
       border-radius 3px
       position relative
       h3
         text-align center
-        font-size 20px
+        font-size 14px
+        letter-spacing 2px
+        font-weight bold
         padding 15px 0px
         border-bottom 1px solid #E7E7E7
       .form-main
@@ -245,34 +277,49 @@ export default {
         .form-left
           position absolute
           width 100px
+          margin-top 17px
           text-align center
           .avatar
             img
               width 50px
               height 50px
         .form-right
-          margin-left 100px
+          margin-left 85px
+          margin-right 10px
           .markdown-area
             width 95%
             min-height 120px
             margin 0px auto
             textarea
               width 100%
+              max-width 573px
               min-height 100px
               border 1px solid rgba(40,47,48,0.30)
               box-shadow 0px 1px 4px 0px rgba(0,0,0,0.03);
               border-radius 3px
               padding 5px
               font-size 16px
+            .markdown-actions
+              position relative
+              float left
+              margin-top 22px
+              opacity 0.6
+              line-height 1
+            .markdown-actions2
+              position relative
+              float left
+              margin-top 22px
+              opacity 0.6
+              line-height 1
           .form-comment
             height 50px
             padding-top 10px
             padding-right 18px
-            .markdown-icon
-              margin-left 10px
-              color rgba(0,0,0,0.5)
             .btn-comment
               float right
               padding 10px 20px
-
+              margin-right -2px
+              -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
+              box-shaodw 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
+              border 1px solid #31b766
 </style>
