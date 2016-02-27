@@ -22,7 +22,11 @@
             <a href="/video.html"><li class="hover-btn">直播视频</li></a>
             <li class="hover-btn" v-if="!userStatus" class="signup" @click="signup">注册</li>
             <li class="hover-btn" v-if="!userStatus" @click="signin">登录</li>
-            <a href="/notifications.html"><li class="badge-li"><i class="fa fa-circle fa-fw badge" :class="[badgeRed]"></i></li></a>
+            <a href="/notifications.html?unread=true">
+              <li class="badge-li">
+                <i class="fa fa-circle fa-fw badge" :class="[badgeRed]"></i>
+              </li>
+            </a>
             <li v-if="userStatus">
 
               <dropdown>

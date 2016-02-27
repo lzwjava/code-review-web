@@ -14,7 +14,9 @@
             <li class="" v-for="notice in notifications">
               {{notice.sender.username}}
               <span v-if="notice.type == 'agree'">{{notice.text}}</span>
-              <span v-if="notice.type == 'comment'">评论了你</span>
+              <span v-if="notice.type == 'comment'">评论了你参与的
+                <a :href="'./article.html?reviewId=' + notice.comment.reviewId">Review</a>
+              </span>
               <span v-if="notice.type == 'new_order'">向您申请了 <a href="./order.html">Code Review</a></span>
               <span v-if="notice.type == 'finish_order'">已审阅完了您的代码，请前往
                 <a :href="'./article.html?reviewId='+notice.order.reviewId">案例页</a>查看。
@@ -80,8 +82,14 @@ module.exports = {
       }, util.httpErrorFn(this));
     }
   },
-  ready: function() {
+  ready () {
     this.fetch();
+  },
+  created() {
+    var params = util.getSearchParameters();
+    if (params.unread === 'true') {
+      this.mode = 'unread';
+    }
   }
 };
 
