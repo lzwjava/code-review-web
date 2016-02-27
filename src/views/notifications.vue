@@ -77,6 +77,10 @@ module.exports = {
       this.$http.patch(serviceUrl.notifications, {})
         .then((resp) => {
           if (util.filterError(this, resp)) {
+            var nav = this.$root.$children[0];
+            if (nav && nav.notificationCount) {
+              nav.notificationCount = 0
+            }
             this.fetch();
           }
       }, util.httpErrorFn(this));
