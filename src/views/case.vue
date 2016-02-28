@@ -43,7 +43,8 @@
 							this.$broadcast('loaded');
 							this.caseList = res.data.result;
 							if (this.caseList.length > 0) {
-								this.topReview = this.caseList[this.getRandomInt(0, this.caseList.length - 1)];
+								this.topReview = this.caseList[0];
+								//this.topReview = this.caseList[this.getRandomInt(0, this.caseList.length - 1)];
 							}
             },
             'no-article': function(){
