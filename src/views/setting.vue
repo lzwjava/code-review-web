@@ -377,8 +377,10 @@
 					border-bottom-left-radius 3px
 					border-bottom-right-radius 3px
 				p
-					opacity 0.6
 					line-height 32px
+					opacity 0.75
+					font-size 14px
+					font-weight 700
 				span
 					opacity .6
 					position absolute
@@ -433,8 +435,10 @@
 					border-bottom-left-radius 3px
 					border-bottom-right-radius 3px
 					p
-						opacity 0.6
+						opacity 0.75
 						line-height 50px
+						font-size 14px
+						font-weight 700
 					select
 						height 50px
 						width 205px

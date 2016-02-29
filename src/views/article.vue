@@ -155,10 +155,11 @@ export default {
 body
     background #fff
 
-.navbar
-  position fixed
-  top 0
-  z-index 2
+@media screen and (min-width:768px)
+  .navbar
+    position fixed
+    top 0
+    z-index 2
 
 .header-area
     max-width 900px
@@ -186,8 +187,11 @@ body
 .bottom-area
 .order-area
 .content-area
-    max-width 700px
+    max-width 65%
     margin 40px auto
+    @media screen and (max-width:768px)
+      max-width 90%
+
 .btn-github
     width 84px
     height 27px

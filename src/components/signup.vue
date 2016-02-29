@@ -182,7 +182,6 @@
 				text-indent 53px
 				outline none
 				font-size 14px
-				transition all 0.35s ease 0s
 				&:focus
 					border 1px solid #1CB2EF
 					+ .icon

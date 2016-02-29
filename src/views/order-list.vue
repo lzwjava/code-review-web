@@ -233,10 +233,18 @@
 			line-height 96px
 			height: 96px
 			text-align center
+			border-bottom 1px solid rgba(0,0,0,0.15)
+			border-right 1px solid rgba(0,0,0,0.15)
+			border-bottom 1px solid rgba(0,0,0,0.15)
+			box-shadow inset 0 1px 0 rgba(255,255,255,0.15), 0 1px 2px rgba(0,0,0,0.15)
+			webkit-box-shadow 0 1px 0 rgba(255,255,255,0.15) inset, 0 1px 2px rgba(0,0,0,0.15)
 		.list
 			display: table;
 			width: 100%;
 			background #FDFFFF
+			border 1px solid rgba(0,0,0,.15)
+			box-shadow inset 0 1px 0 hsla(0,0%,100%,.15),0 1px 2px rgba(0,0,0,.15)
+			-webkit-box-shadow 0 1px 0 hsla(0,0%,100%,.15) inset,0 1px 2px rgba(0,0,0,.15)
 			font-family "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", Arial, "Microsoft Yahei", Verdana, sans-serif
 			.list-row
 				display: table-row

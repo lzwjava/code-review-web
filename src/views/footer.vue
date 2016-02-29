@@ -75,7 +75,7 @@ components: {
 	text-align center
 	color white
 	.list
-		width 1160px
+		width 85%
 		margin 0 auto
 		display flex
 		flex-direction row
@@ -120,7 +120,7 @@ components: {
 			text-align left
 			margin 0 auto
 			line-height 19px
-			.number 
+			.number
 				margin-bottom 20px
 				font-weight 500
 				font-size 20px
@@ -131,6 +131,6 @@ components: {
 				a
 					color white
 					cursor pointer
-			
+
 
 </style>

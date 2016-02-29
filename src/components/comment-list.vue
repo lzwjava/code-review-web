@@ -179,8 +179,10 @@ export default {
   .comment-list
     padding-top 0px
     padding-bottom 100px
-    max-width 700px
+    max-width 50%
     margin 0px auto
+    @media screen and (max-width:768px)
+      max-width 90%
     .comment-head
       text-align center
       padding 40px 0px

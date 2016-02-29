@@ -39,8 +39,10 @@ h2
   font-family Raleway-Regular
 
 body
-  min-width 1200px
   background #F1F5F6
+
+  @media screen and (max-width:768px)
+    width 100%
 
 button,input,select,textarea
   border-radius 3px
@@ -111,7 +113,7 @@ h4
   @extend .pingfang-first-font
 h5
   font-size 20px
-.setting .tags .tags-content .select-content select 
+.setting .tags .tags-content .select-content select
   &:focus
     border 1px solid #1CB2EF
 .setting .form .row input
@@ -135,4 +137,3 @@ input, textarea, select
     outline none
     box-shadow 0px 1px 4px 0px rgba(0,0,0,.06)
     -webkit-box-shadow 0px 1px 4px 0px rgba(0,0,0,.06)
-

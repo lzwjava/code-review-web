@@ -183,6 +183,7 @@ export default {
             border 1px solid rgba(0,0,0,0.15)
             box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
             -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
+            height 100%
         &.right
             flex 2
             margin-left 25px
@@ -197,9 +198,12 @@ export default {
                 font-weight 600
         h4
             border-bottom 1px solid rgba(0,0,0,.15)
-            color rgba(40,47,49,.6)
+            color rgba(40,47,49,1)
             padding-top 10px
             padding-bottom 10px
+            opacity 0.75
+            font-size 14px
+            font-weight 700
         .content
             padding 30px
         .row
@@ -247,10 +251,13 @@ export default {
                 font-size 13px
                 margin 8px 0px
         .submit-btn
-            btn(#00CFF5, #fff, 0.8, 220px, 50px)
+            btn(#1cb2ef, #fff, 0.8, 220px, 50px)
             margin 20px auto 10px
             display block
             font-size: 1rem;
             line-height: 50px;
+            border 1px solid #00a3e6
+            box-shadow inset 0 1px 0 hsla(0,0%,100%,.15),0 1px 2px rgba(0,0,0,.15)
+            -webkit-box-shadow inset 0 1px 0 hsla(0,0%,100%,.15),0 1px 2px rgba(0,0,0,.15)
 
 </style>
