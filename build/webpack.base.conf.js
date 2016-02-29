@@ -34,6 +34,7 @@ module.exports = {
       modulesDirectories: ['node_modules','plupload', srcPath]
   },
   module: {
+    noParse: [/autoit.js/],  // https://github.com/isagalaev/highlight.js/issues/895
     loaders: [
       {
         test: /\.vue$/,

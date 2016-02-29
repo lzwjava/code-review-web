@@ -35,4 +35,6 @@ export default {
     notificationsCount: 'notifications/count',
     commentsGet: 'reviews/:id/comments',
     commentCreate: 'reviews/:id/comments',
+    requestResetPassword: 'user/requestResetPassword',
+    resetPassword: 'user/resetPassword'
 }

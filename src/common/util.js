@@ -34,8 +34,9 @@ exports.show = (component, type, text, duration) => {
 };
 
 exports.updateNavUser = (component, user) => {
-  var nav = component.$root.$children[0];
   window.localStorage.setItem('user',JSON.stringify(user));
+
+  var nav = component.$root.$children[0];
   nav.user = user;
   nav.userStatus = true;
 }
@@ -68,7 +69,7 @@ exports.configVue = (Vue) => {
   // 这里是 debug 模块调试，有用的，不用移除
   localStorage.debug = 'api,user,components,setting,reviewer-list,home,reviewer-detail,order-form,'
    + 'order,write-review,tag,markdown-area,markdown,article,reward-form,loading,order-detail,case,article-item,belief,'
-   + 'notifications,comment-list';
+   + 'notifications,comment-list,reset-password';
 
   // register filters globally
   for(let  k in filters){

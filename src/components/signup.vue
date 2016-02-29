@@ -4,25 +4,25 @@
 		<h2>注册开启 Code Review 之旅</h2>
 		<div class="form">
 				<div class="row">
-					
+
 					<input type="text" v-model="phone" placeholder="手机号码">
 					<span class="icon-Phone icon"></span>
 				</div>
 				<div class="code">
 					<div class="row" style="width: 250px;">
-						
+
 						<input type="text" v-model="smsCode" placeholder="验证码">
 						<span class="icon-Verify icon"></span>
 					</div>
 					<button class="send" :class="{'disabled': this.sendState}" type="button" @click="requestSmsCode" v-text="sendText"></button>
 				</div>
 				<div class="row">
-					
+
 					<input type="password"  v-model="password" placeholder="密码">
 					<span class="icon-Password icon"></span>
 				</div>
 				<div class="row">
-					
+
 					<input type="text"  v-model="username" placeholder="用户名">
 					<span class="icon-User icon"></span>
 				</div>
