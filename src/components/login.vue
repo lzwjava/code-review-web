@@ -65,7 +65,6 @@
 <style lang="stylus">
 @import "../font/iconfont.css";
 blue = #1CB2EF
-
 green = #33C96F
 
 	.login
