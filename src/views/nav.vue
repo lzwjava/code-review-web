@@ -56,6 +56,7 @@
   import Overlay from '../components/overlay.vue';
   import Login from '../components/login.vue';
   import Signup from '../components/signup.vue';
+  import ResetPassword from '../components/reset-password.vue';
   import DropDown from '../components/dropdown.vue';
   import UserAvatar from '../components/user-avatar.vue';
   import serviceUrl from "../common/serviceUrl.js";
@@ -68,7 +69,8 @@
       login:  Login,
       signup: Signup,
       dropdown: DropDown,
-      'user-avatar':UserAvatar
+      'user-avatar':UserAvatar,
+      'reset-password': ResetPassword
     },
     data (){
       return {
@@ -104,6 +106,10 @@
       signup (){
         this.overlayStatus = true;
         this.currentView = 'signup';
+      },
+      forgot () {
+        this.overlayStatus = true;
+        this.currentView = 'reset-password';
       },
       viewUserDropdown (e) {
         e && e.preventDefault();

@@ -16,7 +16,7 @@
 			</ul>
 			<button type="submit">登录</button>
 			</form>
-				<p class="forgetpswd">忘记密码？</p>
+				<p class="forgetpswd" @click="toForgot">忘记密码？</p>
 		</div>
 		<p style="padding-top: 30px;">您还没有<strong style="cursor:pointer;margin-left:5px;" @click="toSignup">注册？</strong></p>
 	</section>
@@ -45,6 +45,10 @@
 			toSignup(e){
 				e.stopPropagation();
 				this.$dispatch('changeView', 'signup');
+			},
+			toForgot(e) {
+				e.stopPropagation();
+				this.$dispatch('changeView', 'reset-password');
 			},
 			login (){
 				this.$http.post(serviceUrl.login, {
