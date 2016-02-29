@@ -252,7 +252,7 @@
     height totalHeight - 2 * paddingTop
     img
       border-radius 50%
-      border 1px solid rgba(0,0,0,0.1)
+      border 1px solid #8F9DA4
 
 #message
   position fixed

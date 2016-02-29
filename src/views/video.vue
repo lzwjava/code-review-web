@@ -233,5 +233,5 @@ body
   width 100%
   margin 0
   line-height 100px
-  display block
+  display none
 </style>
