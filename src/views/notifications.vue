@@ -13,13 +13,17 @@
           <loading>
             <li class="" v-for="notice in notifications">
               {{notice.sender.username}}
-              <span v-if="notice.type == 'agree'">{{notice.text}}</span>
-              <span v-if="notice.type == 'comment'">评论了你参与的
-                <a :href="'./article.html?reviewId=' + notice.comment.reviewId">Review</a>
+              <span v-if="notice.type == 'agree'">通过了您的审核，欢迎成为
+                <a @click="clickNotification(notice)" :href="'./reviewer.html?id=' + notice.userId">审阅者</a>的一员。
               </span>
-              <span v-if="notice.type == 'new_order'">向您申请了 <a href="./order.html">Code Review</a></span>
+              <span v-if="notice.type == 'comment'">评论了你参与的
+                <a @click="clickNotification(notice)" :href="'./article.html?reviewId=' + notice.comment.reviewId">Review</a>
+              </span>
+              <span v-if="notice.type == 'new_order'">向您申请了
+                <a @click="clickNotification(notice)" href="./order.html">Code Review</a>
+              </span>
               <span v-if="notice.type == 'finish_order'">已审阅完了您的代码，请前往
-                <a :href="'./article.html?reviewId='+notice.order.reviewId">案例页</a>查看。
+                <a @click="clickNotification(notice)" :href="'./article.html?reviewId='+notice.order.reviewId">案例页</a>查看。
               </span>
               <span class="time">{{notice.created | fromNowTime}}</span>
             </li>
@@ -54,6 +58,32 @@ module.exports = {
       this.mode = 'all';
       this.fetch();
     },
+    clearNotifications(notificationId) {
+      var url;
+      if (notificationId) {
+        url = serviceUrl.notificationMarkAsRead.replace(/:id/, notificationId)
+      } else {
+        url = serviceUrl.notificationsAllMark;
+      }
+      this.$http.patch(url, {})
+        .then((resp) => {
+          if (util.filterError(this, resp)) {
+            var nav = this.$root.$children[0];
+            if (nav && nav.check) {
+              nav.check()
+            }
+            if (!notificationId) {
+              // 全部标记为已读的时候才重新加载，因为单条标记的时候，去到新的的页面，可能要回过头来看谁评论了我
+              this.fetch();
+            }
+          }
+      }, util.httpErrorFn(this));
+    },
+    clickNotification(notification) {
+      if (notification.unread == 1) {
+        this.clearNotifications(notification.notificationId);
+      }
+    },
     showUnread() {
       this.mode = 'unread';
       this.fetch();
@@ -74,16 +104,7 @@ module.exports = {
        }, util.httpErrorFn(this))
     },
     clear: function() {
-      this.$http.patch(serviceUrl.notifications, {})
-        .then((resp) => {
-          if (util.filterError(this, resp)) {
-            var nav = this.$root.$children[0];
-            if (nav && nav.notificationCount) {
-              nav.notificationCount = 0
-            }
-            this.fetch();
-          }
-      }, util.httpErrorFn(this));
+      this.clearNotifications();
     }
   },
   ready () {

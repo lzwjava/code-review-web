@@ -132,7 +132,7 @@
         }.bind(this), timeout);
       },
       check: function() {
-        debug('check');
+        // 这个在 notifications.vue 被调用了
         if (!this.user.username) return;
         this.$http.get(serviceUrl.notificationsCount)
         .then((resp) => {
