@@ -185,6 +185,7 @@ body
 .reviewer-case
     margin 0 auto
     width 1160px
+    min-height 500px
     h3
         line-height 80px
         padding-left 60px

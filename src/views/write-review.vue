@@ -37,7 +37,7 @@
                     <h3>{{rightTitle}}</h3>
                 </div>
                 <div class="content">
-                    <form @submit.prevent="submitReview">
+                    <form @submit.prevent="submitReview" style="max-width:600px;">
                         <div class="row input-row">
                             <span>请输入 Review 标题</span>
                             <input v-model="title" required></input>
@@ -181,10 +181,14 @@ export default {
             flex 1
             margin-right 25px
             border 1px solid rgba(0,0,0,0.15)
+            box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
+            -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
         &.right
             flex 2
             margin-left 25px
             border 1px solid rgba(0,0,0,0.15)
+            box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
+            -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
         .header
             border-bottom 1px solid rgba(0,0,0,.15)
             padding 30px

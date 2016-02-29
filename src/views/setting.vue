@@ -15,7 +15,7 @@
 					</div>
 					<div class="row">
 						<p>Github 地址</p>
-						<input type="text" v-model="github" style="text-indent: 110px" />
+						<input type="text" v-model="github" style="text-indent: 116px" />
 						<span>github.com / </span>
 					</div>
 				</div>
@@ -348,6 +348,8 @@
 		.form
 			width 61%
 			font-weight 200
+			box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
+			-webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
 			.white
 				background white
 				padding-bottom 54px
@@ -381,7 +383,7 @@
 					opacity .6
 					position absolute
 					top 78px
-					left 50px
+					padding-left 15px
 				input
 					height 50px
 					border 1px solid rgba(40,47,49,.3)
@@ -393,13 +395,12 @@
 				textarea
 					width 100%
 					height 280px
-					padding 10px
+					padding 15px
 					resize none
 					color rgba(40,47,49,.6)
 					font-size 1rem
 					border 1px solid rgba(40,47,49,.3)
 					font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
-
 				.update-btn
 					margin 27px 0 54px
 					background blue
@@ -412,7 +413,8 @@
 		.tags
 			width 34%
 			margin-left 5%
-			box-shadow 0 4px 4px rgba(135,135,135,0.15)
+			box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
+			-webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
 			.tags-content
 				background #FDFFFF
 				font-weight 200

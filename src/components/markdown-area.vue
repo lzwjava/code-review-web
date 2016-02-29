@@ -85,6 +85,9 @@
   position relative
   padding-top 1em
   margin-top: -31px;
+  .markdown-preview
+    margin-top 15px
+    margin-bottom 15px
   .markdown-actions
     position absolute
     top -1px

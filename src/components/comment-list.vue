@@ -174,6 +174,7 @@ export default {
 <style lang="stylus">
 
 .comment-container
+  border-top 1px solid rgba(0,0,0,0.15)
   background-color #F1F5F6
   .comment-list
     padding-top 0px
@@ -253,7 +254,8 @@ export default {
       margin-top 50px
       background #FDFFFF
       border 1px solid rgba(0,0,0,0.15)
-      box-shadow 0px -1px 4px 0px rgba(135,135,135,0.15)
+      box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
+      -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset, 0px 1px 2px rgba(0,0,0,0.15)
       border-radius 3px
       position relative
       h3
@@ -291,6 +293,8 @@ export default {
               border-radius 3px
               padding 5px
               font-size 16px
+              padding 10px
+              font-weight 100
             .markdown-actions
               position relative
               float left

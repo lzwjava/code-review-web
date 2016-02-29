@@ -93,6 +93,7 @@
       width 440px
       font-weight 100
       margin-left -20px
+      font-family Raleway-Light,PingFang-SC
       line-height 84px
     .detail
       margin-left -20px
