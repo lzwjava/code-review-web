@@ -229,10 +229,9 @@ body
 
 .footer-area
   position absolute
-  bottom 0
+  bottom 0px
   width 100%
-  height 100px
   margin 0
   line-height 100px
-  display none
+  display block
 </style>
