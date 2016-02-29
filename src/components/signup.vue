@@ -152,7 +152,6 @@
 					width 135px
 					background blue
 				.disabled
-					background #767676
 					cursor not-allowed
 			button
 				width 100%
