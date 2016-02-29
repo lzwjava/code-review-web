@@ -35,7 +35,7 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="setting.html">个人设置</a>
                   <a class="dropdown-item" href="order.html">订单列表</a>
-                  <a class="dropdown-item" href="notifications.html" >通知
+                  <a class="dropdown-item" href="notifications.html?unread=true" >通知
                      <span class="notification-num" v-if="notificationCount" >({{ notificationCount }})<span>
                   </a>
                   <div class="dropdown-divider"></div>
