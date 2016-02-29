@@ -132,5 +132,8 @@ components: {
 					color white
 					cursor pointer
 
+@media screen and (max-width:768px)
+	.slogan
+		display none
 
 </style>
