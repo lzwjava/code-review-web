@@ -64,7 +64,7 @@
 </script>
 <style lang="stylus">
 @import "../font/iconfont.css";
-blue = #00BDEF
+blue = #1CB2EF
 
 green = #33C96F
 
@@ -134,6 +134,7 @@ green = #33C96F
 				&:focus
 					border 1px solid #1CB2EF
 					+ .icon
-						color #0089C1
+						color #08B1F6
+						opacity 1
 
 </style>

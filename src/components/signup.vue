@@ -187,6 +187,7 @@
 				&:focus
 					border 1px solid #1CB2EF
 					+ .icon
-						color #0089C1
+						color #08B1F6
+						opacity 1
 
 </style>
