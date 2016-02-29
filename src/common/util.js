@@ -34,8 +34,12 @@ exports.show = (component, type, text, duration) => {
 };
 
 exports.updateNavUser = (component, user) => {
-  window.localStorage.setItem('user',JSON.stringify(user));
-
+  if (user && user.username) {
+    // 防止不合法的数据破坏了
+    window.localStorage.setItem('user',JSON.stringify(user));
+  } else {
+    console.log('username is null in setting localStorage');
+  }
   var nav = component.$root.$children[0];
   nav.user = user;
   nav.userStatus = true;
