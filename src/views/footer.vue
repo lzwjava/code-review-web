@@ -75,7 +75,7 @@ components: {
 	text-align center
 	color white
 	.list
-		width 1160px
+		width 85%
 		margin 0 auto
 		display flex
 		flex-direction row
