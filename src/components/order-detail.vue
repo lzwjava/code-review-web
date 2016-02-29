@@ -33,7 +33,7 @@
 				</div>
 				<div class="row">
 					<span>备注</span>
-					<div>{{detail.remark}}</div>
+					<div class="orderps">{{detail.remark}}</div>
 				</div>
 				<div class="row">
 					<span>Review 结果</span>
@@ -53,7 +53,8 @@
 @import '../stylus/variables.styl';
 	.order-detail
 		width 480px
-		height 600px
+		height auto
+		border-radius 3px
 		position absolute
 		left 50%
 		top 50%
@@ -61,11 +62,12 @@
 		background #FDFFFF
 		padding 20px 30px
 		border 1px solid rgba(0,0,0,0.15)
-		box-shadow 0 13px 21px 6px rgba(0,0,0,.15)
+		box-shadow 0 13px 21px 7px rgba(0,0,0,.1)
+		-webkit-box-shadow 0 13px 21px 7px rgba(0,0,0,.1)
 		.cancel
 			position absolute
-			top 15px
-			right 15px
+			top 20px
+			right 20px
 		h2
 			font-size 1.5rem
 			line-height 50px
@@ -108,12 +110,20 @@
 				.row
 					padding 10px 0
 					text-align left
+					.orderps
+						max-width 418px
+						max-height 200px
+						word-wrap break-word
+						margin-top 15px
+						line-height 1.8
+						overflow scroll
 					span
 						line-height 30px
 						color rgba(40,47,49,.6)
 						&.right
 							pull-right()
 							color textColor
+							font-family PingFang-SC
 					.check-result
 						btn(green, white, 0.8, 85, 30)
 						pull-right()
