@@ -179,7 +179,7 @@ export default {
   .comment-list
     padding-top 0px
     padding-bottom 100px
-    max-width 700px
+    max-width 50%
     margin 0px auto
     .comment-head
       text-align center
