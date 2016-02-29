@@ -221,8 +221,9 @@ module.exports = {
 
     .form-label
       display block
-      opacity 0.6
+      opacity 0.75
       font-size 14px
+      font-weight 700
       color textColor
       line-height 25px
 
@@ -252,6 +253,9 @@ module.exports = {
     .confirm-btn
       btn(blue, white, 1,220,50)
       margin-top 30px
+      border 1px solid #00a3e6
+      box-shadow inset 0 1px 0 hsla(0,0%,100%,.15),0 1px 2px rgba(0,0,0,.15)
+      -webkit-box-shadow inset 0 1px 0 hsla(0,0%,100%,.15),0 1px 2px rgba(0,0,0,.15)
 
     .pay-region
       text-align center

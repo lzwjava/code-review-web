@@ -233,6 +233,11 @@
 			line-height 96px
 			height: 96px
 			text-align center
+			border-bottom 1px solid rgba(0,0,0,0.15)
+			border-right 1px solid rgba(0,0,0,0.15)
+			border-bottom 1px solid rgba(0,0,0,0.15)
+			box-shadow inset 0 1px 0 rgba(255,255,255,0.15), 0 1px 2px rgba(0,0,0,0.15)
+			webkit-box-shadow 0 1px 0 rgba(255,255,255,0.15) inset, 0 1px 2px rgba(0,0,0,0.15)
 		.list
 			display: table;
 			width: 100%;
