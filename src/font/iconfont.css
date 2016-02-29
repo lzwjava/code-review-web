@@ -1,0 +1,51 @@
+@font-face {
+    font-family: 'icomoon';
+    src:    url('/src/font/iconfonts/icomoon.eot?csr0me');
+    src:    url('/src/font/iconfonts/icomoon.eot?csr0me#iefix') format('embedded-opentype'),
+        url('/src/font/iconfonts/icomoon.ttf?csr0me') format('truetype'),
+        url('/src/font/iconfonts/icomoon.woff?csr0me') format('woff'),
+        url('/src/font/iconfonts/icomoon.svg?csr0me#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Password:before {
+    content: "\e900";
+}
+.icon-Phone:before {
+    content: "\e901";
+}
+.icon-User:before {
+    content: "\e902";
+}
+.icon-Verify:before {
+    content: "\e903";
+}
+
+.icon {
+    position: absolute;
+    font-size:  32px;
+    color: #282F31;
+    margin-top: -43px;
+    margin-left: 13px;
+    opacity: 0.8;
+    transition: all 0.35s ease 0s;
+}
+
+
+

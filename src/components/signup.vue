@@ -4,19 +4,27 @@
 		<h2>注册开启 Code Review 之旅</h2>
 		<div class="form">
 				<div class="row">
+					
 					<input type="text" v-model="phone" placeholder="手机号码">
+					<span class="icon-Phone icon"></span>
 				</div>
 				<div class="code">
 					<div class="row" style="width: 250px;">
+						
 						<input type="text" v-model="smsCode" placeholder="验证码">
+						<span class="icon-Verify icon"></span>
 					</div>
 					<button class="send" :class="{'disabled': this.sendState}" type="button" @click="requestSmsCode" v-text="sendText"></button>
 				</div>
 				<div class="row">
+					
 					<input type="password"  v-model="password" placeholder="密码">
+					<span class="icon-Password icon"></span>
 				</div>
 				<div class="row">
+					
 					<input type="text"  v-model="username" placeholder="用户名">
+					<span class="icon-User icon"></span>
 				</div>
 			<button type="button" @click="register" class="gbutton">注册</button>
 			<a href="/statement.html" target="_blank"><p>注册前请仔细阅读 <strong>服务条款</strong></p></a>
@@ -100,11 +108,12 @@
 </script>
 <style lang="stylus">
 @import "../stylus/variables.styl";
+@import "../font/iconfont.css";
 
 	.sign-up
 		background white
 		width 500px
-		height 680px
+		height 670px
 		padding 50px
 		border-radius 3px
 		box-shadow 0px 13px 21px 7px rgba(0,0,0,.1)
@@ -145,8 +154,6 @@
 				.disabled
 					background #767676
 					cursor not-allowed
-			p
-				margin-bottom 10px
 			button
 				width 100%
 				height 55px
@@ -166,16 +173,20 @@
 		.row
 			width 100%
 			height 58px
-			border 1px solid rgba(40,47,49,.3)
 			border-radius 3px
-			padding-left 30px
 			margin-bottom 10px
 			input
 				width 100%
 				height 55px
 				margin-top 1px
-				border none
+				border 1px solid rgba(40,47,49,.3)
+				text-indent 53px
 				outline none
 				font-size 14px
+				transition all 0.35s ease 0s
+				&:focus
+					border 1px solid #1CB2EF
+					+ .icon
+						color #0089C1
 
 </style>

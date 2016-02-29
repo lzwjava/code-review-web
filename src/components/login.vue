@@ -7,14 +7,16 @@
 			<ul class="row">
 				<li>
 					<input type="text" class="phone" v-model="phone" placeholder="手机号码">
+					<span class="icon-Phone icon"></span>
 				</li>
 				<li>
 					<input type="password"  class="password" v-model="password" placeholder="密码">
+					<span class="icon-Password icon"></span>
 				</li>
 			</ul>
 			<button type="submit">登录</button>
 			</form>
-<!-- 			<p>忘记密码？</p> -->
+				<p class="forgetpswd">忘记密码？</p>
 		</div>
 		<p style="padding-top: 30px;">您还没有<strong style="cursor:pointer;margin-left:5px;" @click="toSignup">注册？</strong></p>
 	</section>
@@ -61,6 +63,7 @@
 	}
 </script>
 <style lang="stylus">
+@import "../font/iconfont.css";
 blue = #00BDEF
 
 green = #33C96F
@@ -69,7 +72,7 @@ green = #33C96F
 		background white
 		width 500px
 		border-radius 3px
-		height 500px
+		height 525px
 		padding 50px
 		box-shadow 0px 13px 21px 7px rgba(0,0,0,.1)
 		-webkit-box-shadow 0px 13px 21px 7px rgba(0,0,0,.1)
@@ -92,11 +95,11 @@ green = #33C96F
 		.form
 			border-top 1px solid #E9EAEC
 			border-bottom 1px solid #E9EAEC
-			padding 30px 0
+			padding 30px 0 10px 0
 			margin-top 20px
 			p
 				color blue
-				margin-bottom 10px
+				margin-bottom 20px
 			button
 				width 100%
 				height 55px
@@ -106,27 +109,31 @@ green = #33C96F
 				line-height 55px
 				background green
 				border-radius 3px
-				margin-top 50px
+				margin-top 62px
 				margin-bottom 30px
 				-webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
 				box-shaodw 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
 				border 1px solid #31B766
+		.forgetpswd
+			margin-bottom 10px
 		.row
 			width 100%
 			height 116px
-			border 1px solid rgba(40,47,49,.3)
 			border-radius 3px
 			li
 				height 57px
-				padding-left 30px
-			li:first-child
-				border-bottom 1px solid rgba(40,47,49,.3)
+				margin-bottom 10px
 			input
 				width 100%
 				height 55px
 				margin-top 1px
-				border none
+				border 1px solid rgba(40,47,49,.3)
 				outline none
 				font-size 14px
+				text-indent 53px
+				&:focus
+					border 1px solid #1CB2EF
+					+ .icon
+						color #0089C1
 
 </style>

@@ -240,6 +240,7 @@ export default {
                 font-size 16px
                 opacity 0.8
                 padding 10px
+                max-width 597px
 
             p.tip
                 color rgba(40,47,49,.6)
