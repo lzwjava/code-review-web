@@ -4,9 +4,10 @@
     <h2>{{actionTitle}}密码</h2>
     <div class="form">
       <form v-show="mode == 'request'" v-on:submit.prevent="requestReset">
-        <ul class="row">
+        <!-- <i @click="forward" class="fa fa-arrow-right"></i> -->
+        <ul class="row request-ul">
           <li>
-            <input type="text" class="phone" v-model="phone" placeholder="手机号码" required>
+            <input type="text" class="phone" v-model="phone" placeholder="请输入你的手机号码" required>
             <span class="icon-Phone icon"></span>
           </li>
         </ul>
@@ -14,7 +15,10 @@
       </form>
 
       <form v-show="mode == 'reset'" v-on:submit.prevent="reset">
-        <ul class="row">
+        <!-- <i @click="back" class="fa fa-arrow-left"></i> -->
+        <p class="tip">验证码已发送至 {{phone}}<br>请输入验证码及新密码完成{{actionTitle}}</p>
+
+        <ul class="row reset-ul">
           <li>
             <input type="text" v-model="smsCode" placeholder="验证码" required>
             <span class="icon-Verify icon"></span>
@@ -36,8 +40,8 @@
 <style lang="stylus">
 import "../font/iconfont.css"
 
-blue = #1CB2EF
-green = #33C96F
+.reset-password
+  background #f00
 
 .reset-password
   background white
@@ -59,7 +63,7 @@ green = #33C96F
     font-size 0.8rem
     text-align center
     strong
-      color blue
+      color #1CB2EF
   h2
     font-size 1.5rem
     text-align center
@@ -68,7 +72,7 @@ green = #33C96F
     padding 30px 0 10px 0
     margin-top 20px
     p
-      color blue
+      color #1CB2EF
       margin-bottom 20px
     button
       width 100%
@@ -77,17 +81,27 @@ green = #33C96F
       font-size 1rem
       text-align center
       line-height 55px
-      background green
+      background #33C96F
       border-radius 3px
       -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
       box-shaodw 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
       border 1px solid #31B766
       &.btn-send
-        margin-top 100px
+        margin-top 147px
+      &.btn-reset
+        margin-top 60px
+    .tip
+      color #000
+      font-size 16px
+      margin-top 20px
+      line-height 25px
   ul
     width 100%
     border-radius 3px
-    margin-top 100px
+    &.reset-ul
+      margin-top 40px
+    &.request-ul
+      margin-top 80px
     li
       height 57px
       margin-bottom 10px
@@ -166,11 +180,16 @@ import md5 from 'blueimp-md5'
             this.cancel();
           }
         }, util.httpErrorFn(this));
+      },
+      back () {
+        this.mode = 'request';
+      },
+      forward() {
+        this.mode = 'reset';
       }
     },
     created() {
     }
-
   }
 
 </script>
