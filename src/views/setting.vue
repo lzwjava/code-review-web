@@ -18,6 +18,10 @@
 						<input type="text" v-model="github" style="text-indent: 116px" />
 						<span>github.com / </span>
 					</div>
+
+					<div class="row">
+						<button class="pwd-btn" @click="showChangePassword">修改密码</button>
+					</div>
 				</div>
 				<div class="color">
 					<div class="row">
@@ -55,7 +59,14 @@
 					</div>
 				</div>
 			</section>
+
+
 		</section>
+
+		<overlay :overlay.sync="overlayStatus">
+			<reset-password action="change"></reset-password>
+		</overlay>
+
 	</loading>
 
 </template>
@@ -70,11 +81,15 @@
 	import serviceUrl from "../common/serviceUrl.js"
 	import Tag from '../components/tag.vue'
 	import Loading from '../components/loading.vue'
+	import ResetPassword from '../components/reset-password.vue'
+	import Overlay from '../components/overlay.vue'
 	export default {
 		components: {
 			'user-avatar': UserAvatar,
 			'tag': Tag,
-			'loading': Loading
+			'loading': Loading,
+			'reset-password': ResetPassword,
+			'overlay': Overlay
 		},
 		data () {
 			return {
@@ -88,7 +103,8 @@
 				avatarUrl: '',
 				tags: [],
 				allTags: [],
-				selected: ''
+				selected: '',
+				overlayStatus: false,
 			}
 		},
 		events: {
@@ -216,6 +232,9 @@
 						util.show(this, 'info', '已收到您的申请，将尽快处理');
 					}
 				}, util.httpErrorFn(this))
+			},
+			showChangePassword() {
+				this.overlayStatus = true;
 			}
 		},
 		created() {
@@ -412,6 +431,10 @@
 				.apply-btn
 					margin 27px 0 54px
 					float right
+				.pwd-btn
+					width 80px
+					height 30px
+					line-height 100%
 		.tags
 			width 34%
 			margin-left 5%
