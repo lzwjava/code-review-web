@@ -36,5 +36,9 @@ export default {
     commentsGet: 'reviews/:id/comments',
     commentCreate: 'reviews/:id/comments',
     requestResetPassword: 'user/requestResetPassword',
-    resetPassword: 'user/resetPassword'
+    resetPassword: 'user/resetPassword',
+    eventGet: 'events/:id',
+    userEvent: 'user/events/:id',
+    eventAttend: 'events/:id/attend',
+    eventPay: 'events/:id/pay'
 }
