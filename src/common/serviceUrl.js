@@ -38,7 +38,7 @@ export default {
     requestResetPassword: 'user/requestResetPassword',
     resetPassword: 'user/resetPassword',
     eventGet: 'events/:id',
-    userEvent: 'user/events/:id',
+    attendanceGet: 'attendances/:id',
     eventAttend: 'events/:id/attend',
-    eventPay: 'events/:id/pay'
+    attendancePay: 'attendances/:id/pay'
 }

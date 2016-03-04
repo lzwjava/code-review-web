@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="info">
-      <div class="info__content"><img src="../img/event/logo.png" class="info__logo">
+      <div class="info__content">
         <p class="info__subtitle"><span class="info__down">Code Review</span>第一次线下活动</p>
         <p class="info__date">2016年3月12日·北京 科技寺创业空间·北新桥店</p>
         <div class="info__btn"><a href="https://github.com/atConf" target="_blank">相关信息</a></div>
@@ -215,7 +215,7 @@ module.exports = {
       // 没有登录
       return;
     } else {
-      this.$http.get(serviceUrl.userEvent.replace(/:id/, eventId))
+      this.$http.get(serviceUrl.attendanceGet.replace(/:id/, eventId))
        .then((resp) => {
 
        }, util.httpErrorFn(this));
