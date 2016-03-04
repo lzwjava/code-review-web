@@ -144,7 +144,14 @@
     </section>
 
     <section id="ticket" class="ticket">
-      <button type="button" name="button" @click="showAttend">我要报名</button>
+
+      <div class="ticket__content">
+        <img src="../img/event/ticket.png" alt="" />
+        <p>参会门票</p>
+        <p class="price">¥{{event.amount | moneyAsYuan}}</p>
+        <button type="button" name="button" @click="showAttend">我要报名</button>
+      </div>
+
     </section>
 
     <section class="map">
@@ -161,79 +168,11 @@
   </div>
 </template>
 
-<script type="text/javascript">
-
-import util from '../common/util'
-import serviceUrl from '../common/serviceUrl'
-import Loading from '../components/loading.vue'
-import EventForm from '../components/event-form.vue'
-import Overlay from '../components/overlay.vue'
-
-var debug = require('debug')('event');
-
-module.exports = {
-  components: {
-    'event-form': EventForm,
-    overlay: Overlay
-  },
-  data: function() {
-    return {
-      event:{},
-      overlayStatus: false
-    };
-  },
-  methods: {
-    showAttend() {
-      var user = util.getLocalUser();
-      if (!user.username) {
-        // show 登录 form
-      } else {
-        this.overlayStatus = true;
-      }
-    }
-  },
-  ready () {
-
-  },
-  created() {
-    var params = util.getSearchParameters();
-    if (!params.eventId) {
-      util.show(this, 'error', '请提供 eventId');
-      return;
-    }
-    var eventId = params.eventId;
-    this.$http.get(serviceUrl.eventGet.replace(/:id/, eventId))
-      .then((resp)=> {
-        if (util.filterError(this, resp)) {
-          this.event = resp.data.result;
-          debug('event: %j', this.event);
-        }
-      }, util.httpErrorFn(this));
-
-    var user = util.getLocalUser();
-    if (!user.username) {
-      // 没有登录
-      return;
-    } else {
-      this.$http.get(serviceUrl.attendanceGet.replace(/:id/, eventId))
-       .then((resp) => {
-
-       }, util.httpErrorFn(this));
-    }
-  }
-};
-
-</script>
-
-
 <style lang="stylus">
 @import '../../node_modules/jeet/stylus/jeet'
 @import '../../node_modules/rupture/rupture/index.styl'
 
-$font-main = "lato", 'Microsoft YaHei', "微软雅黑", "STXihei", "华文细黑", "sans-serif";
-
 *
-  font-family $font-main
   -webkit-text-size-adjust none
   -webkit-transform-origin-x 0
 
@@ -595,27 +534,13 @@ body
     color #34495e
     text-align left
     letter-spacing 1px
-    h1
-      center(50rem)
-      margin-top 6rem
-      margin-bottom 2rem
-      font-weight bold
+    .ticket__content
       text-align center
-    h4
-      center(10rem)
-      border solid 1px #FB7B4E
-      border-radius 4px
-      font-size 1.5rem
-      text-align center
-      margin-bottom 1rem
-      color #FB7B4E
-      .number
-        font-weight 700
-        color #FB7B4E
-        font-family "Constantia" "Georgia"
-        font-size 22px
-        font-style italic
-
+      .price
+        overflow visible
+        padding 0
+        color #d73940
+        font-size 20px
     p
       span(0.6, offset:0.2)
       // FIXME the jeet doesn't offer a way to change right offset
@@ -703,3 +628,67 @@ body
 }
 
 </style>
+
+
+<script type="text/javascript">
+
+import util from '../common/util'
+import serviceUrl from '../common/serviceUrl'
+import Loading from '../components/loading.vue'
+import EventForm from '../components/event-form.vue'
+import Overlay from '../components/overlay.vue'
+
+var debug = require('debug')('event');
+
+module.exports = {
+  components: {
+    'event-form': EventForm,
+    overlay: Overlay
+  },
+  data: function() {
+    return {
+      event:{},
+      overlayStatus: false
+    };
+  },
+  methods: {
+    showAttend() {
+      var user = util.getLocalUser();
+      if (!user.username) {
+        // show 登录 form
+      } else {
+        this.overlayStatus = true;
+      }
+    }
+  },
+  ready () {
+
+  },
+  created() {
+    var params = util.getSearchParameters();
+    if (!params.eventId) {
+      util.show(this, 'error', '请提供 eventId');
+      return;
+    }
+    var eventId = params.eventId;
+    this.$http.get(serviceUrl.eventGet.replace(/:id/, eventId))
+      .then((resp)=> {
+        if (util.filterError(this, resp)) {
+          this.event = resp.data.result;
+          debug('event: %j', this.event);
+        }
+      }, util.httpErrorFn(this));
+    var user = util.getLocalUser();
+    if (!user.username) {
+      // 没有登录
+      return;
+    } else {
+      this.$http.get(serviceUrl.attendanceGet.replace(/:id/, eventId))
+       .then((resp) => {
+
+       }, util.httpErrorFn(this));
+    }
+  }
+};
+
+</script>
