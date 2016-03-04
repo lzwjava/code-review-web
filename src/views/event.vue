@@ -149,7 +149,7 @@
         <img src="../img/event/ticket.png" alt="" />
         <p>参会门票</p>
         <p class="price">¥{{event.amount | moneyAsYuan}}</p>
-        <button type="button" name="button" @click="showAttend">我要报名</button>
+        <button class="btn-attend" @click="showAttend">我要报名</button>
       </div>
 
     </section>
