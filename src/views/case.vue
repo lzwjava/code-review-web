@@ -89,12 +89,12 @@
     	margin 0 auto
     h1
       margin-top 30px
-      font-size 60px
-      width 440px
+      font-size 50px
+      width 600px
       font-weight 100
       margin-left -20px
       font-family Raleway-Light,PingFang-SC
-      line-height 84px
+      line-height 70px
     .detail
       margin-left -20px
       height 40px

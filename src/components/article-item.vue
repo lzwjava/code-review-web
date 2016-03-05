@@ -43,7 +43,7 @@
 				flex 0 1 auto
 				padding-left 40px
 				position relative
-				
+
 				.date-tags
 					font-size 0.88rem
 					color rgba(40,47,49,.6)
@@ -53,6 +53,9 @@
 					.data
 						margin-right 20px
 						font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
+				h6
+					height 60px
+					overflow hidden
 				.title
 					font-size 1.5rem
 					line-height 60px
