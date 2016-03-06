@@ -81,8 +81,6 @@
             </p>
           </div>
         </div> -->
-      </div>
-      <div class="speaker-list">
         <div class="speaker__card b">
           <div class="speaker__content">
             <h4 class="name">李智维</h4>
@@ -90,7 +88,11 @@
             <p class="detail">微博 <a href="http://weibo.com/zhiweilee" target="_blank">@lzwjava</a>。95 年出生的他，初中接触了编程，大二辍学加入 LeanCloud，20 岁已能月入过万。他并未止步，辞职创业搞起了 <a href="http://reviewcode.cn/">Code Review 平台</a>，负责大部分的技术开发。业余时间也开源了一些 <a href="https://github.com/lzwjava">项目</a>。</p>
           </div>
         </div>
+
       </div>
+      <!-- <div class="speaker-list">
+
+      </div> -->
 
     </section>
     <section id="agenda" class="agenda">
@@ -398,21 +400,22 @@ body
       margin-bottom 3rem
       font-weight bold
       text-align center
-    .speaker-list
-      display flex
-      display -webkit-flex
-      justify-content center
-      &:before, &:after
-        content " "
-        display table
-      &:after
-        clear: both
+    // .speaker-list
+    //   display flex
+    //   display -webkit-flex
+    //   justify-content center
+    //   &:before, &:after
+    //     content " "
+    //     display table
+    //   &:after
+    //     clear: both
     .speaker__card
       span(1/3)
       +below(768px)
         span(1/2)
       +below(500px)
         span(1)
+      height 500px
       padding 1rem
       .speaker__content
         span(1)
@@ -458,8 +461,11 @@ body
         width 40%
       h3.intro__reason
         margin-bottom 2rem
+        font-size 16px
+        line-height 20px
       p.intro__detail
         margin-top 2rem
+        line-height 20px
   .agenda
     span(1)
     color #34495e
@@ -536,6 +542,9 @@ body
     letter-spacing 1px
     .ticket__content
       text-align center
+      img
+        +below(768px)
+          width 80%
       h1
         center(40rem)
         margin-top 6rem
