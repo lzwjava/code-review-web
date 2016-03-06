@@ -45,42 +45,45 @@
     </section>
     <section id="speaker" class="speaker">
       <h1>演讲嘉宾</h1>
-      <div class="speaker__card r b">
-        <div class="speaker__content">
-          <h4 class="name">陈宜龙</h4>
-          <img src="../img/event/ios_programmer.jpg">
-          <p class="detail">你可能不熟悉陈宜龙，但不会不知道 <a href="http://weibo.com/u/1692391497" target="_blank">iOS 程序犭袁</a>。
-            热爱分享，崇尚开源精神，对新技术有狂热的追求。
-            著有《iOS 9 适配系列教程》、《iOS 面试题集锦》、《CYLTabBarController》等 <a href="https://github.com/ChenYilong" target="_blank">教程和框架</a>，均获得数千 Star。</p>
+       <div class="speaker-list">
+        <div class="speaker__card r b">
+          <div class="speaker__content">
+            <h4 class="name">陈宜龙</h4>
+            <img src="../img/event/ios_programmer.jpg">
+            <p class="detail">你可能不熟悉陈宜龙，但不会不知道 <a href="http://weibo.com/u/1692391497" target="_blank">iOS 程序犭袁</a>。
+              热爱分享，崇尚开源精神，对新技术有狂热的追求。
+              著有《iOS 9 适配系列教程》、《iOS 面试题集锦》、《CYLTabBarController》等 <a href="https://github.com/ChenYilong" target="_blank">教程和框架</a>，均获得数千 Star。</p>
+          </div>
+        </div>
+        <div class="speaker__card b">
+          <div class="speaker__content">
+            <h4 class="name">臧其龙</h4>
+            <img src="../img/event/yeguchen.jpg">
+            <p class="detail">微博 <a href="http://weibo.com/u/1438670852" target="_blank">@叶孤城</a>。现为探探 iOS 客户端开发，
+              曾就职于 Camera360、流利说。对动画交互，图像，视频处理颇有心得。
+              热爱分享，热爱 iOS 圈子，为大家提供了 <a href="http://reviewcode.cn/">Code Review 平台</a>。</p>
+          </div>
+        </div>
+        <div class="speaker__card b l">
+          <div class="speaker__content">
+            <h4 class="name">邱胤炎</h4>
+            <img src="../img/event/MartinRGB.jpg">
+            <p class="detail">微博 <a href="http://weibo.com/u/1956547962">@MartinRGB</a> 。设计与编程才华集于一身。就职于魅族、乐视、渡鸦。
+              最大的成就感就是自己亲手把自己设计的复杂动画用代码实现。
+              UI 中国有一期 MartinRGB 的 <a href="http://www.ui.cn/detail/56421.html" target="_blank">采访</a>。
+              开源了多个炫酷的 <a href="https://github.com/MartinRGB" target="_blank"> 动画项目</a>。
+            </p>
+          </div>
         </div>
       </div>
-      <div class="speaker__card b">
-        <div class="speaker__content">
-          <h4 class="name">臧其龙</h4>
-          <img src="../img/event/yeguchen.jpg">
-          <p class="detail">微博 <a href="http://weibo.com/u/1438670852" target="_blank">@叶孤城</a>。现为探探 iOS 客户端负责人。
-            曾就职于 Camera360、流利说。对动画交互，图像，视频处理颇有心得。
-            热爱分享，热爱 iOS 圈子，为大家提供了 <a href="http://reviewcode.cn/">Code Review 平台</a>。</p>
-        </div>
-      </div>
-      <div class="speaker__card b l">
-        <div class="speaker__content">
-          <h4 class="name">邱胤炎</h4>
-          <img src="../img/event/MartinRGB.jpg">
-          <p class="detail">微博 <a href="http://weibo.com/u/1956547962">@MartinRGB</a> 。设计与编程才华集于一身。就职于魅族、乐视、渡鸦。
-            最大的成就感就是自己亲手把自己设计的复杂动画用代码实现。
-            UI 中国有一期 MartinRGB 的 <a href="http://www.ui.cn/detail/56421.html" target="_blank">采访</a>。
-            开源了多个炫酷的 <a href="https://github.com/MartinRGB" target="_blank"> 动画项目</a>。
-          </p>
-        </div>
-      </div>
-
-      <div class="speaker__card b">
-        <div class="speaker__content">
-          <h4 class="name">李智维</h4>
-          <img src="../img/event/lzwjava_avatar.jpg">
-          <p class="detail">微博 <a href="http://weibo.com/zhiweilee" target="_blank">@lzwjava</a>。95 年出生的他，初中接触了编程，大二辍学加入 LeanCloud，20 岁已能月入过万。他并未止步，辞职创业搞起了 <a href="http://reviewcode.cn/">Code Review 平台</a>，负责大部分的技术开发。业余时间也开源了一些 <a href="https://github.com/lzwjava">项目</a>。</p>
-        </div>
+      <div class="speaker-list">
+        <div class="speaker__card b">
+          <div class="speaker__content">
+            <h4 class="name">李智维</h4>
+            <img src="../img/event/lzwjava_avatar.jpg">
+            <p class="detail">微博 <a href="http://weibo.com/zhiweilee" target="_blank">@lzwjava</a>。95 年出生的他，初中接触了编程，大二辍学加入 LeanCloud，20 岁已能月入过万。他并未止步，辞职创业搞起了 <a href="http://reviewcode.cn/">Code Review 平台</a>，负责大部分的技术开发。业余时间也开源了一些 <a href="https://github.com/lzwjava">项目</a>。</p>
+          </div>
+        </div>  
       </div>
 
     </section>
@@ -432,6 +435,14 @@ body
       margin-bottom 3rem
       font-weight bold
       text-align center
+    .speaker-list
+      display flex
+      display -webkit-flex
+      &:before, &:after
+        content " "
+        display table
+      &:after
+        clear: both
     .speaker__card
       span(1/3)
       +below(768px)
