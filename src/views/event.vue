@@ -19,10 +19,8 @@
           <div class="header__btn"><a href="#intro">大会介绍</a></div>
           <div class="header__btn"><a href="#speaker">演讲嘉宾</a></div>
           <div class="header__btn"><a href="#agenda">大会议程</a></div>
-        </div>
-        <div class="header__social">
-          <div class="header__social__btn"><a href="http://weibo.com/atswift" target="_blank"><i class="fa fa-weibo"></i></a></div>
-          <div class="header__social__btn"><a href="https://github.com/atConf/atswift" target="_blank"><i class="fa fa-github"></i></a></div>
+          <div class="header__btn"><a href="#ticket">报名参加</a></div>
+          <div class="header__btn"><a href="#map">会场位置</a></div>
         </div>
       </header>
     </section>
@@ -66,6 +64,14 @@
         </div>
         <div class="speaker__card b l">
           <div class="speaker__content">
+            <h4 class="name">张延瑞</h4>
+            <img src="../img/event/yanrui.jpg">
+            <p class="detail">微博 <a href="http://weibo.com/u/1764965604">@张延瑞</a> 。耕耘于 iOS 开发多年。就职于 Camera360、乐视。
+            </p>
+          </div>
+        </div>
+        <!-- <div class="speaker__card b l">
+          <div class="speaker__content">
             <h4 class="name">邱胤炎</h4>
             <img src="../img/event/MartinRGB.jpg">
             <p class="detail">微博 <a href="http://weibo.com/u/1956547962">@MartinRGB</a> 。设计与编程才华集于一身。就职于魅族、乐视、渡鸦。
@@ -74,7 +80,7 @@
               开源了多个炫酷的 <a href="https://github.com/MartinRGB" target="_blank"> 动画项目</a>。
             </p>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="speaker-list">
         <div class="speaker__card b">
@@ -150,9 +156,9 @@
     </section>
 
     <section id="ticket" class="ticket">
-
       <div class="ticket__content">
-        <img src="../img/event/ticket.png" alt="" />
+        <h1>报名参加</h1>
+        <img src="../img/event/ticket.png"/>
         <p>参会门票</p>
         <p class="price">¥{{event.amount | moneyAsYuan}}</p>
         <button class="btn-attend" @click="showAttend">我要报名</button>
@@ -160,7 +166,7 @@
 
     </section>
 
-    <section class="map">
+    <section id="map" class="map">
       <div class="map__content">
         <h1>会场位置</h1>
         <h4>北航新主楼·会议中心</h4>
@@ -381,32 +387,6 @@ body
           &:hover
             color white
             background-color #64a3fc
-
-    .header__social
-      span(0.22, offset: 0.07)
-      +below(1024px)
-        span(0.3)
-      +below(500px)
-        span(0.6)
-      height 4rem
-      .header__social__btn
-        col(1/5)
-        padding 1rem
-        width 3rem
-        text-align center
-        a
-          cursor pointer
-          text-decoration none
-          color #4d4d4d
-          font-size 1.9rem
-          &:hover
-            color #5399fc
-            text-decoration none
-          i
-            font-size 2rem
-          img
-            width 2rem
-
   .speaker
     layout1()
     +below(1200px)
@@ -443,6 +423,7 @@ body
         h4.name
           font-weight 700
           margin-bottom 2rem
+          font-size 18px
         p.detail
           text-align left
           line-height 2.2rem
@@ -555,54 +536,17 @@ body
     letter-spacing 1px
     .ticket__content
       text-align center
+      h1
+        center(40rem)
+        margin-top 6rem
+        margin-bottom 3rem
+        font-weight bold
+        text-align center
       .price
         overflow visible
         padding 0
         color #d73940
         font-size 20px
-    p
-      span(0.6, offset:0.2)
-      // FIXME the jeet doesn't offer a way to change right offset
-      margin-right: 20%
-      +below(500px)
-        span(1)
-    .blank
-      margin-bottom 3rem
-    .hand
-      center(10rem)
-      img
-        width 100%
-    ul
-      span(0.6, offset:0.2)
-      +below(500px)
-        span(1)
-        text-align left
-      line-height 2rem
-      font-size 1.6rem
-      text-align left
-    .ticket__btn
-      span(1)
-      text-align center
-      margin-top 1rem
-      margin-bottom 5rem
-      a
-        cursor pointer
-        text-decoration none
-        background-color #5399fc
-        color white
-        display inline-block
-        vertical-align middle
-        line-height 6rem
-        width 36rem
-        +below(500px)
-          width 25rem
-        height 6rem
-        border-radius 25rem
-        text-align center
-        font-size 3rem
-        &:hover
-          color white
-          background-color #64a3fc
   .map
     span(1)
     color #34495e
