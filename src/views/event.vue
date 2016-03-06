@@ -172,7 +172,9 @@
       <div class="map__content">
         <h1>会场位置</h1>
         <h4>北航新主楼·会议中心</h4>
-        <div id="map__container"></div>
+        <div id="map__container">
+          <img src="../img/map.jpg" alt="">
+        </div>
       </div>
     </section>
 
@@ -206,6 +208,10 @@ html
   .r,.b,.t,.l
     border none
   div.null
+    display none
+
++below(700px)
+  .navbar .right
     display none
 
 body
@@ -567,7 +573,11 @@ body
         layout2_sm()
     div#map__container
       center(120rem)
-      height 40rem
+      margin-top 3rem
+      background-size contain
+      background-image url('../img/map.jpg')
+      img
+        width 100%
     h1
       center(40rem)
       margin-top 6rem
