@@ -83,7 +83,7 @@
             <img src="../img/event/lzwjava_avatar.jpg">
             <p class="detail">微博 <a href="http://weibo.com/zhiweilee" target="_blank">@lzwjava</a>。95 年出生的他，初中接触了编程，大二辍学加入 LeanCloud，20 岁已能月入过万。他并未止步，辞职创业搞起了 <a href="http://reviewcode.cn/">Code Review 平台</a>，负责大部分的技术开发。业余时间也开源了一些 <a href="https://github.com/lzwjava">项目</a>。</p>
           </div>
-        </div>  
+        </div>
       </div>
 
     </section>
@@ -93,73 +93,56 @@
         <h4>*暂定，后续会不断更新</h4>
         <ul class="agenda__list">
           <li>
-            <time>08:30</time>
+            <time>13:10</time>
             <div><span>签到</span></div>
           </li>
           <li>
-            <time>09:20</time>
+            <time>13:30</time>
             <div><span>开场</span>
-              <p>梁杰</p>
+              <p>臧其龙</p>
             </div>
           </li>
           <li>
-            <time>09:30</time>
-            <div><span>Programming with Structs</span>
-              <p>Chris Eidhof</p>
+            <time>13:40</time>
+            <div>
+              <span>iOS 开发如何快速成长(20min)</span><br>
+              <span>Ask Me Anything(20min)</span>
+              <p>臧其龙</p>
             </div>
           </li>
           <li>
-            <time>10:20</time>
-            <div><span>越过 OC 与 Swift 间的鸿沟</span>
-              <p>傅若愚</p>
+            <time>14:30</time>
+            <div>
+              <span>IM 的那些事——XMPP、Socket、SDK(20min)</span><br>
+              <span>Ask Me Anything(20min)</span>
+              <p>陈宜龙</p>
             </div>
           </li>
-          <li>
-            <time>11:10</time>
-            <div><span>Swift Style</span>
-              <p>Greg Heo</p>
-            </div>
-          </li>
-          <li class="lunch">
-            <time>12:00</time>
-            <div><span>午餐</span></div>
-          </li>
-          <li>
-            <time>13:20</time>
-            <div><span>Swift 中的面向协议编程</span>
-              <p>李洁信</p>
-            </div>
-          </li>
-          <li>
-            <time>14:00</time>
-            <div><span>如何打造一个让人愉快的框架</span>
-              <p>王巍</p>
-            </div>
-          </li>
-          <li>
-            <time>14:40</time>
-            <div><span>Swift 函数式编程实践</span>
-              <p>包涵卿</p>
-            </div>
-          </li>
+
           <li>
             <time>15:20</time>
             <div><span>茶歇</span></div>
           </li>
+
           <li>
-            <time>15:50</time>
-            <div><span>Swift，改善既有代码的设计</span>
-              <p>翁阳</p>
+            <time>15:40</time>
+            <div>
+              <span>我这一路的选择和成长(20min)</span><br>
+              <span>Ask Me Anything(20min)</span>
+              <p>李智维</p>
             </div>
           </li>
+
           <li>
             <time>16:30</time>
-            <div><span>Faster App，用 Swift 打造一款流畅的 App</span>
-              <p>周楷雯</p>
+            <div>
+              <span>分组交流</span>
+              <p>各嘉宾和参会者分组交流</p>
             </div>
           </li>
+
           <li>
-            <time>17:30</time>
+            <time>18:00</time>
             <div><span>结束</span></div>
           </li>
         </ul>
