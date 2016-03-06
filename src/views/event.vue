@@ -47,22 +47,34 @@
       <h1>演讲嘉宾</h1>
       <div class="speaker__card r b">
         <div class="speaker__content">
-          <h4 class="name">包涵卿</h4><a href="https://twitter.com/hankbao" target="_blank"><img src="../img/event/baohanqing.jpg"></a>
-          <p class="detail">瀑布 IM 客户端技术负责人。前 PPTV 趣点项目 iOS 负责人，曾经独自开发 PPTV Mac 版。在 GitHub 和 Twitter 上的 ID 是 @hankbao.</p>
+          <h4 class="name">陈宜龙</h4><a href="http://weibo.com/u/1692391497" target="_blank"><img src="../img/event/ios_programmer.jpg"></a>
+          <p class="detail">你可能不熟悉陈宜龙，但不会不知道 <a href="http://weibo.com/u/1692391497">iOS 程序犭袁</a>。热爱分享，崇尚开源精神，对新技术有狂热的追求。著有《iOS 9 适配系列教程》、《iOS 面试题集锦》、《CYLTabBarController》等教程和框架，均获得数千 Star。</p>
         </div>
       </div>
       <div class="speaker__card b">
         <div class="speaker__content">
-          <h4 class="name">CHRIS EIDHOF</h4><a href="http://www.eidhof.nl/" target="_blank"><img src="../img/event/chris.jpg"></a>
-          <p class="detail">Chris, 生活在德国柏林的荷兰开发者。他把大部分时间都花在开发 iOS 和 Mac 应用上，作品包括 <a href="http://decksetapp.com" target="_blank">Deckset</a> 和 <a href="http://www.getscenery.com" target="_blank">Scenery</a>. Chris 还创办了 <a href="http://www.uikonf.com" target="_blank">UIKonf</a> 和 <a href="http://www.objc.io" target="_blank">objc.io</a>. 此外，他还是一位作者，著有 <a href="http://www.objc.io/books/fpinswift" target="_blank">Functional Programming in Swift</a>, 目前正在编写 <a href="http://www.objc.io/books/" target="_blank">Advanced Swift</a>.</p>
+          <h4 class="name">臧其龙</h4><a href="http://www.eidhof.nl/" target="_blank"><img src="../img/event/yeguchen.jpg"></a>
+          <p class="detail">又名叶孤城，彦祖。现为探探 iOS 客户端负责人。曾就职于 Camera360、流利说。对动画交互，图像，视频处理颇有心得。热爱分享，热爱 iOS 圈子，为大家提供了 <a href="http://reviewcode.cn/">Code Review 平台</a>。</p>
         </div>
       </div>
       <div class="speaker__card b l">
         <div class="speaker__content">
-          <h4 class="name">傅若愚</h4><a href="https://github.com/lingoer" target="_blank"><img src="../img/event/furuoyu.jpg"></a>
-          <p class="detail">移动开发者，ThoughtWorks 高级咨询师/Tech Lead，SwiftyJSON 作者。业余喜读书，文史哲无所禁忌，爱美食与啤酒，凡酒约，从不拒绝，爱睡懒觉，周末从不在下午 2 点前起床。总之，是个充满缺点与怪癖的家伙。</p>
+          <h4 class="name">邱胤炎</h4><a href="https://github.com/lingoer" target="_blank"><img src="../img/event/MartinRGB.jpg"></a>
+          <p class="detail">常用 ID 是 MartinRGB。设计与编程才华集于一身。就职于魅族、乐视、渡鸦。
+            最大的成就感就是自己亲手把自己设计的复杂动画用代码实现。
+            UI 中国有一期他的 <a href="http://www.ui.cn/detail/56421.html">详细介绍</a>。
+            开源了多个炫酷的 <a href="https://github.com/MartinRGB"> 动画项目</a>。
+          </p>
         </div>
       </div>
+
+      <div class="speaker__card b">
+        <div class="speaker__content">
+          <h4 class="name">李智维</h4><a href="http://weibo.com/zhiweilee" target="_blank"><img src="../img/event/lzwjava_avatar.jpg"></a>
+          <p class="detail">常用 ID 是 lzwjava。95 年出生的他，初中早早接触了编程，大二辍学加入 LeanCloud，20 岁已能月入过万。他并未止步，辞职创业搞起了 <a href="http://reviewcode.cn/">Code Review 平台</a>，负责大部分的技术开发。业余时间也开源了一些 <a href="https://github.com/lzwjava">项目</a>。</p>
+        </div>
+      </div>
+
     </section>
     <section id="agenda" class="agenda">
       <div class="agenda__content">
