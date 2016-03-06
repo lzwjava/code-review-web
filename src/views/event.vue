@@ -4,7 +4,7 @@
       <div class="info__content">
         <p class="info__subtitle"><span class="info__down">Code Review</span>第一次线下活动</p>
         <p class="info__date">2016年3月12日·北京 科技寺创业空间·北新桥店</p>
-        <div class="info__btn"><a href="https://github.com/atConf" target="_blank">相关信息</a></div>
+        <!-- <div class="info__btn"><a href="https://github.com/atConf" target="_blank">相关信息</a></div> -->
       </div>
       <header class="header">
         <div class="sm_nav">
@@ -216,7 +216,7 @@ body
     span(1)
     letter-spacing 3px
     position relative
-    background-image url("http://www.kejisi.com/images/n1.jpg")
+    background-image url("http://www.kejisi.com/images/n5.jpg")
     height 700px
     background-attachment fixed
     background-size contain
