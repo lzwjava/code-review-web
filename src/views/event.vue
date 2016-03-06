@@ -438,6 +438,7 @@ body
     .speaker-list
       display flex
       display -webkit-flex
+      justify-content center
       &:before, &:after
         content " "
         display table
