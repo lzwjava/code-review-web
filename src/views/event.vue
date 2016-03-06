@@ -233,7 +233,7 @@ body
     span(1)
     letter-spacing 3px
     position relative
-    background-image url("../img/event/bg_bw.jpg")
+    background-image url("http://www.kejisi.com/images/n1.jpg")
     height 700px
     background-attachment fixed
     background-size contain
