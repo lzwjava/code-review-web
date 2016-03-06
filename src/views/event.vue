@@ -208,8 +208,8 @@ body
   font-size 1.6rem
   .info
     span(1)
-
     letter-spacing 3px
+    position relative
     background-image url("../img/event/bg_bw.jpg")
     height 700px
     background-attachment fixed
@@ -263,13 +263,14 @@ body
     .info__subtitle
       letter-spacing 2px
       font-size 5rem
+      margin-bottom 2rem
       +below(500px)
         font-size 2rem
       .info__down
         font-family arial
         font-weight normal
     .info__btn
-      padding-top 1rem
+      padding-top 2rem
       a
         cursor pointer
         text-decoration none
@@ -483,6 +484,7 @@ body
         list-style none
         display block
         background-color white
+        margin-top 3rem
         li.lottery
           div
             span
