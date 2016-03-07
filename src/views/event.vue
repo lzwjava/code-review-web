@@ -147,7 +147,7 @@
           <li>
             <time>15:40</time>
             <div>
-              <span>我这一路的选择和成长(20min)</span><br>
+              <span>我的选择和成长(20min)</span><br>
               <span>Ask Me Anything(20min)</span>
               <p>李智维</p>
             </div>
@@ -211,9 +211,6 @@
 @import '../../node_modules/jeet/stylus/jeet'
 @import '../../node_modules/rupture/rupture/index.styl'
 
-html
-  font-size 62.5%
-
 .event-area
   text-align center
 
@@ -246,17 +243,17 @@ body
     span(0.7, offset:0.15)
   layout2_sm()
     span(0.9, offset:0.05)
-  font-size 1.6rem
+  font-size 16px
   background #fff
 
   h1.title
-    center(30rem)
-    margin-top 6rem
-    margin-bottom 3rem
+    center(300px)
+    margin-top 60px
+    margin-bottom 30px
     font-weight 300
     text-align center
     font-size 36px
-    height 4.5rem
+    height 45px
     color #1CB2EF
     background-image url("../img/event/intro_bg.png")
     background-repeat no-repeat
@@ -271,69 +268,69 @@ body
     background-size contain
     background-position center
     text-align center
-    font-size 2rem
+    font-size 20px
     +below(500px)
-      font-size 1rem
+      font-size 10px
     color #282F31
     .info__content
-      width 60rem
+      width 600px
       +below(500px)
-        width 30rem
-        margin-left -15rem
-        margin-top -10rem
+        width 300px
+        margin-left -150px
+        margin-top -100px
         top 45%
-      height 30rem
+      height 300px
       position absolute
       top 50%
       left 50%
-      margin-left -30rem
-      margin-top -15rem
+      margin-left -300px
+      margin-top -150px
     .info__subtitle
       letter-spacing 2px
-      font-size 5rem
-      margin-bottom 2rem
-      line-height 6rem
+      font-size 50px
+      margin-bottom 20px
+      line-height 60px
       +below(500px)
-        font-size 3rem
-        line-height 3.5rem
+        font-size 30px
+        line-height 35px
       .info__down
         font-family arial
         font-weight normal
     .info__detail
       margin-top 30px
-      font-size 1.6rem
+      font-size 16px
       color #6E7A83
-      line-height 3rem
+      line-height 30px
       +below(500px)
-        font-size 1.4rem
-        line-height 2rem
-        margin 0 1rem
+        font-size 14px
+        line-height 20px
+        margin 0 10px
 
   .header
     span(1)
     background-color white
     position absolute
     bottom 0
-    box-shadow 0px 0px 0.5rem rgba(0, 0, 0, 0.3)
-    padding 1rem
-    height 6rem
+    box-shadow 0px 0px 5px rgba(0, 0, 0, 0.3)
+    padding 10px
+    height 60px
 
     .sm_nav
       span(0.2, offset: 0.1)
       display none
       +below(500px)
         display inline-block
-      height 4rem
+      height 40px
       vertical-align middle
       .header__btn
         span(1/6)
-        padding-top 0.9rem
+        padding-top 9px
         text-align center
         a
           cursor pointer
           text-decoration none
           color #4d4d4d
-          font-size 2rem
+          font-size 20px
           &:hover
             color #5399fc
             text-decoration none
@@ -343,26 +340,26 @@ body
         box-sizing border-box
         text-align left
         position absolute
-        bottom 6rem
+        bottom 60px
         left 0
         list-style-type none
         margin 0
-        padding-left 4rem
-        padding-top 0.5rem
-        padding-bottom 0.5rem
-        height 21rem
+        padding-left 40px
+        padding-top 5px
+        padding-bottom 5px
+        height 210px
         background white
         border-bottom solid 1px #ccc
         border-top solid 1px #ccc
         li
           span(0.8)
-          padding-top 0.5rem
-          padding-bottom 0.5rem
-          line-height 3rem
+          padding-top 5px
+          padding-bottom 5px
+          line-height 30px
           vertical-align middle
-          height 4rem
+          height 40px
           a
-            font-size 1.6rem
+            font-size 16px
 
     .header__nav
       span(0.42, offset:0.29)
@@ -370,28 +367,28 @@ body
         span(0.6, offset:0.1)
       +below(500px)
         display none
-      height 4rem
+      height 40px
       .header__btn
         span(1/5)
-        padding-top 0.8rem
+        padding-top 8px
         text-align center
         a
           cursor pointer
           text-decoration none
           color #4d4d4d
-          font-size 1.6rem
+          font-size 16px
           &:hover
             color #5399fc
             text-decoration none
       .highlight
-        padding-top 0.5rem
+        padding-top 5px
         a
           background-color #5399fc
           color white
           display inline-block
-          padding 0.5rem
-          width 14rem
-          border-radius 1.6rem
+          padding 5px
+          width 140px
+          border-radius 16px
           &:hover
             color white
             background-color #64a3fc
@@ -409,21 +406,21 @@ body
       +below(500px)
         span(1)
       height 500px
-      padding 1rem
+      padding 10px
       .speaker__content
         span(1)
         +below(500px)
-          padding 1rem
-        padding 4rem
-        padding-top 1rem
+          padding 10px
+        padding 40px
+        padding-top 10px
         h4.name
           font-weight 700
-          margin-bottom 2rem
+          margin-bottom 20px
           font-size 18px
         p.detail
           text-align left
-          line-height 2.2rem
-          margin-top 2rem
+          line-height 22px
+          margin-top 20px
         a
           color #428bca
       img
@@ -441,32 +438,32 @@ body
     h1
       background-image url("../img/event/intro_bg.png")
     h3
-      font-size 4rem
+      font-size 40px
       color #282F31
-      line-height 7.2rem
-      margin-bottom 2rem
+      line-height 72px
+      margin-bottom 20px
     .intro__card
       span(1/3)
       +below(500px)
         span(1)
-      padding 2rem
+      padding 20px
       h3.intro__reason
-        margin-bottom 2rem
+        margin-bottom 20px
         font-size 20px
         color #E24B47
         line-height 40px
       p.intro__detail
-        margin-top 2rem
+        margin-top 20px
         line-height 25px
     div#map__container
-      center(60rem)
-      margin-top 20rem
+      center(600px)
+      margin-top 200px
       img
         width 100%
   .agenda
     span(1)
     color #34495e
-    padding-bottom 5rem
+    padding-bottom 50px
     div.agenda__content
       layout2()
       +below(1200px)
@@ -474,13 +471,13 @@ body
       h1
         background-image url("../img/event/agenda_bg.png")
       .agenda__list
-        center(50rem)
+        center(500px)
         +below(768px)
-          center(30rem)
+          center(300px)
         list-style none
         display block
         background-color white
-        margin-top 3rem
+        margin-top 30px
         li.lottery
           div
             span
@@ -491,22 +488,22 @@ body
               color #2C6700
         li
           span(1)
-          height 10rem
+          height 100px
           border-bottom 2px solid #f8f8f8
           text-align left
-          padding-left 5rem
+          padding-left 50px
           +below(768px)
-            padding-left 1rem
+            padding-left 10px
           time
             display inline-block
             color: #111;
-            line-height 10rem
+            line-height 100px
             font-weight: bold;
-            font-size: 3.2rem;
+            font-size: 32px;
             vertical-align: middle;
             width 30%
             +below(768px)
-              font-size 2rem
+              font-size 20px
               width 20%
           div
             display inline-block
@@ -517,14 +514,14 @@ body
             vertical-align middle
             span
               color black
-              line-height 2rem
-              font-size 2rem
+              line-height 20px
+              font-size 20px
               +below(1200px)
-                font-size 1.8rem
+                font-size 18px
             p
               color #999
-              line-height 2rem
-              font-size 1.8rem
+              line-height 20px
+              font-size 18px
   .ticket
     layout2()
     +below(1200px)
@@ -534,56 +531,56 @@ body
     letter-spacing 1px
     .ticket__card
       text-align center
-      center(35rem)
+      center(350px)
       background #FDFFFF
       border 1px solid #D9DBDC
       box-shadow 0px 1px 4px 0px rgba(0,0,0,0.08)
       border-radius 8px
-      padding 3rem
+      padding 30px
       h3
-        font-size 2rem
+        font-size 20px
         color #6E7A83
-        line-height 2rem
-        margin-bottom 1rem
+        line-height 20px
+        margin-bottom 10px
       .ticket__detail
         font-size 14px
         color #6E7A83
         line-height 24px
         border-bottom 1px solid rgba(0,0,0,0.15)
-        margin-top 1rem
-        padding-bottom 2rem
+        margin-top 10px
+        padding-bottom 20px
       .price
         overflow visible
         padding 0
         color #000
-        font-size 4.8rem
-        margin 2rem 0
+        font-size 48px
+        margin 20px 0
       .btn-attend
         font-size 16px
         width 80%
-        padding 1rem 0px
+        padding 10px 0px
     .ticket__attend
-       margin 5rem 0
+       margin 50px 0
        color #6E7A83
        .ticket__attend__title
-         line-height 2rem
-         font-size 2rem
-         margin 2rem 0
+         line-height 20px
+         font-size 20px
+         margin 20px 0
        .ticket__attend__avatars
          .avatar
            img
-             width 3.8rem
-             height 3.8rem
+             width 38px
+             height 38px
     .ticket__tips
-      font-size 2rem
-      margin 10rem 0
+      font-size 20px
+      margin 100px 0
       color #6E7A83
-      line-height 2.5rem
+      line-height 25px
 
   footer
     span(1)
     color white
-    padding 2rem
+    padding 20px
     vertical-align middle
 
 .disabled
