@@ -307,6 +307,8 @@ body
       color #282F31
       line-height 72px
       margin-bottom 20px
+      +below(500px)
+        font-size 30px
     .intro__card
       span(1/3)
       +below(500px)
