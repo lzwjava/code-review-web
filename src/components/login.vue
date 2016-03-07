@@ -142,4 +142,14 @@ green = #33C96F
 						color #08B1F6
 						opacity 1
 
+@media only screen and (max-width: 700px)
+	.login
+		width 90%
+		max-height 90%
+		margin-left -45%
+		padding 9%
+		height auto
+		.cancel
+			right 10px
+			top 10px
 </style>
