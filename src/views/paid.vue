@@ -1,7 +1,8 @@
 <template>
     <div class="main-container">
       <div class="paid-tips">
-        打赏成功, 已将您的申请通知给了大神。大神处理申请后，将短信通知您，也可查看 <a href="./order.html">订单列表</a> 。
+        <span v-if="type== 'order'">打赏成功, 已将您的申请通知给了大神。大神处理申请后，将短信通知您，也可查看 <a href="./order.html">订单列表</a> 。</span>
+        <span v-if="type== 'event'">支付成功，您已报名活动。感谢您的参与，我们交流会上见。</span>
       </div>
     </div>
 </template>
@@ -19,15 +20,18 @@ export default {
     },
     data () {
         return {
+          type: 'order'
         }
     },
     computed: {
-
     },
     methods: {
     },
     created() {
-
+      var params = util.getSearchParameters();
+      if (params.type) {
+        this.type = params.type;
+      }
     }
 }
 

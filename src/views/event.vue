@@ -79,7 +79,7 @@
           <div class="speaker__content">
             <h4 class="name">张延瑞</h4>
             <img src="../img/event/yanrui.jpg">
-            <p class="detail">微博 <a href="http://weibo.com/u/1764965604">@张延瑞</a> 。耕耘于 iOS 开发多年。就职于 Camera360、乐视。
+            <p class="detail">微博 <a href="http://weibo.com/u/1764965604">@张延瑞</a> 。11年末开始从事 iOS 开发，曾就职于阿姨帮、Camera360，现就职于乐视，负责影视会员相关业务。拥有丰富的开发经验。
             </p>
           </div>
         </div>
@@ -580,7 +580,6 @@ body
   footer
     span(1)
     color white
-    padding 20px
     vertical-align middle
 
 .disabled
