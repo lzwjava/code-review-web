@@ -40,5 +40,6 @@ export default {
     eventGet: 'events/:id',
     attendanceGet: 'attendances/:id',
     eventAttend: 'events/:id/attend',
-    attendancePay: 'attendances/:id/pay'
+    attendancePay: 'attendances/:id/pay',
+    attendancesGetEvent: 'events/:id/attendances'
 }

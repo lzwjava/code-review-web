@@ -182,6 +182,19 @@
           <button class="btn-attend btn-blue" @click="showAttend">立即支付</button>
         </div>
 
+        <div class="ticket__attend">
+          <p class="ticket__attend__title">
+            已经有 {{event.attendCount}} 人购买了门票 <br>还剩 {{event.restCount}}张
+          </p>
+          <ul class="ticket__attend__avatars">
+            <li v-for="attendance in attendances">
+              <user-avatar :user="attendance.user"></user-avatar>
+            </li>
+          </ul>
+        </div>
+
+        <p class="ticket__tips">现场我们会拍摄一些照片，别忘了活动结束后来看哦</p>
+
       </div>
 
     </section>
@@ -389,15 +402,6 @@ body
     color #34495e
     h1
       background-image url("../img/event/speaker_bg.png")
-    // .speaker-list
-    //   display flex
-    //   display -webkit-flex
-    //   justify-content center
-    //   &:before, &:after
-    //     content " "
-    //     display table
-    //   &:after
-    //     clear: both
     .speaker__card
       span(1/2)
       +below(768px)
@@ -526,7 +530,7 @@ body
     +below(1200px)
       layout2_sm()
     color #34495e
-    text-align left
+    text-align center
     letter-spacing 1px
     .ticket__card
       text-align center
@@ -558,6 +562,23 @@ body
         font-size 16px
         width 80%
         padding 1rem 0px
+     .ticket__attend
+        margin 5rem 0
+        color #6E7A83
+        .ticket__attend__title
+          line-height 2rem
+          font-size 2rem
+          margin 2rem 0
+        .ticket__attend__avatars
+          .avatar
+            img
+              width 3.8rem
+              height 3.8rem
+      .ticket__tips
+        font-size 2rem
+        margin 10rem 0
+        color #6E7A83
+
   footer
     span(1)
     color white
@@ -578,17 +599,20 @@ import serviceUrl from '../common/serviceUrl'
 import Loading from '../components/loading.vue'
 import EventForm from '../components/event-form.vue'
 import Overlay from '../components/overlay.vue'
+import UserAvatar from '../components/user-avatar.vue'
 
 var debug = require('debug')('event');
 
 module.exports = {
   components: {
     'event-form': EventForm,
-    overlay: Overlay
+    overlay: Overlay,
+    'user-avatar': UserAvatar
   },
   data: function() {
     return {
       event:{},
+      attendances: [],
       overlayStatus: false
     };
   },
@@ -600,7 +624,25 @@ module.exports = {
       } else {
         this.overlayStatus = true;
       }
-    }
+    },
+    fetchEvent(eventId) {
+      this.$http.get(serviceUrl.eventGet.replace(/:id/, eventId))
+        .then((resp)=> {
+          if (util.filterError(this, resp)) {
+            this.event = resp.data.result;
+            debug('event: %j', this.event);
+          }
+        }, util.httpErrorFn(this));
+    },
+    fetchAttendances(eventId) {
+      this.$http.get(serviceUrl.attendancesGetEvent.replace(/:id/, eventId))
+        .then((resp) => {
+          if (util.filterError(this, resp)) {
+            this.attendances = resp.data.result;
+            debug('attendances: %j', this.attendances)
+          }
+        }, util.httpErrorFn(this));
+    },
   },
   ready () {
 
@@ -612,13 +654,9 @@ module.exports = {
       return;
     }
     var eventId = params.eventId;
-    this.$http.get(serviceUrl.eventGet.replace(/:id/, eventId))
-      .then((resp)=> {
-        if (util.filterError(this, resp)) {
-          this.event = resp.data.result;
-          debug('event: %j', this.event);
-        }
-      }, util.httpErrorFn(this));
+    this.fetchEvent(eventId);
+    this.fetchAttendances(eventId);
+
     var user = util.getLocalUser();
     if (!user.username) {
       // 没有登录
