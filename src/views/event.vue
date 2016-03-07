@@ -411,6 +411,7 @@ body
          font-size 20px
          margin 20px 0
        .ticket__attend__avatars
+         center(300px)
          li
           display inline-block
           margin 5px
