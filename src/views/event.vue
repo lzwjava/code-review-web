@@ -4,40 +4,23 @@
       <div class="info__content">
         <p class="info__subtitle"><span class="info__down">Code Review</span><br>第一次线下活动</p>
         <p class="info__detail">
-          亲爱的朋友们，我们一起相约科技寺，参与、分享并交流代码。<br>
-          你可以带着问题来，这些问题可以是和本次大会内容相关的，也可以是无关的。<br>
-          比如，你平时写代码碰到的问题，想知道如何快速提高等等。 Ask me anything。
+          亲爱的朋友们，我们一起相约中关村 e 世界，参与、分享并交流代码。<br>
+          你可以带着问题来，这些问题可以是和活动相关的，也可以是无关的。<br>
+          比如，你平时写代码遇到的问题，想知道如何快速提高等等。<br> Ask me anything。
         </p>
       </div>
-      <!-- <header class="header">
-        <div class="sm_nav">
-          <div class="header__btn"><a><i class="fa fa-bars"></i></a></div>
-          <ul class="sm_btns">
-            <li><a href="#intro">大会介绍</a></li>
-            <li><a href="#speaker">演讲嘉宾</a></li>
-            <li><a href="#agenda">大会议程</a></li>
-          </ul>
-        </div>
-        <div class="header__nav">
-          <div class="header__btn"><a href="#intro">大会介绍</a></div>
-          <div class="header__btn"><a href="#speaker">演讲嘉宾</a></div>
-          <div class="header__btn"><a href="#agenda">大会议程</a></div>
-          <div class="header__btn"><a href="#ticket">报名参加</a></div>
-          <div class="header__btn"><a href="#map">会场位置</a></div>
-        </div>
-      </header> -->
     </section>
     <section id="intro" class="intro">
       <div class="intro__content">
         <h1 class="title">活动详情</h1>
-        <h3>2016 年 3 月 12 日</h3>
+        <h3>2016 年 3 月 13 日</h3>
         <div class="intro__card">
           <h3 class="intro__reason">时间</h3>
-          <p class="intro__detail">1:30pm - 6pm</p>
+          <p class="intro__detail">1pm - 6pm</p>
         </div>
         <div class="intro__card">
           <h3 class="intro__reason">地点</h3>
-          <p class="intro__detail">科技寺创业空间<br>北新桥店</p>
+          <p class="intro__detail">中关村 e 世界<br>联合创业办公社</p>
         </div>
         <div class="intro__card">
           <h3 class="intro__reason">费用</h3>
@@ -45,7 +28,7 @@
         </div>
 
         <div id="map__container">
-          <img src="../img/map.jpg">
+          <img src="../img/event/map_e_world.jpg">
         </div>
 
       </div>
@@ -57,7 +40,7 @@
            <div class="speaker__content">
              <h4 class="name">臧其龙</h4>
              <img src="../img/event/yeguchen.jpg">
-             <p class="detail">微博 <a href="http://weibo.com/u/1438670852" target="_blank">@叶孤城</a>。现为探探 iOS 客户端开发，
+             <p class="detail">微博 <a href="http://weibo.com/u/1438670852" target="_blank">@叶孤城</a>。现为探探 iOS 开发，
                曾就职于 Camera360、流利说。对动画交互，图像，视频处理颇有心得。
                热爱 <a href="https://github.com/zangqilong198812" target="_blank">分享</a>，热爱 iOS 圈子，为大家提供了
                <a href="http://reviewcode.cn/" target="_blank">Code Review 平台</a>。
@@ -142,6 +125,16 @@
           <li>
             <time>15:20</time>
             <div><span>茶歇</span></div>
+          </li>
+
+
+          <li>
+              <time>15:40</time>
+              <div>
+                <span>编程、生活(20min)</span><br>
+                <span>Ask Me Anything(20min)</span>
+                <p>张延瑞</p>
+             </div>
           </li>
 
           <li>
@@ -298,7 +291,7 @@ body
         font-weight normal
     .info__detail
       margin-top 30px
-      font-size 16px
+      font-size 15px
       color #6E7A83
       line-height 30px
       +below(500px)
