@@ -9,7 +9,7 @@
           比如，你平时写代码碰到的问题，想知道如何快速提高等等。 Ask me anything。
         </p>
       </div>
-      <header class="header">
+      <!-- <header class="header">
         <div class="sm_nav">
           <div class="header__btn"><a><i class="fa fa-bars"></i></a></div>
           <ul class="sm_btns">
@@ -25,7 +25,7 @@
           <div class="header__btn"><a href="#ticket">报名参加</a></div>
           <div class="header__btn"><a href="#map">会场位置</a></div>
         </div>
-      </header>
+      </header> -->
     </section>
     <section id="intro" class="intro">
       <div class="intro__content">
@@ -43,30 +43,39 @@
           <h3 class="intro__reason">费用</h3>
           <p class="intro__detail">¥288</p>
         </div>
+
+        <div id="map__container">
+          <img src="../img/map.jpg">
+        </div>
+
       </div>
     </section>
     <section id="speaker" class="speaker">
       <h1 class="title">嘉宾介绍</h1>
        <div class="speaker-list">
-        <div class="speaker__card r b">
+         <div class="speaker__card">
+           <div class="speaker__content">
+             <h4 class="name">臧其龙</h4>
+             <img src="../img/event/yeguchen.jpg">
+             <p class="detail">微博 <a href="http://weibo.com/u/1438670852" target="_blank">@叶孤城</a>。现为探探 iOS 客户端开发，
+               曾就职于 Camera360、流利说。对动画交互，图像，视频处理颇有心得。
+               热爱 <a href="https://github.com/zangqilong198812" target="_blank">分享</a>，热爱 iOS 圈子，为大家提供了
+               <a href="http://reviewcode.cn/" target="_blank">Code Review 平台</a>。
+             </p>
+           </div>
+         </div>
+        <div class="speaker__card">
           <div class="speaker__content">
             <h4 class="name">陈宜龙</h4>
             <img src="../img/event/ios_programmer.jpg">
             <p class="detail">你可能不熟悉陈宜龙，但不会不知道 <a href="http://weibo.com/u/1692391497" target="_blank">iOS 程序犭袁</a>。
               热爱分享，崇尚开源精神，对新技术有狂热的追求。
-              著有《iOS 9 适配系列教程》、《iOS 面试题集锦》、《CYLTabBarController》等 <a href="https://github.com/ChenYilong" target="_blank">教程和框架</a>，均获得数千 Star。</p>
+              著有《iOS 9 适配系列教程》、《iOS 面试题集锦》、《CYLTabBarController》等
+              <a href="https://github.com/ChenYilong" target="_blank">教程和框架</a>，均获得数千 Star。
+            </p>
           </div>
         </div>
-        <div class="speaker__card b">
-          <div class="speaker__content">
-            <h4 class="name">臧其龙</h4>
-            <img src="../img/event/yeguchen.jpg">
-            <p class="detail">微博 <a href="http://weibo.com/u/1438670852" target="_blank">@叶孤城</a>。现为探探 iOS 客户端开发，
-              曾就职于 Camera360、流利说。对动画交互，图像，视频处理颇有心得。
-              热爱分享，热爱 iOS 圈子，为大家提供了 <a href="http://reviewcode.cn/">Code Review 平台</a>。</p>
-          </div>
-        </div>
-        <div class="speaker__card b l">
+        <div class="speaker__card">
           <div class="speaker__content">
             <h4 class="name">张延瑞</h4>
             <img src="../img/event/yanrui.jpg">
@@ -85,11 +94,11 @@
             </p>
           </div>
         </div> -->
-        <div class="speaker__card b">
+        <div class="speaker__card">
           <div class="speaker__content">
             <h4 class="name">李智维</h4>
             <img src="../img/event/lzwjava_avatar.jpg">
-            <p class="detail">微博 <a href="http://weibo.com/zhiweilee" target="_blank">@lzwjava</a>。95 年出生的他，初中接触了编程，大二辍学加入 LeanCloud，20 岁已能月入过万。他并未止步，辞职创业搞起了 <a href="http://reviewcode.cn/">Code Review 平台</a>，负责大部分的技术开发。业余时间也开源了一些 <a href="https://github.com/lzwjava">项目</a>。</p>
+            <p class="detail">微博 <a href="http://weibo.com/zhiweilee" target="_blank">@lzwjava</a>。95 年出生的他，初中接触了编程，曾任职于 LeanCloud。现创业搞起了 <a href="http://reviewcode.cn/">Code Review 平台</a>，负责大部分的技术开发。业余时间也开源了一些 <a href="https://github.com/lzwjava">项目</a>。</p>
           </div>
         </div>
 
@@ -163,22 +172,18 @@
     <section id="ticket" class="ticket">
       <div class="ticket__content">
         <h1 class="title">购买门票</h1>
-        <img src="../img/event/ticket.png"/>
-        <p>参会门票</p>
-        <p class="price">¥{{event.amount | moneyAsYuan}}</p>
-        <button class="btn-attend" @click="showAttend">我要报名</button>
-      </div>
 
-    </section>
-
-    <section id="map" class="map">
-      <div class="map__content">
-        <h1>会场位置</h1>
-        <h4>北航新主楼·会议中心</h4>
-        <div id="map__container">
-          <img src="../img/map.jpg" alt="">
+        <div class="ticket__card">
+          <h3>注意事项</h3>
+          <p class="ticket__detail">
+            为保证您的权利，在购买成功后我们会向您发送一条短信，请您确认，本活动所得用于支付活动费用，Code Review 秉承平台原则，不收取额外费用
+          </p>
+          <p class="price">¥{{event.amount | moneyAsYuan}}</p>
+          <button class="btn-attend btn-blue" @click="showAttend">立即支付</button>
         </div>
+
       </div>
+
     </section>
 
     <overlay :overlay.sync="overlayStatus">
@@ -378,9 +383,9 @@ body
             color white
             background-color #64a3fc
   .speaker
-    layout1()
+    layout2()
     +below(1200px)
-      layout1_sm()
+      layout2_sm()
     color #34495e
     h1
       background-image url("../img/event/speaker_bg.png")
@@ -394,7 +399,7 @@ body
     //   &:after
     //     clear: both
     .speaker__card
-      span(1/3)
+      span(1/2)
       +below(768px)
         span(1/2)
       +below(500px)
@@ -449,6 +454,11 @@ body
       p.intro__detail
         margin-top 2rem
         line-height 25px
+    div#map__container
+      center(60rem)
+      margin-top 20rem
+      img
+        width 100%
   .agenda
     span(1)
     color #34495e
@@ -518,39 +528,36 @@ body
     color #34495e
     text-align left
     letter-spacing 1px
-    .ticket__content
+    .ticket__card
       text-align center
-      img
-        +below(768px)
-          width 80%
-      h1
-        background-image url("../img/event/ticket_bg.png")
+      center(35rem)
+      background #FDFFFF
+      border 1px solid #D9DBDC
+      box-shadow 0px 1px 4px 0px rgba(0,0,0,0.08)
+      border-radius 8px
+      padding 3rem
+      h3
+        font-size 2rem
+        color #6E7A83
+        line-height 2rem
+        margin-bottom 1rem
+      .ticket__detail
+        font-size 14px
+        color #6E7A83
+        line-height 24px
+        border-bottom 1px solid rgba(0,0,0,0.15)
+        margin-top 1rem
+        padding-bottom 2rem
       .price
         overflow visible
         padding 0
-        color #d73940
-        font-size 20px
-  .map
-    span(1)
-    color #34495e
-    padding-bottom 6rem
-    div.map__content
-      layout2()
-      +below(1200px)
-        layout2_sm()
-    div#map__container
-      center(120rem)
-      margin-top 3rem
-      background-size contain
-      background-image url('../img/map.jpg')
-      img
-        width 100%
-    h1
-      center(40rem)
-      margin-top 6rem
-      margin-bottom 3rem
-      font-weight bold
-      text-align center
+        color #000
+        font-size 4.8rem
+        margin 2rem 0
+      .btn-attend
+        font-size 16px
+        width 80%
+        padding 1rem 0px
   footer
     span(1)
     color white
