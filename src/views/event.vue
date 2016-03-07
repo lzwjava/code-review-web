@@ -283,7 +283,7 @@ body
       span(1/2)
       +below(500px)
         span(1)
-        height 450px
+        height 500px
       height 550px
       .speaker__content
         span(1)
