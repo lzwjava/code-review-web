@@ -16,7 +16,7 @@
         <h3>2016 年 3 月 13 日</h3>
         <div class="intro__card">
           <h3 class="intro__reason">时间</h3>
-          <p class="intro__detail">1pm - 6pm</p>
+          <p class="intro__detail">1pm - 6:30pm</p>
         </div>
         <div class="intro__card">
           <h3 class="intro__reason">地点</h3>
@@ -114,7 +114,7 @@
             </div>
           </li>
           <li>
-            <time>14:30</time>
+            <time>14:25</time>
             <div>
               <span>IM 开发的那些事(20min)</span><br>
               <span>Ask Me Anything(20min)</span>
@@ -123,10 +123,9 @@
           </li>
 
           <li>
-            <time>15:20</time>
+            <time>15:10</time>
             <div><span>茶歇</span></div>
           </li>
-
 
           <li>
               <time>15:40</time>
@@ -138,7 +137,7 @@
           </li>
 
           <li>
-            <time>15:40</time>
+            <time>16:25</time>
             <div>
               <span>我的选择和成长(20min)</span><br>
               <span>Ask Me Anything(20min)</span>
@@ -147,7 +146,7 @@
           </li>
 
           <li>
-            <time>16:30</time>
+            <time>17:00</time>
             <div>
               <span>分组交流</span>
               <p>各嘉宾和参会者分组交流</p>
@@ -155,7 +154,7 @@
           </li>
 
           <li>
-            <time>18:00</time>
+            <time>18:30</time>
             <div><span>结束</span></div>
           </li>
         </ul>
