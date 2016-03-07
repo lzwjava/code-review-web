@@ -9,12 +9,10 @@
             <h2>报名须知</h2>
             <ul>
               <li>暂时只支持支付宝支付</li>
-              <li>报名后如果不能立刻支付，可以再次点击“我要报名”完成支付</li>
-              <li>大会信息如有改动，将短信通知您，请确保当前登录账号的手机号可用</li>
+              <li>如果支付遇到问题，请联系组织方，微信 lzwjava</li>
+              <li>大会信息如有改动，将短信通知您，请确保当前登录账号的手机号 {{currentUser().mobilePhoneNumber }}可用</li>
             </ul>
-            <button v-if="event.status == 'none'" class="btn btn-blue btn-attend" @click="attend">确认报名</button>
-
-            <button v-if="event.status == 'attended'" class="btn btn-blue btn-pay" @click="forwardPay">完成支付</button>
+            <button class="btn btn-blue btn-attend" @click="attend">确认报名</button>
           </div>
 
           <div class="pay-area" v-show="mode == 'pay'">
@@ -91,25 +89,23 @@ export default {
     close () {
       this.$parent.overlay = false;
     },
+    currentUser() {
+      return util.getLocalUser();
+    },
     attend() {
       var user = util.getLocalUser();
       if (!user.username){
         util.show(this, 'error', '未登录，请登录之后再报名');
         return;
       }
-      this.$http.post(serviceUrl.eventAttend.replace(/:id/, this.event.eventId))
-       .then((resp) => {
-         if (util.filterError(this, resp)) {
-           this.forwardPay();
-         }
-       }, util.httpErrorFn(this))
+      this.forwardPay();
     },
     forwardPay() {
       this.mode = 'pay';
       this.payEvent(this.event.eventId);
     },
     payEvent(eventId) {
-      this.$http.post(serviceUrl.attendancePay.replace(/:id/, eventId)).then((resp) => {
+      this.$http.post(serviceUrl.eventPay.replace(/:id/, eventId)).then((resp) => {
         if (resp.data && resp.data.credential) {
           window.pingppPc.createPayment(resp.data, function (result, err) {
             if (err != null) {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="event-area">
     <section class="info">
       <div class="info__content">
         <p class="info__subtitle"><span class="info__down">Code Review</span><br>第一次线下活动</p>
@@ -133,7 +133,7 @@
           <li>
             <time>14:30</time>
             <div>
-              <span>IM 的那些事——XMPP、Socket、SDK(20min)</span><br>
+              <span>IM 的那些事(20min)</span><br>
               <span>Ask Me Anything(20min)</span>
               <p>陈宜龙</p>
             </div>
@@ -179,7 +179,9 @@
             为保证您的权利，在购买成功后我们会向您发送一条短信，请您确认，本活动所得用于支付活动费用，Code Review 秉承平台原则，不收取额外费用
           </p>
           <p class="price">¥{{event.amount | moneyAsYuan}}</p>
-          <button class="btn-attend btn-blue" @click="showAttend">立即支付</button>
+          <button class="btn-attend btn-blue" :class="{'disabled': event.attendance != null }" @click="showAttend">
+            {{attendTitle}}
+          </button>
         </div>
 
         <div class="ticket__attend">
@@ -209,12 +211,10 @@
 @import '../../node_modules/jeet/stylus/jeet'
 @import '../../node_modules/rupture/rupture/index.styl'
 
-*
-  -webkit-text-size-adjust none
-  -webkit-transform-origin-x 0
-
 html
   font-size 62.5%
+
+.event-area
   text-align center
 
 .r
@@ -562,22 +562,23 @@ body
         font-size 16px
         width 80%
         padding 1rem 0px
-     .ticket__attend
-        margin 5rem 0
-        color #6E7A83
-        .ticket__attend__title
-          line-height 2rem
-          font-size 2rem
-          margin 2rem 0
-        .ticket__attend__avatars
-          .avatar
-            img
-              width 3.8rem
-              height 3.8rem
-      .ticket__tips
-        font-size 2rem
-        margin 10rem 0
-        color #6E7A83
+    .ticket__attend
+       margin 5rem 0
+       color #6E7A83
+       .ticket__attend__title
+         line-height 2rem
+         font-size 2rem
+         margin 2rem 0
+       .ticket__attend__avatars
+         .avatar
+           img
+             width 3.8rem
+             height 3.8rem
+    .ticket__tips
+      font-size 2rem
+      margin 10rem 0
+      color #6E7A83
+      line-height 2.5rem
 
   footer
     span(1)
@@ -588,6 +589,7 @@ body
 .disabled
   cursor not-allowed
   opacity .65
+  background-color #6E7A83
 
 </style>
 
@@ -616,13 +618,27 @@ module.exports = {
       overlayStatus: false
     };
   },
+  computed: {
+    attendTitle () {
+      var user = util.getLocalUser();
+      if (!user.username) {
+        return '请登录后报名';
+      } else if (this.event.attendance == null) {
+        return '立即报名';
+      } else {
+        return '您已报名';
+      }
+    }
+  },
   methods: {
     showAttend() {
       var user = util.getLocalUser();
       if (!user.username) {
-        // show 登录 form
+        var nav = this.$root.$children[0];
+        nav.signin();
+      } else if (this.event.attendance == null){
+         this.overlayStatus = true;
       } else {
-        this.overlayStatus = true;
       }
     },
     fetchEvent(eventId) {
