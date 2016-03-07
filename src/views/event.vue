@@ -38,8 +38,8 @@
        <div class="speaker-list">
          <div class="speaker__card">
            <div class="speaker__content">
-             <h4 class="name">臧其龙</h4>
              <img src="../img/event/yeguchen.jpg">
+             <h4 class="name">臧其龙</h4>
              <p class="detail">微博 <a href="http://weibo.com/u/1438670852" target="_blank">@叶孤城</a>。现为探探 iOS 开发，
                曾就职于 Camera360、流利说。对动画交互，图像，视频处理颇有心得。
                热爱 <a href="https://github.com/zangqilong198812" target="_blank">分享</a>，热爱 iOS 圈子，为大家提供了
@@ -49,8 +49,8 @@
          </div>
         <div class="speaker__card">
           <div class="speaker__content">
-            <h4 class="name">陈宜龙</h4>
             <img src="../img/event/ios_programmer.jpg">
+            <h4 class="name">陈宜龙</h4>
             <p class="detail">你可能不熟悉陈宜龙，但不会不知道 <a href="http://weibo.com/u/1692391497" target="_blank">iOS 程序犭袁</a>。
               热爱分享，崇尚开源精神，对新技术有狂热的追求。
               著有《iOS 9 适配系列教程》、《iOS 面试题集锦》、《CYLTabBarController》等
@@ -60,8 +60,8 @@
         </div>
         <div class="speaker__card">
           <div class="speaker__content">
-            <h4 class="name">张延瑞</h4>
             <img src="../img/event/yanrui.jpg">
+            <h4 class="name">张延瑞</h4>
             <p class="detail">微博 <a href="http://weibo.com/u/1764965604">@张延瑞</a> 。11年末开始从事 iOS 开发，曾就职于阿姨帮、Camera360，现就职于乐视，负责影视会员相关业务。拥有丰富的开发经验。
             </p>
           </div>
@@ -79,9 +79,9 @@
         </div> -->
         <div class="speaker__card">
           <div class="speaker__content">
-            <h4 class="name">李智维</h4>
             <img src="../img/event/lzwjava_avatar.jpg">
-            <p class="detail">微博 <a href="http://weibo.com/zhiweilee" target="_blank">@lzwjava</a>。95 年出生的他，初中接触了编程，曾任职于 LeanCloud。现创业搞起了 <a href="http://reviewcode.cn/">Code Review 平台</a>，负责大部分的技术开发。业余时间也开源了一些 <a href="https://github.com/lzwjava">项目</a>。</p>
+            <h4 class="name">李智维</h4>
+            <p class="detail">微博 <a href="http://weibo.com/zhiweilee" target="_blank">@lzwjava</a>。95 年出生的他，初中接触了编程，曾任职于 LeanCloud。现创业搞起了 <a href="http://reviewcode.cn/">Code Review 平台</a>，负责大部分技术开发。业余时间也开源了一些 <a href="https://github.com/lzwjava">项目</a>。</p>
           </div>
         </div>
 
@@ -95,103 +95,56 @@
       <div class="agenda__content">
         <h1 class="title">活动流程</h1>
         <ul class="agenda__list">
-          <li>
-            <time>13:00</time>
-            <div><span>签到</span></div>
-          </li>
-          <li>
-            <time>13:30</time>
-            <div><span>开场</span>
-              <p>臧其龙</p>
-            </div>
-          </li>
-          <li>
-            <time>13:40</time>
-            <div>
-              <span>iOS 开发如何快速成长(20min)</span><br>
-              <span>Ask Me Anything(20min)</span>
-              <p>臧其龙</p>
-            </div>
-          </li>
-          <li>
-            <time>14:25</time>
-            <div>
-              <span>IM 开发的那些事(20min)</span><br>
-              <span>Ask Me Anything(20min)</span>
-              <p>陈宜龙</p>
-            </div>
-          </li>
-
-          <li>
-            <time>15:10</time>
-            <div><span>茶歇</span></div>
-          </li>
-
-          <li>
-              <time>15:40</time>
-              <div>
-                <span>编程、生活(20min)</span><br>
-                <span>Ask Me Anything(20min)</span>
-                <p>张延瑞</p>
-             </div>
-          </li>
-
-          <li>
-            <time>16:25</time>
-            <div>
-              <span>我的选择和成长(20min)</span><br>
-              <span>Ask Me Anything(20min)</span>
-              <p>李智维</p>
-            </div>
-          </li>
-
-          <li>
-            <time>17:00</time>
-            <div>
-              <span>分组交流</span>
-              <p>各嘉宾和参会者分组交流</p>
-            </div>
-          </li>
-
-          <li>
-            <time>18:30</time>
-            <div><span>结束</span></div>
+          <li v-for="arrange in agenda">
+            <div class="agenda__item">{{arrange.item}}</div>
+            <div class="agenda__detail" v-html="arrange.detail"></div>
+            <div class="agenda__time">{{arrange.time}}</div>
           </li>
         </ul>
       </div>
     </section>
 
-    <section id="ticket" class="ticket">
-      <div class="ticket__content">
-        <h1 class="title">购买门票</h1>
+    <div class="mount">
 
-        <div class="ticket__card">
-          <h3>注意事项</h3>
-          <p class="ticket__detail">
-            为保证您的权利，在购买成功后我们会向您发送一条短信，请您确认，本活动所得用于支付活动费用，Code Review 秉承平台原则，不收取额外费用。
-          </p>
-          <p class="price">¥{{event.amount | moneyAsYuan}}</p>
-          <button class="btn-attend btn-blue" :class="{'disabled': event.attendance != null }" @click="showAttend">
-            {{attendTitle}}
-          </button>
+      <section id="ticket" class="ticket">
+        <div class="ticket__content">
+          <h1 class="title">购买门票</h1>
+
+          <div class="ticket__card">
+            <h3>注意事项</h3>
+            <p class="ticket__detail">
+              为保证您的权利，在购买成功后我们会向您发送一条短信，请您确认，本活动所得用于支付活动费用，Code Review 秉承平台原则，不收取额外费用。
+            </p>
+            <p class="price">¥{{event.amount | moneyAsYuan}}</p>
+            <button class="btn-attend btn-blue" :class="{'disabled': event.attendance != null }" @click="showAttend">
+              {{attendTitle}}
+            </button>
+          </div>
+
+          <div class="ticket__attend">
+            <p class="ticket__attend__title">
+              已经有 {{event.attendCount}} 人购买了门票 <br>还剩 {{event.restCount}}张
+            </p>
+            <ul class="ticket__attend__avatars">
+              <li v-for="attendance in attendances">
+                <user-avatar :user="attendance.user"></user-avatar>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div class="ticket__attend">
-          <p class="ticket__attend__title">
-            已经有 {{event.attendCount}} 人购买了门票 <br>还剩 {{event.restCount}}张
-          </p>
-          <ul class="ticket__attend__avatars">
-            <li v-for="attendance in attendances">
-              <user-avatar :user="attendance.user"></user-avatar>
-            </li>
-          </ul>
-        </div>
+      </section>
 
-        <p class="ticket__tips">现场我们会拍摄一些照片，别忘了活动结束后来看哦</p>
+        <footer>
 
-      </div>
+            <p class="footer__tips">现场我们会拍摄一些照片，别忘了活动结束后回来看哦</p>
+            <p class="footer__brand">Code Review</p>
 
-    </section>
+          </footer>
+    </div>
+
+
+
 
     <overlay :overlay.sync="overlayStatus">
       <event-form :event="event"></event-form>
@@ -391,28 +344,30 @@ body
     color #34495e
     h1
       background-image url("../img/event/speaker_bg.png")
+      margin-bottom 20px
     .speaker__card
       span(1/2)
-      +below(768px)
-        span(1/2)
       +below(500px)
         span(1)
-      height 500px
-      padding 10px
+        height 450px
+      height 600px
       .speaker__content
         span(1)
         +below(500px)
           padding 10px
-        padding 40px
+        padding 35px
         padding-top 10px
         h4.name
           font-weight 700
-          margin-bottom 20px
-          font-size 18px
+          margin-top 25px
+          font-size 22px
+          color #6E7A83
         p.detail
           text-align left
-          line-height 22px
           margin-top 20px
+          font-size 18px
+          color #6E7A83
+          line-height 30px
         a
           color #428bca
       img
@@ -463,53 +418,32 @@ body
       h1
         background-image url("../img/event/agenda_bg.png")
       .agenda__list
-        center(500px)
+        center(650px)
         +below(768px)
-          center(300px)
+          center(320px)
         list-style none
         display block
-        background-color white
-        margin-top 30px
-        li.lunch
-          div
-            span
-              color #2C6700
+        margin-top 50px
         li
           span(1)
           height 100px
           border-bottom 2px solid #f8f8f8
           text-align left
-          padding-left 50px
-          +below(768px)
-            padding-left 10px
-          time
-            display inline-block
-            color: #111;
-            line-height 100px
-            font-weight: bold;
-            font-size: 32px;
-            vertical-align: middle;
-            width 30%
-            +below(768px)
-              font-size 20px
-              width 20%
+          padding-top 30px
           div
             display inline-block
-            width 65%
-            +below(768px)
-              width 75%
-            text-align right
+            font-size 24px
+            color #6E7A83
             vertical-align middle
-            span
-              color black
-              line-height 28px
-              font-size 20px
-              +below(1200px)
-                font-size 18px
-            p
-              color #999
-              line-height 28px
+            +below(768px)
               font-size 18px
+          .agenda__item
+            width 150px
+            +below(768px)
+              width auto
+              margin-right 10px
+          .agenda__time
+            float right
   .ticket
     layout2()
     +below(1200px)
@@ -562,16 +496,27 @@ body
            img
              width 38px
              height 38px
-    .ticket__tips
-      font-size 20px
-      margin 100px 0
-      color #6E7A83
-      line-height 25px
+  .mount
+    span(1)
+    background url("../img/event/mount.png") no-repeat
+    background-position bottom
+    background-size 100% 65%
+    +below(500px)
+      background-size 100% 30%
 
   footer
     span(1)
     color white
-    vertical-align middle
+    width 100%
+    height 300px
+    color #6E7A83
+    .footer__tips
+      font-size 20px
+      margin 80px 0
+      line-height 25px
+    .footer__brand
+      font-size 20px
+      line-height 36px
 
 .disabled
   cursor not-allowed
@@ -602,7 +547,54 @@ module.exports = {
     return {
       event:{},
       attendances: [],
-      overlayStatus: false
+      overlayStatus: false,
+      agenda: [
+        {
+          item: '签到',
+          detail: '',
+          time: '13:00'
+        },
+        {
+          item: '臧其龙',
+          detail: '开场',
+          time: '13:30'
+        },
+        {
+          item: '臧其龙',
+          detail: 'iOS 开发如何快速成长(20min) <br>Ask Me Anything(20min)',
+          time: '13:40'
+        },
+        {
+          item: '陈宜龙',
+          detail: 'IM 开发的那些事(20min) <br>Ask Me Anything(20min)',
+          time: '14:25'
+        },
+        {
+          item: '茶歇',
+          detail: '',
+          time: '15:10'
+        },
+        {
+          item: '张延瑞',
+          detail: '编程、生活(20min) <br> Ask Me Anything(20min)',
+          time: '15:40'
+        },
+        {
+          item: '李智维',
+          detail: '我的选择和成长(20min)',
+          time: '16:25'
+        },
+        {
+          item: '分组交流',
+          detail: '各嘉宾和参会者分组交流',
+          time: '17:00'
+        },
+        {
+          item: '结束',
+          detail: '',
+          time: '18:30'
+        }
+      ]
     };
   },
   computed: {
