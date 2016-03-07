@@ -96,6 +96,11 @@
         </div>
 
       </div>
+
+      <p class="speaker-change">
+        非常抱歉，临时得知 iOS 程序猿在活动当天需要坐飞机出国团建。我们正在联系更多的嘉宾，来加入分组交流与晚宴。
+      </p>
+
       <!-- <div class="speaker-list">
 
       </div> -->
@@ -279,7 +284,7 @@ body
       +below(500px)
         span(1)
         height 450px
-      height 600px
+      height 550px
       .speaker__content
         span(1)
         +below(500px)
@@ -303,6 +308,11 @@ body
         width 152px
         height 152px
         border-radius 117px
+    .speaker-change
+      center(300px)
+      font-size 12px
+      line-height 15px
+      margin-bottom 80px
 
   .intro
     span(1)
