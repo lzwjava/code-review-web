@@ -574,6 +574,7 @@ module.exports = {
 
   },
   created() {
+    document.title = 'CRViewController 交流会';
     var params = util.getSearchParameters();
     if (!params.eventId) {
       util.show(this, 'error', '请提供 eventId');
@@ -593,6 +594,7 @@ module.exports = {
 
        }, util.httpErrorFn(this));
     }
+
   }
 };
 
