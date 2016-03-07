@@ -47,7 +47,7 @@
              </p>
            </div>
          </div>
-        <div class="speaker__card">
+        <!-- <div class="speaker__card">
           <div class="speaker__content">
             <img src="../img/event/ios_programmer.jpg">
             <h4 class="name">陈宜龙</h4>
@@ -55,6 +55,16 @@
               热爱分享，崇尚开源精神，对新技术有狂热的追求。
               著有《iOS 9 适配系列教程》、《iOS 面试题集锦》、《CYLTabBarController》等
               <a href="https://github.com/ChenYilong" target="_blank">教程和框架</a>，均获得数千 Star。
+            </p>
+          </div>
+        </div> -->
+        <div class="speaker__card">
+          <div class="speaker__content">
+            <img src="../img/event/wenhan.jpg">
+            <h4 class="name">吕文瀚</h4>
+            <p class="detail">微博 <a href="http://weibo.com/u/2277420203">@JohnLui</a>，一个乐于分享的人。
+              连续参与创业，以前用 PHP 做网站，现在用 Swift 搞 iOS 。
+              即将出版《iOS 可视化编程与 Auto Layout》。热心开源，开源过好几个成百上千 Star 的 <a href="https://github.com/johnlui">项目</a>。
             </p>
           </div>
         </div>
@@ -492,8 +502,8 @@ module.exports = {
           time: '13:40'
         },
         {
-          item: '陈宜龙',
-          detail: 'IM 开发的那些事(20min) <br>Ask Me Anything(20min)',
+          item: '吕文瀚',
+          detail: 'Swift 的那些事(20min) <br>Ask Me Anything(20min)',
           time: '14:25'
         },
         {
