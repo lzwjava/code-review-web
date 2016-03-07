@@ -586,7 +586,7 @@ module.exports = {
         },
         {
           item: '李智维',
-          detail: '走在野心的路上(20min)',
+          detail: '走在野心的路上(20min) <br> Ask Me Anyting(20min)',
           time: '16:25'
         },
         {
