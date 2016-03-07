@@ -251,96 +251,10 @@ body
       color #6E7A83
       line-height 30px
       +below(500px)
-        font-size 14px
+        font-size 16px
         line-height 20px
         margin 0 10px
 
-  .header
-    span(1)
-    background-color white
-    position absolute
-    bottom 0
-    box-shadow 0px 0px 5px rgba(0, 0, 0, 0.3)
-    padding 10px
-    height 60px
-
-    .sm_nav
-      span(0.2, offset: 0.1)
-      display none
-      +below(500px)
-        display inline-block
-      height 40px
-      vertical-align middle
-      .header__btn
-        span(1/6)
-        padding-top 9px
-        text-align center
-        a
-          cursor pointer
-          text-decoration none
-          color #4d4d4d
-          font-size 20px
-          &:hover
-            color #5399fc
-            text-decoration none
-      ul
-        span(1)
-        display none
-        box-sizing border-box
-        text-align left
-        position absolute
-        bottom 60px
-        left 0
-        list-style-type none
-        margin 0
-        padding-left 40px
-        padding-top 5px
-        padding-bottom 5px
-        height 210px
-        background white
-        border-bottom solid 1px #ccc
-        border-top solid 1px #ccc
-        li
-          span(0.8)
-          padding-top 5px
-          padding-bottom 5px
-          line-height 30px
-          vertical-align middle
-          height 40px
-          a
-            font-size 16px
-
-    .header__nav
-      span(0.42, offset:0.29)
-      +below(1024px)
-        span(0.6, offset:0.1)
-      +below(500px)
-        display none
-      height 40px
-      .header__btn
-        span(1/5)
-        padding-top 8px
-        text-align center
-        a
-          cursor pointer
-          text-decoration none
-          color #4d4d4d
-          font-size 16px
-          &:hover
-            color #5399fc
-            text-decoration none
-      .highlight
-        padding-top 5px
-        a
-          background-color #5399fc
-          color white
-          display inline-block
-          padding 5px
-          width 140px
-          border-radius 16px
-          &:hover
-            color white
-            background-color #64a3fc
   .speaker
     layout2()
     +below(1200px)
@@ -441,7 +355,7 @@ body
             vertical-align middle
             line-height 30px
             +below(768px)
-              font-size 18px
+              font-size 14px
           .agenda__item
             width 150px
             +below(768px)
@@ -464,6 +378,7 @@ body
       box-shadow 0px 1px 4px 0px rgba(0,0,0,0.08)
       border-radius 8px
       padding 30px
+      margin-top 80px
       h3
         font-size 20px
         color #6E7A83
@@ -517,7 +432,7 @@ body
     color #6E7A83
     .footer__tips
       font-size 20px
-      margin 80px 0
+      margin 80px 10px
       line-height 25px
     .footer__brand
       font-size 20px
