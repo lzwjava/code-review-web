@@ -68,6 +68,8 @@
 </script>
 <style lang="stylus">
 @import "../font/iconfont.css";
+@import '../../node_modules/rupture/rupture/index.styl'
+
 blue = #1CB2EF
 green = #33C96F
 

@@ -2,7 +2,7 @@
   <div class="event-area">
     <section class="info">
       <div class="info__content">
-        <p class="info__subtitle"><span class="info__down">Code Review</span><br>第一次线下活动</p>
+        <p class="info__subtitle">CRViewController<br>线下活动</p>
         <p class="info__detail">
           亲爱的朋友们，我们一起相约中关村 e 世界，参与、分享并交流代码。<br>
           你可以带着问题来，这些问题可以是和活动相关的，也可以是无关的。<br>
@@ -113,7 +113,7 @@
           <div class="ticket__card">
             <h3>注意事项</h3>
             <p class="ticket__detail">
-              为保证您的权利，在购买成功后我们会向您发送一条短信，请您确认。本活动所得用于支付活动费用，Code Review 秉承平台原则，不收取额外费用。
+              为保证您的权利，在购买成功后我们会向您发送一条短信，请您确认。本活动所得用于场地、嘉宾、晚宴费用，Code Review 秉承平台原则，不收取额外费用。
             </p>
             <p class="price">¥{{event.amount | moneyAsYuan}}</p>
             <button class="btn-attend btn-blue" :class="{'disabled': event.attendance != null }" @click="showAttend">
@@ -508,13 +508,18 @@ module.exports = {
         },
         {
           item: '分组交流',
-          detail: '各嘉宾和参会者分组交流',
+          detail: '嘉宾和参会者分组交流',
           time: '17:00'
+        },
+        {
+          item: '晚宴',
+          detail: '嘉宾和参会者共享晚宴',
+          time: '18:30'
         },
         {
           item: '结束',
           detail: '',
-          time: '18:30'
+          time: '20:30'
         }
       ]
     };
