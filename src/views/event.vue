@@ -168,7 +168,7 @@
         <div class="ticket__card">
           <h3>注意事项</h3>
           <p class="ticket__detail">
-            为保证您的权利，在购买成功后我们会向您发送一条短信，请您确认，本活动所得用于支付活动费用，Code Review 秉承平台原则，不收取额外费用
+            为保证您的权利，在购买成功后我们会向您发送一条短信，请您确认，本活动所得用于支付活动费用，Code Review 秉承平台原则，不收取额外费用。
           </p>
           <p class="price">¥{{event.amount | moneyAsYuan}}</p>
           <button class="btn-attend btn-blue" :class="{'disabled': event.attendance != null }" @click="showAttend">
