@@ -146,9 +146,9 @@ green = #33C96F
 	.login
 		width 90%
 		max-height 90%
+		height auto
 		margin-left -45%
 		padding 9%
-		height auto
 		.cancel
 			right 10px
 			top 10px
