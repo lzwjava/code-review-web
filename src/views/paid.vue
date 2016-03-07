@@ -2,7 +2,12 @@
     <div class="main-container">
       <div class="paid-tips">
         <span v-if="type== 'order'">打赏成功, 已将您的申请通知给了大神。大神处理申请后，将短信通知您，也可查看 <a href="./order.html">订单列表</a> 。</span>
-        <span v-if="type== 'event'">支付成功，您已报名活动。感谢您的参与，我们交流会上见。</span>
+        <div v-if="type== 'event'">
+          <div class="">
+            支付成功，您已报名活动。感谢您的参与，我们交流会上见。另外可加下微信:
+          </div>
+          <img src="../img/event/event_qrcode.jpg" />
+        </div>
       </div>
     </div>
 </template>
@@ -40,10 +45,16 @@ export default {
 
 <style lang="stylus">
 
+.main-container
+  height 600px
+
 .paid-tips
   text-align center
   a
     text-decoration underline
     color #00f
+  img
+    width 300px
+    margin-top 100px
 
 </style>
