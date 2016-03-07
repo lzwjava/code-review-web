@@ -418,7 +418,7 @@ body
              height 38px
   .mount
     span(1)
-    background url("../img/event/mount.png") no-repeat
+    background url("../img/event/mount.jpg") no-repeat
     background-position bottom
     background-size 100% 65%
     +below(500px)
