@@ -29,7 +29,8 @@
     </section>
     <section id="intro" class="intro">
       <div class="intro__content">
-        <h1>活动详情</h1>
+        <h1 class="title">活动详情</h1>
+        <h3>2016 年 3 月 12 日</h3>
         <div class="intro__card">
           <h3 class="intro__reason">时间</h3>
           <p class="intro__detail">1:30pm - 6pm</p>
@@ -45,7 +46,7 @@
       </div>
     </section>
     <section id="speaker" class="speaker">
-      <h1>演讲嘉宾</h1>
+      <h1 class="title">嘉宾介绍</h1>
        <div class="speaker-list">
         <div class="speaker__card r b">
           <div class="speaker__content">
@@ -100,8 +101,7 @@
     </section>
     <section id="agenda" class="agenda">
       <div class="agenda__content">
-        <h1>大会议程</h1>
-        <h4>*暂定，后续会不断更新</h4>
+        <h1 class="title">活动流程</h1>
         <ul class="agenda__list">
           <li>
             <time>13:10</time>
@@ -162,7 +162,7 @@
 
     <section id="ticket" class="ticket">
       <div class="ticket__content">
-        <h1>报名参加</h1>
+        <h1 class="title">购买门票</h1>
         <img src="../img/event/ticket.png"/>
         <p>参会门票</p>
         <p class="price">¥{{event.amount | moneyAsYuan}}</p>
@@ -230,6 +230,20 @@ body
     span(0.9, offset:0.05)
   font-size 1.6rem
   background #fff
+
+  h1.title
+    center(30rem)
+    margin-top 6rem
+    margin-bottom 3rem
+    font-weight 300
+    text-align center
+    font-size 36px
+    height 4.5rem
+    color #1CB2EF
+    background-image url("../img/event/intro_bg.png")
+    background-repeat no-repeat
+    background-position center bottom
+
   .info
     span(1)
     letter-spacing 3px
@@ -369,11 +383,7 @@ body
       layout1_sm()
     color #34495e
     h1
-      center(30rem)
-      margin-top 6rem
-      margin-bottom 3rem
-      font-weight bold
-      text-align center
+      background-image url("../img/event/speaker_bg.png")
     // .speaker-list
     //   display flex
     //   display -webkit-flex
@@ -420,17 +430,12 @@ body
       +below(1200px)
         layout1_sm()
     h1
-      center(30rem)
-      margin-top 6rem
-      margin-bottom 3rem
-      font-weight 300
-      text-align center
-      font-size 36px
-      height 4.5rem
-      color #1CB2EF
       background-image url("../img/event/intro_bg.png")
-      background-repeat no-repeat
-      background-position center bottom
+    h3
+      font-size 4rem
+      color #282F31
+      line-height 7.2rem
+      margin-bottom 2rem
     .intro__card
       span(1/3)
       +below(500px)
@@ -447,18 +452,13 @@ body
   .agenda
     span(1)
     color #34495e
-    background-color #f8f8f8
     padding-bottom 5rem
     div.agenda__content
       layout2()
       +below(1200px)
         layout2_sm()
       h1
-        center(30rem)
-        margin-top 6rem
-        margin-bottom 3rem
-        font-weight bold
-        text-align center
+        background-image url("../img/event/agenda_bg.png")
       .agenda__list
         center(50rem)
         +below(768px)
@@ -524,11 +524,7 @@ body
         +below(768px)
           width 80%
       h1
-        center(40rem)
-        margin-top 6rem
-        margin-bottom 3rem
-        font-weight bold
-        text-align center
+        background-image url("../img/event/ticket_bg.png")
       .price
         overflow visible
         padding 0
@@ -537,7 +533,6 @@ body
   .map
     span(1)
     color #34495e
-    background-color #f8f8f8
     padding-bottom 6rem
     div.map__content
       layout2()
@@ -558,28 +553,13 @@ body
       text-align center
   footer
     span(1)
-    background-color black
     color white
     padding 2rem
     vertical-align middle
-    div.main
-      span(0.6, offset:0.2)
-      +below(1200px)
-        span(0.8, offset:0.1)
-      +below(500px)
-        span(1)
-      div
-        span(1/5)
-        a
-          color #aaa
-          text-decoration none
-      div.long
-        span(2/5)
 
-.disabled {
-  cursor: not-allowed;
-  opacity: .65;
-}
+.disabled
+  cursor not-allowed
+  opacity .65
 
 </style>
 
