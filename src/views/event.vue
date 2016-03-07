@@ -116,7 +116,7 @@
               为保证您的权利，在购买成功后我们会向您发送一条短信，请您确认。本活动所得用于场地、嘉宾、晚宴费用，Code Review 秉承平台原则，不收取额外费用。
             </p>
             <p class="price">¥{{event.amount | moneyAsYuan}}</p>
-            <button class="btn-attend btn-blue" :class="{'disabled': event.attendance != null }" @click="showAttend">
+            <button class="btn-attend btn-blue" @click="showAttend">
               {{attendTitle}}
             </button>
           </div>
@@ -139,16 +139,17 @@
 
             <p class="footer__tips">现场我们会拍摄一些照片，别忘了活动结束后回来看哦</p>
             <p class="footer__brand">Code Review</p>
-
-          </footer>
+        </footer>
     </div>
-
-
-
 
     <overlay :overlay.sync="overlayStatus">
       <event-form :event="event"></event-form>
     </overlay>
+
+    <overlay :overlay.sync="qrcodeStatus">
+      <qrcode></qrcode>
+    </overlay>
+
   </div>
 </template>
 
@@ -457,6 +458,7 @@ import Loading from '../components/loading.vue'
 import EventForm from '../components/event-form.vue'
 import Overlay from '../components/overlay.vue'
 import UserAvatar from '../components/user-avatar.vue'
+import Qrcode from '../components/qrcode.vue'
 
 var debug = require('debug')('event');
 
@@ -464,13 +466,15 @@ module.exports = {
   components: {
     'event-form': EventForm,
     overlay: Overlay,
-    'user-avatar': UserAvatar
+    'user-avatar': UserAvatar,
+    'qrcode': Qrcode
   },
   data: function() {
     return {
       event:{},
       attendances: [],
       overlayStatus: false,
+      qrcodeStatus: false,
       agenda: [
         {
           item: '签到',
@@ -533,7 +537,7 @@ module.exports = {
       } else if (this.event.attendance == null) {
         return '立即报名';
       } else {
-        return '您已报名';
+        return '您已报名，欢迎加参会群';
       }
     }
   },
@@ -550,6 +554,7 @@ module.exports = {
       } else if (this.event.attendance == null){
          this.overlayStatus = true;
       } else {
+        this.qrcodeStatus = true;
       }
     },
     fetchEvent(eventId) {
