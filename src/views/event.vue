@@ -2,9 +2,12 @@
   <div>
     <section class="info">
       <div class="info__content">
-        <p class="info__subtitle"><span class="info__down">Code Review</span>第一次线下活动</p>
-        <p class="info__date">2016年3月12日·北京 科技寺创业空间·北新桥店</p>
-        <!-- <div class="info__btn"><a href="https://github.com/atConf" target="_blank">相关信息</a></div> -->
+        <p class="info__subtitle"><span class="info__down">Code Review</span><br>第一次线下活动</p>
+        <p class="info__detail">
+          亲爱的朋友们，我们一起相约科技寺，参与、分享并交流代码。<br>
+          你可以带着问题来，这些问题可以是和本次大会内容相关的，也可以是无关的。<br>
+          比如，你平时写代码碰到的问题，想知道如何快速提高等等。 Ask me anything。
+        </p>
       </div>
       <header class="header">
         <div class="sm_nav">
@@ -26,18 +29,18 @@
     </section>
     <section id="intro" class="intro">
       <div class="intro__content">
-        <h1>大会介绍</h1>
-        <div class="intro__card"><img src="../img/event/intro1_red.png">
-          <h3 class="intro__reason">非营利</h3>
-          <p class="intro__detail">@Swift 是由 @Conf 团队组织的一场<b>非营利</b>的技术大会，所有收入全部用于大会本身支出，包括会场租赁、嘉宾差旅、参会者福利等等。</p>
+        <h1>活动详情</h1>
+        <div class="intro__card">
+          <h3 class="intro__reason">时间</h3>
+          <p class="intro__detail">1:30pm - 6pm</p>
         </div>
-        <div class="intro__card"><img src="../img/event/intro2.png">
-          <h3 class="intro__reason">开发者 to 开发者</h3>
-          <p class="intro__detail">这是一场由开发者做给开发者的技术盛宴，我们和你一样是开发者，你喜欢的你想要的也同样是我们所追求的。</p>
+        <div class="intro__card">
+          <h3 class="intro__reason">地点</h3>
+          <p class="intro__detail">科技寺创业空间<br>北新桥店</p>
         </div>
-        <div class="intro__card"><img src="../img/event/intro3.png">
-          <h3 class="intro__reason">高质量</h3>
-          <p class="intro__detail">所有的演讲嘉宾和演讲内容都会经过严格筛选，保证大家听到的是纯技术干货。</p>
+        <div class="intro__card">
+          <h3 class="intro__reason">费用</h3>
+          <p class="intro__detail">¥288</p>
         </div>
       </div>
     </section>
@@ -226,88 +229,53 @@ body
   layout2_sm()
     span(0.9, offset:0.05)
   font-size 1.6rem
+  background #fff
   .info
     span(1)
     letter-spacing 3px
     position relative
-    background-image url("http://www.kejisi.com/images/n5.jpg")
+    background url("../img/event/info_bg.jpg") no-repeat
     height 700px
-    background-attachment fixed
     background-size contain
-    background-position 0 0
+    background-position center
     text-align center
     font-size 2rem
     +below(500px)
       font-size 1rem
-    color white
+    color #282F31
     .info__content
       width 60rem
       +below(500px)
         width 30rem
         margin-left -15rem
         margin-top -10rem
+        top 45%
       height 30rem
       position absolute
       top 50%
       left 50%
       margin-left -30rem
       margin-top -15rem
-    .info__content__qr
-      width 60rem
-      +below(500px)
-        width 26rem
-        margin-left -13rem
-        margin-top -15rem
-      height 35rem
-      overflow auto
-      position absolute
-      top 50%
-      left 50%
-      margin-left -30rem
-      margin-top -20rem
-    .info__logo
-      +below(500px)
-        height (6.5*0.618)rem
-        width (24*0.618)rem
-      height 6.5rem
-      width 24rem
-
-      text-align center
-      margin-bottom 2rem
-    img.qrcode
-      center(20rem)
-      margin-top 1rem
-      margin-bottom 4rem
-    img.vip
-      border 10px groove gold
     .info__subtitle
       letter-spacing 2px
       font-size 5rem
       margin-bottom 2rem
+      line-height 6rem
       +below(500px)
-        font-size 2rem
+        font-size 3rem
+        line-height 3.5rem
       .info__down
         font-family arial
         font-weight normal
-    .info__btn
-      padding-top 2rem
-      a
-        cursor pointer
-        text-decoration none
-        background-color #5399fc
-        color white
-        display inline-block
-        line-height 6rem
-        vertical-align middle
-        width 36rem
-        +below(500px)
-          width 20rem
-        height 6rem
-        border-radius 25rem
-        font-size 3rem
-        &:hover
-          color white
-          background-color #64a3fc
+    .info__detail
+      margin-top 30px
+      font-size 1.6rem
+      color #6E7A83
+      line-height 3rem
+      +below(500px)
+        font-size 1.4rem
+        line-height 2rem
+        margin 0 1rem
 
   .header
     span(1)
@@ -447,31 +415,35 @@ body
   .intro
     span(1)
     color #34495e
-    background-color #f8f8f8
     div.intro__content
       layout1()
       +below(1200px)
         layout1_sm()
     h1
-      center(40rem)
+      center(30rem)
       margin-top 6rem
       margin-bottom 3rem
-      font-weight bold
+      font-weight 300
       text-align center
+      font-size 36px
+      height 4.5rem
+      color #1CB2EF
+      background-image url("../img/event/intro_bg.png")
+      background-repeat no-repeat
+      background-position center bottom
     .intro__card
       span(1/3)
       +below(500px)
         span(1)
       padding 2rem
-      img
-        width 40%
       h3.intro__reason
         margin-bottom 2rem
-        font-size 16px
-        line-height 20px
+        font-size 20px
+        color #E24B47
+        line-height 40px
       p.intro__detail
         margin-top 2rem
-        line-height 20px
+        line-height 25px
   .agenda
     span(1)
     color #34495e
