@@ -1,6 +1,6 @@
 <template>
   <a v-el:avatar class="avatar" aria-label="View @{{user.username}} profile">
-    <img v-if="user.avatarUrl" :src="user.avatarUrl" :alt="user.username" />
+    <img v-if="user.avatarUrl" :src="user.avatarUrl" :alt="user.username" :title="user.username" />
     <span v-if="!user.avatarUrl" style="{background-color: spanBgColor, color: spanColor}">{{user.username}}</span>
   </a>
 </template>

@@ -113,7 +113,7 @@
         <h1 class="title">活动流程</h1>
         <ul class="agenda__list">
           <li>
-            <time>13:10</time>
+            <time>13:00</time>
             <div><span>签到</span></div>
           </li>
           <li>
@@ -133,7 +133,7 @@
           <li>
             <time>14:30</time>
             <div>
-              <span>IM 的那些事(20min)</span><br>
+              <span>IM 开发的那些事(20min)</span><br>
               <span>Ask Me Anything(20min)</span>
               <p>陈宜龙</p>
             </div>
@@ -478,10 +478,6 @@ body
         display block
         background-color white
         margin-top 30px
-        li.lottery
-          div
-            span
-              color red
         li.lunch
           div
             span
@@ -514,13 +510,13 @@ body
             vertical-align middle
             span
               color black
-              line-height 20px
+              line-height 28px
               font-size 20px
               +below(1200px)
                 font-size 18px
             p
               color #999
-              line-height 20px
+              line-height 28px
               font-size 18px
   .ticket
     layout2()
@@ -563,10 +559,13 @@ body
        margin 50px 0
        color #6E7A83
        .ticket__attend__title
-         line-height 20px
+         line-height 30px
          font-size 20px
          margin 20px 0
        .ticket__attend__avatars
+         li
+          display inline-block
+          margin 5px
          .avatar
            img
              width 38px
