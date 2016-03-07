@@ -9,8 +9,7 @@
 					<span class="icon-Phone icon"></span>
 				</div>
 				<div class="code">
-					<div class="row" style="width: 250px;">
-
+					<div class="row">
 						<input type="text" v-model="smsCode" placeholder="验证码">
 						<span class="icon-Verify icon"></span>
 					</div>
@@ -187,5 +186,35 @@
 					+ .icon
 						color #08B1F6
 						opacity 1
-
+@media only screen and (max-width: 700px)
+	.sign-up
+		width 90%
+		max-height 90%
+		margin-left -45%
+		padding 9%
+		height auto
+		.cancel
+			right 10px
+			top 10px
+		.row
+			height 40px
+			input
+				height 35px
+				text-indent 43px
+			.icon
+				font-size 26px
+				margin-top -31px
+				margin-left 10px
+		.form
+			.code
+				.row
+					width 50%
+				.send
+					width 30%
+					height 35px	
+					font-size 12px
+					line-height 35px
+			.gbutton
+				margin-top 30px
+				margin-bottom 20px
 </style>
