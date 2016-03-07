@@ -159,6 +159,10 @@
 .event-area
   text-align center
 
+div
+p
+  font-family "PingFang SC","Helvetica Neue",Helvetica,"Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
+
 .r
   border-right  solid 1px #E7E7E7
 .b
@@ -435,6 +439,7 @@ body
             font-size 24px
             color #6E7A83
             vertical-align middle
+            line-height 30px
             +below(768px)
               font-size 18px
           .agenda__item
@@ -581,7 +586,7 @@ module.exports = {
         },
         {
           item: '李智维',
-          detail: '我的选择和成长(20min)',
+          detail: '走在野心的路上(20min)',
           time: '16:25'
         },
         {
