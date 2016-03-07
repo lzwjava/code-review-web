@@ -533,6 +533,10 @@ module.exports = {
   },
   methods: {
     showAttend() {
+      // if (util.mobileCheck()) {
+      //   util.show(this, 'warn', '暂时只支持电脑支付，请在电脑上打开 http://reviewcode.cn 报名', 10 * 1000);
+      //   return;
+      // }
       var user = util.getLocalUser();
       if (!user.username) {
         var nav = this.$root.$children[0];
