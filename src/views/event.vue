@@ -16,7 +16,7 @@
         <h3>2016 年 3 月 13 日</h3>
         <div class="intro__card">
           <h3 class="intro__reason">时间</h3>
-          <p class="intro__detail">1pm - 6:30pm</p>
+          <p class="intro__detail">1pm - 8:30pm</p>
         </div>
         <div class="intro__card">
           <h3 class="intro__reason">地点</h3>
