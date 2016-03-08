@@ -443,7 +443,7 @@ body
     span(1)
     background url("../img/event/mount.jpg") no-repeat
     background-position bottom
-    background-size 100% 65%
+    background-size 100% 40%
     +below(500px)
       background-size 100% 30%
 
