@@ -550,31 +550,31 @@ module.exports = {
   },
   computed: {
     attendTitle () {
-      var user = util.getLocalUser();
-      if (!user.username) {
-        return '请登录后报名';
-      } else if (this.event.attendance == null) {
-        if (this.event.restCount > 0) {
-          return '立即报名';
+      if (this.event.attendance != null) {
+        return '您已报名，欢迎加参会群';
+      } else if (this.event.restCount > 0)  {
+        var user = util.getLocalUser();
+        if (!user.username) {
+          return '请登录后报名';
         } else {
-          return '报名已满';
+          return '立即报名';
         }
       } else {
-        return '您已报名，欢迎加参会群';
+        return '报名已满';
       }
     },
     attendEnabled() {
-      var user = util.getLocalUser();
-      if (!user.username) {
-        return true
-      } else if (this.event.attendance == null) {
-        if (this.event.restCount > 0) {
+      if (this.event.attendance != null) {
+        return true;
+      } else if (this.event.restCount > 0)  {
+        var user = util.getLocalUser();
+        if (!user.username) {
           return true;
         } else {
-          return false;
+          return true;
         }
       } else {
-        return true;
+        return false;
       }
     }
   },
@@ -587,14 +587,18 @@ module.exports = {
       if (!this.attendEnabled) {
         return;
       }
-      var user = util.getLocalUser();
-      if (!user.username) {
-        var nav = this.$root.$children[0];
-        nav.signin();
-      } else if (this.event.attendance == null){
-         this.overlayStatus = true;
-      } else {
+      if (this.event.attendance != null) {
         this.qrcodeStatus = true;
+      } else if (this.event.restCount > 0)  {
+        var user = util.getLocalUser();
+        if (!user.username) {
+          var nav = this.$root.$children[0];
+          nav.signin();
+        } else {
+          this.overlayStatus = true;
+        }
+      } else {
+        // 已满
       }
     },
     fetchEvent(eventId) {
