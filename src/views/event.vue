@@ -131,7 +131,7 @@
               为保证您的权利，在购买成功后我们会向您发送一条短信，请您确认。本活动所得用于场地、嘉宾、晚宴费用，Code Review 秉承平台原则，不收取额外费用。
             </p>
             <p class="price">¥{{event.amount | moneyAsYuan}}</p>
-            <button class="btn-attend btn-blue" @click="showAttend">
+            <button class="btn-attend btn-blue" @click="showAttend" :class="{'disabled' : !attendEnabled}">
               {{attendTitle}}
             </button>
           </div>
@@ -151,7 +151,6 @@
       </section>
 
         <footer>
-
             <p class="footer__tips">现场我们会拍摄一些照片，别忘了活动结束后回来看哦</p>
             <p class="footer__brand">Code Review</p>
         </footer>
@@ -555,9 +554,27 @@ module.exports = {
       if (!user.username) {
         return '请登录后报名';
       } else if (this.event.attendance == null) {
-        return '立即报名';
+        if (this.event.restCount > 0) {
+          return '立即报名';
+        } else {
+          return '报名已满';
+        }
       } else {
         return '您已报名，欢迎加参会群';
+      }
+    },
+    attendEnabled() {
+      var user = util.getLocalUser();
+      if (!user.username) {
+        return true
+      } else if (this.event.attendance == null) {
+        if (this.event.restCount > 0) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return true;
       }
     }
   },
@@ -567,6 +584,9 @@ module.exports = {
       //   util.show(this, 'warn', '暂时只支持电脑支付，请在电脑上打开 http://reviewcode.cn 报名', 10 * 1000);
       //   return;
       // }
+      if (!this.attendEnabled) {
+        return;
+      }
       var user = util.getLocalUser();
       if (!user.username) {
         var nav = this.$root.$children[0];
