@@ -609,18 +609,6 @@ module.exports = {
     var eventId = params.eventId;
     this.fetchEvent(eventId);
     this.fetchAttendances(eventId);
-
-    var user = util.getLocalUser();
-    if (!user.username) {
-      // 没有登录
-      return;
-    } else {
-      this.$http.get(serviceUrl.attendanceGet.replace(/:id/, eventId))
-       .then((resp) => {
-
-       }, util.httpErrorFn(this));
-    }
-
   }
 };
 
