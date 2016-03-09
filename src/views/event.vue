@@ -95,15 +95,16 @@
           </div>
         </div>
 
+        <div class="speaker__card">
+          <div class="speaker__content">
+            <img src="../img/event/biao.jpg">
+            <h4 class="name">黄仪标</h4>
+            <p class="detail">微博 <a href="http://weibo.com/u/5384637337" target="_blank">@标哥的技术博客</a>。标哥就职于百度，对 iOS 技术极其狂热，也热爱写 <a href="http://www.henishuo.com/" target="_blank">博客</a>，热爱分享，有强烈的代码洁癖，追求极致。</p>
+          </div>
+        </div>
+
+
       </div>
-
-      <p class="speaker-change">
-        非常抱歉，临时得知 iOS 程序猿在活动当天需要坐飞机出国团建。我们正在联系更多的嘉宾，来加入分组交流与晚宴。
-      </p>
-
-      <!-- <div class="speaker-list">
-
-      </div> -->
 
     </section>
     <section id="agenda" class="agenda">
@@ -307,11 +308,6 @@ body
         width 152px
         height 152px
         border-radius 117px
-    .speaker-change
-      center(300px)
-      font-size 12px
-      line-height 15px
-      margin-bottom 80px
 
   .intro
     span(1)
