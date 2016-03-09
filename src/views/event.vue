@@ -99,7 +99,8 @@
           <div class="speaker__content">
             <img src="../img/event/biao.jpg">
             <h4 class="name">黄仪标</h4>
-            <p class="detail">微博 <a href="http://weibo.com/u/5384637337" target="_blank">@标哥的技术博客</a>。标哥就职于百度，对 iOS 技术极其狂热，也热爱写 <a href="http://www.henishuo.com/" target="_blank">博客</a>，热爱分享，有强烈的代码洁癖，追求极致。</p>
+            <p class="detail">微博 <a href="http://weibo.com/u/5384637337" target="_blank">@标哥的技术博客</a>。标哥就职于百度，对 iOS 技术极其狂热，也热爱写 <a href="http://www.henishuo.com/" target="_blank">博客</a>，热爱分享，有强烈的代码洁癖，追求极致。
+              更多标哥的作品和介绍可参考<a href="http://www.henishuo.com/about-biaoge/" target="_blank">这里</a>。</p>
           </div>
         </div>
 
