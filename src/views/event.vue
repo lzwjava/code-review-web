@@ -64,7 +64,7 @@
             <h4 class="name">吕文瀚</h4>
             <p class="detail">微博 <a href="http://weibo.com/u/2277420203">@JohnLui</a>，一个乐于分享的人。
               连续参与创业，以前用 PHP 做网站，现在用 Swift 搞 iOS 。
-              即将出版《iOS 可视化编程与 Auto Layout》。热心开源，开源过好几个成百上千 Star 的 <a href="https://github.com/johnlui">项目</a>。
+              即将出版《iOS 可视化编程与 Auto Layout》。热心开源，开源过好几个成百上千 Star 的 <a href="https://github.com/johnlui" target="_blank">项目</a>。
             </p>
           </div>
         </div>
@@ -91,7 +91,7 @@
           <div class="speaker__content">
             <img src="../img/event/lzwjava_avatar.jpg">
             <h4 class="name">李智维</h4>
-            <p class="detail">微博 <a href="http://weibo.com/zhiweilee" target="_blank">@lzwjava</a>。95 年出生的他，初中接触了编程，曾任职于 LeanCloud。现创业搞起了 <a href="http://reviewcode.cn/">Code Review 平台</a>，负责大部分技术开发。业余时间也开源了一些 <a href="https://github.com/lzwjava">项目</a>。</p>
+            <p class="detail">微博 <a href="http://weibo.com/zhiweilee" target="_blank">@lzwjava</a>。95 年出生的他，初中接触了编程，曾任职于 LeanCloud。现创业搞起了 <a href="http://reviewcode.cn/" target="_blank">Code Review 平台</a>，负责大部分技术开发。业余时间也开源了一些 <a href="https://github.com/lzwjava" target="_blank">项目</a>。</p>
           </div>
         </div>
 
