@@ -4,7 +4,7 @@
       <div class="info__content">
         <p class="info__subtitle">CRViewController<br>交流会</p>
         <p class="info__detail">
-          亲爱的朋友们，我们一起相约中关村 e 世界，参与、分享并交流代码。<br>
+          亲爱的朋友们，我们一起相约 3W 咖啡，参与、分享并交流代码。<br>
           你可以带着问题来，这些问题可以是和活动相关的，也可以是无关的。<br>
           比如，你平时写代码遇到的问题，想知道如何快速提高等等。<br> Ask me anything。
         </p>
@@ -20,7 +20,7 @@
         </div>
         <div class="intro__card">
           <h3 class="intro__reason">地点</h3>
-          <p class="intro__detail">中关村 e 世界<br>联合创业办公社</p>
+          <p class="intro__detail">中关村创业大街<br>3W 咖啡二层</p>
         </div>
         <div class="intro__card">
           <h3 class="intro__reason">费用</h3>
