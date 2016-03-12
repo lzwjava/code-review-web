@@ -28,7 +28,7 @@
         </div>
 
         <div id="map__container">
-          <img src="../img/event/map_e_world.jpg">
+          <img src="../img/event/map_3w.jpg">
         </div>
 
       </div>
