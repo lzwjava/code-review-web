@@ -12,10 +12,10 @@
             <span>10</span>学员
           </li>
           <li>
-            <span>40</span>课时
+            <span>60</span>课时
           </li>
           <li>
-            <span>100</span>任务
+            <span>150</span>任务
           </li>
           <li>
             <span>每天</span>审核代码
@@ -54,11 +54,13 @@
       <img src="../img/workshop/iphoneblack.png"/>
       <h2>起源</h2>
       <p>
-        在上一次的北京线下会，我分享的主题是《iOS如何快速开发成长》。其中就iOS的各个方面总结成了9个部分，包括`Image`,`Audio`,`Video`,`Animation`,`UI`,`Node.js`,`Python`,`Shell`,`Network`.然后把两百多篇blog和github开源库总结出来了20篇左右，每个主题都有2-3个精华。我的预计是，只要你在每个方向精读了这两篇文章之后都会有一个明确的认知，对以后的深入了解有很大的帮助。
-        但是效果并不好。1. 没有几个人看。2. 看了之后并没有认真写。
-        我在思索一个问题，在7000-15000这个分段徘徊，想要提高却止步不前的iOS开发，他们到底需要一种怎样的指导或者方法持续提高？
-        我想到了一个让我受用匪浅的方案。就是仿写。
-        我们为什么不能提供后台和UI，通过每日安排任务仿写知名app的方法，让这些渴望提高的朋友迅速的迈过这个门槛。向更高的阶段进发呢？
+        去年 12 月开始创办 Code Review 平台，今年 3 月尝试线下交流会。我们用心地准备场地、自助餐、演讲内容，最后也收到了很好的评价。一位参会的朋友说，这是他参加过的氛围最好的技术会议。于是打算尝试更多的线下活动，期待着用我们多年积累的编程经验来帮助渴望提高的 iOS 开发。
+      </p>
+      <p>
+        形式上，周一至周五晚上线上指导、周六日全天线下指导。一周会安排若干任务，您写的每一行代码我们都会审核。第一期只招 10 位学员。如果说我们和其它培训有什么最大的不同的话，我想就是这点：两位导师将全职陪同 10 位学员度过一个半月的学习。
+      </p>
+      <p>
+        领域内的大部分培训需要 18800 元，此次研讨班的定价是 20000 元。只针对有一定工作经验并且渴望提高的人。不菲的价格将让我们投入更多的时间精力到每一位学员身上。
       </p>
     </section>
 
@@ -270,18 +272,23 @@ body
     background-size 100%
     span(1)
     padding 50px 0 500px
+    +below(700px)
+      padding 50px 0 200px
     h2,p
       color #fff
       text-align left
       margin 50px auto
       max-width 800px
       line-height 150%
+      padding 0 20px
     img
       height 712px
       float right
       position relative
       top -100px
       shape-outside url('../img/workshop/iphoneblack.png')
+      +below(700px)
+        height 300px
     h2
       font-size 60px
       font-weight 300
