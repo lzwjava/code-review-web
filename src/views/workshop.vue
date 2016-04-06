@@ -63,14 +63,15 @@
 
     </section>
 
-    <section id="agenda" class="agenda">
-      <div class="agenda__content">
+    <section id="chapters" class="chapters">
+      <div class="chapters__content">
         <h1 class="title">课程安排</h1>
-        <ul class="agenda__list">
-          <li v-for="arrange in agenda">
-            <div class="agenda__item">{{arrange.item}}</div>
-            <div class="agenda__detail" v-html="arrange.detail"></div>
-            <div class="agenda__time">{{arrange.time}}</div>
+        <ul class="chapter__list">
+          <li v-for="chapter in chapters">
+            {{chapter.title}}
+            <ul class="chapter__sections">
+              <li v-for="section in chapter.sections">{{section}}</li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -298,44 +299,30 @@ body
       margin-top 200px
       img
         width 100%
-  .agenda
+  .chapters
     span(1)
     color #34495e
     padding-bottom 50px
-    div.agenda__content
+    div.chapters__content
       layout2()
       +below(1200px)
         layout2_sm()
       h1
         background-image url("../img/event/agenda_bg.png")
-      .agenda__list
-        center(650px)
+      ul
+        padding-left 30px
+      ul.chapter__list
+        center(450px)
         +below(768px)
           center(320px)
-        list-style none
-        display block
+        text-align left
         margin-top 50px
+        list-style disc
         li
-          span(1)
-          height 100px
-          border-bottom 2px solid #f8f8f8
-          text-align left
-          padding-top 30px
-          div
-            display inline-block
-            font-size 24px
-            color #6E7A83
-            vertical-align middle
-            line-height 30px
-            +below(768px)
-              font-size 14px
-          .agenda__item
-            width 150px
-            +below(768px)
-              width auto
-              margin-right 10px
-          .agenda__time
-            float right
+          display list-item
+          margin-top 5px
+        ul.chapter__sections
+          list-style circle
   .ticket
     layout2()
     +below(1200px)
@@ -444,7 +431,85 @@ module.exports = {
       workshop: {},
       enrollments: [],
       overlayStatus: false,
-      qrcodeStatus: false
+      qrcodeStatus: false,
+      chapters: [
+        {
+          title: '数据库',
+          sections: [
+           'Realm vs CoreData vs SQLite ',
+           '三个数据库的常规用法和高级用法',
+           '如何针对项目做数据库选型'
+         ]
+       },
+       {
+         title: 'UI（知名App的仿写)',
+         sections: [
+           '下厨房',
+           'CityGuides'
+         ]
+       },
+       {
+         title: 'Animation',
+         sections: [
+           'Pop框架',
+           'LayerAnimation',
+           'ViewAnimation',
+           'TransitionAnimation',
+           'Shape Animation',
+           'Path Animation',
+           'dynamic animation',
+           'particles animation'
+         ]
+       },
+       {
+         title: 'ORM',
+         sections: [
+           'Mantle vs JSONModel vs MJExtension vs YYModel',
+           '三个框架的对比解析',
+           '如何自己写 ORM 框架'
+         ]
+       },
+       {
+         title: 'HttpClient',
+         sections: [
+           'Etag, Last-Modified',
+           '如何设计合理的网络错误处理机制',
+           '如何设计容易扩展的网络库'
+         ]
+       },
+       {
+         title: 'Cache',
+         sections: [
+           '如何使用Realm设计缓存',
+           '如何使用CoreData设计缓存',
+           '如何使用Sqlite设计缓存'
+         ]
+       },
+       {
+         title: 'Optimize',
+         sections: [
+           '常见App优化手段',
+           '单页面多列表如何解耦',
+           'MVVM如何改善架构',
+           'TableView如何优化'
+         ]
+       },
+       {
+         title: 'UnitTest',
+         sections: [
+           '如何编写实用的测试用例',
+           '如何使用OCMock编写测试用例'
+         ]
+       },
+       {
+         title: 'CI',
+         sections: [
+           '如何写一个持续化集成工具',
+           '如何配置 Jenkins',
+           '如何合理利用 Github Hooks 完成工作'
+         ]
+       }
+      ]
     };
   },
   computed: {
