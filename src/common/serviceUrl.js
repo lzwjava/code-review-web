@@ -41,5 +41,8 @@ export default {
     attendanceGet: 'attendances/:id',
     eventAttend: 'events/:id/attend',
     eventPay: 'events/:id/pay',
-    attendancesGetEvent: 'events/:id/attendances'
+    attendancesGetEvent: 'events/:id/attendances',
+    workshopGet: 'workshops/:id',
+    workshopEnrollments: 'workshops/:id/enrollments',
+    workshopPay: 'workshops/:id/pay'
 }
