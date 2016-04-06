@@ -3,36 +3,30 @@
     <section class="info">
       <div class="info__content">
         <p class="info__subtitle">iOS 研讨班</p>
-        <p class="info__detail">
-          我一直在思索一个问题，在 7000-15000 这个分段徘徊，想要提高却止步不前的 iOS 开发，他们到底需要一种怎样的指导或者方法持续提高？<br>
-          我想到了一个让我受益匪浅的方案：仿写。<br>
-          我们为什么不能提供后台和 UI，通过每日安排任务仿写知名 App 的方法，让这些渴望提高的朋友迅速地迈过这个门槛，向更高的阶段进发呢？<br>
-          —— 叶孤城
-        </p>
+        <hr>
+        <ul class="info__numbers">
+          <li>
+            <span>6</span>周
+          </li>
+          <li>
+            <span>10</span>学员
+          </li>
+          <li>
+            <span>40</span>课时
+          </li>
+          <li>
+            <span>100</span>任务
+          </li>
+          <li>
+            <span>每天</span>审核代码
+          </li>
+        </ul>
       </div>
     </section>
-    <section id="intro" class="intro">
-      <div class="intro__content">
-        <h1 class="title">研讨班详情</h1>
-        <h3>2016.05.01 ~ 2016.06.15</h3>
-        <div class="intro__card">
-          <h3 class="intro__reason">时间</h3>
-          <p class="intro__detail">平时晚上、周日白天</p>
-        </div>
-        <div class="intro__card">
-          <h3 class="intro__reason">学员</h3>
-          <p class="intro__detail">10 位</p>
-        </div>
-        <div class="intro__card">
-          <h3 class="intro__reason">费用</h3>
-          <p class="intro__detail">¥20000</p>
-        </div>
 
-      </div>
-    </section>
     <section id="speaker" class="speaker">
       <div class="speaker__container">
-        <h1 class="title">导师介绍</h1>
+        <h1 class="title">导师</h1>
          <div class="speaker-list">
            <div class="speaker__card">
              <div class="speaker__content">
@@ -61,6 +55,26 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="intro" class="intro">
+      <div class="intro__content">
+        <h1 class="title">研讨班详情</h1>
+        <h3>2016.05.01 ~ 2016.06.15</h3>
+        <div class="intro__card">
+          <h3 class="intro__reason">时间</h3>
+          <p class="intro__detail">平时晚上、周日白天</p>
+        </div>
+        <div class="intro__card">
+          <h3 class="intro__reason">学员</h3>
+          <p class="intro__detail">10 位</p>
+        </div>
+        <div class="intro__card">
+          <h3 class="intro__reason">费用</h3>
+          <p class="intro__detail">¥20000</p>
+        </div>
+
       </div>
     </section>
 
@@ -169,10 +183,7 @@ body
     text-align center
     font-size 36px
     height 45px
-    color #1CB2EF
-    background-image url("../img/event/intro_bg.png")
-    background-repeat no-repeat
-    background-position center bottom
+    color #fff
 
   .info
     span(1)
@@ -200,38 +211,42 @@ body
       left 50%
       margin-left -300px
       margin-top -150px
-    .info__subtitle
-      letter-spacing 2px
-      font-size 40px
-      font-weight 700
-      margin-bottom 20px
-      line-height 60px
-      +below(500px)
-        font-size 30px
-        line-height 35px
-      .info__down
-        font-family arial
-        font-weight normal
-    .info__detail
-      margin-top 30px
-      font-size 15px
-      color #fff
-      line-height 30px
-      +below(500px)
-        font-size 16px
-        line-height 20px
-        margin 0 10px
+      hr
+        margin 50px
+        border-top 1px solid rgba(255, 255, 255, 0.247059)
+        border-bottom 0
+      .info__subtitle
+        letter-spacing 2px
+        font-size 50px
+        font-weight 700
+        margin-bottom 20px
+        line-height 80px
+        +below(500px)
+          font-size 30px
+          line-height 35px
+        .info__down
+          font-family arial
+          font-weight normal
+      .info__numbers
+        margin-top 80px
+        font-size 24px
+        li
+          display inline-block
+          line-height 35px
+          margin 0 20px
+          span
+            color #62E4F5
+            display block
 
   .speaker
     color #34495e
-    background #2B3745
+    background linear-gradient(-179deg,#2B3745 0,#3067A7 100%)
     span(1)
     .speaker__container
       layout2()
       +below(1200px)
         layout2_sm()
     h1
-      background-image url("../img/event/speaker_bg.png")
       margin-bottom 20px
     .speaker__card
       span(1/2)
@@ -249,15 +264,18 @@ body
           font-weight 700
           margin-top 25px
           font-size 22px
-          color #6E7A83
+          color #CED6E6
+        a
+          color #62E4F5
+          &:hover
+            box-shadow 0 1px 0 0 #fff
+            transition .5s
         p.detail
           text-align left
           margin-top 20px
           font-size 18px
-          color #6E7A83
+          color #CED6E6
           line-height 30px
-        a
-          color #428bca
       img
         width 152px
         height 152px
