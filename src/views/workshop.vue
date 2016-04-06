@@ -1,5 +1,5 @@
 <template>
-  <div class="event-area">
+  <div class="workshop-area">
     <section class="info">
       <div class="info__content">
         <p class="info__subtitle">iOS 研讨班</p>
@@ -31,36 +31,37 @@
       </div>
     </section>
     <section id="speaker" class="speaker">
-      <h1 class="title">导师介绍</h1>
-       <div class="speaker-list">
-         <div class="speaker__card">
-           <div class="speaker__content">
-             <img src="../img/event/yeguchen.jpg">
-             <h4 class="name">臧其龙</h4>
-             <p class="detail">微博 <a href="http://weibo.com/u/1438670852" target="_blank">@叶孤城</a>。现为探探 iOS 开发，
-               曾就职于 Camera360、流利说。对动画交互，图像，视频处理颇有心得。
-               热爱 <a href="https://github.com/zangqilong198812" target="_blank">分享</a>，热爱 iOS 圈子，为大家提供了
-               <a href="http://reviewcode.cn/" target="_blank">Code Review 平台</a>。
-             </p>
+      <div class="speaker__container">
+        <h1 class="title">导师介绍</h1>
+         <div class="speaker-list">
+           <div class="speaker__card">
+             <div class="speaker__content">
+               <img src="../img/event/yeguchen.jpg">
+               <h4 class="name">臧其龙</h4>
+               <p class="detail">微博 <a href="http://weibo.com/u/1438670852" target="_blank">@叶孤城</a>。现为探探 iOS 开发，
+                 曾就职于 Camera360、流利说。对动画交互，图像，视频处理颇有心得。
+                 热爱 <a href="https://github.com/zangqilong198812" target="_blank">分享</a>，热爱 iOS 圈子，为大家提供了
+                 <a href="http://reviewcode.cn/" target="_blank">Code Review 平台</a>。
+               </p>
+             </div>
            </div>
-         </div>
-        <div class="speaker__card">
-          <div class="speaker__content">
-            <img src="../img/event/yanrui.jpg">
-            <h4 class="name">张延瑞</h4>
-            <p class="detail">微博 <a href="http://weibo.com/u/1764965604">@张延瑞</a> 。11年末开始从事 iOS 开发，曾就职于阿姨帮、Camera360，现就职于乐视，负责影视会员相关业务。拥有丰富的开发经验。
-            </p>
+          <div class="speaker__card">
+            <div class="speaker__content">
+              <img src="../img/event/yanrui.jpg">
+              <h4 class="name">张延瑞</h4>
+              <p class="detail">微博 <a href="http://weibo.com/u/1764965604">@张延瑞</a> 。11年末开始从事 iOS 开发，曾就职于阿姨帮、Camera360，现就职于乐视，负责影视会员相关业务。拥有丰富的开发经验。
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="speaker__card">
-          <div class="speaker__content">
-            <img src="../img/event/lzwjava_avatar.jpg">
-            <h4 class="name">李智维</h4>
-            <p class="detail">微博 <a href="http://weibo.com/zhiweilee" target="_blank">@lzwjava</a>。95 年出生的他，初中接触了编程，曾任职于 LeanCloud。现创业搞起了 <a href="http://reviewcode.cn/" target="_blank">Code Review 平台</a>。业余时间也开源了一些 <a href="https://github.com/lzwjava" target="_blank">项目</a>。</p>
+          <div class="speaker__card">
+            <div class="speaker__content">
+              <img src="../img/event/lzwjava_avatar.jpg">
+              <h4 class="name">李智维</h4>
+              <p class="detail">微博 <a href="http://weibo.com/zhiweilee" target="_blank">@lzwjava</a>。95 年出生的他，初中接触了编程，曾任职于 LeanCloud。现创业搞起了 <a href="http://reviewcode.cn/" target="_blank">Code Review 平台</a>。业余时间也开源了一些 <a href="https://github.com/lzwjava" target="_blank">项目</a>。</p>
+            </div>
           </div>
         </div>
       </div>
-
     </section>
 
     <section id="chapters" class="chapters">
@@ -77,41 +78,34 @@
       </div>
     </section>
 
-    <div class="mount">
+    <section id="ticket" class="ticket">
+      <div class="ticket__content">
+        <h1 class="title">报名参加</h1>
 
-      <section id="ticket" class="ticket">
-        <div class="ticket__content">
-          <h1 class="title">报名参加</h1>
-
-          <div class="ticket__card">
-            <h3>注意事项</h3>
-            <p class="ticket__detail">
-              为保证您的权利，在报名成功后我们会向您发送一条短信，同时将邀请您进入研讨班微信群，请您注意。
-            </p>
-            <p class="price">¥{{workshop.amount | moneyAsYuan}}</p>
-            <button class="btn-attend btn-blue" @click="showAttend" :class="{'disabled' : !attendEnabled}">
-              {{attendTitle}}
-            </button>
-          </div>
-
-          <div class="ticket__attend">
-            <p class="ticket__attend__title">
-              已经有 {{workshop.enrollCount}} 人报名参加了研讨会 <br>还剩 {{workshop.restCount}} 个名额
-            </p>
-            <ul class="ticket__attend__avatars">
-              <li v-for="enrollment in enrollments">
-                <user-avatar :user="enrollment.user"></user-avatar>
-              </li>
-            </ul>
-          </div>
+        <div class="ticket__card">
+          <h3>注意事项</h3>
+          <p class="ticket__detail">
+            为保证您的权利，在报名成功后我们会向您发送一条短信，同时将邀请您进入研讨班微信群，请您注意。
+          </p>
+          <p class="price">¥{{workshop.amount | moneyAsYuan}}</p>
+          <button class="btn-attend btn-blue" @click="showAttend" :class="{'disabled' : !attendEnabled}">
+            {{attendTitle}}
+          </button>
         </div>
 
-      </section>
+        <div class="ticket__attend">
+          <p class="ticket__attend__title">
+            已经有 {{workshop.enrollCount}} 人报名参加了研讨会 <br>还剩 {{workshop.restCount}} 个名额
+          </p>
+          <ul class="ticket__attend__avatars">
+            <li v-for="enrollment in enrollments">
+              <user-avatar :user="enrollment.user"></user-avatar>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-        <footer>
-            <p class="footer__brand">Code Review</p>
-        </footer>
-    </div>
+    </section>
 
     <overlay :overlay.sync="overlayStatus">
       <workshop-form :workshop="workshop"></workshop-form>
@@ -128,7 +122,7 @@
 @import '../../node_modules/jeet/stylus/jeet'
 @import '../../node_modules/rupture/rupture/index.styl'
 
-.event-area
+.workshop-area
   text-align center
 
 div
@@ -184,15 +178,15 @@ body
     span(1)
     letter-spacing 3px
     position relative
-    background url("../img/event/info_bg.jpg") no-repeat
-    height 700px
-    background-size contain
+    background url("../img/workshop/intro_bg1.png") no-repeat
+    height 800px
+    background-size cover
     background-position center
     text-align center
     font-size 20px
     +below(500px)
       font-size 10px
-    color #282F31
+    color #fff
     .info__content
       width 600px
       +below(500px)
@@ -208,7 +202,8 @@ body
       margin-top -150px
     .info__subtitle
       letter-spacing 2px
-      font-size 50px
+      font-size 40px
+      font-weight 700
       margin-bottom 20px
       line-height 60px
       +below(500px)
@@ -220,7 +215,7 @@ body
     .info__detail
       margin-top 30px
       font-size 15px
-      color #6E7A83
+      color #fff
       line-height 30px
       +below(500px)
         font-size 16px
@@ -228,10 +223,13 @@ body
         margin 0 10px
 
   .speaker
-    layout2()
-    +below(1200px)
-      layout2_sm()
     color #34495e
+    background #2B3745
+    span(1)
+    .speaker__container
+      layout2()
+      +below(1200px)
+        layout2_sm()
     h1
       background-image url("../img/event/speaker_bg.png")
       margin-bottom 20px
@@ -303,6 +301,7 @@ body
     span(1)
     color #34495e
     padding-bottom 50px
+    background-image linear-gradient(-179deg,#38bbcc 0,#3cd3ad 100%)
     div.chapters__content
       layout2()
       +below(1200px)
@@ -324,12 +323,16 @@ body
         ul.chapter__sections
           list-style circle
   .ticket
-    layout2()
-    +below(1200px)
-      layout2_sm()
     color #34495e
     text-align center
     letter-spacing 1px
+    background #2B3745 url('../img/workshop/photo-louvre.jpg') bottom center no-repeat
+    background-size 100%
+    span(1)
+    .ticket__content
+      layout2()
+      +below(1200px)
+        layout2_sm()
     .ticket__card
       text-align center
       center(350px)
@@ -377,27 +380,6 @@ body
            img
              width 38px
              height 38px
-  .mount
-    span(1)
-    background url("../img/event/mount.jpg") no-repeat
-    background-position bottom
-    background-size 100% 40%
-    +below(500px)
-      background-size 100% 30%
-
-  footer
-    span(1)
-    color white
-    width 100%
-    height 300px
-    color #6E7A83
-    .footer__tips
-      font-size 20px
-      margin 80px 10px
-      line-height 25px
-    .footer__brand
-      font-size 20px
-      line-height 36px
 
 .disabled
   cursor not-allowed
@@ -451,14 +433,14 @@ module.exports = {
        {
          title: 'Animation',
          sections: [
-           'Pop框架',
+           'Pop 框架',
            'LayerAnimation',
            'ViewAnimation',
            'TransitionAnimation',
            'Shape Animation',
            'Path Animation',
-           'dynamic animation',
-           'particles animation'
+           'Dynamic animation',
+           'Particles animation'
          ]
        },
        {
