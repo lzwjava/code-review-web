@@ -41,14 +41,6 @@
            </div>
           <div class="speaker__card">
             <div class="speaker__content">
-              <img src="../img/event/yanrui.jpg">
-              <h4 class="name">张延瑞</h4>
-              <p class="detail">微博 <a href="http://weibo.com/u/1764965604">@张延瑞</a> 。11年末开始从事 iOS 开发，曾就职于阿姨帮、Camera360，现就职于乐视，负责影视会员相关业务。拥有丰富的开发经验。
-              </p>
-            </div>
-          </div>
-          <div class="speaker__card">
-            <div class="speaker__content">
               <img src="../img/event/lzwjava_avatar.jpg">
               <h4 class="name">李智维</h4>
               <p class="detail">微博 <a href="http://weibo.com/zhiweilee" target="_blank">@lzwjava</a>。95 年出生的他，初中接触了编程，曾任职于 LeanCloud。现创业搞起了 <a href="http://reviewcode.cn/" target="_blank">Code Review 平台</a>。业余时间也开源了一些 <a href="https://github.com/lzwjava" target="_blank">项目</a>。</p>
@@ -58,24 +50,16 @@
       </div>
     </section>
 
-    <section id="intro" class="intro">
-      <div class="intro__content">
-        <h1 class="title">研讨班详情</h1>
-        <h3>2016.05.01 ~ 2016.06.15</h3>
-        <div class="intro__card">
-          <h3 class="intro__reason">时间</h3>
-          <p class="intro__detail">平时晚上、周日白天</p>
-        </div>
-        <div class="intro__card">
-          <h3 class="intro__reason">学员</h3>
-          <p class="intro__detail">10 位</p>
-        </div>
-        <div class="intro__card">
-          <h3 class="intro__reason">费用</h3>
-          <p class="intro__detail">¥20000</p>
-        </div>
-
-      </div>
+    <section id="story" class="story">
+      <img src="../img/workshop/iphoneblack.png"/>
+      <h2>起源</h2>
+      <p>
+        在上一次的北京线下会，我分享的主题是《iOS如何快速开发成长》。其中就iOS的各个方面总结成了9个部分，包括`Image`,`Audio`,`Video`,`Animation`,`UI`,`Node.js`,`Python`,`Shell`,`Network`.然后把两百多篇blog和github开源库总结出来了20篇左右，每个主题都有2-3个精华。我的预计是，只要你在每个方向精读了这两篇文章之后都会有一个明确的认知，对以后的深入了解有很大的帮助。
+        但是效果并不好。1. 没有几个人看。2. 看了之后并没有认真写。
+        我在思索一个问题，在7000-15000这个分段徘徊，想要提高却止步不前的iOS开发，他们到底需要一种怎样的指导或者方法持续提高？
+        我想到了一个让我受用匪浅的方案。就是仿写。
+        我们为什么不能提供后台和UI，通过每日安排任务仿写知名app的方法，让这些渴望提高的朋友迅速的迈过这个门槛。向更高的阶段进发呢？
+      </p>
     </section>
 
     <section id="chapters" class="chapters">
@@ -240,14 +224,14 @@ body
 
   .speaker
     color #34495e
-    background linear-gradient(-179deg,#2B3745 0,#3067A7 100%)
+    background linear-gradient(-179deg,#2B3745 0,#2E598B 100%)
     span(1)
     .speaker__container
       layout2()
       +below(1200px)
         layout2_sm()
     h1
-      margin-bottom 20px
+      margin-bottom 60px
     .speaker__card
       span(1/2)
       +below(500px)
@@ -281,51 +265,39 @@ body
         height 152px
         border-radius 117px
 
-  .intro
+  .story
+    background #2B3745 url('../img/workshop/photo-louvre.jpg') bottom center no-repeat
+    background-size 100%
     span(1)
-    color #34495e
-    div.intro__content
-      layout1()
-      +below(1200px)
-        layout1_sm()
-    h1
-      background-image url("../img/event/intro_bg.png")
-    h3
-      font-size 40px
-      color #282F31
-      line-height 72px
-      margin-bottom 20px
-      +below(500px)
-        font-size 30px
-    .intro__card
-      span(1/3)
-      +below(500px)
-        span(1)
-      padding 20px
-      h3.intro__reason
-        margin-bottom 20px
-        font-size 20px
-        color #E24B47
-        line-height 40px
-      p.intro__detail
-        margin-top 20px
-        line-height 25px
-    div#map__container
-      center(600px)
-      margin-top 200px
-      img
-        width 100%
+    padding 50px 0 500px
+    h2,p
+      color #fff
+      text-align left
+      margin 50px auto
+      max-width 800px
+      line-height 150%
+    img
+      height 712px
+      float right
+      position relative
+      top -100px
+      shape-outside url('../img/workshop/iphoneblack.png')
+    h2
+      font-size 60px
+      font-weight 300
+    p
+      font-size 18px
+      color #ced6e6
+
   .chapters
     span(1)
-    color #34495e
+    color #fff
     padding-bottom 50px
     background-image linear-gradient(-179deg,#38bbcc 0,#3cd3ad 100%)
     div.chapters__content
       layout2()
       +below(1200px)
         layout2_sm()
-      h1
-        background-image url("../img/event/agenda_bg.png")
       ul
         padding-left 30px
       ul.chapter__list
@@ -340,6 +312,7 @@ body
           margin-top 5px
         ul.chapter__sections
           list-style circle
+
   .ticket
     color #34495e
     text-align center
@@ -436,8 +409,9 @@ module.exports = {
         {
           title: '数据库',
           sections: [
-           'Realm vs CoreData vs SQLite ',
-           '三个数据库的常规用法和高级用法',
+           'Realm',
+           'CoreData',
+           'Sqlite',
            '如何针对项目做数据库选型'
          ]
        },
@@ -472,7 +446,7 @@ module.exports = {
        {
          title: 'HttpClient',
          sections: [
-           'Etag, Last-Modified',
+           '如何使用 Etag、Last-Modified 来实现缓存',
            '如何设计合理的网络错误处理机制',
            '如何设计容易扩展的网络库'
          ]
