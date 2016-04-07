@@ -80,8 +80,6 @@
 
     <section id="ticket" class="ticket">
       <div class="ticket__content">
-        <h1 class="title">报名参加</h1>
-
         <div class="ticket__card">
           <div class="ticket__card__header">
             <img class="bg" src="../img/workshop/workshop-toronto-hero.jpg" alt="" />
@@ -188,7 +186,6 @@ body
   layout2_sm()
     span(0.9, offset:0.05)
   font-size 16px
-  background #fff
 
   h1.title
     center(300px)
@@ -328,7 +325,7 @@ body
   .chapters
     span(1)
     color #fff
-    padding-bottom 50px
+    padding-bottom 300px
     background-image linear-gradient(-179deg,#38bbcc 0,#3cd3ad 100%)
     div.chapters__content
       layout2()
@@ -352,9 +349,9 @@ body
   .ticket
     text-align center
     letter-spacing 1px
-    background url('../img/workshop/code.jpg') bottom center no-repeat
-    background-size 100%
+    background #2B3745
     span(1)
+    height 600px
     .ticket__content
       layout2()
       +below(1200px)
@@ -365,6 +362,8 @@ body
         border-radius 5px
         overflow hidden
         background #E2E4E9
+        position relative
+        top -240px
         .ticket__card__header
           color #fff
           img.bg
@@ -426,6 +425,9 @@ body
            img
              width 38px
              height 38px
+
+footer
+  span(1)
 
 .disabled
   cursor not-allowed
