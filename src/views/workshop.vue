@@ -98,7 +98,7 @@
 
           <div class="ticket__card__footer">
             <div class="heading">
-              <img src="../img/workshop/big-sketch.svg" alt="" />
+              <img src="../img/workshop/big-swift.svg" alt="" />
               <h3>iOS 研讨班</h3>
             </div>
             <div class="date">
@@ -106,9 +106,9 @@
               <h3>2016.5.3 ~ 2016.6.12</h3>
             </div>
             <div class="buy">
-              <button @click="showAttend" :class="{'disabled' : !attendEnabled}">{{attendTitle}}</button>
+              <button @click="showAttend" class="btn btn-blue" :class="{'disabled' : !attendEnabled}">{{attendTitle}}</button>
               <p>
-                咨询: 18611693632(叶孤城)
+                咨询: 18611693632
               </p>
             </div>
           </div>
@@ -157,10 +157,6 @@
 
 .workshop-area
   text-align center
-
-div
-p
-  font-family "PingFang SC","Helvetica Neue",Helvetica,"Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
 
 .r
   border-right  solid 1px #E7E7E7
@@ -388,21 +384,31 @@ body
           color #000
           padding 20px
           margin-top -30px
+          position relative
+          height 140px
           h3
             font-size 20px
-            font-weight 600
             display inline-block
           img
             width 30px
           div.heading
             margin-bottom 15px
             h3
-              vertical-align 8px
+              vertical-align 5px
           div.date
             h3
-              vertical-align 8px
+              vertical-align 5px
           .buy
-            float right
+            position absolute
+            right 20px
+            bottom 20px
+            button
+              width 150px
+              height 65px
+              font-size 20px
+              margin-bottom 20px
+            p
+              color #6A7989
 
     .ticket__attend
        margin 50px 0
