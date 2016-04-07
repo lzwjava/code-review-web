@@ -96,10 +96,10 @@ components: {
 					margin-bottom 20px
 					font-size 24px
 					.rfont1
-						font-family Raleway-Light
+						font-family Helvetica
 						font-weight lighter
 					.rfont2
-						font-family Raleway-SemiBold
+						font-family Helvetica
 						font-weight bold
 				.detail2
 					opacity 0.6
@@ -108,13 +108,13 @@ components: {
 					font-weight normal
 					p
 						color white
-						font-family Raleway
+						font-family Helvetica
 						margin-top: -5px;
 						.year
-							font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
+							font-family Helvetica Neue,Helvetica
 						.ICP
 							color white
-							font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
+							font-family Helvetica Neue,Helvetica
 
 		li
 			text-align left

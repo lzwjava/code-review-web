@@ -176,10 +176,6 @@
 .event-area
   text-align center
 
-div
-p
-  font-family "PingFang SC","Helvetica Neue",Helvetica,"Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
-
 .r
   border-right  solid 1px #E7E7E7
 .b

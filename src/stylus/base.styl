@@ -1,42 +1,13 @@
 @import "variables.styl"
 @import "reset.styl"
 
-*{
-  box-sizing: border-box;
-}
-
-@font-face
-  font-family Raleway-Regular
-  src url('../font/Raleway-Regular.ttf')
-
-@font-face
-  font-family Raleway-Light
-  src url('../font/Raleway-Light.ttf')
-
-@font-face
-  font-family Raleway-ExtraLight
-  src url('../font/Raleway-ExtraLight.ttf')
-
-@font-face
-  font-family Raleway-SemiBold
-  src url('../font/Raleway-SemiBold.ttf')
-
-.raleway-first-font
-  font-family Raleway-Regular,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
-
-.pingfang-first-font
-  font-family "PingFang SC","Helvetica Neue",Helvetica,"Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
-
-.raleway-regular-font
-  font-family Raleway-Regular,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
+*
+  box-sizing border-box
 
 html, body, a
-  @extend .raleway-first-font
+  font-family Helvetica,"Helvetica Neue","PingFang","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
   color textColor
   text-decoration none
-
-h2
-  font-family Raleway-Regular
 
 body
   background #F1F5F6
@@ -105,7 +76,6 @@ h1
   font-size 3.75rem
   font-weight 100
 h2
-  @extend .pingfang-first-font
   font-size 1.5rem
   font-weight 100
 h3
@@ -113,7 +83,6 @@ h3
 h4
   font-size 1rem
   font-weight 600
-  @extend .pingfang-first-font
 h5
   font-size 20px
 .setting .tags .tags-content .select-content select

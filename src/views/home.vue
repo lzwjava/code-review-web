@@ -334,7 +334,7 @@
 #header2
   font-size 1.5rem
   font-weight 100
-  font-family Raleway-ExtraLight,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
+  font-family "Helvetica Neue",Helvetica
 .navbar
   position fixed
   z-index 8 // signup login overlay = 9
@@ -365,7 +365,6 @@
       height 80px
       margin-top 60px
     .help
-      @extend .raleway-regular-font
       height 50px
       width 240px
       background #1CB2EF
@@ -376,7 +375,7 @@
       border 1px solid #00A3E6
       -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
       box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
-      font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
+      font-family Helvetica Neue,Helvetica
 .feature
   height 450px
   padding 125px 0
@@ -416,7 +415,7 @@
         line-height 180%
         font-size 0.88rem
         .review-document
-          font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
+          font-family Helvetica Neue,Helvetica
 .reviewer
   height 800px;
   position relative
@@ -589,7 +588,7 @@
         h6
           width 200px
           word-break break-word
-          font-family "PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",Arial,"Microsoft Yahei",Verdana,sans-serif
+          font-family "PingFang SC"
         .title
           font-size 1.5rem
           line-height 2rem

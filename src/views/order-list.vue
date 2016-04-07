@@ -245,7 +245,7 @@
 			border 1px solid rgba(0,0,0,.15)
 			box-shadow inset 0 1px 0 hsla(0,0%,100%,.15),0 1px 2px rgba(0,0,0,.15)
 			-webkit-box-shadow 0 1px 0 hsla(0,0%,100%,.15) inset,0 1px 2px rgba(0,0,0,.15)
-			font-family "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", Arial, "Microsoft Yahei", Verdana, sans-serif
+			font-family "Helvetica Neue", Helvetica
 			.list-row
 				display: table-row
 				background: rgba(255,255,255,0.03)

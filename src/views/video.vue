@@ -215,7 +215,7 @@ body
   opacity 0.6
   font-size 14px
   margin-left 20px
-  font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
+  font-family Helvetica Neue,Helvetica
 
 .pull-right
   float right
