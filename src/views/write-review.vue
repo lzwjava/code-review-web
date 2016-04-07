@@ -233,6 +233,8 @@ export default {
                 text-indent 10px
                 font-size 16px
                 opacity 0.8
+                &:focus
+                  border 1px solid #1CB2EF
 
         .edit-area
             textarea
@@ -245,6 +247,8 @@ export default {
                 opacity 0.8
                 padding 10px
                 max-width 597px
+                &:focus
+                  border 1px solid #1CB2EF
 
             p.tip
                 color rgba(40,47,49,.6)

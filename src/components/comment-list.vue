@@ -297,6 +297,8 @@ export default {
               font-size 16px
               padding 10px
               font-weight 100
+              &:focus
+                border 1px solid #1CB2EF
             .markdown-actions
               position relative
               float left
