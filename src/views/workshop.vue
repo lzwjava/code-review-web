@@ -351,7 +351,7 @@ body
     letter-spacing 1px
     background #2B3745
     span(1)
-    height 600px
+    min-height 400px
     .ticket__content
       layout2()
       +below(1200px)
@@ -412,6 +412,8 @@ body
     .ticket__attend
        margin 50px 0
        color #6E7A83
+       position relative
+       top -240px
        .ticket__attend__title
          line-height 30px
          font-size 20px
@@ -468,7 +470,7 @@ module.exports = {
           sections: [
             'add、commit、push、remote、checkout 基础',
             'revert、rm、reset、rebase、merge 进阶',
-            'GitHub、SSH Key、客户端、常用流程',
+            'GitHub、客户端、常用流程',
             'Git 内部原理、内容寻址介绍'
           ]
         },
