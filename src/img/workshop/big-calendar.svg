@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.4 (8053) - http://www.bohemiancoding.com/sketch -->
+    <title>big-calendar</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="sketch" sketch:type="MSArtboardGroup" transform="translate(-171.000000, -775.000000)" fill="#38BBCC">
+            <g id="intro" sketch:type="MSLayerGroup" transform="translate(0.000000, -517.000000)">
+                <g id="Group" transform="translate(150.000000, 960.000000)" sketch:type="MSShapeGroup">
+                    <g id="Sketch-Worshop-+-Learn-iOS-8-and-Sket-+-Fill-56-+-September-22,-2014-+-Limited-space:-20-+-calendar-+-Rectangle-15-+-BUY-TICKET" transform="translate(18.000000, 256.000000)">
+                        <g id="September-22,-2014-+-Limited-space:-20-+-calendar" transform="translate(3.000000, 76.000000)">
+                            <path d="M2.00494659,0 C0.897645164,0 0,0.897026226 0,2.00494659 L0,21.9950534 C0,23.1023548 0.897026226,24 2.00494659,24 L21.9950534,24 C23.1023548,24 24,23.1029738 24,21.9950534 L24,2.00494659 C24,0.897645164 23.1029738,0 21.9950534,0 L2.00494659,0 Z M3.99339768,6 C3.44475929,6 3,6.44892021 3,7.00748397 L3,19.992516 C3,20.5489341 3.44494629,21 3.99339768,21 L20.0066023,21 C20.5552407,21 21,20.5510798 21,19.992516 L21,7.00748397 C21,6.45106594 20.5550537,6 20.0066023,6 L3.99339768,6 Z M6,3 L6,5 L9,5 L9,3 L6,3 Z M15,3 L15,5 L18,5 L18,3 L15,3 Z M16,14 L16,17 L19,17 L19,14 L16,14 Z M11,14 L11,17 L14,17 L14,14 L11,14 Z M6,14 L6,17 L9,17 L9,14 L6,14 Z M16,9 L16,12 L19,12 L19,9 L16,9 Z M11,9 L11,12 L14,12 L14,9 L11,9 Z M6,9 L6,12 L9,12 L9,9 L6,9 Z" id="big-calendar"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -83,15 +83,48 @@
         <h1 class="title">报名参加</h1>
 
         <div class="ticket__card">
+          <div class="ticket__card__header">
+            <img class="bg" src="../img/workshop/workshop-toronto-hero.jpg" alt="" />
+            <div class="middle">
+              <div class="city">
+                <img src="../img/workshop/big-location.svg" alt="" />
+                <span>北京</span>
+              </div>
+              <div class="price">
+                ¥{{workshop.amount | moneyAsYuan}}
+              </div>
+            </div>
+          </div>
+
+          <div class="ticket__card__footer">
+            <div class="heading">
+              <img src="../img/workshop/big-sketch.svg" alt="" />
+              <h3>iOS 研讨班</h3>
+            </div>
+            <div class="date">
+              <img src="../img/workshop/big-calendar.svg" alt="" />
+              <h3>2016.5.3 ~ 2016.6.12</h3>
+            </div>
+            <div class="buy">
+              <button @click="showAttend" :class="{'disabled' : !attendEnabled}">{{attendTitle}}</button>
+              <p>
+                咨询: 18611693632(叶孤城)
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- <div class="ticket__card">
+
           <h3>注意事项</h3>
           <p class="ticket__detail">
             为保证您的权利，在报名成功后我们会向您发送一条短信，同时将邀请您进入研讨班微信群，请您注意。
           </p>
-          <p class="price">¥{{workshop.amount | moneyAsYuan}}</p>
-          <button class="btn-attend btn-blue" @click="showAttend" :class="{'disabled' : !attendEnabled}">
-            {{attendTitle}}
+          <p class="price"></p>
+          <button class="btn-attend btn-blue">
           </button>
-        </div>
+        </div> -->
 
         <div class="ticket__attend">
           <p class="ticket__attend__title">
@@ -321,47 +354,56 @@ body
           list-style circle
 
   .ticket
-    color #34495e
     text-align center
     letter-spacing 1px
-    background #2B3745 url('../img/workshop/photo-louvre.jpg') bottom center no-repeat
+    background url('../img/workshop/code.jpg') bottom center no-repeat
     background-size 100%
     span(1)
     .ticket__content
       layout2()
       +below(1200px)
         layout2_sm()
-    .ticket__card
-      text-align center
-      center(350px)
-      background #FDFFFF
-      border 1px solid #D9DBDC
-      box-shadow 0px 1px 4px 0px rgba(0,0,0,0.08)
-      border-radius 8px
-      padding 30px
-      margin-top 80px
-      h3
-        font-size 20px
-        color #6E7A83
-        line-height 20px
-        margin-bottom 10px
-      .ticket__detail
-        font-size 14px
-        color #6E7A83
-        line-height 24px
-        border-bottom 1px solid rgba(0,0,0,0.15)
-        margin-top 10px
-        padding-bottom 20px
-      .price
-        overflow visible
-        padding 0
-        color #000
-        font-size 48px
-        margin 20px 0
-      .btn-attend
-        font-size 16px
-        width 80%
-        padding 10px 0px
+      .ticket__card
+        text-align left
+        center(500px)
+        border-radius 5px
+        overflow hidden
+        background #E2E4E9
+        .ticket__card__header
+          color #fff
+          img.bg
+            width 100%
+          .middle
+            position relative
+            bottom 50px
+            font-size 24px
+            div,p
+              display inline-block
+            .city
+              margin-left 20px
+            .price
+              float right
+              margin-right 20px
+        .ticket__card__footer
+          color #000
+          padding 20px
+          margin-top -30px
+          h3
+            font-size 20px
+            font-weight 600
+            display inline-block
+          img
+            width 30px
+          div.heading
+            margin-bottom 15px
+            h3
+              vertical-align 8px
+          div.date
+            h3
+              vertical-align 8px
+          .buy
+            float right
+
     .ticket__attend
        margin 50px 0
        color #6E7A83
@@ -414,16 +456,16 @@ module.exports = {
       qrcodeStatus: false,
       chapters: [
         {
-          title: '数据库',
+          title: 'Git',
           sections: [
-           'Realm',
-           'CoreData',
-           'Sqlite',
-           '如何针对项目做数据库选型'
-         ]
-       },
+            'add、commit、push、remote、checkout 基础',
+            'revert、rm、reset、rebase、merge 进阶',
+            'GitHub、SSH Key、客户端、常用流程',
+            'Git 内部原理、内容寻址介绍'
+          ]
+        },
        {
-         title: 'UI（知名App的仿写)',
+         title: 'UI（知名应用的仿写)',
          sections: [
            '下厨房',
            'CityGuides'
@@ -436,17 +478,17 @@ module.exports = {
            'LayerAnimation',
            'ViewAnimation',
            'TransitionAnimation',
-           'Shape Animation',
-           'Path Animation',
-           'Dynamic animation',
-           'Particles animation'
+           'ShapeAnimation',
+           'PathAnimation',
+           'DynamicAnimation',
+           'ParticlesAnimation'
          ]
        },
        {
          title: 'ORM',
          sections: [
            'Mantle vs JSONModel vs MJExtension vs YYModel',
-           '三个框架的对比解析',
+           '四个框架的对比解析',
            '如何自己写 ORM 框架'
          ]
        },
@@ -458,6 +500,15 @@ module.exports = {
            '如何设计容易扩展的网络库'
          ]
        },
+       {
+         title: 'Database',
+         sections: [
+          'Realm',
+          'CoreData',
+          'Sqlite(join、group、foreign key、index)',
+          '如何针对项目做数据库选型'
+        ]
+      },
        {
          title: 'Cache',
          sections: [
@@ -479,7 +530,7 @@ module.exports = {
          title: 'UnitTest',
          sections: [
            '如何编写实用的测试用例',
-           '如何使用OCMock编写测试用例'
+           '如何使用 OCMock 编写测试用例'
          ]
        },
        {
