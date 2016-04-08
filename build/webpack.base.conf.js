@@ -51,6 +51,10 @@ module.exports = {
         test: /\.(png|jpg|gif)$/,
         loader: 'url-loader?limit=8190'
       },
+      {
+        test: /\.(mp4|webm)/,
+        loader: 'file-loader'
+      },
       { test: /\.css$/,
         loader: "style-loader!css-loader"
       },

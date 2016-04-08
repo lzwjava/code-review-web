@@ -21,6 +21,15 @@
             <span>每天</span>审核代码
           </li>
         </ul>
+        <div class="phone">
+          <img class="swift" src="../img/workshop/screen-swift.png" alt="" />
+          <img class="iphone6" src="../img/workshop/screen-iphone6.png" alt="" />
+          <video loop="true" autoplay>
+            <source :src="mp4Video" type="video/mp4">
+            <!-- <source src="http://7xotd0.com1.z0.glb.clouddn.com/swiftdemo.mp4" type="video/mp4"> -->
+            <source :src="webmVideo" type="video/webm">
+          </video>
+        </div>
       </div>
     </section>
 
@@ -156,20 +165,6 @@
 .workshop-area
   text-align center
 
-.r
-  border-right  solid 1px #E7E7E7
-.b
-  border-bottom 1px solid #E7E7E7
-.t
-  border-top 1px solid #E7E7E7
-.l
-  border-left 1px solid #E7E7E7
-+below(768px)
-  .r,.b,.t,.l
-    border none
-  div.null
-    display none
-
 +below(700px)
   .navbar .right
     display none
@@ -201,30 +196,29 @@ body
     span(1)
     letter-spacing 3px
     position relative
-    background url("../img/workshop/intro_bg1.png") no-repeat
-    height 800px
+    background #2B3745 url("../img/workshop/photo-eiffeltower.jpg") top center no-repeat
+    min-height 1200px
     background-size cover
-    background-position center
     text-align center
     font-size 20px
     +below(500px)
       font-size 10px
     color #fff
     .info__content
-      width 600px
+      width 700px
       +below(500px)
         width 300px
         margin-left -150px
         margin-top -100px
-        top 45%
+        top 20%
       height 300px
       position absolute
-      top 50%
+      top 20%
       left 50%
-      margin-left -300px
+      margin-left -350px
       margin-top -150px
       hr
-        margin 50px
+        margin 30px
         border-top 1px solid rgba(255, 255, 255, 0.247059)
         border-bottom 0
       .info__subtitle
@@ -240,7 +234,7 @@ body
           font-family arial
           font-weight normal
       .info__numbers
-        margin-top 80px
+        margin-top 20px
         font-size 24px
         li
           display inline-block
@@ -249,6 +243,28 @@ body
           span
             color #62E4F5
             display block
+      .phone
+        position relative
+        top 100px
+        img.swift
+          position absolute
+          width 682px
+          top 100px
+          left 50%
+          margin-left -341px
+        img.iphone6
+          position absolute
+          width 300px
+          top 0
+          left 50%
+          margin-left -150px
+        video
+          position absolute
+          left 50%
+          width 400px
+          height 450px
+          top 72px
+          margin-left -200px
 
   .speaker
     color #34495e
@@ -447,6 +463,8 @@ import WorkshopForm from '../components/workshop-form.vue'
 import Overlay from '../components/overlay.vue'
 import UserAvatar from '../components/user-avatar.vue'
 import Qrcode from '../components/qrcode.vue'
+import Video from '../img/workshop/swiftdemo.mp4'
+import Webm from '../img/workshop/swiftdemo.webm'
 
 var debug = require('debug')('workshop');
 
@@ -463,6 +481,8 @@ module.exports = {
       enrollments: [],
       overlayStatus: false,
       qrcodeStatus: false,
+      mp4Video: Video,
+      webmVideo: Webm,
       chapters: [
         {
           title: 'Git',
@@ -483,9 +503,9 @@ module.exports = {
        {
          title: 'Animation',
          sections: [
-           'Pop 框架',
            'LayerAnimation、ViewAnimation、Transition、Shape、Path 等基础',
-           '贝塞尔曲线、数学与动画、精选动画详解'
+           'Pop 框架、贝塞尔曲线、数学与动画',
+           '精选动画详解'
          ]
        },
        {
@@ -575,7 +595,7 @@ module.exports = {
            'PHP 与 MySQL 后端开发',
            'HTML、CSS、Vue 前端',
            'LeanCloud 数据存储、实时通信',
-           '美国签证、硅谷游学见闻'
+           '美国签证、硅谷IT行业见闻'
          ]
        }
       ]

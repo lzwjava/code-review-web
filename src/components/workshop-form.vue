@@ -9,8 +9,8 @@
             <h2>报名须知</h2>
             <ul>
               <li>暂时只支持支付宝支付</li>
-              <li>如果支付遇到问题，请联系组织方，微信 lzwjava</li>
-              <li>大会信息如有改动，将短信通知您，请确保当前登录账号的手机号 {{currentUser().mobilePhoneNumber }}可用</li>
+              <li>如果支付遇到问题，请联系报名页的咨询电话</li>
+              <li>研讨班信息如有改动，将短信通知您，请确保当前登录账号的手机号 {{currentUser().mobilePhoneNumber }}可用</li>
             </ul>
             <button class="btn btn-blue btn-attend" @click="attend">确认报名</button>
           </div>
