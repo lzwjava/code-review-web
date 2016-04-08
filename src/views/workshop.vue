@@ -101,7 +101,7 @@
             </div>
             <div class="date">
               <img src="../img/workshop/big-calendar.svg" alt="" />
-              <h3>2016.5.3 ~ 2016.6.12</h3>
+              <h3>2016.5.3 ~ 2016.6.12<br>平时晚上、周六日全天</h3>
             </div>
             <div class="buy">
               <button @click="showAttend" class="btn btn-blue" :class="{'disabled' : !attendEnabled}">{{attendTitle}}</button>
@@ -385,15 +385,15 @@ body
           margin-top -30px
           position relative
           height 140px
-          h3
-            font-size 20px
-            display inline-block
           img
             width 30px
           .heading,.date
             h3
-              vertical-align 5px
+              font-size 18px
+              display inline-block
+              vertical-align 0px
               margin-left 10px
+              line-height 24px
           .heading
             margin-bottom 15px
           .buy
@@ -474,7 +474,7 @@ module.exports = {
           ]
         },
        {
-         title: 'UI（知名应用的仿写)',
+         title: 'UI（知名应用仿写)',
          sections: [
            '下厨房',
            'CityGuides'
@@ -500,7 +500,6 @@ module.exports = {
          title: 'ORM',
          sections: [
            'Mantle vs JSONModel vs MJExtension vs YYModel',
-           '四个框架的对比解析',
            '如何自己写 ORM 框架'
          ]
        },
@@ -508,8 +507,7 @@ module.exports = {
          title: 'HttpClient',
          sections: [
            'Etag、Last-Modified 与缓存',
-           '如何设计合理的网络错误处理机制',
-           '如何设计容易扩展的网络库',
+           '设计容易扩展、错误处理优雅的网络库',
            'HTTP 协议详解'
          ]
        },
@@ -525,9 +523,8 @@ module.exports = {
        {
          title: 'Cache',
          sections: [
-           '如何使用Realm设计缓存',
-           '如何使用CoreData设计缓存',
-           '如何使用Sqlite设计缓存'
+           '数据缓存、图片缓存',
+           '知名 App 缓存策略分析'
          ]
        },
        {
@@ -540,19 +537,28 @@ module.exports = {
          ]
        },
        {
+         title: 'Media',
+         sections: [
+           '音视频图像基础',
+           '滤镜、视频剪辑、拼接',
+           'ffmpeg'
+         ]
+       },
+       {
+         title: 'Xcode',
+         sections: [
+           '快捷键、库依赖、深入 Cocoapods',
+           '打包、测试发布、推送证书',
+           'Profiling、Instrument',
+           '越狱、Reveal、反编译'
+         ]
+       },
+       {
          title: 'Test',
          sections: [
            '流行开源库单元测试详解',
            '真实开发中的测试',
            '覆盖率、测试框架',
-         ]
-       },
-       {
-         title: '多媒体',
-         sections: [
-           '音视频图像基础',
-           '滤镜、视频剪辑、拼接',
-           'ffmpeg'
          ]
        },
        {
@@ -564,12 +570,12 @@ module.exports = {
          ]
        },
        {
-         title: 'Xcode',
+         title: 'Full Stack & Silicon Valley',
          sections: [
-           '快捷键、库依赖、深入 Cocoapods',
-           '打包、测试发布、推送证书',
-           'Profiling、Instrument',
-           '越狱、Reveal、反编译'
+           'PHP 与 MySQL 后端开发',
+           'HTML、CSS、Vue 前端',
+           'LeanCloud 数据存储、实时通信',
+           '美国签证、硅谷游学见闻'
          ]
        }
       ]
