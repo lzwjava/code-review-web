@@ -115,7 +115,7 @@
             <div class="buy">
               <button @click="showAttend" class="btn btn-blue" :class="{'disabled' : !attendEnabled}">{{attendTitle}}</button>
               <p>
-                咨询: 18611693632
+                咨询:18611693632
               </p>
             </div>
           </div>
@@ -380,6 +380,8 @@ body
         background #E2E4E9
         position relative
         top -240px
+        +below(700px)
+          top -160px
         .ticket__card__header
           color #fff
           img.bg
@@ -410,6 +412,8 @@ body
               vertical-align 0px
               margin-left 10px
               line-height 24px
+              +below(700px)
+                font-size 14px
           .heading
             margin-bottom 15px
           .buy
@@ -421,14 +425,20 @@ body
               height 65px
               font-size 20px
               margin-bottom 20px
+              +below(700px)
+                font-size 15px
+                width 80px
             p
               color #6A7989
+              +below(700px)
+                max-width 80px
+                word-break break-all
 
     .ticket__attend
        margin 50px 0
        color #6E7A83
        position relative
-       top -240px
+       top -200px
        .ticket__attend__title
          line-height 30px
          font-size 20px
