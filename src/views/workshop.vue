@@ -32,8 +32,8 @@
              <div class="speaker__content">
                <img src="../img/event/yeguchen.jpg">
                <h4 class="name">臧其龙</h4>
-               <p class="detail">微博 <a href="http://weibo.com/u/1438670852" target="_blank">@叶孤城</a>。现为探探 iOS 开发，
-                 曾就职于 Camera360、流利说。对动画交互，图像，视频处理颇有心得。
+               <p class="detail">微博 <a href="http://weibo.com/u/1438670852" target="_blank">@叶孤城</a>。
+                 曾就职于探探、Camera 360、流利说。对动画交互，图像，视频处理颇有心得。
                  热爱 <a href="https://github.com/zangqilong198812" target="_blank">分享</a>，热爱 iOS 圈子，为大家提供了
                  <a href="http://reviewcode.cn/" target="_blank">Code Review 平台</a>。
                </p>
@@ -68,7 +68,7 @@
       <div class="chapters__content">
         <h1 class="title">课程安排</h1>
         <ul class="chapter__list">
-          <li v-for="chapter in chapters">
+          <li class="chapter" v-for="chapter in chapters">
             {{chapter.title}}
             <ul class="chapter__sections">
               <li v-for="section in chapter.sections">{{section}}</li>
@@ -342,7 +342,7 @@ body
         list-style disc
         li
           display list-item
-          margin-top 5px
+          line-height 30px
         ul.chapter__sections
           list-style circle
 
@@ -390,13 +390,12 @@ body
             display inline-block
           img
             width 30px
-          div.heading
+          .heading,.date
+            h3
+              vertical-align 5px
+              margin-left 10px
+          .heading
             margin-bottom 15px
-            h3
-              vertical-align 5px
-          div.date
-            h3
-              vertical-align 5px
           .buy
             position absolute
             right 20px
@@ -485,13 +484,16 @@ module.exports = {
          title: 'Animation',
          sections: [
            'Pop 框架',
-           'LayerAnimation',
-           'ViewAnimation',
-           'TransitionAnimation',
-           'ShapeAnimation',
-           'PathAnimation',
-           'DynamicAnimation',
-           'ParticlesAnimation'
+           'LayerAnimation、ViewAnimation、Transition、Shape、Path 等基础',
+           '贝塞尔曲线、数学与动画、精选动画详解'
+         ]
+       },
+       {
+         title: 'Swift',
+         sections: [
+           'Structures、Closures、Optional、Generics 等基础',
+           'map、reduce、filter、flatMap 与函数式编程',
+           'Swift 最佳实践'
          ]
        },
        {
@@ -505,16 +507,17 @@ module.exports = {
        {
          title: 'HttpClient',
          sections: [
-           '如何使用 Etag、Last-Modified 来实现缓存',
+           'Etag、Last-Modified 与缓存',
            '如何设计合理的网络错误处理机制',
-           '如何设计容易扩展的网络库'
+           '如何设计容易扩展的网络库',
+           'HTTP 协议详解'
          ]
        },
        {
          title: 'Database',
          sections: [
-          'Realm',
-          'CoreData',
+          'Realm(增删改查、数据同步、多表关联设计)',
+          'CoreData(增删改查、多表关联)',
           'Sqlite(join、group、foreign key、index)',
           '如何针对项目做数据库选型'
         ]
@@ -537,18 +540,36 @@ module.exports = {
          ]
        },
        {
-         title: 'UnitTest',
+         title: 'Test',
          sections: [
-           '如何编写实用的测试用例',
-           '如何使用 OCMock 编写测试用例'
+           '流行开源库单元测试详解',
+           '真实开发中的测试',
+           '覆盖率、测试框架',
+         ]
+       },
+       {
+         title: '多媒体',
+         sections: [
+           '音视频图像基础',
+           '滤镜、视频剪辑、拼接',
+           'ffmpeg'
          ]
        },
        {
          title: 'CI',
          sections: [
-           '如何写一个持续化集成工具',
            '如何配置 Jenkins',
-           '如何合理利用 Github Hooks 完成工作'
+           '自动化打包、自动化测试',
+           'Github Hooks、Travis CI'
+         ]
+       },
+       {
+         title: 'Xcode',
+         sections: [
+           '快捷键、库依赖、深入 Cocoapods',
+           '打包、测试发布、推送证书',
+           'Profiling、Instrument',
+           '越狱、Reveal、反编译'
          ]
        }
       ]

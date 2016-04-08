@@ -373,8 +373,6 @@
       margin-top 70px
       color white
       border 1px solid #00A3E6
-      -webkit-box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
-      box-shadow 0px 1px 0px rgba(255,255,255,0.15) inset,0px 1px 2px rgba(0,0,0,0.15)
       font-family Helvetica Neue,Helvetica
 .feature
   height 450px
