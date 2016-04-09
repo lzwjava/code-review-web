@@ -73,7 +73,7 @@ exports.configVue = (Vue) => {
   // 这里是 debug 模块调试，有用的，不用移除
   localStorage.debug = 'api,user,components,setting,reviewer-list,home,reviewer-detail,order-form,'
    + 'order,write-review,tag,markdown-area,markdown,article,reward-form,loading,order-detail,case,article-item,belief,'
-   + 'notifications,comment-list,reset-password,event,event-form';
+   + 'notifications,comment-list,reset-password,event,event-form,workshop,workshop-form';
 
   // register filters globally
   for(let  k in filters){

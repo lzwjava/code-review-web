@@ -18,7 +18,8 @@ module.exports = {
     paid: ['./src/paid.js'],
     video: ['./src/video.js'],
     notifications: ['./src/notifications.js'],
-    event: ['./src/event.js']
+    event: ['./src/event.js'],
+    workshop: ['./src/workshop.js']
   },
   output: {
     path: path.resolve(__dirname, '../dist/static/'),
@@ -49,6 +50,10 @@ module.exports = {
       {
         test: /\.(png|jpg|gif)$/,
         loader: 'url-loader?limit=8190'
+      },
+      {
+        test: /\.(mp4|webm)/,
+        loader: 'file-loader'
       },
       { test: /\.css$/,
         loader: "style-loader!css-loader"

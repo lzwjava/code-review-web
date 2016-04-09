@@ -10,7 +10,7 @@ var path = require('path')
 
 var devConfig = ['index.html', 'case.html', 'article.html', 'order.html', 'reviewer.html', 'setting.html',
 'statement.html', 'write-review.html', 'reviewers.html', 'belief.html', 'paid.html', 'video.html',
-'notifications.html', 'event.html'];
+'notifications.html', 'event.html', 'workshop.html'];
 
 function HtmlWebpackPluginConfig(type) {
   var filePath = '';

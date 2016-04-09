@@ -90,7 +90,7 @@ body
 .markdown-body
     h1
         text-align center
-        font-family Raleway-Regular,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
+        font-family Helvetica Neue,Helvetica
         font-size 28px
         margin-bottom 40px !important
 </style>

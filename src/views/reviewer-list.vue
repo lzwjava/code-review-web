@@ -63,7 +63,7 @@ export default{
     font-size 1.5rem
     margin 15px 0px
     font-weight 400
-    font-family Raleway-ExtraLight, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", Arial, "Microsoft Yahei", Verdana, sans-serif
+    font-family "Helvetica Neue", Helvetica
 
 .info
   text-align center
@@ -75,7 +75,7 @@ export default{
     font-size 20px
     margin-top 30px
     .num
-      font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
+      font-family Helvetica Neue,Helvetica
       font-size 48px
       color green
       vertical-align sub

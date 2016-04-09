@@ -413,6 +413,8 @@
 					text-indent 15px
 					box-shadow 0 1px 4px rgba(0,0,0,0.03)
 					color rgba(40,47,49,.6)
+					&:focus
+						border 1px solid #1CB2EF
 				textarea
 					width 100%
 					height 280px
@@ -421,7 +423,9 @@
 					color rgba(40,47,49,.6)
 					font-size 1rem
 					border 1px solid rgba(40,47,49,.3)
-					font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
+					font-family Helvetica Neue,Helvetica
+					&:focus
+						border 1px solid #1CB2EF
 				.update-btn
 					margin 27px 0 54px
 					background blue
@@ -469,6 +473,8 @@
 						border 1px solid rgba(40,47,49,0.3)
 						box-shadow 0 1px 4px rgba(0,0,0,0.03)
 						background white
+						&:focus
+							border 1px solid #1CB2EF
 						option
 							-webkit-appearance: none
 							height 40px

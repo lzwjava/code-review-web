@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="18px" height="24px" viewBox="0 0 18 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.4 (8053) - http://www.bohemiancoding.com/sketch -->
+    <title>big-location</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="sketch" sketch:type="MSArtboardGroup" transform="translate(-176.000000, -637.000000)" fill="#E2ECF1">
+            <g id="intro" sketch:type="MSLayerGroup" transform="translate(0.000000, -517.000000)">
+                <g id="Group" transform="translate(150.000000, 960.000000)" sketch:type="MSShapeGroup">
+                    <g id="Rectangle-1-+-Rectangle-2">
+                        <g id="Group">
+                            <path d="M34.3527422,217.256758 C34.7102128,217.667239 35.2994461,217.659799 35.6617915,217.239768 C35.6617915,217.239768 44,207.970563 44,203 C44,198.029437 39.970563,194 35,194 C30.029437,194 26,198.029437 26,203 C26,207.970563 34.3527422,217.256758 34.3527422,217.256758 Z M35,209 C38.3137087,209 41,206.313709 41,203 C41,199.686291 38.3137087,197 35,197 C31.6862913,197 29,199.686291 29,203 C29,206.313709 31.6862913,209 35,209 Z M35,206 C36.6568543,206 38,204.656854 38,203 C38,201.343146 36.6568543,200 35,200 C33.3431457,200 32,201.343146 32,203 C32,204.656854 33.3431457,206 35,206 Z" id="big-location"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

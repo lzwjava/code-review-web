@@ -52,7 +52,7 @@
 						margin-right 10px
 					.data
 						margin-right 20px
-						font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
+						font-family Helvetica Neue,Helvetica
 				h6
 					height 60px
 					overflow hidden
@@ -66,7 +66,7 @@
 					color rgba(40,47,49,.6)
 					position absolute
 					bottom 0
-					font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,Microsoft Yahei,Verdana,sans-serif
+					font-family Helvetica Neue,Helvetica
 					span
 						margin-right 30px
 			.article-logo
