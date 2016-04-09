@@ -254,6 +254,8 @@ body
           top 100px
           left 50%
           margin-left -341px
+          +below(700px)
+            display none
         img.iphone6
           position absolute
           width 300px
@@ -438,7 +440,8 @@ body
        margin 50px 0
        color #6E7A83
        position relative
-       top -200px       
+       top -200px
+       display none
        .ticket__attend__title
          line-height 30px
          font-size 20px
