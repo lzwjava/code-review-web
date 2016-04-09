@@ -380,12 +380,10 @@ body
         background #E2E4E9
         position relative
         top -240px
-        +below(700px)
-          top -160px
         .ticket__card__header
           color #fff
           img.bg
-            width 100%
+            height 240px
           .middle
             position relative
             bottom 50px
