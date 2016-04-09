@@ -24,7 +24,7 @@
         <div class="phone">
           <img class="swift" src="../img/workshop/screen-swift.png" alt="" />
           <img class="iphone6" src="../img/workshop/screen-iphone6.png" alt="" />
-          <video loop="true" autoplay>
+          <video v-if="!isWeixinBrowser()" loop="true" autoplay>
             <source :src="mp4Video" type="video/mp4">
             <!-- <source :src="webmVideo" type="video/webm"> -->
           </video>
@@ -675,6 +675,10 @@ module.exports = {
           }
         }, util.httpErrorFn(this));
     },
+    isWeixinBrowser() {
+      var ua = navigator.userAgent.toLowerCase();
+      return (/micromessenger/.test(ua)) ? true : false ;
+    }
   },
   ready () {
 
@@ -689,6 +693,7 @@ module.exports = {
     var workshopId = params.workshopId;
     this.fetchWorkshop(workshopId);
     this.fetchEnrollments(workshopId);
+    debug('weixin:' + this.isWeixinBrowser());
   }
 };
 
