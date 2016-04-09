@@ -26,8 +26,7 @@
           <img class="iphone6" src="../img/workshop/screen-iphone6.png" alt="" />
           <video loop="true" autoplay>
             <source :src="mp4Video" type="video/mp4">
-            <!-- <source src="http://7xotd0.com1.z0.glb.clouddn.com/swiftdemo.mp4" type="video/mp4"> -->
-            <source :src="webmVideo" type="video/webm">
+            <!-- <source :src="webmVideo" type="video/webm"> -->
           </video>
         </div>
       </div>
@@ -70,7 +69,7 @@
       </p>
       <p>
         第一期只招 10 位学员。如果说我们和其它线下教育机构有什么最大的不同的话，我想就是这点：两位导师将全职陪同 10 位学员度过一个半月的学习。
-      </p>      
+      </p>
       <p>
         定价是 20000 元，或许你会觉得定价很高。定价高来源于我们有信心提供高质量的内容，让大家快速摆脱初级开发的尴尬定位，迅速成为能够独当一面的移动端开发。
       </p>
@@ -474,8 +473,7 @@ import WorkshopForm from '../components/workshop-form.vue'
 import Overlay from '../components/overlay.vue'
 import UserAvatar from '../components/user-avatar.vue'
 import Qrcode from '../components/qrcode.vue'
-import Video from '../img/workshop/swiftdemo.mp4'
-import Webm from '../img/workshop/swiftdemo.webm'
+import Video from '../img/workshop/storehouse.mp4'
 
 var debug = require('debug')('workshop');
 
@@ -493,7 +491,6 @@ module.exports = {
       overlayStatus: false,
       qrcodeStatus: false,
       mp4Video: Video,
-      webmVideo: Webm,
       chapters: [
         {
           title: 'Git',
