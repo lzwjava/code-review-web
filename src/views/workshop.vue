@@ -93,7 +93,7 @@
       <div class="ticket__content">
         <div class="ticket__card">
           <div class="ticket__card__header">
-            <img class="bg" src="../img/workshop/workshop-toronto-hero.jpg" alt="" />
+            <img class="bg" src="../img/workshop/beijing_bg.png" alt="" />
             <div class="middle">
               <div class="city">
                 <img src="../img/workshop/big-location.svg" alt="" />
@@ -562,14 +562,6 @@ module.exports = {
            '单页面多列表如何解耦',
            'MVVM如何改善架构',
            'TableView如何优化'
-         ]
-       },
-       {
-         title: 'Media',
-         sections: [
-           '音视频图像基础',
-           '滤镜、视频剪辑、拼接',
-           'ffmpeg'
          ]
        },
        {
