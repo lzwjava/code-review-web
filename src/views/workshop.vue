@@ -51,7 +51,7 @@
             <div class="speaker__content">
               <img src="../img/event/lzwjava_avatar.jpg">
               <h4 class="name">李智维</h4>
-              <p class="detail">微博 <a href="http://weibo.com/zhiweilee" target="_blank">@lzwjava</a>。95 年出生的他，初中接触了编程，曾任职于 LeanCloud。现创业搞起了 <a href="http://reviewcode.cn/" target="_blank">Code Review 平台</a>。业余时间也开源了一些 <a href="https://github.com/lzwjava" target="_blank">项目</a>。</p>
+              <p class="detail">微博 <a href="http://weibo.com/zhiweilee" target="_blank">@lzwjava</a>。95 年出生的他，初中接触了编程，曾任职于 LeanCloud，从事 iOS SDK 的开发。现创业搞起了 <a href="http://reviewcode.cn/" target="_blank">Code Review 平台</a>。业余时间也开源了一些 <a href="https://github.com/lzwjava" target="_blank">项目</a>。</p>
             </div>
           </div>
         </div>
@@ -438,7 +438,7 @@ body
        margin 50px 0
        color #6E7A83
        position relative
-       top -200px
+       top -200px       
        .ticket__attend__title
          line-height 30px
          font-size 20px

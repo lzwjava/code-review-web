@@ -21,6 +21,7 @@
             <a href="/case.html"><li class="hover-btn">精彩案例</li></a>
             <a href="/video.html"><li class="hover-btn">直播视频</li></a>
             <a href="/event.html?eventId=1"><li class="hover-btn">线下活动</li></a>
+            <a href="/workshop.html?workshopId=1"><li class="hover-btn">研讨班</li></a>
             <li class="hover-btn" v-if="!userStatus" class="signup" @click="signup">注册</li>
             <li class="hover-btn" v-if="!userStatus" @click="signin">登录</li>
             <li v-if="userStatus">
