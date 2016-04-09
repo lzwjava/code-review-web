@@ -71,7 +71,7 @@
         第一期只招 10 位学员。如果说我们和其它线下教育机构有什么最大的不同的话，我想就是这点：两位导师将全职陪同 10 位学员度过一个半月的学习。
       </p>
       <p>
-        定价是 20000 元，或许你会觉得定价很高。定价高来源于我们有信心提供高质量的内容，让大家快速摆脱初级开发的尴尬定位，迅速成为能够独当一面的移动端开发。
+        定价是 {{workshop.amount | moneyAsYuan}} 元，或许你会觉得定价很高。定价高来源于我们有信心提供高质量的内容，让大家快速摆脱初级开发的尴尬定位，迅速成为能够独当一面的移动端开发。
       </p>
     </section>
 
@@ -604,7 +604,7 @@ module.exports = {
   computed: {
     attendTitle () {
       if (this.workshop.enrollment != null) {
-        return '您已报名，欢迎加参会群';
+        return '您已报名';
       } else if (this.workshop.restCount > 0)  {
         var user = util.getLocalUser();
         if (!user.username) {
@@ -618,7 +618,7 @@ module.exports = {
     },
     attendEnabled() {
       if (this.workshop.enrollment != null) {
-        return true;
+        return false;
       } else if (this.workshop.restCount > 0)  {
         var user = util.getLocalUser();
         if (!user.username) {

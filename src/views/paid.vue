@@ -8,6 +8,13 @@
           </div>
           <img src="../img/event/event_qrcode.jpg" />
         </div>
+        <div v-if="type== 'workshop'">
+          <div class="">
+            支付成功，您已报名成功。请加入研讨班微信群:
+          </div>
+          <img src="../img/workshop/workshop_qrcode.jpg" />
+        </div>
+
       </div>
     </div>
 </template>
