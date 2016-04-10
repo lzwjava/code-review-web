@@ -115,9 +115,10 @@
               <h3>2016.5.3 ~ 2016.6.12<br>平时晚上、周六日全天</h3>
             </div>
             <div class="buy">
-              <button @click="showAttend" class="btn btn-blue" :class="{'disabled' : !attendEnabled}">{{attendTitle}}</button>
+              <button @click="showAttend(null)" class="btn btn-blue" :class="{'disabled' : !attendEnabled}">{{attendTitle(null)}}</button>
+              <button @click="showAttend('part')" class="btn btn-blue" :class="{'disabled' : !attendEnabled}">{{attendTitle('part')}}</button>
               <p>
-                咨询:18611693632
+                报名即入微信群<br>咨询:18611693632
               </p>
             </div>
           </div>
@@ -150,7 +151,7 @@
     </section>
 
     <overlay :overlay.sync="overlayStatus">
-      <workshop-form :workshop="workshop"></workshop-form>
+      <workshop-form :workshop="workshop" :type="payType"></workshop-form>
     </overlay>
 
     <overlay :overlay.sync="qrcodeStatus">
@@ -401,10 +402,11 @@ body
               margin-right 20px
         .ticket__card__footer
           color #000
-          padding 20px
+          padding 20px 20px 40px
           margin-top -30px
           position relative
-          height 140px
+          +below(700px)
+            padding 5px 5px 40px
           img
             width 30px
           .heading,.date
@@ -419,21 +421,25 @@ body
           .heading
             margin-bottom 15px
           .buy
-            position absolute
             right 20px
-            bottom 20px
+            top 20px
+            position absolute
             button
-              width 150px
-              height 65px
-              font-size 20px
-              margin-bottom 20px
+              width 180px
+              height 35px
+              font-size 14px
+              display block
+              margin-bottom 10px
               +below(700px)
-                font-size 15px
-                width 80px
+                font-size 14px
+                width 100px
             p
               color #6A7989
+              text-align center
+              font-size 14px
               +below(700px)
-                max-width 80px
+                max-width 85px
+                font-size 10px                
                 word-break break-all
 
     .ticket__attend
@@ -494,6 +500,7 @@ module.exports = {
       overlayStatus: false,
       qrcodeStatus: false,
       mp4Video: Video,
+      payType: null,
       chapters: [
         {
           title: 'Git',
@@ -605,20 +612,6 @@ module.exports = {
     };
   },
   computed: {
-    attendTitle () {
-      if (this.workshop.enrollment != null) {
-        return '您已报名';
-      } else if (this.workshop.restCount > 0)  {
-        var user = util.getLocalUser();
-        if (!user.username) {
-          return '请登录后报名';
-        } else {
-          return '立即报名';
-        }
-      } else {
-        return '报名已满';
-      }
-    },
     attendEnabled() {
       if (this.workshop.enrollment != null) {
         return false;
@@ -635,11 +628,35 @@ module.exports = {
     }
   },
   methods: {
-    showAttend() {
+    attendTitle (type) {
+      if (this.workshop.enrollment != null) {
+        return '您已报名';
+      } else if (this.workshop.restCount > 0)  {
+        var user = util.getLocalUser();
+        if (!user.username) {
+          if (type == 'part') {
+            return '登录后报名(¥5000x4个月)';
+          } else {
+            return '登录后报名(¥20000)'
+          }
+        } else {
+          if (type == 'part') {
+            return '立即报名(¥5000x4个月)';
+          } else {
+            return '立即报名(¥20000)';
+          }
+        }
+      } else {
+        return '报名已满';
+      }
+    },
+    showAttend(type) {
       // if (util.mobileCheck()) {
       //   util.show(this, 'warn', '暂时只支持电脑支付，请在电脑上打开 http://reviewcode.cn 报名', 10 * 1000);
       //   return;
       // }
+      debug('type: %j', type)
+      this.payType = type;
       if (!this.attendEnabled) {
         return;
       }
