@@ -76,7 +76,7 @@ import pingpp from '../common/pingpp-pc.js'
 var debug = require('debug')('workshop-form');
 
 export default {
-  props: ['workshop'],
+  props: ['workshop', 'type'],
   data () {
     return {
       mode: 'attend'
@@ -105,7 +105,12 @@ export default {
       this.payWorkshop(this.workshop.workshopId);
     },
     payWorkshop(workshopId) {
-      this.$http.post(serviceUrl.workshopPay.replace(/:id/, workshopId)).then((resp) => {
+      var params = {};
+      if (this.type == 'part') {
+        params.type = this.type
+      }
+      debug('type: %j', this.type)
+      this.$http.post(serviceUrl.workshopPay.replace(/:id/, workshopId), params).then((resp) => {
         if (resp.data && resp.data.credential) {
           window.pingppPc.createPayment(resp.data, function (result, err) {
             if (err != null) {
@@ -124,6 +129,7 @@ export default {
   },
   ready () {
     debug('ready');
+    debug('type: %j', this.type)
   }
 }
 

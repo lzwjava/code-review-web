@@ -1,3 +1,4 @@
+var webpack = require('webpack')
 var config = require('./webpack.base.conf')
 var path = require('path')
 var htmlConfig = require('./html.plugin.conf')
@@ -18,6 +19,12 @@ config.devServer = {
 // when serving the html from in-memory
 config.output.publicPath = '/'
 
-config.plugins = (config.plugins || []).concat(htmlConfig('dev'))
+config.plugins = (config.plugins || []).concat([
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: '"local"'
+    }
+  })
+]).concat(htmlConfig('dev'))
 
 module.exports = config
