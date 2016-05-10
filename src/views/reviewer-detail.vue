@@ -1,7 +1,7 @@
 <template>
   <loading>
     <div class="review-bg">
-        <div class="top-region">  
+        <div class="top-region">
             <div class="review-info">
                 <div class="basic-info">
                     <user-avatar :user="reviewer"></user-avatar>
@@ -21,9 +21,9 @@
                             <tag v-for="tag in reviewer.tags" :tag="tag" :showDel="false"></tag>
                             <span>等领域</span>
                         </div>
-                        <button class=" order-btn" @click="overlayStatus = true">申请 Code Review</button>
+                        <!-- <button class=" order-btn" @click="overlayStatus = true">申请 Code Review</button> -->
                     </div>
-        
+
     </div>
 
     <div class="reviewer-case">
@@ -112,8 +112,8 @@ body
 .navbar
   position fixed
   z-index 8 // signup login overlay = 9
-  
-.review-bg 
+
+.review-bg
     background url("../img/heroimage.png")
     background-size cover
     background-position-y: -30px;
