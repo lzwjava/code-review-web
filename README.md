@@ -19,3 +19,13 @@ git submodule update
 ### 本地调试
 
 将 apitest.conf 复制到 /usr/local/nginx/conf/sites/ 下面。在 nginx.conf 中引入 sites/*.conf。重启 nginx。
+
+### 贡献者
+
+| author  | commits |
+| ------------- | ------------- |
+| lzwjava  | 302 |
+| LeslieYQ | 73  |
+|Martin|52|
+|zangqilong|4|
+
