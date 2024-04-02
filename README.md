@@ -1,5 +1,11 @@
 # code-review-web
 
+![img](./img/code-review.png)
+
+# Projects
+
+* [code-review-server](https://github.com/lzwjava/code-review-server)
+* [code-review-web](https://github.com/lzwjava/code-review-web)
 
 ### Building
 
@@ -16,11 +22,11 @@ git submodule init
 git submodule update
 ```
 
-### 本地调试
+### Debug
 
 将 apitest.conf 复制到 /usr/local/nginx/conf/sites/ 下面。在 nginx.conf 中引入 sites/*.conf。重启 nginx。
 
-### 贡献者
+### Contributors
 
 | author  | commits |
 | ------------- | ------------- |
