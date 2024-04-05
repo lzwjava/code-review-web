@@ -1,6 +1,8 @@
 # code-review-web
 
-![img](./img/code-review.png)
+![img](./img/cr1.png)
+
+![img](./img/cr2.png)
 
 # Projects
 
